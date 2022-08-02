@@ -4,8 +4,8 @@
 
 ![airbnb-database-schema]
 
-[airbnb-database-schema]: https://appacademy-open-assets.s3.us-west-1.amazonaws.com/Modular-Curriculum/content/week-12/airbnb-db-schema.png
-[airbnb-db-diagram-info]: https://appacademy-open-assets.s3.us-west-1.amazonaws.com/Modular-Curriculum/content/week-12/airbnb-db-diagram-info.txt
+![airbnb_dbdiagram](https://user-images.githubusercontent.com/73508540/182290560-6c66213c-634b-4fb1-a8c5-9bc8a19c8eae.png)
+
 
 ## API Documentation
 
