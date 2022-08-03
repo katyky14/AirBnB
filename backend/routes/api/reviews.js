@@ -8,10 +8,9 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 
 // create an image for a review
-
 router.post('/:reviewId/images', requireAuth, async (req, res) => {
     const { reviewId } = req.params;
-    const { url } = req.body;
+    const { url, previewImage } = req.body;
     const img = await Review.findByPk(reviewId);
 
     if (!img) {
@@ -22,15 +21,19 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
     };
 
     //aggregate
-    
+
 
     //image
     const newImg = await Image.create({
         reviewId: req.params.reviewId,
+        previewImage,
         url
     });
 
+    console.log(newImg)
+
     return res.json(await Image.findByPk(newImg.id, {
+
         attributes: [
             'id',
             ['reviewId', 'imageableId'],
@@ -38,9 +41,65 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
         ]
     }));
 
+});
+
+// GET REVIEWS OF CURRENT USER
+
+router.get('/current', requireAuth, async (req, res) => {
+    const { user } = req;
+
+    const currentReview = await Review.findAll({
+        where: {
+            userId: user.id
+        },
+        include: [
+            {
+                model: User,
+                attributes: [
+                    'id',
+                    'firstName',
+                    'lastName'
+                ]
+            },
+            {
+                model: Spot,
+                attributes: [
+                    'id',
+                    'ownerId',
+                    'address',
+                    'city',
+                    'state',
+                    'country',
+                    'lat',
+                    'lng',
+                    'name',
+                    'price'
+                ]
+            },
+            {
+                model: Image,
+                attributes: [
+                    'id',
+                    ['userId', 'imageableId'],
+                    'url'
+                ]
+            }
+        ]
+    });
+
+    res.json(currentReview);
+
+})
 
 
 
+
+
+
+//EDIT A REVIEW
+router.put('/:reviewId', requireAuth, async (req, res) => {
+    const { review, stars } = req.body;
+    const { reviewId } = req.params;
 })
 
 

@@ -134,7 +134,7 @@ router.get('/:spotId', async (req, res) => {
             "statusCode": 404
         })
     };
-    const spotitem = await Spot.findByPk(req.params.spotId, {
+    const spots = await Spot.findByPk(req.params.spotId, {
         include: [
             {
                 model: Image,
@@ -143,7 +143,6 @@ router.get('/:spotId', async (req, res) => {
                     ['spotId', 'imageableId'],
                     'url'
                 ]
-
             },
             {
                 model: User,
@@ -152,12 +151,11 @@ router.get('/:spotId', async (req, res) => {
                     'id',
                     'firstName',
                     'lastName'
-
                 ]
             }]
 
     });
-    res.json(spotitem);
+    res.json(spots);
 
 
 });
