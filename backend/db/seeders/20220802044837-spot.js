@@ -24,7 +24,7 @@ module.exports = {
       },
       {
         ownerId: 2,
-        address: '125 Disney Lanee',
+        address: '550 N. College Ave',
         city: 'San Francisco',
         state: 'California',
         country: 'United States of America',
@@ -36,13 +36,13 @@ module.exports = {
       },
       {
         ownerId: 3,
-        address: '126 Disneyy Lane',
+        address: '680 Point Lobos Ave',
         city: 'San Francisco',
         state: 'California',
         country: 'United States of America',
         lat: 37.7645360,
         lng: -122.4730329,
-        name: "Appp Academyy",
+        name: "Lands End Lookout",
         description: "Place where web developers are created",
         price: 135
       },
@@ -57,6 +57,18 @@ module.exports = {
         name: "Aappp Aacademyy",
         description: "Place where web developers are created",
         price: 140
+      },
+      {
+        ownerId: 5,
+        address: '1130 W Monroe St',
+        city: 'Chicago',
+        state: 'Illionis',
+        country: 'United States of America',
+        lat: 37.7645564,
+        lng: -122.4731430,
+        name: "WNDR Museum",
+        description: "Multi-sensory, contemporary installations by artist",
+        price: 199
       }
     ], {});
   },
