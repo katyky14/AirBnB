@@ -77,7 +77,7 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
             spotId: req.params.spotId,
             url,
         });
-        res.json(await Image.findByPk(newImg.id, {
+        return res.json(await Image.findByPk(newImg.id, {
             attributes: [
                 'id',
                 ['spotId', 'imageableId'],
@@ -85,7 +85,7 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
             ]
         }))
     } else {
-        res.json({
+        return res.json({
             "message": "Spot couldn't be found",
             "statusCode": 404
         })
@@ -125,39 +125,103 @@ router.get('/current', requireAuth, async (req, res, next) => {
 });
 
 // DETAILS BY ID
-router.get('/:spotId', async (req, res, next) => {
+router.get('/:spotId', async (req, res) => {
+    const { spotId } = req.params;
+    const spot = await Spot.findByPk(spotId);
+    if (!spot) {
+        return res.json({
+            "message": "Spot couldn't be found",
+            "statusCode": 404
+        })
+    };
+    const spotitem = await Spot.findByPk(req.params.spotId, {
+        include: [
+            {
+                model: Image,
+                attributes: [
+                    'id',
+                    ['spotId', 'imageableId'],
+                    'url'
+                ]
+
+            },
+            {
+                model: User,
+                as: 'Owner',
+                attributes: [
+                    'id',
+                    'firstName',
+                    'lastName'
+
+                ]
+            }]
+
+    });
+    res.json(spotitem);
+
+
+});
+
+//EDIT SPOT
+router.put('/:spotId', requireAuth, async (req, res) => {
     const { spotId } = req.params;
 
-    const spotById = await Spot.findByPk(spotId, {
-        include: [{
-            model: Image,
-            attributes: [
-                'id',
-                ['spotId', 'imageableId'],
-                'url'
-            ]
-        },
-        {
-            model: User,
-            as: 'Owner',
-            attributes: [
-                'id',
-                'firstName',
-                'lastName'
-            ]
-        }]
-    });
+    const { address, city, state, country, lat, lng, name, description, price } = req.body;
+    const item = await Spot.findByPk(spotId);
 
-    res.json(spotById);
-
-    if (!spotId) {
-        res.json({
+    if (!item) {
+        return res.json({
             "message": "Spot couldn't be found",
             "statusCode": 404
         })
     }
 
+    item.address = address
+    item.city = city;
+    item.state = state;
+    item.country = country;
+    item.lat = lat;
+    item.lng = lng;
+    item.name = name;
+    item.description = description;
+    item.price = price;
+    await item.save();
+
+    res.json(item);
+
+})
+
+// create a review for Spot based on the spot's id
+router.post('/:spotId/reviews', requireAuth, async (req, res) => {
+
+    const { spotId } = req.params;
+    const spotItem = await Spot.findByPk(spotId);
+    if (!spotItem) {
+        return res.json({
+            "message": "Spot couldn't be found",
+            "statusCode": 404
+        })
+    };
+
+    const spot = await Spot.findOne({
+        where: { id: req.params.spotId }
+    });
+    const { review, stars } = req.body;
+    const newReview = await Review.create({
+        userId: spot.ownerId,
+        spotId: spot.id,
+        review: review,
+        stars: stars,
+    });
+    res.json(newReview);
+
+    //console.log('the review is: ----',newReview)
+    //check for duplicate reviews of same user
+
 });
+
+//CREATE AN IMAGE FOR A REVIEW
+
 
 
 module.exports = router;
