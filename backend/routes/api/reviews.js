@@ -88,11 +88,7 @@ router.get('/current', requireAuth, async (req, res) => {
     });
 
     res.json(currentReview);
-
-})
-
-
-
+});
 
 
 
@@ -100,6 +96,22 @@ router.get('/current', requireAuth, async (req, res) => {
 router.put('/:reviewId', requireAuth, async (req, res) => {
     const { review, stars } = req.body;
     const { reviewId } = req.params;
+
+    const reviewItem = await Review.findByPk(reviewId);
+
+    if (!reviewItem) {
+        return res.json({
+            "message": "Review couldn't be found",
+            "statusCode": 404
+        })
+    }
+
+    reviewItem.review = review;
+    reviewItem.stars = stars;
+    await reviewItem.save();
+
+    res.json(reviewItem);
+
 })
 
 

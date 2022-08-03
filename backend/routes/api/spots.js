@@ -218,7 +218,49 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
 
 });
 
-//CREATE AN IMAGE FOR A REVIEW
+// GET ALL REVIEWS BY SPOT ID
+
+router.get('/:spotId/reviews', async (req, res) => {
+    const { spotId } = req.params;
+    const spotIdCheck = await Spot.findByPk(spotId);
+
+
+    if (spotIdCheck) {
+        const spotsReviews = await Review.findAll({
+            where: {
+                spotId: spotId
+            },
+            include: [
+                {
+                    model: User,
+                    attributes: [
+                        'id',
+                        'firstName',
+                        'lastName'
+                    ]
+                },
+                {
+                    model: Image,
+                    attributes: [
+                        'id',
+                        ['reviewId', 'imageableId'],
+                        'url'
+                    ]
+                }
+            ]
+        });
+
+        res.json(spotsReviews);
+    } else {
+        res.json({
+            "message": "Spot couldn't be found",
+            "statusCode": 404
+        })
+    }
+
+
+
+})
 
 
 
