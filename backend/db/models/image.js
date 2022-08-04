@@ -18,7 +18,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   Image.init({
     url: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      validate: {
+        isUrl: true
+      }
     },
     previewImage: {
       type: DataTypes.BOOLEAN

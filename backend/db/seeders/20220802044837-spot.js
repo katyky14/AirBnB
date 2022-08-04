@@ -3,11 +3,7 @@ const { Spot } = require('../models')
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     */
+  
 
     await queryInterface.bulkInsert('Spots', [
       {
