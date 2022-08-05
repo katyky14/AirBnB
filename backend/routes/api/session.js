@@ -24,11 +24,12 @@ router.post(
             return next(err);
         }
 
-        await setTokenCookie(res, user);
-
-        return res.json({
+        const token = await setTokenCookie(res, user)
+        console.log(user)
+        user.dataValues.token = token
+        return res.json(
             user
-        });
+        )
     }
 );
 
@@ -51,7 +52,7 @@ router.get(
         const { user } = req;
         if (user) {
             return res.json(
-                user.toSafeObject() // 
+                user.toSafeObject() //
             );
         } else return res.json({});
     }

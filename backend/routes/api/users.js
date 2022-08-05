@@ -8,15 +8,30 @@ const router = express.Router();
 // Sign up
 router.post('/', async (req, res) => {
     const { email, password, username, firstName, lastName} = req.body;
-    const user = await User.signup({ email, username, password, firstName, lastName });
+    const user = await User.signup({ firstName, lastName, email, username, password });
 
-    await setTokenCookie(res, user);
+    // const sameEmail = await User.findOne({
+    //     where: { email },
+    // })
 
-    return res.json({
+    // if (sameEmail) {
+    //     res.statusCode = 403
+    //     res.json({
+    //         message: "User already exists",
+    //         statusCode: 403,
+    //         error: {
+    //             email: "User with that email already exists"
+    //         }
+    //     })
+    // }
+
+    const token = await setTokenCookie(res, user)
+    console.log(user)
+    user.dataValues.token = token
+    return res.json(
         user
-    });
-}
-);
+    )
+});
 
 
 const { check } = require('express-validator');
@@ -52,8 +67,7 @@ router.post('/', validateSignup, async (req, res) => {
     return res.json({
         user
     });
-}
-);
+});
 
 
 
