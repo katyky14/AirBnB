@@ -5,6 +5,7 @@ const router = express.Router();
 
 const { check, sanitizeQuery } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const { Op } = require("sequelize");
 
 const { Op } = require("sequelize");
 
@@ -44,9 +45,8 @@ router.get('/current', requireAuth, async (req, res) => {
 //EDIT A BOOKING
 router.put('/:bookingId', requireAuth ,async (req, res) => {
     const { bookingId } = req.params;
-
     const { startDate, endDate } = req.body;
-
+    const { user } = req;
     const booked = await Booking.findByPk(bookingId);
 
     if(!booked) {
@@ -56,10 +56,9 @@ router.put('/:bookingId', requireAuth ,async (req, res) => {
         })
     }
 
-
       // before or on startDate
-      let todayDate = new Date().toISOString().slice(0, 10)
-
+      let todayDate = new Date().toISOString().slice(0, 10) // '2022-05-19'
+     //let todayDate = new Date();
       if (endDate < todayDate || endDate < startDate || startDate < todayDate) {
               res.json({
                 "message": "Past bookings can't be modified",
@@ -67,7 +66,8 @@ router.put('/:bookingId', requireAuth ,async (req, res) => {
               })
       };
 
-      // conflicted dates
+      //conflicted dates
+     let spotId = booked.spotId;
       const dates = await Booking.findAll({
           where: {
               [Op.and]: [
@@ -88,7 +88,6 @@ router.put('/:bookingId', requireAuth ,async (req, res) => {
         })
     }
 
-
     booked.startDate =  startDate;
     booked.endDate = endDate;
     await booked.save();
@@ -98,11 +97,25 @@ router.put('/:bookingId', requireAuth ,async (req, res) => {
 
 // DELETE A BOOKING
 // check for associations
-router.delete('/:bookingId', async (req, res) => {
+router.delete('/:bookingId', requireAuth, async (req, res) => {
     const { bookingId } = req.params;
+    //const { startDate } = req.body;
+    const deletedItem = await Booking.findByPk(bookingId);
 
-    const deletedItem = await Spot.findByPk(bookingId);
+    console.log('the deleted ---',deletedItem)
 
+    let today = new Date();
+    let changeToday =  today.toISOString().slice(0,10);
+    let past = deletedItem.startDate;
+    let changePast = past.toISOString().slice(0,10);
+
+    if (changePast < changeToday) {
+        res.json({
+            "message": "Bookings that have been started can't be deleted",
+            "statusCode": 403
+          }
+          )
+    }
 
     if (deletedItem) {
         await deletedItem.destroy();
