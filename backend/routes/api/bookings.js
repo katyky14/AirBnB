@@ -6,6 +6,7 @@ const router = express.Router();
 const { check, sanitizeQuery } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
+const { Op } = require("sequelize");
 
 //GET ALL CURRENT USER'S BOOKING
 router.get('/current', requireAuth, async (req, res) => {
