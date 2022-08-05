@@ -40,8 +40,6 @@ router.get('/current', requireAuth, async (req, res) => {
 
 
 
-
-
 //EDIT A BOOKING
 router.put('/:bookingId', requireAuth ,async (req, res) => {
     const { bookingId } = req.params;
@@ -97,6 +95,26 @@ router.put('/:bookingId', requireAuth ,async (req, res) => {
     res.json(booked)
 })
 
+// DELETE A BOOKING
+// check for associations
+router.delete('/:bookingId', async (req, res) => {
+    const { bookingId } = req.params;
 
+    const deletedItem = await Spot.findByPk(bookingId);
+
+
+    if (deletedItem) {
+        await deletedItem.destroy();
+        res.json({
+            "message": "Successfully deleted",
+            "statusCode": 200
+        })
+    } else {
+        res.json({
+            "message": "Spot couldn't be found",
+            "statusCode": 404
+        })
+    }
+})
 
 module.exports = router;

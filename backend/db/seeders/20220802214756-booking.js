@@ -18,14 +18,14 @@ module.exports = {
       {
         startDate: '2022-10-11',
         endDate: '2022-10-16',
-        userId: 6,
+        userId: 3,
         spotId: 5,
       },
       {
         startDate: '2022-10-18',
         endDate: '2022-10-26',
-        userId: 6,
-        spotId: 5
+        userId: 4,
+        spotId: 2
       }
     ], {});
   },
