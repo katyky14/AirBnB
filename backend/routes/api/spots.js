@@ -111,7 +111,7 @@ router.post('/', requireAuth, async (req, res) => {
 
 //create an image for a spot
 router.post('/:spotId/images', requireAuth, async (req, res) => {
-    const { url } = req.body;
+    const { url, previewImage } = req.body;
     const { spotId } = req.params;
     const img = await Spot.findByPk(spotId);
 
@@ -119,6 +119,7 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
         const newImg = await Image.create({
             spotId: req.params.spotId,
             url,
+            previewImage
         });
         return res.json(await Image.findByPk(newImg.id, {
             attributes: [
@@ -240,7 +241,7 @@ router.get('/:spotId', async (req, res) => {
 });
 
 
-//EDIT SPOT
+//EDIT SPOT -- REQUIRE AUTH
 router.put('/:spotId', requireAuth, async (req, res) => {
     const { spotId } = req.params;
 
@@ -269,7 +270,7 @@ router.put('/:spotId', requireAuth, async (req, res) => {
 
 })
 
-// create a review for Spot based on the spot's id
+// create a review for Spot based on the spot's id - REQUIRE AUTH
 router.post('/:spotId/reviews', requireAuth, async (req, res) => {
 
     const { spotId } = req.params;
@@ -281,25 +282,34 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
         })
     };
 
-    const spot = await Spot.findOne({
-        where: { id: req.params.spotId }
+    const reviewSpot = await Review.findAll({
+        where: {
+            spotId: spotId,
+            userId: req.user.id
+        }
     });
-    const { review, stars } = req.body;
-    const newReview = await Review.create({
-        userId: spot.ownerId,
-        spotId: spot.id,
-        review: review,
-        stars: stars,
-    });
-    res.json(newReview);
+    // console.log('the review ----', reviewSpot)
 
-    //console.log('the review is: ----',newReview)
-    //check for duplicate reviews of same user
+    if(reviewSpot.length) {
+        res.json({
+            "message": "User already has a review for this spot",
+            "statusCode": 403
+        })
+    } else {
+        const { review, stars } = req.body;
+        const newReview = await Review.create({
+            userId: req.user.id,
+            spotId: spotId,
+            review: review,
+            stars: stars,
+        });
+        res.json(newReview);
+    }
 
 });
 
-// GET ALL REVIEWS BY SPOT ID
 
+// GET ALL REVIEWS BY SPOT ID
 router.get('/:spotId/reviews', async (req, res) => {
     const { spotId } = req.params;
     const spotIdCheck = await Spot.findByPk(spotId);
@@ -323,14 +333,14 @@ router.get('/:spotId/reviews', async (req, res) => {
                     model: Image,
                     attributes: [
                         'id',
-                        ['reviewId', 'imageableId'],
+                        ['spotId', 'imageableId'],
                         'url'
                     ]
                 }
             ]
         });
 
-        res.json(spotsReviews);
+        res.json({Reviews: spotsReviews});
     } else {
         res.json({
             "message": "Spot couldn't be found",
@@ -340,9 +350,9 @@ router.get('/:spotId/reviews', async (req, res) => {
 
 });
 
-// DELETE SPOT
+// DELETE SPOT -- REQUIRE AUTH
 
-router.delete('/:spotId', async (req, res) => {
+router.delete('/:spotId', requireAuth, async (req, res) => {
     const { spotId } = req.params;
 
     const deletedItem = await Spot.findByPk(spotId);

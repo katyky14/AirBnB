@@ -7,7 +7,7 @@ const { check, sanitizeQuery } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 
-// create an image for a review
+// create /add an image for a review - REQUIRE AUTH
 router.post('/:reviewId/images', requireAuth, async (req, res) => {
     const { reviewId } = req.params;
     const { url, previewImage } = req.body;
@@ -20,7 +20,7 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
         })
     };
 
-    //aggregate
+
 
 
     //image
@@ -36,15 +36,14 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
 
         attributes: [
             'id',
-            ['reviewId', 'imageableId'],
+            ['spotId', 'imageableId'],
             'url'
         ]
     }));
 
 });
 
-// GET REVIEWS OF CURRENT USER
-
+// GET REVIEWS OF CURRENT USER -- REQUIRE AUTH
 router.get('/current', requireAuth, async (req, res) => {
     const { user } = req;
 
@@ -87,7 +86,7 @@ router.get('/current', requireAuth, async (req, res) => {
         ]
     });
 
-    res.json(currentReview);
+    res.json({Reviews: currentReview});
 });
 
 

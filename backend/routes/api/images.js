@@ -11,11 +11,12 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 //DELETE AN IMAGE
 //check for association
-router.delete('/:imageId', async (req, res) => {
+router.delete('/:imageId', requireAuth, async (req, res) => {
     const { imageId } = req.params;
 
     const deletedItem = await Spot.findByPk(imageId);
 
+    
 
     if (deletedItem) {
         await deletedItem.destroy();
