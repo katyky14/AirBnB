@@ -107,7 +107,7 @@ router.delete('/:bookingId', requireAuth, async (req, res) => {
     //const { startDate } = req.body;
     const deletedItem = await Booking.findByPk(bookingId);
     const { user } = req;
-    console.log('the deleted ---',deletedItem.dataValues.startDate)
+    //console.log('the deleted ---',deletedItem.dataValues.startDate)
 
     if (!deletedItem) {
         res.json({
