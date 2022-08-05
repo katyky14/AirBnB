@@ -13,8 +13,8 @@ const { Op } = require("sequelize");
 router.get('/', async (req, res) => {
 
     let { page, size } = req.query;
-    if (isNaN(page) || page < 0) { page = 1 };
-    if (isNaN(size) || size <= 0) { size = 20 };
+    if (isNaN(page)) { page = 1 };
+    if (isNaN(size)) { size = 20 }; //
 
     page = parseInt(page);
     size = parseInt(size);
@@ -24,6 +24,21 @@ router.get('/', async (req, res) => {
     if (size >= 1 && page >= 1) {
         pagination.limit = size
         pagination.offset = size * (page - 1)
+    } else {
+        res.json({
+            "message": "Validation Error",
+            "statusCode": 400,
+            "errors": {
+              "page": "Page must be greater than or equal to 0",
+              "size": "Size must be greater than or equal to 0",
+              "maxLat": "Maximum latitude is invalid",
+              "minLat": "Minimum latitude is invalid",
+              "minLng": "Maximum longitude is invalid",
+              "maxLng": "Minimum longitude is invalid",
+              "minPrice": "Maximum price must be greater than or equal to 0",
+              "maxPrice": "Minimum price must be greater than or equal to 0"
+            }
+          })
     }
 
     const allSpots = await Spot.findAll({
@@ -183,7 +198,7 @@ router.get('/current', requireAuth, async (req, res, next) => {
         }
     }
 
-    res.json(resultData);
+    res.json({Spots: resultData});
 });
 
 // GET SPOT DETAILS BY ID -- NO auth
@@ -228,14 +243,18 @@ router.get('/:spotId', async (req, res) => {
         attributes: [
             [sequelize.fn('AVG', sequelize.col('stars')), 'avgRating']
         ]
-
+    })
+    let reviewCount = await Review.count({
+        where: { spotId: spot.id}
     })
 
     //console.log('the spots----', spots)
     //console.log('the ----', reviews)
+    //console.log('the review count ---', reviewCount)
     let val = reviews[0].dataValues.avgRating
     //console.log('the val ---', val.dataValues.avgRating)
     spots.dataValues.avgRating = val;
+    spots.dataValues.reviewCount = reviewCount;
 
     res.json(spots);
 });
@@ -244,7 +263,7 @@ router.get('/:spotId', async (req, res) => {
 //EDIT SPOT -- REQUIRE AUTH
 router.put('/:spotId', requireAuth, async (req, res) => {
     const { spotId } = req.params;
-
+    const { user } = req;
     const { address, city, state, country, lat, lng, name, description, price } = req.body;
     const item = await Spot.findByPk(spotId);
 
@@ -253,24 +272,31 @@ router.put('/:spotId', requireAuth, async (req, res) => {
             "message": "Spot couldn't be found",
             "statusCode": 404
         })
+    };
+
+    if (item.ownerId === user.id) {
+        item.address = address
+        item.city = city;
+        item.state = state;
+        item.country = country;
+        item.lat = lat;
+        item.lng = lng;
+        item.name = name;
+        item.description = description;
+        item.price = price;
+        await item.save();
+
+        res.json(item);
+    }  else {
+        res.json({
+            message: "Spot must belong to the current user"
+        })
     }
 
-    item.address = address
-    item.city = city;
-    item.state = state;
-    item.country = country;
-    item.lat = lat;
-    item.lng = lng;
-    item.name = name;
-    item.description = description;
-    item.price = price;
-    await item.save();
-
-    res.json(item);
 
 })
 
-// create a review for Spot based on the spot's id - REQUIRE AUTH
+// create a REVIEW for Spot based on the spot's id - REQUIRE AUTH
 router.post('/:spotId/reviews', requireAuth, async (req, res) => {
 
     const { spotId } = req.params;
@@ -305,7 +331,6 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
         });
         res.json(newReview);
     }
-
 });
 
 
@@ -412,16 +437,6 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
         }
     });
 
-    // const dates = await Booking.findAll({
-    //     where: {
-    //         startDate: startDate
-    //     },
-    //     include: {
-    //         model: Spot
-    //     }
-
-    // })
-
 
     if (dates.length >= 1) {
         res.json({
@@ -434,15 +449,20 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
         })
     }
 
+    if (bookingSpot.ownerId !== user.id) {
+            const newBooking = await Booking.create({
+                spotId: spotId,
+                userId: user.id,
+                startDate: startDate,
+                endDate: endDate
+            })
 
-    const newBooking = await Booking.create({
-        spotId: spotId,
-        userId: user.id,
-        startDate: startDate,
-        endDate: endDate
-    })
-
-    return res.json(newBooking)
+            return res.json(newBooking)
+    } else {
+        res.json({
+            message: "Spot must NOT belong to the current user"
+        })
+    }
 });
 
 

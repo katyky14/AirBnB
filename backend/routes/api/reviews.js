@@ -12,6 +12,7 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
     const { reviewId } = req.params;
     const { url, previewImage } = req.body;
     const img = await Review.findByPk(reviewId);
+    const { user } = req;
 
     if (!img) {
         res.json({
@@ -20,27 +21,41 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
         })
     };
 
+    if (img.userId === user.id) {
+        //check for the lenght of images
+        const images = await Image.findAll({
+            where: {
+                reviewId: reviewId
+            }
+        })
+        if (images.length < 10) {
+            // create image
+            const newImg = await Image.create({
+                reviewId: req.params.reviewId,
+                previewImage,
+                url
+            });
+            // console.log(newImg)
 
+             return res.json(await Image.findByPk(newImg.id, {
 
-
-    //image
-    const newImg = await Image.create({
-        reviewId: req.params.reviewId,
-        previewImage,
-        url
-    });
-
-    console.log(newImg)
-
-    return res.json(await Image.findByPk(newImg.id, {
-
-        attributes: [
-            'id',
-            ['spotId', 'imageableId'],
-            'url'
-        ]
-    }));
-
+                 attributes: [
+                     'id',
+                     ['reviewId', 'imageableId'],
+                     'url'
+                 ]
+             }));
+        } else {
+            res.json({
+                "message": "Maximum number of images for this resource was reached",
+                "statusCode": 403
+            })
+        }
+    } else {
+        res.json({
+            message: "Review must belong to the current user"
+        })
+    }
 });
 
 // GET REVIEWS OF CURRENT USER -- REQUIRE AUTH
@@ -95,7 +110,7 @@ router.get('/current', requireAuth, async (req, res) => {
 router.put('/:reviewId', requireAuth, async (req, res) => {
     const { review, stars } = req.body;
     const { reviewId } = req.params;
-
+    const { user } = req;
     const reviewItem = await Review.findByPk(reviewId);
 
     if (!reviewItem) {
@@ -105,12 +120,20 @@ router.put('/:reviewId', requireAuth, async (req, res) => {
         })
     }
 
-    reviewItem.review = review;
-    reviewItem.stars = stars;
-    await reviewItem.save();
+    if (reviewItem.userId === user.id) {
+        reviewItem.review = review;
+        reviewItem.stars = stars;
+        await reviewItem.save();
 
-    res.json(reviewItem);
+        res.json(reviewItem);
+    } else {
+        res.json({
+            message: "Review must belong to the current user"
+        })
+    }
+
 });
+
 
 // DELETE A REVIEW
 // need to see the associations for delete cascade
