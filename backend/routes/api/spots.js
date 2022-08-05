@@ -9,42 +9,71 @@ const { handleValidationErrors } = require('../../utils/validation');
 const { Op } = require("sequelize");
 
 
-//GET ALL SPOTS
-router.get('/', async (req, res, next) => {
+//GET ALL SPOTS -- no authentication
+router.get('/', async (req, res) => {
 
-    //const { spot } = req;
+    let { page, size } = req.query;
+    if (isNaN(page) || page < 0) { page = 1 };
+    if (isNaN(size) || size <= 0) { size = 20 };
 
-    //console.log('the image is', Spot.spotId)
+    page = parseInt(page);
+    size = parseInt(size);
+
+    const pagination = {}
+
+    if (size >= 1 && page >= 1) {
+        pagination.limit = size
+        pagination.offset = size * (page - 1)
+    }
+
     const allSpots = await Spot.findAll({
-        attributes: {
-            include: [
-                [sequelize.fn('AVG', sequelize.col('Reviews.stars')), 'avgRating'],
-                //[sequelize.literal('Images.url'), 'previewImage']
-            ]
-        },
-        include: [
-            {
-                model: Review,
-                attributes: []
+        ...pagination
+    })
+
+    //console.log('the spots are ---', allSpots) -- array of objs
+    let spotsArr = [];
+
+    for (let spotEle of allSpots) {
+        const rating = await Review.findAll({
+            where: {
+                spotId: spotEle.id
             },
-            {
-                model: Image,
-                attributes: [
+            attributes: [[sequelize.fn('AVG', sequelize.col('stars')), 'avgRating']],
+            raw: true,
+        })
 
-                    ['url', 'previewImage']
-                ]
+        let previewImageUrl = await Image.findOne({
+            where: {
+                spotId: spotEle.id
+            },
+            attributes: [
+                'url'
+            ]
+        })
+
+        if (!previewImageUrl) {
+            resultData = {
+                ...spotEle.dataValues,
+                avgRating: rating[0].avgRating,
+                previewImage: null
             }
-        ],
-        group: ['Spot.id']
-    });
+            spotsArr.push(resultData)
+        } else {
+            resultData = {
+                ...spotEle.dataValues,
+                avgRating: rating[0].avgRating,
+                previewImage: previewImageUrl.url
+            }
+            spotsArr.push(resultData)
+        }
+    }
 
-
-
-    return res.json(allSpots)
+    res.json({ Spots: spotsArr, page: page, size: size });
 });
 
+
 // CREATE A SPOT
-router.post('/', requireAuth, async (req, res, next) => {
+router.post('/', requireAuth, async (req, res) => {
     const { address, city, state, country, lat, lng, name, description, price } = req.body;
 
     if (req.body) {
@@ -108,49 +137,67 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
 })
 
 
-// GET SPOT OF CURRENT USER
+// GET SPOT OF CURRENT USER -- need AUTH
 router.get('/current', requireAuth, async (req, res, next) => {
-    //console.log(req.user.id)
-    const { user } = req;
-    const currentSpot = await Spot.findAll({
-        where: {
-            ownerId: user.id
-        },
-        attributes: {
-            include: [
-                [sequelize.fn('AVG', sequelize.col('Reviews.stars')), 'avgRating'],
-                [sequelize.literal('Images.url'), 'previewImage']
-            ]
-        },
-        include: [
-            {
-                model: Review,
-                attributes: []
+
+    const currentSpot = await Spot.findAll();
+
+    //console.log(currentSpot)
+    let spotArr = [];
+
+    for (let spotEle of currentSpot) {
+        const ratings = await Review.findAll({
+            where: {
+                spotId: spotEle.id
             },
-            {
-                model: Image,
-                attributes: [
-                    // ['url', 'previewImage']
-                ]
+            attributes: [
+                [sequelize.fn('AVG', sequelize.col('stars')), 'avgRating']
+            ],
+            raw: true,
+        })
+
+        let previewImageUrl = await Image.findOne({
+            where: {
+                spotId: spotEle.id
+            },
+            attributes: ['url']
+        });
+
+        //console.log('preview image url is ---', previewImageUrl.url) -- this key into the url and gets the url
+
+        if (!previewImageUrl) {
+            resultData = {
+                ...spotEle.dataValues,
+                avgRating: ratings[0].avgRating,
+                previewImage: null
             }
-        ],
-        group: ['Spot.id', 'Image.id']
-    })
-    res.status(200);
-    res.json(currentSpot)
+            spotArr.push(resultData)
+        } else {
+            resultData = {
+                ...spotEle.dataValues,
+                avgRating: ratings[0].avgRating,
+                previewImage: previewImageUrl.url
+            }
+            spotArr.push(resultData)
+        }
+    }
+
+    res.json(resultData);
 });
 
-// GET SPOT DETAILS BY ID
+// GET SPOT DETAILS BY ID -- NO auth
 router.get('/:spotId', async (req, res) => {
+
+
     const { spotId } = req.params;
     const spot = await Spot.findByPk(spotId);
+
     if (!spot) {
         return res.json({
             "message": "Spot couldn't be found",
             "statusCode": 404
         })
     };
-
 
     const spots = await Spot.findByPk(req.params.spotId, {
         include: [
@@ -171,12 +218,27 @@ router.get('/:spotId', async (req, res) => {
                     'lastName'
                 ]
             }]
-
     });
+
+    const reviews = await Review.findAll({
+        where: {
+            spotId: spotId
+        },
+        attributes: [
+            [sequelize.fn('AVG', sequelize.col('stars')), 'avgRating']
+        ]
+
+    })
+
+    //console.log('the spots----', spots)
+    //console.log('the ----', reviews)
+    let val = reviews[0].dataValues.avgRating
+    //console.log('the val ---', val.dataValues.avgRating)
+    spots.dataValues.avgRating = val;
+
     res.json(spots);
-
-
 });
+
 
 //EDIT SPOT
 router.put('/:spotId', requireAuth, async (req, res) => {
@@ -285,9 +347,9 @@ router.delete('/:spotId', async (req, res) => {
 
     const deletedItem = await Spot.findByPk(spotId);
 
-    await deletedItem.destroy();
 
     if (deletedItem) {
+        await deletedItem.destroy();
         res.json({
             "message": "Successfully deleted",
             "statusCode": 200
