@@ -94,7 +94,7 @@ router.get('/current', requireAuth, async (req, res) => {
                 model: Image,
                 attributes: [
                     'id',
-                    ['userId', 'imageableId'],
+                    ['reviewId', 'imageableId'],
                     'url'
                 ]
             }

@@ -29,16 +29,16 @@ router.get('/', async (req, res) => {
             "message": "Validation Error",
             "statusCode": 400,
             "errors": {
-              "page": "Page must be greater than or equal to 0",
-              "size": "Size must be greater than or equal to 0",
-              "maxLat": "Maximum latitude is invalid",
-              "minLat": "Minimum latitude is invalid",
-              "minLng": "Maximum longitude is invalid",
-              "maxLng": "Minimum longitude is invalid",
-              "minPrice": "Maximum price must be greater than or equal to 0",
-              "maxPrice": "Minimum price must be greater than or equal to 0"
+                "page": "Page must be greater than or equal to 0",
+                "size": "Size must be greater than or equal to 0",
+                "maxLat": "Maximum latitude is invalid",
+                "minLat": "Minimum latitude is invalid",
+                "minLng": "Maximum longitude is invalid",
+                "maxLng": "Minimum longitude is invalid",
+                "minPrice": "Maximum price must be greater than or equal to 0",
+                "maxPrice": "Minimum price must be greater than or equal to 0"
             }
-          })
+        })
     }
 
     const allSpots = await Spot.findAll({
@@ -198,7 +198,7 @@ router.get('/current', requireAuth, async (req, res, next) => {
         }
     }
 
-    res.json({Spots: resultData});
+    res.json({ Spots: resultData });
 });
 
 // GET SPOT DETAILS BY ID -- NO auth
@@ -245,7 +245,7 @@ router.get('/:spotId', async (req, res) => {
         ]
     })
     let reviewCount = await Review.count({
-        where: { spotId: spot.id}
+        where: { spotId: spot.id }
     })
 
     //console.log('the spots----', spots)
@@ -254,7 +254,7 @@ router.get('/:spotId', async (req, res) => {
     let val = reviews[0].dataValues.avgRating
     //console.log('the val ---', val.dataValues.avgRating)
     spots.dataValues.avgRating = val;
-    spots.dataValues.reviewCount = reviewCount;
+    spots.dataValues.numReviews = reviewCount;
 
     res.json(spots);
 });
@@ -287,7 +287,7 @@ router.put('/:spotId', requireAuth, async (req, res) => {
         await item.save();
 
         res.json(item);
-    }  else {
+    } else {
         res.json({
             message: "Spot must belong to the current user"
         })
@@ -316,7 +316,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
     });
     // console.log('the review ----', reviewSpot)
 
-    if(reviewSpot.length) {
+    if (reviewSpot.length) {
         res.json({
             "message": "User already has a review for this spot",
             "statusCode": 403
@@ -365,7 +365,7 @@ router.get('/:spotId/reviews', async (req, res) => {
             ]
         });
 
-        res.json({Reviews: spotsReviews});
+        res.json({ Reviews: spotsReviews });
     } else {
         res.json({
             "message": "Spot couldn't be found",
@@ -450,14 +450,14 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
     }
 
     if (bookingSpot.ownerId !== user.id) {
-            const newBooking = await Booking.create({
-                spotId: spotId,
-                userId: user.id,
-                startDate: startDate,
-                endDate: endDate
-            })
+        const newBooking = await Booking.create({
+            spotId: spotId,
+            userId: user.id,
+            startDate: startDate,
+            endDate: endDate
+        })
 
-            return res.json(newBooking)
+        return res.json(newBooking)
     } else {
         res.json({
             message: "Spot must NOT belong to the current user"

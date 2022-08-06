@@ -12,6 +12,10 @@ const { Op } = require("sequelize");
 router.get('/current', requireAuth, async (req, res) => {
     const { user } = req;
 
+    const images = await Image.findAll({
+        attributes: ['url']
+    })
+
     const currentBooking = await Booking.findAll({
         where: {
             userId: user.id
@@ -23,25 +27,21 @@ router.get('/current', requireAuth, async (req, res) => {
                     'id', 'ownerId', 'address', 'city', 'state', 'country',
                     'lat', 'lng', 'name', 'price'
                 ],
-                include: [
-                    {
-                        model: Image,
-                        //attributes: []
-                        attributes: [['url', 'previewImage']],
+                // include: [
+                //     {
+                //         model: Image,
+                //         attributes: []
+                //         //attributes: [['url', 'previewImage']],
 
-                    }
-                ]
+                //     }
+                // ]
             }
         ],
-
     })
 
-    // const images = await Image.findAll({
-    //     attributes: ['url']
-    // })
-
-    //console.log('the ima ---', images)
-    //currentBooking.dataValues.previewImage = images[0].dataValues.url
+    console.log('-----', currentBooking[0].Spot)
+    // console.log('the ima ---', images)
+    currentBooking[0].Spot.dataValues.previewImage = images[0].dataValues.url
     res.json({Bookings: currentBooking});
 });
 
@@ -65,7 +65,7 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
     let todayDate = new Date().toISOString().slice(0, 10) // '2022-05-19'
     //let todayDate = new Date();
     if (endDate < todayDate || endDate < startDate || startDate < todayDate) {
-        res.json({
+        return res.json({
             "message": "Past bookings can't be modified",
             "statusCode": 403
         })
@@ -83,7 +83,7 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
     });
 
     if (dates.length >= 1) {
-        res.json({
+        return res.json({
             "message": "Sorry, this spot is already booked for the specified dates",
             "statusCode": 403,
             "errors": {
@@ -92,12 +92,19 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
             }
         })
     }
+    
+    if (booked.userId === user.id) {
 
-    booked.startDate = startDate;
-    booked.endDate = endDate;
-    await booked.save();
+        booked.startDate = startDate;
+        booked.endDate = endDate;
+        await booked.save();
 
-    res.json(booked)
+        return res.json(booked)
+    } else {
+        return res.json({
+            message: "Review must belong to the current user"
+        })
+    }
 })
 
 // DELETE A BOOKING
