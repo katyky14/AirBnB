@@ -64,7 +64,6 @@ const validateSignup = [
 
 router.post('/', validateSignup, async (req, res) => {
     const { email, password, username, firstName, lastName } = req.body;
-    const user = await User.signup({ firstName, lastName, email, username, password });
 
     const sameEmail = await User.findOne({
         where: { email }
@@ -80,6 +79,7 @@ router.post('/', validateSignup, async (req, res) => {
             }
         })
     } else {
+        const user = await User.signup({ firstName, lastName, email, username, password });
         const token = await setTokenCookie(res, user)
         console.log(user)
         user.dataValues.token = token

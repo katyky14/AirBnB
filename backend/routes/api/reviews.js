@@ -131,7 +131,6 @@ router.put('/:reviewId', requireAuth, async (req, res) => {
             message: "Review must belong to the current user"
         })
     }
-
 });
 
 
@@ -156,7 +155,6 @@ router.delete('/:reviewId', requireAuth, async (req, res) => {
             })
         }
     }
-
 })
 
 
