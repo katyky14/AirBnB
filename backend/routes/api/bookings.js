@@ -39,7 +39,7 @@ router.get('/current', requireAuth, async (req, res) => {
         ],
     })
 
-    console.log('-----', currentBooking[0].Spot)
+    //console.log('-----', currentBooking[0].Spot)
     // console.log('the ima ---', images)
     currentBooking[0].Spot.dataValues.previewImage = images[0].dataValues.url
     res.json({Bookings: currentBooking});
@@ -92,7 +92,7 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
             }
         })
     }
-    
+
     if (booked.userId === user.id) {
 
         booked.startDate = startDate;
