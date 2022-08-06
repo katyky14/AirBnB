@@ -1,5 +1,5 @@
 const express = require('express')
-const { setTokenCookie, requireAuth } = require('../../utils/auth');
+const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
 const { Spot, User, Image, Review, sequelize, Booking } = require('../../db/models');
 const router = express.Router();
 
@@ -56,5 +56,37 @@ router.delete('/:imageId', requireAuth, async (req, res) => {
     }
 
 })
+
+// router.delete('/:imageId', restoreUser, requireAuth, async (req, res, next) => {
+//     const {imageId} = req.params
+//     const {user} = req
+
+//     const deleteImage = await Image.findByPk(imageId)
+
+//     if(!deleteImage){
+//         res.statusCode = 404,
+//         res.json({
+//             "message": "Image couldn't be found",
+//             "statusCode": 404
+//           })
+//     }
+
+//     if(deleteImage.userId === user.id){
+//         await deleteImage.destroy()
+//         res.json({
+//             "message": "Successfully deleted",
+//             "statusCode": 200
+//         })
+//     } else {
+//         res.statusCode = 403
+//         res.json({
+//             "message": "Image must belong to the current user",
+//             "statusCode": 403
+//         })
+//     }
+
+// })
+
+
 
 module.exports = router;
