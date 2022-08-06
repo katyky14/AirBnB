@@ -13,23 +13,24 @@ const { handleValidationErrors } = require('../../utils/validation');
 //check for association
 router.delete('/:imageId', requireAuth, async (req, res) => {
     const { imageId } = req.params;
-
+    const {user} = req;
     const deletedItem = await Spot.findByPk(imageId);
 
-    
-
-    if (deletedItem) {
-        await deletedItem.destroy();
-        res.json({
-            "message": "Successfully deleted",
-            "statusCode": 200
-        })
-    } else {
-        res.json({
-            "message": "Spot couldn't be found",
-            "statusCode": 404
-        })
+    if (deletedItem.ownerId === user.id) {
+        if (deletedItem) {
+            await deletedItem.destroy();
+            res.json({
+                "message": "Successfully deleted",
+                "statusCode": 200
+            })
+        } else {
+            res.json({
+                "message": "Spot couldn't be found",
+                "statusCode": 404
+            })
+        }
     }
+
 })
 
 module.exports = router;

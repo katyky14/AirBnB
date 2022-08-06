@@ -139,21 +139,24 @@ router.put('/:reviewId', requireAuth, async (req, res) => {
 // need to see the associations for delete cascade
 router.delete('/:reviewId', requireAuth, async (req, res) => {
     const { reviewId } = req.params;
-
+    const { user } = req;
     const itemDelete = await Review.findByPk(reviewId);
 
-    if (itemDelete) {
-        itemDelete.destroy()
-        res.json({
-            "message": "Successfully deleted",
-            "statusCode": 200
-        })
-    } else {
-        res.json({
-            "message": "Review couldn't be found",
-            "statusCode": 404
-        })
+    if (itemDelete.userId === user.id) {
+        if (itemDelete) {
+            itemDelete.destroy()
+            res.json({
+                "message": "Successfully deleted",
+                "statusCode": 200
+            })
+        } else {
+            res.json({
+                "message": "Review couldn't be found",
+                "statusCode": 404
+            })
+        }
     }
+
 })
 
 
