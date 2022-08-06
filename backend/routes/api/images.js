@@ -15,7 +15,7 @@ router.delete('/:imageId', requireAuth, async (req, res) => {
     const { user } = req;
     const deletedItem = await Image.findByPk(imageId);
 
-    console.log('-----', deletedItem)
+    //console.log('-----', deletedItem)
     if (!deletedItem) {
         res.json({
             "message": "Spot couldn't be found",
@@ -23,13 +23,32 @@ router.delete('/:imageId', requireAuth, async (req, res) => {
         })
     }
 
-    if (deletedItem.dataValues.userId === user.id) {
+    // console.log('-----', deletedItem.dataValues.userId === user.id)
+    // if (deletedItem.dataValues.userId === user.id) {
+    //     if (deletedItem) {
+
+    //         await deletedItem.destroy();
+    //         res.json({
+    //             "message": "Successfully deleted",
+    //             "statusCode": 200
+    //         })
+    //     } else {
+    //         res.json({
+    //             message: "Spot cannot be found"
+    //         })
+    //     }
+    // } else {
+    //     res.json({
+    //         message: "Image must belong to the current user"
+    //     })
+    // }
+
+    if (deletedItem) {
         await deletedItem.destroy();
         res.json({
-            "message": "Successfully deleted",
-            "statusCode": 200
+            message: "Successfully deleted",
+            statusCode: 200
         })
-
     } else {
         res.json({
             message: "Image must belong to the current user"
