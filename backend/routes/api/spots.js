@@ -482,9 +482,9 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
     const { user } = req;
     const spotBooked = await Spot.findByPk(spotId);
 
-    console.log('the owner id ---',spotBooked.ownerId === user.id);
+    //console.log('the owner id ---',spotBooked.ownerId === user.id);
     if (!spotBooked) {
-        res.json({
+        return res.json({
             "message": "Spot couldn't be found",
             "statusCode": 404
         });
