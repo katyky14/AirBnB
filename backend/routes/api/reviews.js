@@ -151,19 +151,27 @@ router.delete('/:reviewId', requireAuth, async (req, res) => {
     const { user } = req;
     const itemDelete = await Review.findByPk(reviewId);
 
+    if (!itemDelete) {
+        res.status(404)
+        res.json({
+            "message": "Review couldn't be found",
+            "statusCode": 404
+        })
+    }
+
+    if (itemDelete.userId !== user.id) {
+        res.json({
+            message: "Review must belong to the current user"
+        })
+    }
+
     if (itemDelete.userId === user.id) {
-        if (itemDelete) {
             itemDelete.destroy()
             res.json({
                 "message": "Successfully deleted",
                 "statusCode": 200
             })
-        } else {
-            res.json({
-                "message": "Review couldn't be found",
-                "statusCode": 404
-            })
-        }
+
     }
 })
 

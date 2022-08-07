@@ -155,7 +155,7 @@ router.delete('/:bookingId', requireAuth, async (req, res) => {
     let past = deletedItem.startDate;
     //let changePast = past.toISOString().slice(0, 10); // booking have a started date
 
-    console.log('the past ---', past)
+    //console.log('the past ---', past)
     if (past < changeToday) {
         res.json({
             "message": "Bookings that have been started can't be deleted",
@@ -163,20 +163,21 @@ router.delete('/:bookingId', requireAuth, async (req, res) => {
         })
     }
 
+    if (deletedItem.userId !== user.id) {
+        res.status(403)
+        res.json({
+            "message": "Booking must belong to the current user or the Spot must belong to the current user"
+        })
+    }
+
     if (deletedItem.userId === user.id) {
-        if (deletedItem) {
             await deletedItem.destroy();
             res.json({
                 "message": "Successfully deleted",
                 "statusCode": 200
             })
         }
-    } else {
-        res.status(403)
-        res.json({
-            "message": "Booking must belong to the current user or the Spot must belong to the current user"
-        })
-    }
+
 
 })
 
