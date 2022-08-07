@@ -1,5 +1,5 @@
 const express = require('express')
-const { setTokenCookie, requireAuth } = require('../../utils/auth');
+const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
 const { Spot, User, Image, Review, sequelize, Booking } = require('../../db/models');
 const router = express.Router();
 
@@ -45,26 +45,57 @@ router.get('/current', requireAuth, async (req, res) => {
     res.json({Bookings: currentBooking});
 });
 
+// handle validations
+
+const validateBooking = [
+    check('review')
+        .not()
+        .isEmpty()
+        .withMessage('Review text is required'),
+    handleValidationErrors
+]
+
+
 
 
 //EDIT A BOOKING
-router.put('/:bookingId', requireAuth, async (req, res) => {
+router.put('/:bookingId', restoreUser, requireAuth, async (req, res) => {
     const { bookingId } = req.params;
     const { startDate, endDate } = req.body;
     const { user } = req;
     const booked = await Booking.findByPk(bookingId);
 
     if (!booked) {
+        res.status(404)
         return res.json({
             "message": "Booking couldn't be found",
             "statusCode": 404
         })
     }
 
+    if (booked.userId !== user.id) {
+        res.status(403)
+        res.json({
+            message: "Booking must belong to the current user"
+        })
+    }
+
+    if (endDate < startDate || !endDate || !startDate) {
+        res.status(400)
+        res.json({
+            "message": "Validation error",
+            "statusCode": 400,
+            "errors": {
+              "endDate": "endDate cannot come before startDate"
+            }
+        })
+    }
+
     // before or on startDate
     let todayDate = new Date().toISOString().slice(0, 10) // '2022-05-19'
     //let todayDate = new Date();
-    if (endDate < todayDate || endDate < startDate || startDate < todayDate) {
+    if (startDate < todayDate || endDate < todayDate || startDate > endDate) {
+        res.status(403)
         return res.json({
             "message": "Past bookings can't be modified",
             "statusCode": 403
@@ -76,8 +107,8 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
     const dates = await Booking.findAll({
         where: {
             [Op.and]: [
-                { startDate: startDate },
-                { spotId: spotId }
+                { startDate },
+                { spotId}
             ]
         }
     });
@@ -97,14 +128,10 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
 
         booked.startDate = startDate;
         booked.endDate = endDate;
-        await booked.save();
-
-        return res.json(booked)
-    } else {
-        return res.json({
-            message: "Review must belong to the current user"
-        })
     }
+    await booked.save();
+
+    return res.json(booked)
 })
 
 // DELETE A BOOKING
