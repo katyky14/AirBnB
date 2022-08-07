@@ -382,19 +382,28 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
     const { user } = req;
     const deletedItem = await Spot.findByPk(spotId);
 
+    if (!deletedItem) {
+        res.status(404)
+        res.json({
+            "message": "Spot couldn't be found",
+            "statusCode": 404
+        })
+
+    }
+
+    if (deletedItem.ownerId !== user.id) {
+        res.json({
+            message: "Spot must belong to the current user"
+        })
+    }
+    //console.log(deletedItem.ownerId)
     if (deletedItem.ownerId === user.id ) {
-        if (deletedItem) {
             await deletedItem.destroy();
             res.json({
                 "message": "Successfully deleted",
                 "statusCode": 200
             })
-        } else {
-            res.json({
-                "message": "Spot couldn't be found",
-                "statusCode": 404
-            })
-        }
+
     }
 })
 
