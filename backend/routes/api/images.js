@@ -18,7 +18,7 @@ router.delete('/:imageId', requireAuth, async (req, res) => {
     //console.log('-----', deletedItem)
     if (!deletedItem) {
         res.json({
-            "message": "Spot couldn't be found",
+            "message": "Image couldn't be found",
             "statusCode": 404
         })
     }
