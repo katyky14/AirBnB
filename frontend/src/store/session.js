@@ -56,7 +56,6 @@ export const restoreUser = () => async dispatch => {
 
 
 
-
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {
