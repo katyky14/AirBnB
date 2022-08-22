@@ -21,7 +21,7 @@ const GetAllSpots = () => {
 
         <section>
             <h1>TESTING IN GET SPOTS</h1>
-        
+
             <ul>
             {spotsArr.map(spot => (
                 <li key={spot.id}>
