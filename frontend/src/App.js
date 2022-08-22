@@ -5,6 +5,10 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
+
+import GetAllSpots from "./components/Spots/GetSpots";
+// import CreateSpotForm from "./components/Spots/CreateSpot";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -20,6 +24,9 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route path='/spots' component={GetAllSpots}>
+          </Route>
+
         </Switch>
       )}
     </>
