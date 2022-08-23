@@ -7,6 +7,9 @@ import Navigation from "./components/Navigation";
 
 
 import GetAllSpots from "./components/Spots/GetSpots";
+import GetSpotByCurrentUser from "./components/Spots/GetSpotCurrent";
+import SpotByDetail from "./components/Spots/GetSpotDetails";
+
 // import CreateSpotForm from "./components/Spots/CreateSpot";
 
 function App() {
@@ -24,9 +27,16 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path='/spots' component={GetAllSpots}>
+          <Route exact path={'/spots'} >
+            <GetAllSpots />
           </Route>
-
+          {/* <Route path='/spots/current'>{GetSpotByCurrentUSer}</Route> */}
+            <Route exact path='/spots/current'>
+              <GetSpotByCurrentUser />
+            </Route>
+          <Route exact path='/spots/:spotId'>
+              <SpotByDetail />
+            </Route>
         </Switch>
       )}
     </>

@@ -1,40 +1,83 @@
+import { csrfFetch } from './csrf';
+
 
 //types
-//const ADD_SPOT = 'spot/ADD_SPOT';
 const GET_SPOTS = 'spot/GET_SPOTS'; //get all spots?
+const GET_SPOTS_DETAIL = 'spot/GET_SPOT_DETAILS' // get one spot by detail?
+const GET_CURRENT_SPOTS = 'spot/GET_CURRENT_SPOTS' //get spot by current user
 
-
+const ADD_SPOT = 'spot/ADD_SPOT';
+/**********************************************/
 //actions
-const getSpot = payload => {
-
+//action for get all spots
+const getSpots = payload => {
     return {
         type: GET_SPOTS,
         payload
     }
 }
+//action for get spot by detail
+const getSpotDetail = payload => {
+    return {
+        type: GET_SPOTS_DETAIL,
+        payload
+    }
+}
 
-// const addOneSpot = spot => ({
-//     type: ADD_SPOT,
-//     spot
-// });
+//action for get all spots by current user
+const getSpotOfCurrentUser = payload => {
+    return {
+        type: GET_CURRENT_SPOTS,
+        payload
+    }
+}
 
+const addOneSpot = payload => ({
+    type: ADD_SPOT,
+    payload
+});
 
+/*********************************************************** */
 //thunk actions creator
 
-export const getSpots = () => async dispatch => {
+export const getSpotsThunk = () => async dispatch => {
     const response = await fetch(`/api/spots`, {
         method: 'GET'
     });
 
-    console.log('the response in reducer', response)
+    //console.log('the response in reducer', response)
     if (response.ok) {
         const data = await response.json();
         console.log('the data in get spots', data)
-        dispatch(getSpot(data.Spots));
+        dispatch(getSpots(data.Spots));
+        console.log('the data in get spots dispatch occurs', data)
+
     }
-    console.log('do you see me RESPONSE', response)
+    //console.log('do you see me RESPONSE', response)
 };
 
+
+export const getOneSpotDetails = (spotId) => async dispatch => {
+    //console.log('can you see me in get spot detail thunk?')
+    const response = await csrfFetch(`/api/spots/${spotId}`);
+
+    if (response.ok) {
+        const data =  await response.json();
+        //console.log('the spot thunk details data', data)
+        dispatch(getSpotDetail(data))
+    }
+}
+
+
+export const getCurrentSpotThunk = () => async dispatch => {
+    const response = await csrfFetch(`/api/spots/current`);
+
+    if (response.ok) {
+        const data = await response.json();
+        console.log('the data in spot  current ', data)
+        dispatch(getSpotOfCurrentUser(data))
+    }
+}
 
 // export const spotForm = (payload) => async (dispatch) => {
 //     const response = await fetch('api/spots', {
@@ -52,7 +95,9 @@ export const getSpots = () => async dispatch => {
 
 
 const initialState = {
-    spotData: []
+    // spotData: []
+    allSpots: {},
+    oneSpot: {}
 }
 
 // const sortList = (list) => {
@@ -61,21 +106,41 @@ const initialState = {
 //     }).map((spot) => spot.id);
 // }
 
+/****************************************** */
 //reducers
 //console.log('testing spot reducer do you see me?')
 
 const spotReducer = (state = initialState, action) => {
+    let newState;
     switch (action.type) {
         case GET_SPOTS:
             const allSpots = {};
-            action.payload.forEach(spot => {
+            action.payload.forEach(spot => { //normalize data
+               // console.log('the spot', spot)
                 allSpots[spot.id] = spot;
             });
+           // console.log('the all spots', allSpots) // info yes
+            newState = { ...state, allSpots}
+            //console.log('the new state', newState.allSpots) // empty obj
+            return newState
+        case GET_SPOTS_DETAIL:
+            const oneSpot = {...action.payload};
 
             return {
-                ...allSpots,
+                ...state,//put spreaded state first or else overwrite
+                oneSpot
+            }
+
+            // state.oneSpot = action.payload;
+            // return state;
+
+        case GET_CURRENT_SPOTS:
+            console.log('the action', action)
+            const currentSpot = { ...action.payload};
+            console.log('in the reducer', currentSpot)
+            return {
                 ...state,
-                // list: sortList(action.list)
+                currentSpot
             }
         default:
             return state;
