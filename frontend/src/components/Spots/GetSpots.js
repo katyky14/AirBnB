@@ -48,10 +48,6 @@ const GetAllSpots = () => {
                 ))}
             </div>
 
-            {/* <Route path='/spots/:spotId'>
-                    <SpotByDetail />
-            </Route> */}
-
         </section>
     );
 }

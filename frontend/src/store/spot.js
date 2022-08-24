@@ -8,6 +8,7 @@ const GET_CURRENT_SPOTS = 'spot/GET_CURRENT_SPOTS' //get spot by current user
 
 const ADD_ONE_SPOT = 'spot/ADD_ONE_SPOT';
 
+const DELETE_SPOT = 'spot/DELETE_SPOT'
 
 /**********************************************/
 //actions
@@ -39,6 +40,11 @@ const addOneSpot = payload => ({
     payload
 });
 
+const deleteOneSpot = payload => ({
+    type: DELETE_SPOT,
+    payload
+})
+
 /*********************************************************** */
 //thunk actions creator
 
@@ -64,28 +70,30 @@ export const getOneSpotDetails = (spotId) => async dispatch => {
     const response = await csrfFetch(`/api/spots/${spotId}`);
 
     if (response.ok) {
-        const data =  await response.json();
+        const data = await response.json();
         //console.log('the spot thunk details data', data)
         dispatch(getSpotDetail(data))
     }
 }
 
 
-export const getCurrentSpotThunk = () => async dispatch => {
-    const response = await csrfFetch(`/api/spots/current`);
+export const getCurrentSpotThunk = () => async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/current`,{
+        method: 'GET'
+    });
 
     if (response.ok) {
         const data = await response.json();
-        console.log('the data in spot  current ', data)
-        dispatch(getSpotOfCurrentUser(data))
+        //console.log('the data in spot  current ', data)
+        dispatch(getSpotOfCurrentUser(data.Spots))
     }
 }
 
 export const spotFormThunk = (payload) => async (dispatch) => {
     const response = await csrfFetch('/api/spots', {
-       method: 'POST',
-       headers: { "Content-Type": "application/json"},
-       body: JSON.stringify(payload)
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
     });
     if (response.ok) {
         const data = await response.json();
@@ -107,6 +115,16 @@ export const editSpotThunk = (id, payload) => async dispatch => {
         const data = await response.json();
         dispatch(addOneSpot(data));
         return data
+    }
+}
+
+export const deleteSpotThunk = (id) => async dispatch => {
+    const response = await csrfFetch(`/api/spots/${id}`, {
+        method: 'DELETE'
+    });
+
+    if (response.ok) {
+        dispatch(deleteOneSpot(id))
     }
 }
 
@@ -133,23 +151,23 @@ const spotReducer = (state = initialState, action) => {
         case GET_SPOTS:
             const allSpots = {};
             action.payload.forEach(spot => { //normalize data
-               // console.log('the spot', spot)
+                // console.log('the spot', spot)
                 allSpots[spot.id] = spot;
             });
-           // console.log('the all spots', allSpots) // info yes
-            newState = { ...state, allSpots}
+            // console.log('the all spots', allSpots) // info yes
+            newState = { ...state, allSpots }
             //console.log('the new state', newState.allSpots) // empty obj
             return newState
         case GET_SPOTS_DETAIL:
-            const oneSpot = {...action.payload};
+            const oneSpot = { ...action.payload };
 
             return {
                 ...state,//put spreaded state first or else overwrite
                 oneSpot
             }
 
-            // state.oneSpot = action.payload;
-            // return state;
+        // state.oneSpot = action.payload;
+        // return state;
 
         case GET_CURRENT_SPOTS:
             //console.log('the action', action)
@@ -159,10 +177,11 @@ const spotReducer = (state = initialState, action) => {
                 ...state,
                 currentSpot
             }
+    
 
         case ADD_ONE_SPOT:
             if (!state[action.payload.id]) {
-                const newStateForm = { ...state};
+                const newStateForm = { ...state };
                 newStateForm[action.payload.id] = action.payload
                 //console.log('add one spot form reducer ---', newStateForm)
                 return newStateForm
@@ -175,6 +194,12 @@ const spotReducer = (state = initialState, action) => {
                     ...action.payload
                 }
             }
+
+        case DELETE_SPOT:
+            const newDeleteState = { ...state };
+
+            delete newDeleteState[action.payload]
+            return newDeleteState;
 
         default:
             return state;

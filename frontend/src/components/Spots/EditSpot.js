@@ -13,13 +13,13 @@ function EditSpotForm() {
   const { spotId } = useParams();
   const dispatch = useDispatch();
   const spotsObj = useSelector(state => state.spot)
-  console.log('the spot obj in EDIT---', spotsObj)
+  //console.log('the spot obj in EDIT---', spotsObj)
   const spotsArr = Object.values(spotsObj);
-  console.log('the spots array in edit--', spotsArr)
+  //console.log('the spots array in edit--', spotsArr)
 
   const spotData = spotsArr.find(spot => String(spot.id) === spotId)
 
-  console.log('the spot data in EDIT comparison----', spotData.address)
+  //console.log('the spot data in EDIT comparison----', spotData.address)
 
   const [address, setAddress] = useState(spotData.address);
   const [city, setCity] = useState(spotData.city);
@@ -64,11 +64,11 @@ function EditSpotForm() {
     }
 
     let updatedSpot =  await dispatch(editSpotThunk(spotId, spotFormInformation))
-    console.log('the createspotform handle submit', updatedSpot)
+    //console.log('the createspotform handle submit', updatedSpot)
     if (updatedSpot) {
         history.push(`/spots/${updatedSpot.id}`)
     }
-    console.log('the info', spotFormInformation)
+    //console.log('the info', spotFormInformation)
   };
 
   console.log('the information in create spot')
