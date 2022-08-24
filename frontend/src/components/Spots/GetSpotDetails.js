@@ -8,6 +8,7 @@ import { getOneSpotDetails } from '../../store/spot';
 
 //import { deleteSpotThunk } from '../../store/spot';
 
+import { getSpotReviewThunk } from '../../store/review';
 
 
 const SpotByDetail = () => {
@@ -19,46 +20,58 @@ const SpotByDetail = () => {
     //const spotsArr = Object.values(spotsObj)
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
-    console.log('the spotsObj in Spot Details--', spotsObj)
+    //console.log('the spotsObj in Spot Details--', spotsObj)
     //console.log('images detail ---', spotsObj.Images[0].url)
+
+    const reviewObj = useSelector(state => state.review)
+    //console.log('the review in SPOT DETAIL', reviewObj)
+    const reviewArr = Object.values(reviewObj);
+    console.log('the ARRay in SPOT', reviewArr)
+
+
     useEffect(() => {
         dispatch(getOneSpotDetails(spotId)).then(setIsLoaded(true))
+        dispatch(getSpotReviewThunk(spotId))
     }, [dispatch, spotId])
 
-    if (spotsObj != null && spotsObj.Images != null && isLoaded ) {
+    if (spotsObj != null && spotsObj.Images != null && isLoaded) {
         return (
             <main>
-            {/* <NavLink to={`/spots/${spot.id}`}></NavLink> */}
-            <h1>TESTING SPOT BY DETAIL</h1>
-            {/* {spotsArr.map(spot => (
-                <div key={spot.id}>
+                <h1>TESTING SPOT BY DETAIL</h1>
+                <div>
+                    <div><img src={spotsObj.previewImage} /></div>
+                    <div>{spotsObj.id}</div>
+                    <div>avgRating {spotsObj.avgRating}</div>
+                    <div>{spotsObj.address}</div>
+                    <div>{spotsObj.city}</div>
+                    <div>{spotsObj.state}</div>
+                    <h2>TreeHouse hosted by {spotsObj.name}</h2>
+                    <p>{spotsObj.description}</p>
+                </div>
+
+                {/* <NavLink to={`/spots/${spot.id}`}></NavLink> */}
+                {reviewArr.map(ele => (
+                <div key={ele.id}>
 
                 <ul >
-                <li>{spot.address}</li>
+                <li>{ele.review}</li>
                 </ul>
                 </div>
-            ))} */}
+            ))}
 
-            <div><img src={spotsObj.previewImage}/></div>
-            <div>{spotsObj.id}</div>
-            <div>avgRating {spotsObj.avgRating}</div>
-            <div>{spotsObj.address}</div>
-            <div>{spotsObj.city}</div>
-            <div>{spotsObj.state}</div>
-            <h2>TreeHouse hosted by {spotsObj.name}</h2>
-            <p>{spotsObj.description}</p>
 
-            {/* <div>
+
+                {/* <div>
                 <button ><NavLink to={`/spots/${spotId}/edit`}>edit spot</NavLink></button>
             </div> */}
-            {/* <div>
+                {/* <div>
                 <button onClick={async () => {
                     await dispatch(deleteSpotThunk(spotId))
                     history.push('/spots')
                 }} > delete spot</button>
             </div> */}
 
-        </main>
+            </main>
         )
     }
 
@@ -75,7 +88,7 @@ export default SpotByDetail;
     //console.log('the spot object is ----', spotsObj)
     //console.log('the spots array is ---', spotsArr)
 
-    /** Code using optionals, does the same thing as code above */
+/** Code using optionals, does the same thing as code above */
     // const imgUrl = spotsObj?.Images?.[0].url;
     // // console.log('the image url variable----', imgUrl)
 

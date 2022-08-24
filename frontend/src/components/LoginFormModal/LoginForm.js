@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 
@@ -8,6 +8,7 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
@@ -16,9 +17,10 @@ function LoginForm() {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       }
-    );
-  };
+      );
+    };
 
+    console.log('login' )
   return (
     <form onSubmit={handleSubmit}>
       <ul>

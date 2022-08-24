@@ -21,13 +21,12 @@ const GetSpotByCurrentUser = () => {
     const [isLoaded, setIsLoaded] = useState(false);
 
 
-    // const obj = spotsObj['currentSpot'].Spots
-
-    // console.log('TESST', obj.id)
+    const reviewObj = useSelector(state => state.review);
+    console.log('the USER review', reviewObj);
 
     useEffect(() => {
         dispatch(getCurrentSpotThunk()).then(setIsLoaded(true)) // populate store
-
+        dispatch(getUserReviewThunk())
     }, [dispatch])
 
     //console.log('the map ---', spotsArr.map(ele => ele))
