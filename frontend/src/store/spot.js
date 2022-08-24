@@ -6,7 +6,9 @@ const GET_SPOTS = 'spot/GET_SPOTS'; //get all spots?
 const GET_SPOTS_DETAIL = 'spot/GET_SPOT_DETAILS' // get one spot by detail?
 const GET_CURRENT_SPOTS = 'spot/GET_CURRENT_SPOTS' //get spot by current user
 
-const ADD_SPOT = 'spot/ADD_SPOT';
+const ADD_ONE_SPOT = 'spot/ADD_ONE_SPOT';
+
+
 /**********************************************/
 //actions
 //action for get all spots
@@ -33,7 +35,7 @@ const getSpotOfCurrentUser = payload => {
 }
 
 const addOneSpot = payload => ({
-    type: ADD_SPOT,
+    type: ADD_ONE_SPOT,
     payload
 });
 
@@ -48,9 +50,9 @@ export const getSpotsThunk = () => async dispatch => {
     //console.log('the response in reducer', response)
     if (response.ok) {
         const data = await response.json();
-        console.log('the data in get spots', data)
+        //console.log('the data in get spots', data)
         dispatch(getSpots(data.Spots));
-        console.log('the data in get spots dispatch occurs', data)
+        //console.log('the data in get spots dispatch occurs', data)
 
     }
     //console.log('do you see me RESPONSE', response)
@@ -79,19 +81,34 @@ export const getCurrentSpotThunk = () => async dispatch => {
     }
 }
 
-// export const spotForm = (payload) => async (dispatch) => {
-//     const response = await fetch('api/spots', {
-//        method: 'POST',
-//        headers: { "Content-Type": "application/json"},
-//        body: JSON.stringify(payload)
-//     });
+export const spotFormThunk = (payload) => async (dispatch) => {
+    const response = await csrfFetch('/api/spots', {
+       method: 'POST',
+       headers: { "Content-Type": "application/json"},
+       body: JSON.stringify(payload)
+    });
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(addOneSpot(data));
+        console.log('the response in spot form---', data)
+        return data;
+    }
+}
 
-//     if (response.ok) {
-//         const list = await response.json();
-//         dispatch(addOneSpot(list));
-//         return list;
-//     }
-// }
+export const editSpotThunk = (id, payload) => async dispatch => {
+    const response = await csrfFetch(`/api/spots/${id}`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    });
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(addOneSpot(data));
+        return data
+    }
+}
 
 
 const initialState = {
@@ -135,13 +152,30 @@ const spotReducer = (state = initialState, action) => {
             // return state;
 
         case GET_CURRENT_SPOTS:
-            console.log('the action', action)
+            //console.log('the action', action)
             const currentSpot = { ...action.payload};
-            console.log('in the reducer', currentSpot)
+            //console.log('in the reducer', currentSpot)
             return {
                 ...state,
                 currentSpot
             }
+
+        case ADD_ONE_SPOT:
+            if (!state[action.payload.id]) {
+                const newStateForm = { ...state};
+                newStateForm[action.payload.id] = action.payload
+                //console.log('add one spot form reducer ---', newStateForm)
+                return newStateForm
+            }
+
+            return {
+                ...state,
+                [action.payload.id]: {
+                    ...state[action.payload.id],
+                    ...action.payload
+                }
+            }
+
         default:
             return state;
     }

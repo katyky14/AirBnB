@@ -4,11 +4,11 @@ import { NavLink, Route, useParams } from 'react-router-dom';
 
 
 import { getSpotsThunk } from '../../store/spot';
-import SpotByDetail from './GetSpotDetails';
+// import SpotByDetail from './GetSpotDetails';
 
-const   apple = "a";
+
 const GetAllSpots = () => {
-    console.log(apple);
+
     const dispatch = useDispatch();
     const { spotId } = useParams();
     const spotsObj = useSelector(state => state.spot['allSpots'])
@@ -20,7 +20,6 @@ const GetAllSpots = () => {
         dispatch(getSpotsThunk()).then(setIsLoaded(true))
     }, [dispatch]);
 
-    console.log('tesing in get spots')
 
 
     return isLoaded && (

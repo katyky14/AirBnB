@@ -17,7 +17,7 @@ const GetSpotByCurrentUser = () => {
 
 
 
-    console.log('the spots objects in ---', spotsObj)
+    //console.log('the spots objects in ---', spotsObj)
 
     return (
         <div>

@@ -9,8 +9,9 @@ import Navigation from "./components/Navigation";
 import GetAllSpots from "./components/Spots/GetSpots";
 import GetSpotByCurrentUser from "./components/Spots/GetSpotCurrent";
 import SpotByDetail from "./components/Spots/GetSpotDetails";
+import CreateSpotForm from "./components/Spots/CreateSpotForm";
+import EditSpotForm from "./components/Spots/EditSpot";
 
-// import CreateSpotForm from "./components/Spots/CreateSpot";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,23 +25,29 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/signup">
-            <SignupFormPage />
+          <Route path='/spots/:spotId/edit'>
+            <EditSpotForm />
           </Route>
-          <Route exact path={'/spots'} >
-            <GetAllSpots />
-          </Route>
-          {/* <Route path='/spots/current'>{GetSpotByCurrentUSer}</Route> */}
             <Route exact path='/spots/current'>
               <GetSpotByCurrentUser />
             </Route>
           <Route exact path='/spots/:spotId'>
               <SpotByDetail />
-            </Route>
+          </Route>
+          <Route exact path='/spots'>
+            <CreateSpotForm />
+          </Route>
+          <Route exact path='/' >
+            <GetAllSpots />
+          </Route>
+          <Route path="/signup">
+            <SignupFormPage />
+          </Route>
         </Switch>
       )}
     </>
   );
 }
+
 
 export default App;
