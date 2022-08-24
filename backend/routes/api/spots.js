@@ -66,21 +66,21 @@ router.get('/', async (req, res) => {
             ]
         })
 
-        if (!previewImageUrl) {
+        // if (!previewImageUrl) {
+        //     resultData = {
+        //         ...spotEle.dataValues,
+        //         avgRating: rating[0].avgRating,
+        //         previewImage: null
+        //     }
+        //     spotsArr.push(resultData)
+        // } else {
             resultData = {
                 ...spotEle.dataValues,
                 avgRating: rating[0].avgRating,
-                previewImage: null
+                // previewImage: previewImageUrl.url
             }
             spotsArr.push(resultData)
-        } else {
-            resultData = {
-                ...spotEle.dataValues,
-                avgRating: rating[0].avgRating,
-                previewImage: previewImageUrl.url
-            }
-            spotsArr.push(resultData)
-        }
+        // }
     }
 
     res.json({ Spots: spotsArr, page: page, size: size });
@@ -89,7 +89,7 @@ router.get('/', async (req, res) => {
 
 // CREATE A SPOT
 router.post('/', requireAuth, async (req, res) => {
-    const { address, city, state, country, lat, lng, name, description, price } = req.body;
+    const { address, city, state, country, lat, lng, name, description, price, previewImage } = req.body;
 
     if (req.body) {
         const newSpot = await Spot.create({
@@ -103,6 +103,7 @@ router.post('/', requireAuth, async (req, res) => {
             name,
             description,
             price,
+            previewImage
         });
         res.json(newSpot);
     } else {
@@ -156,7 +157,14 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
 // GET SPOT OF CURRENT USER -- need AUTH
 router.get('/current', requireAuth, async (req, res, next) => {
 
-    const currentSpot = await Spot.findAll();
+    const{user} = req
+
+
+    const currentSpot = await Spot.findAll({
+        where: {
+            ownerId: user.id
+        }
+    });
 
     //console.log(currentSpot)
     let spotArr = [];
@@ -172,33 +180,33 @@ router.get('/current', requireAuth, async (req, res, next) => {
             raw: true,
         })
 
-        let previewImageUrl = await Image.findOne({
-            where: {
-                spotId: spotEle.id
-            },
-            attributes: ['url']
-        });
+        // let previewImageUrl = await Image.findOne({
+        //     where: {
+        //         spotId: spotEle.id
+        //     },
+        //     attributes: ['url']
+        // });
 
         //console.log('preview image url is ---', previewImageUrl.url) -- this key into the url and gets the url
 
-        if (!previewImageUrl) {
+        // if (!previewImageUrl) {
+        //     resultData = {
+        //         ...spotEle.dataValues,
+        //         avgRating: ratings[0].avgRating,
+        //         previewImage: null
+        //     }
+        //     spotArr.push(resultData)
+        // } else {
             resultData = {
                 ...spotEle.dataValues,
                 avgRating: ratings[0].avgRating,
-                previewImage: null
+                // previewImage: previewImageUrl.url
             }
             spotArr.push(resultData)
-        } else {
-            resultData = {
-                ...spotEle.dataValues,
-                avgRating: ratings[0].avgRating,
-                previewImage: previewImageUrl.url
-            }
-            spotArr.push(resultData)
-        }
+        // }
     }
 
-    res.json({ Spots: resultData });
+    res.json({ Spots: spotArr });
 });
 
 // GET SPOT DETAILS BY ID -- NO auth
@@ -264,7 +272,7 @@ router.get('/:spotId', async (req, res) => {
 router.put('/:spotId', requireAuth, async (req, res) => {
     const { spotId } = req.params;
     const { user } = req;
-    const { address, city, state, country, lat, lng, name, description, price } = req.body;
+    const { address, city, state, country, lat, lng, name, description, price, previewImage } = req.body;
     const item = await Spot.findByPk(spotId);
 
     if (!item) {
@@ -284,6 +292,7 @@ router.put('/:spotId', requireAuth, async (req, res) => {
         item.name = name;
         item.description = description;
         item.price = price;
+        item.previewImage = previewImage;
         await item.save();
 
         res.json(item);
