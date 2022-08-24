@@ -36,7 +36,8 @@ function CreateSpotForm() {
         lat,
         lng,
         name,
-        description, price
+        description, price,
+        previewImage
     }
 
     let createSpot =  await dispatch(spotFormThunk(spotFormInformation))
@@ -155,7 +156,7 @@ function CreateSpotForm() {
       <label>
         Preview Image
         <input
-          type="text"
+          type="string"
           value={previewImage}
           onChange={(e) => setPreviewImage(e.target.value)}
           required

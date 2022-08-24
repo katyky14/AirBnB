@@ -27,6 +27,7 @@ const GetAllSpots = () => {
 
         <section>
             <h1>TESTING IN GET All SPOTS</h1>
+            <button ><NavLink to={`/spots/current`}>user spots</NavLink></button>
 
             <div>
                 {spotsArr.map(spot => (
@@ -41,15 +42,17 @@ const GetAllSpots = () => {
                         <ul>
                             <li>
                                 <div><img src={`${spot.previewImage}`}></img></div>
+                                <div>{spot.id}</div>
+                                <div>{spot.name}</div>
                                 <div>{spot.city}</div>
                                 <div>{spot.state}</div>
-                                {/* <div>{spot.avgRating ? Number.parseFloat()}</div> */}
+                                <div>${spot.price}</div>
+                                {/* <div>{spot.avgRating ? Number.parseFloat(avgRating).toFixed(2)}</div> */}
                             </li>
                         </ul>
                     </NavLink>
                 ))}
             </div>
-
         </section>
     );
 }

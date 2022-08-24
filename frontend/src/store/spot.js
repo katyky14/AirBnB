@@ -56,7 +56,7 @@ export const getSpotsThunk = () => async dispatch => {
     //console.log('the response in reducer', response)
     if (response.ok) {
         const data = await response.json();
-        //console.log('the data in get spots', data)
+        console.log('the data in get spots', data)
         dispatch(getSpots(data.Spots));
         //console.log('the data in get spots dispatch occurs', data)
 
@@ -82,7 +82,7 @@ export const getCurrentSpotThunk = () => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        console.log('the data in spot  current ', data.Spots)
+        //console.log('the data in spot  current ', data.Spots)
         dispatch(getSpotOfCurrentUser(data.Spots))
     }
 }

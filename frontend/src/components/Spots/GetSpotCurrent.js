@@ -5,13 +5,15 @@ import { NavLink, Route, useParams } from 'react-router-dom';
 import { getCurrentSpotThunk } from '../../store/spot';
 import { deleteSpotThunk } from '../../store/spot';
 
+import {getUserReviewThunk} from '../../store/review'
+
 const GetSpotByCurrentUser = () => {
 
 
     const dispatch = useDispatch();
     const spotsObj = useSelector(state => state.spot) // access store
     console.log('the spot OBJ in component', spotsObj)
-    const { spotId } = useParams();
+    //const { spotId } = useParams();
     //console.log('THE OTHER SPOT---', spotsObj)
     //console.log('the spot object in CURRENT---', spotsObj['currentSpot'].Spots)
     const spotsArr = Object.values(spotsObj);
