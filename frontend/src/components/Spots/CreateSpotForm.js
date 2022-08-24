@@ -9,8 +9,8 @@ import { spotFormThunk } from '../../store/spot'
 function CreateSpotForm() {
   const history = useHistory()
   const dispatch = useDispatch();
-  const spotsObj = useSelector(state => state.spot)
-  console.log('the spot obj in FORM---', spotsObj)
+  //const spotsObj = useSelector(state => state.spot)
+  //console.log('the spot obj in FORM---', spotsObj)
 
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
