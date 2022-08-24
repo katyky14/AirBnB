@@ -5,7 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
-import SignupFormModal from "./components/SignupFormPage/SignupFormModal";
+//import SignupFormModal from "./components/SignupFormPage/SignupFormModal";
 import GetAllSpots from "./components/Spots/GetSpots";
 import GetSpotByCurrentUser from "./components/Spots/GetSpotCurrent";
 import SpotByDetail from "./components/Spots/GetSpotDetails";
