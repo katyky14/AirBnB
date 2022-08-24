@@ -21,6 +21,7 @@ function CreateSpotForm() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
+  const [previewImage, setPreviewImage] = useState("");
   const [validationErrors, setValidationErrors] = useState([]);
 
 
@@ -54,14 +55,16 @@ function CreateSpotForm() {
     if (!city.length) valErrors.push("City is required");
     if (!state.length) valErrors.push("State is required");
 
-    if (!lat.length) valErrors.push("Latitude is not valid");
-    if (!lng.length) valErrors.push("Longitude is not valid");
+    if (!lat.length) valErrors.push("Latitude is not valid"); //-90 to 90
+    if (!lng.length) valErrors.push("Longitude is not valid"); //-180 to 180
 
     if (name.length > 50) valErrors.push("Name must be less than 50 characters");
     if (!price) valErrors.push("Price per day is required")
 
+    if (!previewImage.length) valErrors.push("Image is required");
+
     setValidationErrors(valErrors)
-  }, [address, city, state, lat, lng, name, price])
+  }, [address, city, state, lat, lng, name, price, previewImage]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -146,6 +149,15 @@ function CreateSpotForm() {
           type="number"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        Preview Image
+        <input
+          type="text"
+          value={previewImage}
+          onChange={(e) => setPreviewImage(e.target.value)}
           required
         />
       </label>

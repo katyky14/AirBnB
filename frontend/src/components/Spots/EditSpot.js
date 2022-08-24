@@ -6,12 +6,13 @@ import { Redirect, useHistory, useParams } from "react-router-dom";
 
 import { editSpotThunk } from '../../store/spot';
 import { getOneSpotDetails} from '../../store/spot';
-
+import {getCurrentSpotThunk}  from '../../store/spot';
 
 function EditSpotForm() {
   const history = useHistory()
   const { spotId } = useParams();
   const dispatch = useDispatch();
+  console.log('the spot id', spotId);
   const spotsObj = useSelector(state => state.spot)
   //console.log('the spot obj in EDIT---', spotsObj)
   const spotsArr = Object.values(spotsObj);
@@ -64,6 +65,7 @@ function EditSpotForm() {
     }
 
     let updatedSpot =  await dispatch(editSpotThunk(spotId, spotFormInformation))
+
     //console.log('the createspotform handle submit', updatedSpot)
     if (updatedSpot) {
         history.push(`/spots/${updatedSpot.id}`)

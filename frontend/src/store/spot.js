@@ -28,10 +28,10 @@ const getSpotDetail = payload => {
 }
 
 //action for get all spots by current user
-const getSpotOfCurrentUser = payload => {
+const getSpotOfCurrentUser = payloadSpot => {
     return {
         type: GET_CURRENT_SPOTS,
-        payload
+        payloadSpot
     }
 }
 
@@ -78,13 +78,11 @@ export const getOneSpotDetails = (spotId) => async dispatch => {
 
 
 export const getCurrentSpotThunk = () => async (dispatch) => {
-    const response = await csrfFetch(`/api/spots/current`,{
-        method: 'GET'
-    });
+    const response = await csrfFetch(`/api/spots/current`);
 
     if (response.ok) {
         const data = await response.json();
-        //console.log('the data in spot  current ', data)
+        console.log('the data in spot  current ', data.Spots)
         dispatch(getSpotOfCurrentUser(data.Spots))
     }
 }
@@ -97,8 +95,8 @@ export const spotFormThunk = (payload) => async (dispatch) => {
     });
     if (response.ok) {
         const data = await response.json();
+        //console.log('the response in spot form---', data)
         dispatch(addOneSpot(data));
-        console.log('the response in spot form---', data)
         return data;
     }
 }
@@ -113,6 +111,7 @@ export const editSpotThunk = (id, payload) => async dispatch => {
     });
     if (response.ok) {
         const data = await response.json();
+        console.log('the data in edit--', data)
         dispatch(addOneSpot(data));
         return data
     }
@@ -129,35 +128,35 @@ export const deleteSpotThunk = (id) => async dispatch => {
 }
 
 
-const initialState = {
-    // spotData: []
-    allSpots: {},
-    oneSpot: {}
-}
-
-// const sortList = (list) => {
-//     return list.sort((spotA, spotB) => {
-//         return spotA.number - spotB.number;
-//     }).map((spot) => spot.id);
+// const initialState = {
+//     // spotData: []
+//     allSpots: {},
+//     oneSpot: {},
+//     currentSpot: {}
 // }
+
+const initialState = {}
 
 /****************************************** */
 //reducers
 //console.log('testing spot reducer do you see me?')
 
 const spotReducer = (state = initialState, action) => {
-    let newState;
+    let newState = {};
     switch (action.type) {
         case GET_SPOTS:
             const allSpots = {};
+            //console.log('the action',action.payload)
             action.payload.forEach(spot => { //normalize data
                 // console.log('the spot', spot)
                 allSpots[spot.id] = spot;
             });
             // console.log('the all spots', allSpots) // info yes
             newState = { ...state, allSpots }
+            //console.log('the new state', newState.allSpots)
             //console.log('the new state', newState.allSpots) // empty obj
-            return newState
+            return newState.allSpots
+
         case GET_SPOTS_DETAIL:
             const oneSpot = { ...action.payload };
 
@@ -170,14 +169,26 @@ const spotReducer = (state = initialState, action) => {
         // return state;
 
         case GET_CURRENT_SPOTS:
-            //console.log('the action', action)
-            const currentSpot = { ...action.payload};
-            //console.log('in the reducer', currentSpot)
-            return {
-                ...state,
-                currentSpot
-            }
-    
+            // console.log('the action', action)
+            // const currentSpot = { ...action.payloadSpot};
+            // console.log('in the reducer', currentSpot)
+            // return {
+            //     ...state,
+            //     currentSpot
+            // }
+            //payload is array of obj
+            newState = {...state}; // we don't lose prev info
+            console.log('the action in reducer---', action.payloadSpot)
+            //const arr = Array(action.payloadSpot);
+            // console.log('action payload', action.payloadSpot)
+            // console.log('the arr---', arr)
+            action.payloadSpot.forEach(spot => {
+                newState[spot.id] = spot
+                console.log('the spot----', spot.id)
+            });
+            //console.log('current spot reducer', newState)
+
+            return newState;
 
         case ADD_ONE_SPOT:
             if (!state[action.payload.id]) {
@@ -186,7 +197,7 @@ const spotReducer = (state = initialState, action) => {
                 //console.log('add one spot form reducer ---', newStateForm)
                 return newStateForm
             }
-
+            //console.log('the in reducer', action.payload)
             return {
                 ...state,
                 [action.payload.id]: {

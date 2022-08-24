@@ -10,18 +10,25 @@ const GetSpotByCurrentUser = () => {
 
     const dispatch = useDispatch();
     const spotsObj = useSelector(state => state.spot) // access store
+    console.log('the spot OBJ in component', spotsObj)
     const { spotId } = useParams();
-    console.log('the spot object---', spotsObj['currentSpot'])
+    //console.log('THE OTHER SPOT---', spotsObj)
+    //console.log('the spot object in CURRENT---', spotsObj['currentSpot'].Spots)
     const spotsArr = Object.values(spotsObj);
-    console.log('the ARRAY spot is---', spotsArr)
+    //console.log('the ARRAY spot is---', spotsArr[0].name)
     const [isLoaded, setIsLoaded] = useState(false);
+
+
+    // const obj = spotsObj['currentSpot'].Spots
+
+    // console.log('TESST', obj.id)
 
     useEffect(() => {
         dispatch(getCurrentSpotThunk()).then(setIsLoaded(true)) // populate store
 
     }, [dispatch])
 
-
+    //console.log('the map ---', spotsArr.map(ele => ele))
 
     //console.log('the spots objects in ---', spotsObj)
     if (!spotsArr.length) return null
@@ -29,22 +36,31 @@ const GetSpotByCurrentUser = () => {
     return isLoaded && (
         <div>
             <div>Testing Get Spots By current user </div>
-            {spotsArr.map(spot => {
+            {/* <div>{obj.name}</div>
+            <div>{obj.city}</div>
+            <div>{obj.state}</div>
+            <div>{obj.price}</div> */}
+            {spotsArr.map(spot => (
                 <div key={spot.id}>
-                    {/* <div>{spotsObj?.Spots.address}</div> */}
-                    {/* <div><img src={spot.previewImage}></img></div> */}
+                    <div>ID --- {spot.id}</div>
                     <div>{spot.name}</div>
-                    <div>{spot.city} {spot.state}</div>
+                    <div>{spot.city}</div>
                     <div>{spot.description}</div>
                     <div>{spot.price}</div>
                     <div>
                         <button ><NavLink to={`/spots/${spot.id}/edit`}>edit spot</NavLink></button>
                     </div>
+
                     <div>
-                        <button onClick={async () => await dispatch(deleteSpotThunk(spotId))} > delete spot</button>
+                        <button onClick={async () => await dispatch(deleteSpotThunk(spot.id))} > delete spot</button>
                     </div>
                 </div>
-            })}
+
+            ))}
+
+
+
+
         </div>
     )
 }
