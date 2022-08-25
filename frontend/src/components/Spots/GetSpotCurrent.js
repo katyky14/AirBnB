@@ -11,9 +11,9 @@ const GetSpotByCurrentUser = () => {
 
 
     const dispatch = useDispatch();
-    const history = useHistory()
+    //const history = useHistory()
     const spotsObj = useSelector(state => state.spot) // access store
-    console.log('the spot OBJ in component', spotsObj)
+    //console.log('the spot OBJ in component', spotsObj)
     //const { spotId } = useParams();
     //console.log('THE SPOT---', spotsObj)
     //console.log('the spot object in CURRENT---', spotsObj['currentSpot'].Spots)
@@ -27,14 +27,22 @@ const GetSpotByCurrentUser = () => {
     // const reviewArr = Object.values(reviewObj);
     // console.log('USER ARR review', reviewArr);
 
+
+
     useEffect(() => {
         dispatch(getCurrentSpotThunk()).then(setIsLoaded(true)) // populate store
         //dispatch(getUserReviewThunk())
     }, [dispatch])
 
-    //console.log('the map ---', spotsArr.map(ele => ele))
+    const userSpot = useSelector(state => state.session.user)
 
-    //console.log('the spots objects in ---', spotsObj)
+    const filter = spotsArr.filter(spot => spot?.ownerId === userSpot?.id)
+    //console.log('the filter', filter)
+    // if (!filter.length) {
+    //     return alert('Must be the user or be logged in to delete spot')
+    // }
+
+
     if (!spotsArr.length) return null
 
     return isLoaded && (
@@ -44,7 +52,7 @@ const GetSpotByCurrentUser = () => {
             <div>{obj.city}</div>
             <div>{obj.state}</div>
             <div>{obj.price}</div> */}
-            {spotsArr.map(spot => (
+            {filter.map(spot => (
                 <div key={spot.id}>
 
                     <div>Spot ID --- {spot.id}</div>
@@ -57,7 +65,8 @@ const GetSpotByCurrentUser = () => {
                     </div>
 
                     <div>
-                        <button onClick={() => { dispatch(deleteSpotThunk(spot.id))
+                        <button onClick={() => {
+                            dispatch(deleteSpotThunk(spot.id))
                         }} > delete spot</button>
                     </div>
 

@@ -125,6 +125,8 @@ export const deleteSpotThunk = (id) => async dispatch => {
     });
     console.log('response thunk', response)
     if (response.ok) {
+        const data = await response.json();
+        console.log('the data delete', data)
         dispatch(deleteOneSpot(id))
     }
 }

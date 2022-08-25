@@ -19,10 +19,21 @@ const ReviewCurrentUser = () => {
         dispatch(getUserReviewThunk())
     }, [dispatch])
 
+
+    const userReview = useSelector(state => state.session.user);
+    //console.log('the user review', userReview)
+    const filter = reviewArr.filter(review => review?.userId === userReview?.id);
+    console.log('the filter', filter)
+    // if (!filter.length) {
+    //     return alert('Must be the user or be logged in to delete spot')
+    // }
+
+
+
     return (
         <div>
             <h1>Review current Testing</h1>
-            {reviewArr.map(review => (
+            {filter.map(review => (
                 <div key={review.id}>
                     <div> Review ID --{review.id}</div>
                     <div> {review.review}</div>
