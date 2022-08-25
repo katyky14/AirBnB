@@ -41,11 +41,11 @@ function App() {
             <Route exact path='/spots/current'>
               <GetSpotByCurrentUser />
             </Route>
+          <Route exact path='/spots/new'>
+            <CreateSpotForm />
+          </Route>
           <Route exact path='/spots/:spotId'>
               <SpotByDetail />
-          </Route>
-          <Route exact path='/spots'>
-            <CreateSpotForm />
           </Route>
           <Route exact path='/' >
             <GetAllSpots />
