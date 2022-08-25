@@ -23,8 +23,13 @@ function LoginForm() {
       async (res) => {
         const data = await res.json();
         //console.log('the data error', data)
-        if (data && data.errors) setErrors(data.errors);
+        if (data && data.errors)
         if(!user) return alert("Invalid Credentials")
+        // if (!user) {
+        //   return (
+        //     <div>Invalid Credentials</div>
+        //   )
+        // }
         setErrors(data.errors);
       }
       );
@@ -35,6 +40,7 @@ function LoginForm() {
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
+
         ))}
       </ul>
       <label>
