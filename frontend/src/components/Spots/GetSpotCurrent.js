@@ -23,6 +23,8 @@ const GetSpotByCurrentUser = () => {
 
     const reviewObj = useSelector(state => state.review);
     console.log('the USER review', reviewObj);
+    const reviewArr = Object.values(reviewObj);
+    console.log('USER ARR review', reviewArr);
 
     useEffect(() => {
         dispatch(getCurrentSpotThunk()).then(setIsLoaded(true)) // populate store
@@ -55,6 +57,11 @@ const GetSpotByCurrentUser = () => {
                     <div>
                         <button onClick={async () => await dispatch(deleteSpotThunk(spot.id))} > delete spot</button>
                     </div>
+                    <div>
+                        {reviewArr.map(ele => (
+                            <div key={ele.id}></div>
+                        ))}
+                        </div>
                 </div>
 
             ))}

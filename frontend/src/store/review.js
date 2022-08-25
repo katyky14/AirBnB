@@ -5,7 +5,7 @@ import { csrfFetch } from './csrf';
 const GET_USER_REVIEWS = 'reviews/GET_REVIEWS_USER';
 const GET_SPOT_REVIEWS = 'reviews/GET_SPOT_REVIEWS';
 
-
+const ADD_REVIEW = 'reviews/ADD_REVIEW'
 
 
 
@@ -19,7 +19,6 @@ const getSpotReview = reviews => {
 }
 
 
-
 const getUserReviews = (review) => {
     return {
         type: GET_USER_REVIEWS,
@@ -28,8 +27,12 @@ const getUserReviews = (review) => {
 }
 
 
-
-
+const addOneReview = (review) => {
+    return {
+        type: ADD_REVIEW,
+        review
+    }
+}
 
 
 /****************************************************** */
@@ -54,13 +57,28 @@ export const getUserReviewThunk = () => async dispatch => {
 
     if (response.ok) {
         const data = await response.json();
-        console.log('the data in review', data.Reviews)
+        //console.log('the data in review', data.Reviews)
         dispatch(getUserReviews(data.Reviews))
     }
 
 }
 
+//CREATE REVIEW
+export const createReviewThunk = (reviewData) => async dispatch => {
+    console.log('the reviewData', reviewData)
+    //console.log('the REVIEW DOT', Review.review)
+    const response = await csrfFetch(`/api/spots/${reviewData.spotId}/reviews`, {
+        method: 'POST',
+        headers:  { 'Content-type': "application/json"},
+        body: JSON.stringify(reviewData)
+    })
 
+    if (response.ok) {
+        const data = await response.json();
+        console.log('the data REVIEW ----', data)
+        dispatch(addOneReview(data))
+    }
+}
 
 
 
@@ -90,6 +108,28 @@ const reviewReducer = (state = initialState, action) => {
             })
             //console.log('the new state REVIEW', newState)
             return newState;
+
+        case ADD_REVIEW:
+            newState = {...state};
+            console.log('REVEIW REDUCER', action.review)
+            action.review.forEach(ele => {
+                newState[ele.id] = ele
+            })
+            return newState;
+
+            // if (!state[action.review.id]) {
+            //     const newStateForm = { ...state};
+            //     newStateForm[action.review.id] = action.review
+            //     return newStateForm
+            // }
+
+            // return {
+            //     ...state,
+            //     [action.review.id]: {
+            //         ...state[action.review.id],
+            //         ...action.payload
+            //     }
+            // }
 
         default:
             return state;

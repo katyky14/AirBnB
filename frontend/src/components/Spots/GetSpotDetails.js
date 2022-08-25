@@ -10,11 +10,12 @@ import { getOneSpotDetails } from '../../store/spot';
 
 import { getSpotReviewThunk } from '../../store/review';
 
+// import CreateReviewForm from '../Reviews/CreateReviews';
 
 const SpotByDetail = () => {
-    const [showModal, setShowModal] = useState(false);
+    //const [showModal, setShowModal] = useState(false);
 
-    const history = useHistory();
+    //const history = useHistory();
     const { spotId } = useParams();
     const spotsObj = useSelector(state => state.spot['oneSpot']);
     //const spotsArr = Object.values(spotsObj)
@@ -26,7 +27,7 @@ const SpotByDetail = () => {
     const reviewObj = useSelector(state => state.review)
     //console.log('the review in SPOT DETAIL', reviewObj)
     const reviewArr = Object.values(reviewObj);
-    console.log('the ARRay in SPOT', reviewArr)
+    //console.log('the ARRay in SPOT', reviewArr)
 
 
     useEffect(() => {
@@ -48,16 +49,18 @@ const SpotByDetail = () => {
                     <h2>TreeHouse hosted by {spotsObj.name}</h2>
                     <p>{spotsObj.description}</p>
                 </div>
+                <div>
+                    <button><NavLink to={`/spots/${spotsObj.id}/reviews`}>Add a Review</NavLink></button>
+                    {/* <NavLink to={`/spots/${spot.id}`}></NavLink> */}
+                    {reviewArr.map(ele => (
+                        <div key={ele.id}>
 
-                {/* <NavLink to={`/spots/${spot.id}`}></NavLink> */}
-                {reviewArr.map(ele => (
-                <div key={ele.id}>
-
-                <ul >
-                <li>{ele.review}</li>
-                </ul>
+                            <ul >
+                                <li>{ele.review}</li>
+                            </ul>
+                        </div>
+                    ))}
                 </div>
-            ))}
 
 
 

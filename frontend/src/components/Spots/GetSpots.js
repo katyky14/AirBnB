@@ -12,7 +12,7 @@ const GetAllSpots = () => {
     const dispatch = useDispatch();
     const { spotId } = useParams();
     const spotsObj = useSelector(state => state.spot)
-    console.log('get all spots', spotsObj)
+    //console.log('get all spots', spotsObj)
     const spotsArr = Object.values(spotsObj)
 
     const [isLoaded, setIsLoaded] = useState(false)

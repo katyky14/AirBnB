@@ -5,13 +5,13 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
-import SignupFormModal from "./components/SignupFormPage/SignupFormModal";
+//import SignupFormModal from "./components/SignupFormPage/SignupFormModal";
 import GetAllSpots from "./components/Spots/GetSpots";
 import GetSpotByCurrentUser from "./components/Spots/GetSpotCurrent";
 import SpotByDetail from "./components/Spots/GetSpotDetails";
 import CreateSpotForm from "./components/Spots/CreateSpotForm";
 import EditSpotForm from "./components/Spots/EditSpot";
-
+import CreateReviewForm from "./components/Reviews/CreateReviews";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +25,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path='/spots/:spotId/reviews'>
+            <CreateReviewForm />
+          </Route>
           <Route path='/spots/:spotId/edit'>
             <EditSpotForm />
           </Route>

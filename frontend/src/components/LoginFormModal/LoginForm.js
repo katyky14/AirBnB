@@ -15,12 +15,12 @@ function LoginForm() {
     return dispatch(sessionActions.login({ credential, password })).catch(
       async (res) => {
         const data = await res.json();
+        //console.log('the data error', data)
         if (data && data.errors) setErrors(data.errors);
       }
       );
     };
-
-    console.log('login' )
+    //console.log('the errors', errors)
   return (
     <form onSubmit={handleSubmit}>
       <ul>

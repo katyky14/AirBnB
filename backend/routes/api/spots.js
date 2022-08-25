@@ -309,7 +309,11 @@ router.put('/:spotId', requireAuth, async (req, res) => {
 router.post('/:spotId/reviews', requireAuth, async (req, res) => {
 
     const { spotId } = req.params;
+
+    const { review, stars } = req.body;
+
     const spotItem = await Spot.findByPk(spotId);
+
     if (!spotItem) {
         return res.json({
             "message": "Spot couldn't be found",
@@ -330,16 +334,16 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
             "message": "User already has a review for this spot",
             "statusCode": 403
         })
-    } else {
-        const { review, stars } = req.body;
+    }
+    // else {
         const newReview = await Review.create({
-            userId: req.user.id,
-            spotId: spotId,
+            "userId": req.user.id,
+            "spotId": spotId,
             review: review,
             stars: stars,
         });
         res.json(newReview);
-    }
+    // }
 });
 
 

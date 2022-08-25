@@ -56,7 +56,7 @@ export const getSpotsThunk = () => async dispatch => {
     //console.log('the response in reducer', response)
     if (response.ok) {
         const data = await response.json();
-        console.log('the data in get spots', data)
+        //console.log('the data in get spots', data)
         dispatch(getSpots(data.Spots));
         //console.log('the data in get spots dispatch occurs', data)
 
@@ -111,7 +111,7 @@ export const editSpotThunk = (id, payload) => async dispatch => {
     });
     if (response.ok) {
         const data = await response.json();
-        console.log('the data in edit--', data)
+        //console.log('the data in edit--', data)
         dispatch(addOneSpot(data));
         return data
     }
@@ -178,7 +178,7 @@ const spotReducer = (state = initialState, action) => {
             // }
             //payload is array of obj
             newState = {...state}; // we don't lose prev info
-            console.log('the action in reducer---', action.payloadSpot)
+            //console.log('the action in reducer---', action.payloadSpot)
             //const arr = Array(action.payloadSpot);
             // console.log('action payload', action.payloadSpot)
             // console.log('the arr---', arr)
