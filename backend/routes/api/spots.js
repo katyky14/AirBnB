@@ -320,7 +320,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
             "statusCode": 404
         })
     };
-
+   // const { user} = req
     const reviewSpot = await Review.findAll({
         where: {
             spotId: spotId,
@@ -337,8 +337,8 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
     }
     // else {
         const newReview = await Review.create({
-            "userId": req.user.id,
-            "spotId": spotId,
+            userId: req.user.id,
+            spotId: spotId,
             review: review,
             stars: stars,
         });

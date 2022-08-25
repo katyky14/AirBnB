@@ -66,13 +66,14 @@ export const getUserReviewThunk = () => async dispatch => {
 //CREATE REVIEW
 export const createReviewThunk = (reviewData) => async dispatch => {
     console.log('the reviewData', reviewData)
-    //console.log('the REVIEW DOT', Review.review)
+    console.log('the id review', reviewData.spotId)
+    //console.log('the REVIEW in THUNK', Review.review)
     const response = await csrfFetch(`/api/spots/${reviewData.spotId}/reviews`, {
         method: 'POST',
         headers:  { 'Content-type': "application/json"},
         body: JSON.stringify(reviewData)
     })
-
+    console.log('the response', response)
     if (response.ok) {
         const data = await response.json();
         console.log('the data REVIEW ----', data)
@@ -110,26 +111,26 @@ const reviewReducer = (state = initialState, action) => {
             return newState;
 
         case ADD_REVIEW:
-            newState = {...state};
-            console.log('REVEIW REDUCER', action.review)
-            action.review.forEach(ele => {
-                newState[ele.id] = ele
-            })
-            return newState;
+            // newState = {...state};
+            // console.log('REVEIW REDUCER', action.review)
+            // action.review.forEach(ele => {
+            //     newState[ele.id] = ele
+            // })
+            // return newState;
 
-            // if (!state[action.review.id]) {
-            //     const newStateForm = { ...state};
-            //     newStateForm[action.review.id] = action.review
-            //     return newStateForm
-            // }
+            if (!state[action.review.id]) {
+                const newStateForm = { ...state};
+                newStateForm[action.review.id] = action.review
+                return newStateForm
+            }
 
-            // return {
-            //     ...state,
-            //     [action.review.id]: {
-            //         ...state[action.review.id],
-            //         ...action.payload
-            //     }
-            // }
+            return {
+                ...state,
+                [action.review.id]: {
+                    ...state[action.review.id],
+                    ...action.payload
+                }
+            }
 
         default:
             return state;
