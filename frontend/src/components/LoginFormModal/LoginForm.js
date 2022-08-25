@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as sessionActions from "../../store/session";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -8,15 +8,24 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
+  const user = useSelector(state => state.session.user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors([]);
+    // const valErrors= [];
+
+    // if (!credential.length)  valErrors.push('Invalid Credential')
+    // if (!password.length) valErrors.push('Invalid Credentials')
+    // setErrors(valErrors);
+
+      setErrors([]);
     return dispatch(sessionActions.login({ credential, password })).catch(
       async (res) => {
         const data = await res.json();
         //console.log('the data error', data)
         if (data && data.errors) setErrors(data.errors);
+        if(!user) return alert("Invalid Credentials")
+        setErrors(data.errors);
       }
       );
     };
