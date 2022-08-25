@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Route, useParams } from 'react-router-dom';
+import { NavLink, Route, useHistory, useParams } from 'react-router-dom';
 
 import { getCurrentSpotThunk } from '../../store/spot';
 import { deleteSpotThunk } from '../../store/spot';
@@ -11,24 +11,25 @@ const GetSpotByCurrentUser = () => {
 
 
     const dispatch = useDispatch();
+    const history = useHistory()
     const spotsObj = useSelector(state => state.spot) // access store
     console.log('the spot OBJ in component', spotsObj)
     //const { spotId } = useParams();
-    //console.log('THE OTHER SPOT---', spotsObj)
+    //console.log('THE SPOT---', spotsObj)
     //console.log('the spot object in CURRENT---', spotsObj['currentSpot'].Spots)
     const spotsArr = Object.values(spotsObj);
     //console.log('the ARRAY spot is---', spotsArr[0].name)
     const [isLoaded, setIsLoaded] = useState(false);
 
 
-    const reviewObj = useSelector(state => state.review);
-    console.log('the USER review', reviewObj);
-    const reviewArr = Object.values(reviewObj);
-    console.log('USER ARR review', reviewArr);
+    // const reviewObj = useSelector(state => state.review);
+    // console.log('the USER review', reviewObj);
+    // const reviewArr = Object.values(reviewObj);
+    // console.log('USER ARR review', reviewArr);
 
     useEffect(() => {
         dispatch(getCurrentSpotThunk()).then(setIsLoaded(true)) // populate store
-        dispatch(getUserReviewThunk())
+        //dispatch(getUserReviewThunk())
     }, [dispatch])
 
     //console.log('the map ---', spotsArr.map(ele => ele))
@@ -45,7 +46,8 @@ const GetSpotByCurrentUser = () => {
             <div>{obj.price}</div> */}
             {spotsArr.map(spot => (
                 <div key={spot.id}>
-                    <div>ID --- {spot.id}</div>
+
+                    <div>Spot ID --- {spot.id}</div>
                     <div>{spot.name}</div>
                     <div>{spot.city}</div>
                     <div>{spot.description}</div>
@@ -55,13 +57,15 @@ const GetSpotByCurrentUser = () => {
                     </div>
 
                     <div>
-                        <button onClick={async () => await dispatch(deleteSpotThunk(spot.id))} > delete spot</button>
+                        <button onClick={() => { dispatch(deleteSpotThunk(spot.id))
+                        }} > delete spot</button>
                     </div>
-                    <div>
-                        {reviewArr.map(ele => (
-                            <div key={ele.id}></div>
-                        ))}
-                        </div>
+
+                    {/* <div>
+                    {reviewArr.map(ele => (
+                        <div key={ele.id}></div>
+                        ))}history.push('/spots/current')
+                    </div> */}
                 </div>
 
             ))}

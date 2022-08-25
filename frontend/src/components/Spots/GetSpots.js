@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Route, useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 
 
 import { getSpotsThunk } from '../../store/spot';
@@ -10,7 +10,7 @@ import { getSpotsThunk } from '../../store/spot';
 const GetAllSpots = () => {
 
     const dispatch = useDispatch();
-    const { spotId } = useParams();
+    //const { spotId } = useParams();
     const spotsObj = useSelector(state => state.spot)
     //console.log('get all spots', spotsObj)
     const spotsArr = Object.values(spotsObj)
@@ -27,8 +27,6 @@ const GetAllSpots = () => {
 
         <section>
             <h1>TESTING IN GET All SPOTS</h1>
-            <button ><NavLink to={`/spots/current`}>user spots</NavLink></button>
-
             <div>
                 {spotsArr.map(spot => (
                     // <li key={spot.id}>
@@ -42,7 +40,7 @@ const GetAllSpots = () => {
                         <ul>
                             <li>
                                 <div><img src={`${spot.previewImage}`}></img></div>
-                                <div>{spot.id}</div>
+                                <div>Spot ID --{spot.id}</div>
                                 <div>{spot.name}</div>
                                 <div>{spot.city}</div>
                                 <div>{spot.state}</div>

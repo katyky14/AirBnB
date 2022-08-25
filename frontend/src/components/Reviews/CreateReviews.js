@@ -6,8 +6,6 @@ import { Redirect, useHistory, useParams } from "react-router-dom";
 import { createReviewThunk } from '../../store/review';
 
 
-
-
 function CreateReviewForm() {
 
     const { spotId } = useParams();
@@ -43,8 +41,9 @@ function CreateReviewForm() {
             stars
         }
 
+        console.log('the spot id', spotId)
         let createReview = await dispatch(createReviewThunk(reviewInformation))
-        console.log('the review info', reviewInformation)
+        console.log('the review info', createReview)
         if (createReview) {
             history.push(`/spots/${spotId}`)
         }

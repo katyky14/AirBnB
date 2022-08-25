@@ -7,6 +7,7 @@ const GET_SPOT_REVIEWS = 'reviews/GET_SPOT_REVIEWS';
 
 const ADD_REVIEW = 'reviews/ADD_REVIEW'
 
+const DELETE_REVIEW = 'reviews/DELETE_REVIEW'
 
 
 /*********************************************************/
@@ -34,6 +35,12 @@ const addOneReview = (review) => {
     }
 }
 
+const deleteOneReview = (review) => {
+    return {
+        type: DELETE_REVIEW,
+        review
+    }
+}
 
 /****************************************************** */
 //thunk action
@@ -57,31 +64,41 @@ export const getUserReviewThunk = () => async dispatch => {
 
     if (response.ok) {
         const data = await response.json();
-        //console.log('the data in review', data.Reviews)
+        console.log('the data in review', data)
         dispatch(getUserReviews(data.Reviews))
     }
 
 }
 
-//CREATE REVIEW
+//CREATE REVIEW spotId, reviewData
 export const createReviewThunk = (reviewData) => async dispatch => {
-    console.log('the reviewData', reviewData)
-    console.log('the id review', reviewData.spotId)
+    //console.log('the reviewData', reviewData)
+    //console.log('the id review', reviewData.spotId)
     //console.log('the REVIEW in THUNK', Review.review)
     const response = await csrfFetch(`/api/spots/${reviewData.spotId}/reviews`, {
         method: 'POST',
-        headers:  { 'Content-type': "application/json"},
+        headers:  { 'Content-Type': "application/json"},
         body: JSON.stringify(reviewData)
     })
-    console.log('the response', response)
+    //console.log('the response', response)
     if (response.ok) {
         const data = await response.json();
-        console.log('the data REVIEW ----', data)
+        //console.log('the data REVIEW ----', data)
         dispatch(addOneReview(data))
+        return data;
     }
 }
 
 
+export const deleteReviewThunk = (id) => async dispatch => {
+    const response = await csrfFetch(`/api/reviews/${id}`, {
+        method: 'DELETE'
+    });
+    console.log('delete response', response)
+    if (response.ok) {
+        dispatch(deleteOneReview(id))
+    }
+}
 
 const initialState = {}
 
@@ -131,6 +148,13 @@ const reviewReducer = (state = initialState, action) => {
                     ...action.payload
                 }
             }
+
+            case DELETE_REVIEW:
+                const newDeleteState = { ...state };
+
+                delete newDeleteState[action.review]
+                return newDeleteState;
+
 
         default:
             return state;

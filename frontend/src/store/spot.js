@@ -40,9 +40,9 @@ const addOneSpot = payload => ({
     payload
 });
 
-const deleteOneSpot = payload => ({
+const deleteOneSpot = id => ({
     type: DELETE_SPOT,
-    payload
+    id
 })
 
 /*********************************************************** */
@@ -118,10 +118,12 @@ export const editSpotThunk = (id, payload) => async dispatch => {
 }
 
 export const deleteSpotThunk = (id) => async dispatch => {
-    const response = await csrfFetch(`/api/spots/${id}`, {
-        method: 'DELETE'
-    });
 
+    const response = await csrfFetch(`/api/spots/${id}`, {
+        method: 'DELETE',
+        headers: { "Content-Type": "application/json" }
+    });
+    console.log('response thunk', response)
     if (response.ok) {
         dispatch(deleteOneSpot(id))
     }
@@ -165,6 +167,11 @@ const spotReducer = (state = initialState, action) => {
                 oneSpot
             }
 
+        //    newState = {...state};
+        //    newState[action.payload.id] = action.payload
+        //    return newState;
+
+
         // state.oneSpot = action.payload;
         // return state;
 
@@ -184,7 +191,7 @@ const spotReducer = (state = initialState, action) => {
             // console.log('the arr---', arr)
             action.payloadSpot.forEach(spot => {
                 newState[spot.id] = spot
-                console.log('the spot----', spot.id)
+                //console.log('the spot----', spot.id)
             });
             //console.log('current spot reducer', newState)
 
@@ -207,9 +214,9 @@ const spotReducer = (state = initialState, action) => {
             }
 
         case DELETE_SPOT:
-            const newDeleteState = { ...state };
-
-            delete newDeleteState[action.payload]
+            const newDeleteState = {...state};
+            //console.log('the delete spot', action.id) //ID
+            delete newDeleteState[action.id]
             return newDeleteState;
 
         default:

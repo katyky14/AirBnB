@@ -320,7 +320,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
             "statusCode": 404
         })
     };
-   // const { user} = req
+    // const { user} = req
     const reviewSpot = await Review.findAll({
         where: {
             spotId: spotId,
@@ -342,6 +342,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
             review: review,
             stars: stars,
         });
+        console.log('in the backend', newReview)
         res.json(newReview);
     // }
 });
@@ -395,6 +396,7 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
     const { user } = req;
     const deletedItem = await Spot.findByPk(spotId);
 
+    console.log('in the backend', deletedItem)
     if (!deletedItem) {
         res.status(404)
         res.json({

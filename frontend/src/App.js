@@ -12,6 +12,10 @@ import SpotByDetail from "./components/Spots/GetSpotDetails";
 import CreateSpotForm from "./components/Spots/CreateSpotForm";
 import EditSpotForm from "./components/Spots/EditSpot";
 import CreateReviewForm from "./components/Reviews/CreateReviews";
+import ReviewCurrentUser from "./components/Reviews/GetReviewUser";
+
+
+
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +29,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path='/reviews'>
+            <ReviewCurrentUser />
+          </Route>
           <Route path='/spots/:spotId/reviews'>
             <CreateReviewForm />
           </Route>
