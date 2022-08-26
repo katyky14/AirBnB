@@ -31,21 +31,25 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
-      {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <div>
-              <button>
-                <NavLink to={`/reviews`}>
-                  My Reviews
-                </NavLink>
-              </button>
-            </div> </li>
+      <div className="navStyle">
+        <div>
+          <NavLink to='/spots/new'>Become a host</NavLink>
+        </div>
+        <button onClick={openMenu}>
+          <i className="fas fa-user-circle" />
+        </button>
+        {showMenu && (
+          <ul className="profile-dropdown">
+            <li>{user.username}</li>
+            <li>{user.email}</li>
+            <li>
+              <div>
+                <button>
+                  <NavLink to={`/reviews`}>
+                    My Reviews
+                  </NavLink>
+                </button>
+              </div> </li>
             <li>
               <div>
                 <button>
@@ -56,11 +60,13 @@ function ProfileButton({ user }) {
               </div>
             </li>
             <li>
-          <button onClick={logout}>Log Out</button>
-        </li>
-        </ul>
-  )
-}
+              <button onClick={logout}>Log Out</button>
+            </li>
+          </ul>
+        )
+        }
+      </div>
+
     </>
   );
 }

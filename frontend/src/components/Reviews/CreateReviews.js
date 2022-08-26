@@ -1,4 +1,5 @@
 
+import { create } from "lodash";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, useParams } from "react-router-dom";
@@ -15,17 +16,18 @@ function CreateReviewForm() {
     const [review, setReview] = useState("");
     const [stars, setStars] = useState("");
     const [errors, setErrors] = useState([]);
+    const [hasSubmitted, setHasSubmitted] = useState(false);
 
-   //const reviewObj = useSelector(state => state.review);
-    //console.log('REVIEW obj', reviewObj);
+
+   const reviewObj = useSelector(state => state.review);
+    console.log('REVIEW obj', reviewObj);
 
     const userReview = useSelector(state => state.session.user)
     //console.log('the user id', userReview)
 
 
-
-    // const reviewArr = Object.values(reviewObj);
-    // console.log('the review array', reviewArr)
+    const reviewArr = Object.values(reviewObj);
+    console.log('the review array', reviewArr)
     //console.log('the map function', reviewArr.map(ele => ele.spotId)) [3]
     // let spotId = reviewArr.map(ele => ele.spotId)[0]
     // console.log('the spotId', spotId)
@@ -33,7 +35,9 @@ function CreateReviewForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setHasSubmitted(true);
 
+        
         const reviewInformation = {
             userId: userReview.id,
             spotId,
@@ -41,9 +45,11 @@ function CreateReviewForm() {
             stars
         }
 
-        console.log('the spot id', spotId)
+
+        //console.log('the spot id', spotId)
         let createReview = await dispatch(createReviewThunk(reviewInformation))
-        console.log('the review info', createReview)
+        //console.log('the review info', createReview)
+
         if (createReview) {
             history.push(`/spots/${spotId}`)
         }
@@ -54,18 +60,28 @@ function CreateReviewForm() {
         const valErrors = [];
         if (!review.length) valErrors.push("Review text is required");
         if(stars > 5 || stars < 1) valErrors.push("Stars must be an integer from 1 to 5")
+
         setErrors(valErrors)
     }, [review, stars])
 
-    return (
-        <div>
+
+    const filter = reviewArr.filter(review => review.userId === userReview.id);
+
+    if(!filter.length) {
+
+
+        return (
+            <div>
             <h1>REVIEWS FORM</h1>
             <form onSubmit={handleSubmit}>
-                <ul>
+                {hasSubmitted && errors.length > 0 (
+
+                    <ul>
                     {errors.map((error) =>
                         <li key={error}>{error}</li>
-                    )}
+                        )}
                 </ul>
+                    )}
                 <div>
 
                     <label>
@@ -75,7 +91,7 @@ function CreateReviewForm() {
                             value={review}
                             onChange={(e) => setReview(e.target.value)}
                             // required
-                        />
+                            />
                     </label>
                 </div>
                 <div>
@@ -94,5 +110,10 @@ function CreateReviewForm() {
     )
 
 }
+    return "User already has a review for this spot"
+}
+
+
+
 
 export default CreateReviewForm;
