@@ -178,7 +178,7 @@ function EditSpotForm() {
           required
         />
       </label>
-      <button type="submit" disabled={validationErrors.length > 0}>Create New Spot</button>
+      <button type="submit" disabled={validationErrors.length > 0}>Edit Spot</button>
     </form>
   );
 }

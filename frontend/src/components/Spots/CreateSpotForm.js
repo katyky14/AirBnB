@@ -148,7 +148,7 @@ function CreateSpotForm() {
           type="text"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          required
+          // required
         />
       </label>
       <label>
@@ -157,7 +157,7 @@ function CreateSpotForm() {
           type="number"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
-          required
+          // required
         />
       </label>
       <label>
@@ -166,10 +166,10 @@ function CreateSpotForm() {
           type="string"
           value={previewImage}
           onChange={(e) => setPreviewImage(e.target.value)}
-          required
+          // required
         />
       </label>
-      <button type="submit" >Create New Spot</button>
+      <button >Create New Spot</button>
     </form>
   );
 }

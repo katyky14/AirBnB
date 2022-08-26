@@ -87,12 +87,13 @@ export const getCurrentSpotThunk = () => async (dispatch) => {
     }
 }
 
-export const spotFormThunk = (payload) => async (dispatch) => {
+export const spotFormThunk = (spotData) => async (dispatch) => {
     const response = await csrfFetch('/api/spots', {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(spotData)
     });
+    //console.log('the response for form spot', response)
     if (response.ok) {
         const data = await response.json();
         //console.log('the response in spot form---', data)
@@ -126,7 +127,7 @@ export const deleteSpotThunk = (id) => async dispatch => {
     console.log('response thunk', response)
     if (response.ok) {
         const data = await response.json();
-        console.log('the data delete', data)
+        //console.log('the data delete', data)
         dispatch(deleteOneSpot(id))
     }
 }
