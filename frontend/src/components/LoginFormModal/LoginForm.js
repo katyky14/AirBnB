@@ -22,7 +22,7 @@ function LoginForm() {
     return dispatch(sessionActions.login({ credential, password })).catch(
       async (res) => {
         const data = await res.json();
-        //console.log('the data error', data)
+        console.log('the data error', data)
         if (data && data.errors)
         if(!user) return alert("Invalid Credentials")
         // if (!user) {
@@ -30,6 +30,7 @@ function LoginForm() {
         //     <div>Invalid Credentials</div>
         //   )
         // }
+       // console.log('data in user', data)
         setErrors(data.errors);
       }
       );
@@ -67,6 +68,3 @@ function LoginForm() {
 }
 
 export default LoginForm;
-
-
-
