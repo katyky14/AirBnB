@@ -41,7 +41,7 @@ module.exports = {
         lat: 37.7645360,
         lng: -122.4730329,
         name: "Condé Nast",
-        description: `We invite you to experience the otherworldly at Sol to Soul, a ten-acre sanctuary in a mystical theater of boulders. Stay up late with the Milky Way. Howl at the moon from atop a boulder. Raise your glass to the sunset and each other from the salt water hot tub. `,
+        description: `We invite you to experience the otherworldly at Sol to Soul, a ten-acre sanctuary in a mystical theater of boulders. Stay up late with the Milky Way. Howl at the moon from atop a boulder. `,
         price: 598,
         previewImage: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1475&q=80"
       },
@@ -67,7 +67,7 @@ module.exports = {
         lat: 37.7645564,
         lng: -122.4731430,
         name: "SKLRP And LKV",
-        description: `After a day of exploring Siesta Key, cook up some delicious local seafood on the BBQ, sit around the dining table with your guests. In addition, Siesta Key offers kayaking, paddleboard, and boat charters. Let Bahama Mama make your vacation dreams come true!`,
+        description: `After a day of exploring Siesta Key, cook up some delicious local seafood on the BBQ, sit around the dining table with your guests. In addition, Siesta Key offers kayaking, paddleboard, and boat charters. Lets make your vacation dreams come true!`,
         price: 199,
         previewImage: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
       }

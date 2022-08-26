@@ -11,7 +11,7 @@ module.exports = {
         spotId: 1
       },
       {
-        review: 'The location of this place was excellent for our needs. A few minutes to walk to the beach across a beautiful park and 10 to 30 minutes to walk to many shops and restaurants',
+        review: 'The location of this place was excellent for our needs. A few minutes to walk to the beach across a beautiful park ',
         stars: 4,
         userId: 1,
         spotId: 3
