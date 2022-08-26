@@ -1,0 +1,12 @@
+
+
+.navStyle {
+    display: flex;
+    justify-content: flex-end;
+    margin: -10px;
+    padding-right: 50px;
+}
+
+.notNavStyle {
+    display: inline-block;
+}
