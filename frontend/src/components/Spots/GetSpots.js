@@ -6,6 +6,7 @@ import { NavLink, useParams } from 'react-router-dom';
 import { getSpotsThunk } from '../../store/spot';
 // import SpotByDetail from './GetSpotDetails';
 
+import '../../spotCss/GetSpot.css';
 
 const GetAllSpots = () => {
 
@@ -25,7 +26,7 @@ const GetAllSpots = () => {
 
     return isLoaded && (
 
-        <section>
+        <section >
             <h1>TESTING IN GET All SPOTS</h1>
             <div>
                 {spotsArr.map(spot => (
@@ -39,7 +40,7 @@ const GetAllSpots = () => {
                     <NavLink key={spot.id} to={`/spots/${spot.id}`} >
                         <ul>
                             <li>
-                                <div><img src={`${spot.previewImage}`}></img></div>
+                                <div ><img src={`${spot.previewImage}`}></img></div>
                                 <div>Spot ID --{spot.id}</div>
                                 <div>{spot.name}</div>
                                 <div>{spot.city}</div>

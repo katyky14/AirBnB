@@ -12,7 +12,7 @@ const ReviewCurrentUser = () => {
 
 
     const reviewObj = useSelector(state => state.review)
-    console.log('the reviewObj', reviewObj)
+    //console.log('the reviewObj', reviewObj)
     const reviewArr = Object.values(reviewObj);
 
     useEffect(() => {
@@ -23,7 +23,7 @@ const ReviewCurrentUser = () => {
     const userReview = useSelector(state => state.session.user);
     //console.log('the user review', userReview)
     const filter = reviewArr.filter(review => review?.userId === userReview?.id);
-    console.log('the filter', filter)
+    //console.log('the filter', filter)
     // if (!filter.length) {
     //     return alert('Must be the user or be logged in to delete spot')
     // }

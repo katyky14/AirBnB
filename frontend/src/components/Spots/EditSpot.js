@@ -12,7 +12,7 @@ function EditSpotForm() {
   const history = useHistory()
   const { spotId } = useParams();
   const dispatch = useDispatch();
-  console.log('the spot id', spotId);
+  //console.log('the spot id', spotId);
   const spotsObj = useSelector(state => state.spot)
   //console.log('the spot obj in EDIT---', spotsObj)
   const spotsArr = Object.values(spotsObj);
@@ -73,7 +73,7 @@ function EditSpotForm() {
     //console.log('the info', spotFormInformation)
   };
 
-  console.log('the information in create spot')
+  //console.log('the information in create spot')
   useEffect(() => {
     const valErrors = [];
 

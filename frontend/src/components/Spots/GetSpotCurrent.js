@@ -80,8 +80,6 @@ const GetSpotByCurrentUser = () => {
             ))}
 
 
-
-
         </div>
     )
 }

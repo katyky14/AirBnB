@@ -23,10 +23,14 @@ function CreateSpotForm() {
   const [price, setPrice] = useState("");
   const [previewImage, setPreviewImage] = useState("");
   const [validationErrors, setValidationErrors] = useState([]);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setHasSubmitted(true);
+
+    if (validationErrors.length) return alert(`Cannot Submit, please fill the required fields`)
 
     const spotFormInformation =  {
         address,
@@ -56,8 +60,8 @@ function CreateSpotForm() {
     if (!city.length) valErrors.push("City is required");
     if (!state.length) valErrors.push("State is required");
 
-    if (!lat.length) valErrors.push("Latitude is not valid"); //-90 to 90
-    if (!lng.length) valErrors.push("Longitude is not valid"); //-180 to 180
+    if (lat > 90 || lat < -90) valErrors.push("Latitude must be between -90 and 90"); //-90 to 90
+    if (!lng > 180 || lng < -180) valErrors.push("Longitude must be between -180 and 180"); //-180 to 180
 
     if (name.length > 50) valErrors.push("Name must be less than 50 characters");
     if (!price) valErrors.push("Price per day is required")
@@ -69,9 +73,12 @@ function CreateSpotForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <ul>
+      {hasSubmitted && validationErrors.length > 0 && (
+
+        <ul>
         {validationErrors.map((error) => <li key={error}>{error}</li>)}
       </ul>
+        )}
       <label>
         Address
         <input
@@ -162,7 +169,7 @@ function CreateSpotForm() {
           required
         />
       </label>
-      <button type="submit" disabled={validationErrors.length > 0}>Create New Spot</button>
+      <button type="submit" >Create New Spot</button>
     </form>
   );
 }

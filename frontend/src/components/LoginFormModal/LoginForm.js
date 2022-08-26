@@ -22,7 +22,9 @@ function LoginForm() {
     return dispatch(sessionActions.login({ credential, password })).catch(
       async (res) => {
         const data = await res.json();
-        console.log('the data error', data)
+        const dataArr = data.errors;
+        const resArr = dataArr.map(ele => ele.message)
+        console.log('the data error', resArr)
         if (data && data.errors)
         if(!user) return alert("Invalid Credentials")
         // if (!user) {
@@ -31,6 +33,7 @@ function LoginForm() {
         //   )
         // }
        // console.log('data in user', data)
+       //if(!user) return (resArr[0])
         setErrors(data.errors);
       }
       );

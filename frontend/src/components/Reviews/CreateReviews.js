@@ -20,14 +20,14 @@ function CreateReviewForm() {
 
 
    const reviewObj = useSelector(state => state.review);
-    console.log('REVIEW obj', reviewObj);
+   //console.log('REVIEW obj', reviewObj);
 
     const userReview = useSelector(state => state.session.user)
     //console.log('the user id', userReview)
 
 
     const reviewArr = Object.values(reviewObj);
-    console.log('the review array', reviewArr)
+    //console.log('the review array', reviewArr)
     //console.log('the map function', reviewArr.map(ele => ele.spotId)) [3]
     // let spotId = reviewArr.map(ele => ele.spotId)[0]
     // console.log('the spotId', spotId)
@@ -37,7 +37,8 @@ function CreateReviewForm() {
         e.preventDefault();
         setHasSubmitted(true);
 
-        
+        //if(errors.length) return alert(`Cannot Submit, Please fill out the required fields`)
+
         const reviewInformation = {
             userId: userReview.id,
             spotId,
@@ -69,12 +70,11 @@ function CreateReviewForm() {
 
     if(!filter.length) {
 
-
         return (
             <div>
             <h1>REVIEWS FORM</h1>
             <form onSubmit={handleSubmit}>
-                {hasSubmitted && errors.length > 0 (
+                {hasSubmitted && errors.length > 0  && (
 
                     <ul>
                     {errors.map((error) =>
