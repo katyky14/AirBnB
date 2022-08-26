@@ -13,12 +13,12 @@ function LoginForm() {
   useEffect(() => {
     const valErrors = [];
 
-    if (!credential.length) valErrors.push("Invalid Credentials");
-    if(!password.length) valErrors.push("Invalid Credentials")
+    // if (!credential.length) valErrors.push("Invalid Credentials");
+    // if(!password.length) valErrors.push("Invalid Credentials")
     if (!user) valErrors.push("Invalid Credentials")
 
     setErrors(valErrors);
-  })
+  },[credential, password])
 
 
   const handleSubmit = (e) => {
@@ -34,8 +34,8 @@ function LoginForm() {
       async (res) => {
         const data = await res.json();
         const dataArr = data.errors;
-        const resArr = dataArr.map(ele => ele.message)
-        console.log('the data error', resArr)
+        //const resArr = dataArr.map(ele => ele.message)
+        //console.log('the data error', resArr)
         if (data && data.errors)
         if(!user) return alert("Invalid Credentials")
         // if (!user) {
@@ -56,7 +56,7 @@ function LoginForm() {
       <ul>
         {errors.map((error, idx) => (
 
-          <li key={idx}>{error.message}</li>
+          <li key={idx}>{error}</li>
 
         ))}
       </ul>

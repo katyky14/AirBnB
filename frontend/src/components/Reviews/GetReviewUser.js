@@ -12,7 +12,7 @@ const ReviewCurrentUser = () => {
 
 
     const reviewObj = useSelector(state => state.review)
-    //console.log('the reviewObj', reviewObj)
+    console.log('the reviewObj', reviewObj)
     const reviewArr = Object.values(reviewObj);
 
     useEffect(() => {
@@ -29,8 +29,12 @@ const ReviewCurrentUser = () => {
     // }
 
 
+    // if (!filter.length) {
+    //     alert("please log in")
+    //     history.push('/')
+    // }
 
-    return (
+    return filter.length ? (
         <div>
             <h1>Review current Testing</h1>
             {filter.map(review => (
@@ -40,7 +44,7 @@ const ReviewCurrentUser = () => {
                     <div>Stars {review.stars} </div>
                     <div>
                     <button onClick={async () =>{ await dispatch(deleteReviewThunk(review.id))
-                    history.push('/reviews')
+                    // history.push('/reviews')
                     }}>
                          delete review
                          </button>
@@ -49,7 +53,10 @@ const ReviewCurrentUser = () => {
                 </div>
             ))}
         </div>
-    )
+    ):
+    
+    alert("please log in")
+    history.push('/')
 
 
 

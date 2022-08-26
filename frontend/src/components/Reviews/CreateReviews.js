@@ -18,10 +18,15 @@ function CreateReviewForm() {
     const [errors, setErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
+    const spot = useSelector(state => state.spot)
+    console.log('the spot in review', spot)
+    const spotArr = Object.values(spot)
+    console.log('the arr in Review', spotArr)
+
+
 
    const reviewObj = useSelector(state => state.review);
    //console.log('REVIEW obj', reviewObj);
-
     const userReview = useSelector(state => state.session.user)
     //console.log('the user id', userReview)
 

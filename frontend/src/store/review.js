@@ -72,8 +72,8 @@ export const getUserReviewThunk = () => async dispatch => {
 
 //CREATE REVIEW spotId, reviewData
 export const createReviewThunk = (reviewData) => async dispatch => {
-    //console.log('the reviewData', reviewData)
-    //console.log('the id review', reviewData.spotId)
+    console.log('the reviewData', reviewData)
+    console.log('the id review', reviewData.spotId)
     //console.log('the REVIEW in THUNK', Review.review)
     const response = await csrfFetch(`/api/spots/${reviewData.spotId}/reviews`, {
         method: 'POST',
@@ -83,7 +83,7 @@ export const createReviewThunk = (reviewData) => async dispatch => {
     //console.log('the response', response)
     if (response.ok) {
         const data = await response.json();
-        //console.log('the data REVIEW ----', data)
+        console.log('the data REVIEW ----', data)
         dispatch(addOneReview(data))
         return data;
     }
@@ -94,7 +94,7 @@ export const deleteReviewThunk = (id) => async dispatch => {
     const response = await csrfFetch(`/api/reviews/${id}`, {
         method: 'DELETE'
     });
-    console.log('delete response', response)
+    //console.log('delete response', response)
     if (response.ok) {
         dispatch(deleteOneReview(id))
     }
@@ -135,19 +135,19 @@ const reviewReducer = (state = initialState, action) => {
             // })
             // return newState;
 
-            if (!state[action.review.id]) {
+            // if (!state[action.review.id]) {
                 const newStateForm = { ...state};
                 newStateForm[action.review.id] = action.review
                 return newStateForm
-            }
+            // }
 
-            return {
-                ...state,
-                [action.review.id]: {
-                    ...state[action.review.id],
-                    ...action.payload
-                }
-            }
+            // return {
+            //     ...state,
+            //     [action.review.id]: {
+            //         ...state[action.review.id],
+            //         ...action.payload
+            //     }
+            // }
 
             case DELETE_REVIEW:
                 const newDeleteState = { ...state };

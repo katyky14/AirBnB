@@ -1,0 +1,47 @@
+
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.div-container {
+    display:block;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.label-style {
+    display: flex;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    min-width: 56px;
+    width: 100%;
+    padding: 26px 36px 10px 12px;
+    margin: 0px;
+    flex-direction: column;
+}
+
+.input {
+    display: block;
+    width: 800px;
+    height: 30px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height:  1.43;
+    border-radius: 8px;
+}
+
+
+.button {
+    display: block;
+    width: 96%;
+    min-width: 200px;
+    height: 40px;
+    background-color: rgb(227, 28, 95);
+    margin: auto;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+}

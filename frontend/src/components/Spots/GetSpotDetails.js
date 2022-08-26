@@ -5,6 +5,7 @@ import { Modal } from '../../context/Modal';
 
 import { NavLink } from 'react-router-dom';
 import { getOneSpotDetails } from '../../store/spot';
+import GetReviews from '../Reviews/GetSpotReviews';
 
 //import { deleteSpotThunk } from '../../store/spot';
 
@@ -17,29 +18,38 @@ const SpotByDetail = () => {
 
     //const history = useHistory();
     const { spotId } = useParams();
-    const spotsObj = useSelector(state => state.spot['oneSpot']);
-    //const spotsArr = Object.values(spotsObj)
+    const spotsObj = useSelector(state => state.spot);
+    //console.log('the spot obj', spotsObj)
+    const spotsArr = Object.values(spotsObj)
+    //console.log('the spot arr', spotsArr)
+    // const arr = spotsArr.map(spot => spot.id)
+    // const filter = spotsArr.filter(spot => console.log(spot))
+    // console.log('the filter', filter)
+    // console.log('the arr', arr)
+
+
+
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     //console.log('the spotsObj in Spot Details--', spotsObj)
     //console.log('images detail ---', spotsObj.Images[0].url)
 
-    const reviewObj = useSelector(state => state.review)
-    //console.log('the review in SPOT DETAIL', reviewObj)
-    const reviewArr = Object.values(reviewObj);
+    const reviewDetails = useSelector(state => state.review)
+    //console.log('the review in SPOT DETAIL', reviewDetails)
+    // const reviewArr = Object.values(reviewObj);
     //console.log('the ARRay in SPOT', reviewArr)
 
 
     useEffect(() => {
         dispatch(getOneSpotDetails(spotId)).then(setIsLoaded(true))
-        dispatch(getSpotReviewThunk(spotId))
-    }, [dispatch, spotId])
+        //dispatch(getSpotReviewThunk(spotId))
+    }, [dispatch, spotId, reviewDetails])
 
-    if (spotsObj != null && spotsObj.Images != null && isLoaded) {
-        return (
-            <main>
-                <h1>TESTING SPOT BY DETAIL</h1>
-                <div>
+    // if (spotsArr != null && spotsObj.Images != null && isLoaded) {
+    return spotsArr.length && isLoaded && (
+        <main>
+            <h1>TESTING SPOT BY DETAIL</h1>
+            {/* <div>
                     <div><img src={spotsObj.previewImage} /></div>
                     <div>{spotsObj.id}</div>
                     <div>avgRating {spotsObj.avgRating ? Number.parseFloat(spotsObj.avgRating).toFixed(2) : 0}</div>
@@ -51,7 +61,7 @@ const SpotByDetail = () => {
                 </div>
                 <div>
                     <button><NavLink to={`/spots/${spotsObj.id}/reviews`}>Add a Review</NavLink></button>
-                    {/* <NavLink to={`/spots/${spot.id}`}></NavLink> */}
+
                     {reviewArr.map(ele => (
                         <div key={ele.id}>
 
@@ -60,26 +70,33 @@ const SpotByDetail = () => {
                             </ul>
                         </div>
                     ))}
-                </div>
+                </div> */}
+
+            <div>
+                {spotsArr.map(spot => (
+                    <div key={spot.id}>
+                        <div><img src={spot.previewImage} alt="home" /></div>
+                        <div> {spot.id}</div>
+                        <div> {spot.address}</div>
+                         <div> <GetReviews /> </div>
+                        <button><NavLink to={`/spots/${spot.id}/reviews`}>Add a Review</NavLink></button>
+                    </div>
+                ))}
+            </div>
 
 
 
-                {/* <div>
-                <button ><NavLink to={`/spots/${spotId}/edit`}>edit spot</NavLink></button>
-            </div> */}
-                {/* <div>
-                <button onClick={async () => {
-                    await dispatch(deleteSpotThunk(spotId))
-                    history.push('/spots')
-                }} > delete spot</button>
-            </div> */}
 
-            </main>
-        )
-    }
 
-    return "Loading... 😵‍💫";
+
+
+
+        </main>
+    )
 }
+
+//     return "Loading... 😵‍💫";
+// }
 
 
 export default SpotByDetail;

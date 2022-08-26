@@ -35,15 +35,30 @@ const getSpotOfCurrentUser = payloadSpot => {
     }
 }
 
-const addOneSpot = payload => ({
-    type: ADD_ONE_SPOT,
-    payload
-});
+// const addOneSpot = payload => ({
+//     type: ADD_ONE_SPOT,
+//     payload
+// });
+const addOneSpot = payload => {
+    return {
+        type: ADD_ONE_SPOT,
+        payload
+    }
+}
 
-const deleteOneSpot = id => ({
-    type: DELETE_SPOT,
-    id
-})
+// const deleteOneSpot = id => ({
+//     type: DELETE_SPOT,
+//     id
+// })
+
+const deleteOneSpot = id => {
+    return {
+        type: DELETE_SPOT,
+        id
+    }
+}
+
+
 
 /*********************************************************** */
 //thunk actions creator
@@ -79,7 +94,7 @@ export const getOneSpotDetails = (spotId) => async dispatch => {
 
 export const getCurrentSpotThunk = () => async (dispatch) => {
     const response = await csrfFetch(`/api/spots/current`);
-
+    console.log('the response in current', response)
     if (response.ok) {
         const data = await response.json();
         //console.log('the data in spot  current ', data.Spots)
@@ -124,7 +139,7 @@ export const deleteSpotThunk = (id) => async dispatch => {
         method: 'DELETE',
         headers: { "Content-Type": "application/json" }
     });
-    console.log('response thunk', response)
+    //console.log('response thunk', response)
     if (response.ok) {
         const data = await response.json();
         //console.log('the data delete', data)
@@ -160,19 +175,20 @@ const spotReducer = (state = initialState, action) => {
             newState = { ...state, allSpots }
             //console.log('the new state', newState.allSpots)
             //console.log('the new state', newState.allSpots) // empty obj
-            return newState.allSpots
+            return allSpots //or return newState.allSpots
 
         case GET_SPOTS_DETAIL:
-            const oneSpot = { ...action.payload };
+            // const oneSpot = { ...action.payload };
 
-            return {
-                ...state,//put spreaded state first or else overwrite
-                oneSpot
-            }
+            // return {
+            //     ...state,//put spreaded state first or else overwrite
+            //     ...oneSpot
+            // }
 
-        //    newState = {...state};
-        //    newState[action.payload.id] = action.payload
-        //    return newState;
+           newState = {};
+           //console.log('new state', action.payload)
+           newState[action.payload.id] = action.payload
+           return newState;
 
 
         // state.oneSpot = action.payload;

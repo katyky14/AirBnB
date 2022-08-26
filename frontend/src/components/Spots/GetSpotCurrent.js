@@ -9,7 +9,7 @@ import {getUserReviewThunk} from '../../store/review'
 
 const GetSpotByCurrentUser = () => {
 
-
+    const history = useHistory();
     const dispatch = useDispatch();
     //const history = useHistory()
     const spotsObj = useSelector(state => state.spot) // access store
@@ -37,13 +37,16 @@ const GetSpotByCurrentUser = () => {
     const userSpot = useSelector(state => state.session.user)
 
     const filter = spotsArr.filter(spot => spot?.ownerId === userSpot?.id)
-    //console.log('the filter', filter)
+    console.log('the filter', filter)
     // if (!filter.length) {
     //     return alert('Must be the user or be logged in to delete spot')
     // }
 
 
-    if (!spotsArr.length) return null
+    if (!filter.length) {
+        alert("please log in")
+        history.push('/signup')
+    }
 
     return isLoaded && (
         <div>
@@ -54,7 +57,7 @@ const GetSpotByCurrentUser = () => {
             <div>{obj.price}</div> */}
             {filter.map(spot => (
                 <div key={spot.id}>
-
+                    <div><img src={spot.previewImage} alt="home"/></div>
                     <div>Spot ID --- {spot.id}</div>
                     <div>{spot.name}</div>
                     <div>{spot.city}</div>
@@ -78,8 +81,6 @@ const GetSpotByCurrentUser = () => {
                 </div>
 
             ))}
-
-
         </div>
     )
 }

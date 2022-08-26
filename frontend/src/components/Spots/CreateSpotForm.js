@@ -45,7 +45,7 @@ function CreateSpotForm() {
     }
 
     let createSpot =  await dispatch(spotFormThunk(spotFormInformation))
-    //console.log('the create spot form handle submit', createSpot)
+    console.log('the create spot form handle submit', createSpot.length)
     if (createSpot) {
         history.push(`/spots/${createSpot.id}`)
     }

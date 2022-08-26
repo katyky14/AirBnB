@@ -15,7 +15,7 @@ const GetAllSpots = () => {
     const spotsObj = useSelector(state => state.spot)
     //console.log('get all spots', spotsObj)
     const spotsArr = Object.values(spotsObj)
-
+    //console.log('spot', spotsArr)
     const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
@@ -37,10 +37,14 @@ const GetAllSpots = () => {
                     //     <div>${spot.price} night</div>
                     //     <div>Star {spot.avgRating}</div>
                     // </li>
-                    <NavLink key={spot.id} to={`/spots/${spot.id}`} >
+                    <div key={spot.id}>
+                        <NavLink to={`/spots/${spot.id}`} >
+                        {/* <div>{console.log('inside spot arr', spot.id)}</div> */}
+
+                            <img src={`${spot.previewImage}`}></img>
+                        </NavLink>
                         <ul>
                             <li>
-                                <div ><img src={`${spot.previewImage}`}></img></div>
                                 <div>Spot ID --{spot.id}</div>
                                 <div>{spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0}</div>
                                 <div>{spot.name}</div>
@@ -50,7 +54,7 @@ const GetAllSpots = () => {
                                 {/* <div>{spot.avgRating ? Number.parseFloat(avgRating).toFixed(2)}</div> */}
                             </li>
                         </ul>
-                    </NavLink>
+                    </div>
                 ))}
             </div>
         </section>
