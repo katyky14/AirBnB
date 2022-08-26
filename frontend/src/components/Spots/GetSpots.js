@@ -42,6 +42,7 @@ const GetAllSpots = () => {
                             <li>
                                 <div ><img src={`${spot.previewImage}`}></img></div>
                                 <div>Spot ID --{spot.id}</div>
+                                <div>{spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0}</div>
                                 <div>{spot.name}</div>
                                 <div>{spot.city}</div>
                                 <div>{spot.state}</div>
