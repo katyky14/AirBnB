@@ -42,7 +42,7 @@ const SpotByDetail = () => {
                 <div>
                     <div><img src={spotsObj.previewImage} /></div>
                     <div>{spotsObj.id}</div>
-                    <div>avgRating {spotsObj.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0}</div>
+                    <div>avgRating {spotsObj.avgRating ? Number.parseFloat(spotsObj.avgRating).toFixed(2) : 0}</div>
                     <div>{spotsObj.address}</div>
                     <div>{spotsObj.city}</div>
                     <div>{spotsObj.state}</div>
