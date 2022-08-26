@@ -10,6 +10,17 @@ function LoginForm() {
 
   const user = useSelector(state => state.session.user);
 
+  useEffect(() => {
+    const valErrors = [];
+
+    if (!credential.length) valErrors.push("Invalid Credentials");
+    if(!password.length) valErrors.push("Invalid Credentials")
+    if (!user) valErrors.push("Invalid Credentials")
+
+    setErrors(valErrors);
+  })
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // const valErrors= [];
@@ -41,9 +52,11 @@ function LoginForm() {
     //console.log('the errors', errors)
   return (
     <form onSubmit={handleSubmit}>
+      <div>Welcome</div>
       <ul>
         {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
+
+          <li key={idx}>{error.message}</li>
 
         ))}
       </ul>

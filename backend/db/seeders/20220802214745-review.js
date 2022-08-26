@@ -17,8 +17,8 @@ module.exports = {
         spotId: 3
       },
       {
-        review: 'The floors are disgusting, there are bugs everywhere, no kitchen space, the bathroom is not clean, and there is a flimsy lock on the door. ',
-        stars: 1,
+        review: 'Beautiful well-kept home and fabulous pool! Walking distance to the beach, tons of shops, restaurants and grocery store. Highly recommend!',
+        stars: 5,
         userId: 3,
         spotId: 4
       },
@@ -29,7 +29,7 @@ module.exports = {
         spotId: 2
       },
       {
-        review: 'Perfect place for that weekend we had planned.',
+        review: 'Perfect place for that weekend we had planned.This home is beautiful! We loved everything from the location to the decor. Would highly recommend!!',
         stars: 5,
         userId: 5,
         spotId: 5

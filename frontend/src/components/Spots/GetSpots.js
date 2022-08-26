@@ -45,7 +45,7 @@ const GetAllSpots = () => {
                                 <div>{spot.name}</div>
                                 <div>{spot.city}</div>
                                 <div>{spot.state}</div>
-                                <div>${spot.price}</div>
+                                <div>${spot.price} night</div>
                                 {/* <div>{spot.avgRating ? Number.parseFloat(avgRating).toFixed(2)}</div> */}
                             </li>
                         </ul>
