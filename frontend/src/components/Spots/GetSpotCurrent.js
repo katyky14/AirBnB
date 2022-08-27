@@ -5,7 +5,10 @@ import { NavLink, Route, useHistory, useParams } from 'react-router-dom';
 import { getCurrentSpotThunk } from '../../store/spot';
 import { deleteSpotThunk } from '../../store/spot';
 
-import {getUserReviewThunk} from '../../store/review'
+import { getUserReviewThunk } from '../../store/review'
+
+import '../spotCss/GetCurrentSpot.css'
+
 
 const GetSpotByCurrentUser = () => {
 
@@ -37,7 +40,7 @@ const GetSpotByCurrentUser = () => {
     const userSpot = useSelector(state => state.session.user)
 
     const filter = spotsArr.filter(spot => spot?.ownerId === userSpot?.id)
-    console.log('the filter', filter)
+    //console.log('the filter', filter)
     // if (!filter.length) {
     //     return alert('Must be the user or be logged in to delete spot')
     // }
@@ -50,37 +53,50 @@ const GetSpotByCurrentUser = () => {
 
     return isLoaded && (
         <div>
-            <div>Testing Get Spots By current user </div>
+            {/* <div>Testing Get Spots By current user </div> */}
             {/* <div>{obj.name}</div>
             <div>{obj.city}</div>
             <div>{obj.state}</div>
             <div>{obj.price}</div> */}
-            {filter.map(spot => (
-                <div key={spot.id}>
-                    <div><img src={spot.previewImage} alt="home"/></div>
-                    <div>Spot ID --- {spot.id}</div>
-                    <div>{spot.name}</div>
-                    <div>{spot.city}</div>
-                    <div>{spot.description}</div>
-                    <div>{spot.price}</div>
-                    <div>
-                        <button ><NavLink to={`/spots/${spot.id}/edit`}>edit spot</NavLink></button>
-                    </div>
 
-                    <div>
-                        <button onClick={() => {
-                            dispatch(deleteSpotThunk(spot.id))
-                        }} > delete spot</button>
-                    </div>
+            <h1 > Manage My Spots</h1>
 
-                    {/* <div>
+            <div className="main-div">
+
+
+                {filter.map(spot => (
+                    <div key={spot.id}>
+                        {/* <div>Spot ID --- {spot.id}</div> */}
+
+                        <div><img src={spot.previewImage} alt="home" className="img-div" /></div>
+
+                        <div className="info-div">
+                            <div className="address-div">{spot.address}</div>
+                            <div>{spot.city}, {spot.state}</div>
+                        </div>
+
+                        <div className="price-div">${spot.price} night</div>
+
+                        <div >
+                            <button className="one-button"><NavLink activeClassName='active' to={`/spots/${spot.id}/edit`}
+
+
+                            > edit spot</NavLink></button>
+
+                            <button onClick={() => {
+                                dispatch(deleteSpotThunk(spot.id))
+                            }} className="one-button" > delete spot</button>
+
+                        </div>
+
+                        {/* <div>
                     {reviewArr.map(ele => (
                         <div key={ele.id}></div>
                         ))}history.push('/spots/current')
                     </div> */}
-                </div>
-
-            ))}
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }

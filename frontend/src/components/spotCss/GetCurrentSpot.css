@@ -1,0 +1,65 @@
+
+
+/* main div container for whole page */
+
+.main-div {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* class for image */
+.img-div {
+    width: 500px;
+    height: 400px;
+}
+
+h1 {
+    margin: 10px;
+    text-align: center;
+    font-size: 50px;
+    color: rgb(148, 133, 133);
+    border-top: 1px solid rgb(124, 118, 118);
+    border-top-width: medium;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+/* div for details address, city,state */
+.info-div {
+    font-family: Arial, Helvetica, sans-serif;
+    padding-bottom: 5px;
+}
+
+
+/* div for adress -bold? */
+.address-div {
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* class for price */
+.price-div {
+    padding-bottom: 10px;
+}
+
+
+/* class for two buttons */
+
+
+
+
+/* class for one button */
+.one-button {
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    background: rgb(232, 191, 199);
+    padding: 5px;
+    margin: 0px 0px 15px 3px;
+    width: 200px;
+}
+
+.active {
+    text-decoration: none;
+
+}

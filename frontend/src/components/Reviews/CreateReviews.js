@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, useParams } from "react-router-dom";
 
 import { createReviewThunk } from '../../store/review';
-
+import '../ReviewCss/CreateReview.css'
 
 function CreateReviewForm() {
 
@@ -19,14 +19,14 @@ function CreateReviewForm() {
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
     const spot = useSelector(state => state.spot)
-    console.log('the spot in review', spot)
+    //console.log('the spot in review', spot)
     const spotArr = Object.values(spot)
-    console.log('the arr in Review', spotArr)
+    //console.log('the arr in Review', spotArr)
 
 
 
-   const reviewObj = useSelector(state => state.review);
-   //console.log('REVIEW obj', reviewObj);
+    const reviewObj = useSelector(state => state.review);
+    //console.log('REVIEW obj', reviewObj);
     const userReview = useSelector(state => state.session.user)
     //console.log('the user id', userReview)
 
@@ -65,7 +65,7 @@ function CreateReviewForm() {
     useEffect(() => {
         const valErrors = [];
         if (!review.length) valErrors.push("Review text is required");
-        if(stars > 5 || stars < 1) valErrors.push("Stars must be an integer from 1 to 5")
+        if (stars > 5 || stars < 1) valErrors.push("Stars must be an integer from 1 to 5")
 
         setErrors(valErrors)
     }, [review, stars])
@@ -73,48 +73,53 @@ function CreateReviewForm() {
 
     const filter = reviewArr.filter(review => review.userId === userReview.id);
 
-    if(!filter.length) {
+    if (!filter.length) {
 
         return (
-            <div>
-            <h1>REVIEWS FORM</h1>
-            <form onSubmit={handleSubmit}>
-                {hasSubmitted && errors.length > 0  && (
+            <div className="main-container-div">
+                <h1>Thank You For Your Review </h1>
+                <div className="div-container-rev">
 
-                    <ul>
-                    {errors.map((error) =>
-                        <li key={error}>{error}</li>
+                    <form onSubmit={handleSubmit}>
+                        {hasSubmitted && errors.length > 0 && (
+
+                            <ul>
+                                {errors.map((error) =>
+                                    <li key={error}>{error}</li>
+                                )}
+                            </ul>
                         )}
-                </ul>
-                    )}
-                <div>
+                        <div>
 
-                    <label>
-                        Review
-                        <input
-                            type="text"
-                            value={review}
-                            onChange={(e) => setReview(e.target.value)}
-                            // required
-                            />
-                    </label>
+                            <label className="label-style">
+                                Review
+                                <input
+                                    className="input-style-rev"
+                                    type="text"
+                                    value={review}
+                                    onChange={(e) => setReview(e.target.value)}
+                                // required
+                                />
+                            </label>
+                        </div>
+                        <div>
+                            <label  className="label-style">
+                                Stars
+                                <input
+                                    className="input-style-star"
+                                    type="number"
+                                    value={stars}
+                                    onChange={(e) => setStars(e.target.value)}
+                                />
+                            </label>
+                        </div>
+                        <button className="button-rev">Submit</button>
+                    </form>
                 </div>
-                <div>
-                    <label>
-                        Stars
-                        <input
-                            type="number"
-                            value={stars}
-                            onChange={(e) => setStars(e.target.value)}
-                            />
-                    </label>
-                </div>
-                <button>Submit</button>
-            </form>
-        </div>
-    )
+            </div>
+        )
 
-}
+    }
     return "User already has a review for this spot"
 }
 

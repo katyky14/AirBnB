@@ -15,9 +15,12 @@ function DemoUser() {
     }
 
     return (
+        <div>
+
         <form onSubmit={handleSubmit}>
             <button type="submit">Demo User</button>
         </form>
+        </div>
 
     )
 }

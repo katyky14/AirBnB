@@ -1,0 +1,44 @@
+
+/*main div whole page */
+.main-div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0px;
+    flex-wrap: wrap;
+    align-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+}
+
+
+
+
+/* image + info div  card div*/
+/* .card-div {
+
+} */
+
+
+
+/* image solo */
+.img-div {
+    width: 450px;
+    height: 450px;
+    border-radius: 8px;
+}
+
+
+
+/* details  1 city state avgrating*/
+.info-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+/* details 2 price alone */
+.price-div {
+    padding-bottom: 20px;
+}

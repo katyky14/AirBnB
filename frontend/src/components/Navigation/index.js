@@ -5,7 +5,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 
-import DemoUser from '../DemoUser/demoUser';
+//import DemoUser from '../DemoUser/demoUser';
 
 
 function Navigation({ isLoaded }){
@@ -19,7 +19,7 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
-        <DemoUser />
+        {/* <DemoUser /> */}
         <LoginFormModal />
         <NavLink to="/signup">Sign Up</NavLink>
       </>
@@ -27,7 +27,7 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <ul>
+    <ul className='nav-div'>
       <li>
         <NavLink exact to="/">Home</NavLink>
         {isLoaded && sessionLinks}

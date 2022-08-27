@@ -47,11 +47,11 @@ function App() {
           <Route exact path='/spots/:spotId'>
               <SpotByDetail />
           </Route>
-          <Route exact path='/' >
-            <GetAllSpots />
-          </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path='/' >
+            <GetAllSpots />
           </Route>
         </Switch>
       )}

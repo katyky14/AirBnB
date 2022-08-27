@@ -1,6 +1,21 @@
 
+.nav-div {
+    display: flex;
+    justify-content: space-between;
+}
 
-/* .navStyle {
+li {
+    list-style-type: none;
+}
+
+
+
+
+
+/* for logged in */
+
+/*
+.navStyle {
     display: flex;
     justify-content: flex-end;
     margin: -10px;

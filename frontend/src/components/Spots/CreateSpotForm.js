@@ -3,8 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 
-
 import { spotFormThunk } from '../../store/spot'
+
+import '../spotCss/SpotForm.css'
+
 
 function CreateSpotForm() {
   const history = useHistory()
@@ -16,8 +18,8 @@ function CreateSpotForm() {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
-  const [lat, setLat] = useState(0);
-  const [lng, setLng] = useState(0);
+  const [lat, setLat] = useState();
+  const [lng, setLng] = useState();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -32,25 +34,25 @@ function CreateSpotForm() {
 
     if (validationErrors.length) return alert(`Cannot Submit, please fill the required fields`)
 
-    const spotFormInformation =  {
-        address,
-        city,
-        state,
-        country,
-        lat,
-        lng,
-        name,
-        description, price,
-        previewImage
+    const spotFormInformation = {
+      address,
+      city,
+      state,
+      country,
+      lat,
+      lng,
+      name,
+      description, price,
+      previewImage
     }
 
-    let createSpot =  await dispatch(spotFormThunk(spotFormInformation))
+    let createSpot = await dispatch(spotFormThunk(spotFormInformation))
     console.log('the create spot form handle submit', createSpot.length)
     if (createSpot) {
-        history.push(`/spots/${createSpot.id}`)
+      history.push(`/spots/${createSpot.id}`)
     }
     //console.log('the info', spotFormInformation)
-};
+  };
 
 
   useEffect(() => {
@@ -72,104 +74,125 @@ function CreateSpotForm() {
   }, [address, city, state, lat, lng, name, price, previewImage]);
 
   return (
-    <form onSubmit={handleSubmit}>
-      {hasSubmitted && validationErrors.length > 0 && (
+    <form onSubmit={handleSubmit} className="main-spot-div">
+      <h2 className="h2-info">Enter your information</h2>
+      <div className="div-container-spot">
 
-        <ul>
-        {validationErrors.map((error) => <li key={error}>{error}</li>)}
-      </ul>
+        {hasSubmitted && validationErrors.length > 0 && (
+
+          <ul>
+            {validationErrors.map((error) => <li className="li-spot" key={error}>{error}</li>)}
+          </ul>
         )}
-      <label>
-        Address
-        <input
-          type="text"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        //   required
-        />
-      </label>
-      <label>
-        City
-        <input
-          type="text"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-        //   required
-        />
-      </label>
-      <label>
-        State
-        <input
-          type="text"
-          value={state}
-          onChange={(e) => setState(e.target.value)}
-        //   required
-        />
-      </label>
-      <label>
-        Country
-        <input
-          type="text"
-          value={country}
-          onChange={(e) => setCountry(e.target.value)}
-        //   required
-        />
-      </label>
-      <label>
-        lat
-        <input
-          type="number"
-          value={lat}
-          onChange={(e) => setLat(e.target.value)}
-        //   required
-        />
-      </label>
-      <label>
-        lng
-        <input
-          type="number"
-          value={lng}
-          onChange={(e) => setLng(e.target.value)}
-        //   required
-        />
-      </label>
-      <label>
-        Name
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Description
-        <input
-          type="text"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+        <label >
+          <input
+          className="input-style-spot"
+          placeholder="Address"
+            type="text"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          //   required
+          />
+        </label>
+        <label >
+          <input
+          className="input-style-spot"
+          placeholder="City"
+            type="text"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          //   required
+          />
+        </label>
+        <label >
+
+          <input
+          className="input-style-spot"
+          placeholder="State"
+            type="text"
+            value={state}
+            onChange={(e) => setState(e.target.value)}
+          //   required
+          />
+        </label>
+        <label >
+
+          <input
+          className="input-style-spot"
+          placeholder="Country"
+            type="text"
+            value={country}
+            onChange={(e) => setCountry(e.target.value)}
+          //   required
+          />
+        </label>
+        <label >
+
+          <input
+          className="input-style-spot"
+          placeholder="Lat"
+            type="number"
+            value={lat}
+            onChange={(e) => setLat(e.target.value)}
+          //   required
+          />
+        </label>
+        <label >
+
+          <input
+          className="input-style-spot"
+          placeholder="Lng"
+            type="number"
+            value={lng}
+            onChange={(e) => setLng(e.target.value)}
+          //   required
+          />
+        </label>
+        <label >
+
+          <input
+          className="input-style-spot"
+          placeholder="Name"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+
+          <input
+          className="input-style-spot"
+          placeholder="Description"
+            type="text"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           // required
-        />
-      </label>
-      <label>
-        Price
-        <input
-          type="number"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
+          />
+        </label>
+        <label>
+          <input
+          className="input-style-spot"
+          placeholder="Price"
+            type="number"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
           // required
-        />
-      </label>
-      <label>
-        Preview Image
-        <input
-          type="string"
-          value={previewImage}
-          onChange={(e) => setPreviewImage(e.target.value)}
+          />
+        </label>
+        <label>
+
+          <input
+          className="input-style-spot"
+          placeholder="Preview Image"
+            type="string"
+            value={previewImage}
+            onChange={(e) => setPreviewImage(e.target.value)}
           // required
-        />
-      </label>
-      <button >Create New Spot</button>
+          />
+        </label>
+        <button className="button-spot">Create New Spot</button>
+      </div>
     </form>
   );
 }

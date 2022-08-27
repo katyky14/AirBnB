@@ -5,6 +5,8 @@ import { NavLink, Route, useHistory, useParams } from 'react-router-dom';
 
 import { getSpotReviewThunk } from '../../store/review';
 
+import '../ReviewCss/GetSpotReview.css'
+
 
 const GetReviews = () => {
 
@@ -28,16 +30,15 @@ const GetReviews = () => {
     return reviewArr.length && (
         <div>
             {/* <h1>GET REVIEWS SPOT ID</h1> */}
-            {reviewArr.map(rev => (
-                <div key={rev.id}>
-                    <div>{rev.review} </div>
-                    <div> STARS {rev.stars} </div>
+            <div>
+                {reviewArr.map(rev => (
+                    <div key={rev.id}>
+                        <div> ⭐️  {rev.stars} </div>
+                        <div>{rev.review} </div>
+                    </div>
 
-
-
-                </div>
-
-            ))}
+                ))}
+            </div>
 
 
 

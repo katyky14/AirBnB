@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '../../context/Modal';
+import '../spotCss/GetSpotDetails.css';
+
 
 import { NavLink } from 'react-router-dom';
 import { getOneSpotDetails } from '../../store/spot';
@@ -36,8 +38,8 @@ const SpotByDetail = () => {
 
     const reviewDetails = useSelector(state => state.review)
     //console.log('the review in SPOT DETAIL', reviewDetails)
-    // const reviewArr = Object.values(reviewObj);
-    //console.log('the ARRay in SPOT', reviewArr)
+    const reviewArr = Object.values(reviewDetails);
+    //console.log('the ARRay in SPOT', reviewArr.length)
 
 
     useEffect(() => {
@@ -48,7 +50,7 @@ const SpotByDetail = () => {
     // if (spotsArr != null && spotsObj.Images != null && isLoaded) {
     return spotsArr.length && isLoaded && (
         <main>
-            <h1>TESTING SPOT BY DETAIL</h1>
+            {/* <h1>TESTING SPOT BY DETAIL</h1> */}
             {/* <div>
                     <div><img src={spotsObj.previewImage} /></div>
                     <div>{spotsObj.id}</div>
@@ -72,14 +74,43 @@ const SpotByDetail = () => {
                     ))}
                 </div> */}
 
-            <div>
+            <div className="main-div">
                 {spotsArr.map(spot => (
                     <div key={spot.id}>
-                        <div><img src={spot.previewImage} alt="home" /></div>
-                        <div> {spot.id}</div>
-                        <div> {spot.address}</div>
-                         <div> <GetReviews /> </div>
-                        <button><NavLink to={`/spots/${spot.id}/reviews`}>Add a Review</NavLink></button>
+                        {/* <div> Spot ID -- {spot.id}</div> */}
+
+                        <h1 className="name-div"> {spot.address}</h1>
+
+                        <div className="top-div-info">
+                            <span className="span-info1">
+                                <div>⭐️ {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0} </div>
+                                <div className="space-div"> - {reviewArr.length} Reviews</div>
+                            </span>
+                            <span className='span-info2'>
+                                <div> {spot.city} , {spot.state}, {spot.country}</div>
+                            </span>
+                        </div>
+
+
+                        <div><img src={spot.previewImage} alt="home" className="image-div" /></div>
+
+                        <h2 >Entire home hosted by Demo</h2>
+
+                        <p className="border-div">{spot.description}</p>
+
+
+                        <div className="stars-div">
+                            {/* <i class='fa-solid fa-star'></i> */}
+                            <span className="span-info3">
+                                <div>⭐️ {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0} </div>
+                                <div className="space-div2"> - {reviewArr.length} Reviews</div>
+                            </span>
+
+                            <button className="button-div"><NavLink to={`/spots/${spot.id}/reviews`} >Add a Review</NavLink></button>
+
+                        </div>
+
+                        <div > <GetReviews /> </div>
                     </div>
                 ))}
             </div>
