@@ -13,12 +13,12 @@ Plese see below links to project Wiki
 
 
 This Project is built with:
-JavaScript
-PostgreSQL
-Sequelize
-Express
-React
-Redux
+* JavaScript
+* PostgreSQL
+* Sequelize
+* Express
+* React
+* Redux
 
 # Features Directions:
 
