@@ -37,7 +37,14 @@ module.exports = {
         spotId: 5,
         reviewId: 5,
         userId: 5
-      }
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1575517111478-7f6afd0973db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+        previewImage: true,
+        spotId: 6,
+        reviewId: 6,
+        userId: 2
+      },
     ], {});
   },
 

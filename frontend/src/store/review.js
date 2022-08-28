@@ -1,3 +1,4 @@
+import { useStore } from 'react-redux';
 import { csrfFetch } from './csrf';
 
 /*****************************************************/
@@ -105,6 +106,37 @@ const initialState = {}
 /******************************************************** */
 //reducer
 
+/**
+const store = {
+    listing: [],
+};
+
+// store.listing.push('a');
+
+// useStore()
+const richStore = magicallyAddFields(store);
+
+// useSelector
+richStore.onUpdate(store.listing, () => {
+   // do stuff, like re-render
+});
+
+const action = {type: 'add', payload: 'a'}
+
+// Dispatcher = richStore.update
+richStore.update(
+    // Reducer
+    (store) => {
+    if (action.type === 'add') store.listing.push(action.payload);
+
+    return store;
+})
+
+richStore.update = (updater) => { // essentially take a reducer
+    store = updater(store)
+    richStore.runQueuedCallbacks(store);
+};
+ */
 
 const reviewReducer = (state = initialState, action) => {
     let newState = {};
@@ -117,7 +149,7 @@ const reviewReducer = (state = initialState, action) => {
             newState[reviewEle.id] = reviewEle
         })
         //console.log('the new state', newState)
-        return newState;
+        return {...state, ...newState};
 
         case GET_USER_REVIEWS:
             newState = {};
@@ -125,7 +157,7 @@ const reviewReducer = (state = initialState, action) => {
                 newState[ele.id] = ele
             })
             //console.log('the new state REVIEW', newState)
-            return newState;
+            return {...state, ...newState};
 
         case ADD_REVIEW:
             // newState = {...state};

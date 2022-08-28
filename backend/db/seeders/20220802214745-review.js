@@ -33,6 +33,12 @@ module.exports = {
         stars: 5,
         userId: 5,
         spotId: 5
+      },
+      {
+        review: 'Really nice house in perfect location - close to beach and town. Thanks so much!',
+        stars: 5,
+        userId: 5,
+        spotId: 6
       }
     ], {});
   },

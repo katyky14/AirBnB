@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import * as sessionActions from '../../store/session';
-import { useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+
+import '../Navigation/profile.css'
+
+const StyledNavLink2 = (props) => {
+  return <NavLink {...props} className={`${props.className} navlink-style-div`}/>
+}
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -34,41 +40,40 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <div >
-        <div>
-          <NavLink to='/spots/new'>Become a host</NavLink>
-        </div>
-        <button onClick={openMenu}>
+      <li className="li-host">
+        <StyledNavLink2 to='/spots/new'>Become a host</StyledNavLink2>
+      </li>
+      <li>
+        <button onClick={openMenu} className="button-user">
           <i className="fas fa-user-circle" />
         </button>
-        {showMenu && (
-          <ul className="profile-dropdown">
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
-              <div>
-                <button>
-                  <NavLink to={`/reviews`}>
-                    My Reviews
-                  </NavLink>
-                </button>
-              </div> </li>
-            <li>
-              <div>
-                <button>
-                  <NavLink to={`/spots/current`}>
-                    My Spots
-                  </NavLink>
-                </button>
-              </div>
-            </li>
-            <li>
-              <button onClick={logout}>Log Out</button>
-            </li>
-          </ul>
-        )}
-      </div>
+      </li>
+      {showMenu && (
+        <ul className="profile-dropdown">
+          <li className="profile-content">{user.username}</li>
+          <li className="profile-content">{user.email}</li>
+          <li className="profile-content">
 
+            <button className="button-style">
+              <StyledNavLink2 to={`/reviews`}>
+                My Reviews
+              </StyledNavLink2>
+            </button>
+          </li>
+          <li className="profile-content">
+
+            <button className="button-style">
+              <StyledNavLink2 to={`/spots/current`}>
+                My Spots
+              </StyledNavLink2>
+            </button>
+
+          </li>
+          <li className="profile-content">
+            <button onClick={logout} className="button-style">Log Out</button>
+          </li>
+        </ul>
+      )}
     </>
   );
 }

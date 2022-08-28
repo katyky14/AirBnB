@@ -22,13 +22,29 @@
     height: 300px; */
 }
 
+
+.button {
+    display: block;
+    width: 100%;
+    min-width: 200px;
+    height: 40px;
+    background-color: rgb(227, 28, 95);
+    margin: auto;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+}
+
+.button-logout {
+    margin-right: 20px;
+    font-size: 25px;
+}
+
+
+
+
+
 /* ul container */
-
-
-
-
-
-
 /*
 .div-container {
     display:block;
@@ -59,18 +75,6 @@
 
 
 */
-
-.button {
-    display: block;
-    width: 100%;
-    min-width: 200px;
-    height: 40px;
-    background-color: rgb(227, 28, 95);
-    margin: auto;
-    margin-bottom: 15px;
-    padding-bottom: 5px;
-    border-radius: 10px;
-}
 
 
 /* *************modal ********* */

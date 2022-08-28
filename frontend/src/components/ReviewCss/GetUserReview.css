@@ -1,2 +1,50 @@
 
 /*  */
+.rev-page-div {
+    margin: auto;
+  width: 50%;
+  /* background-color: rgb(241, 233, 233); */
+  /* border: 3px solid green; */
+  padding: 10px;
+}
+
+.rev-main-div {
+    /* border: 2px solid red; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.info-rev-div {
+   border-bottom: 1px solid rgb(120, 118, 118);
+   border-width: medium;
+    width: 800px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* border: 2px solid red; */
+    font-size: 18px;
+}
+
+.details-div {
+    /* border: 2px solid red; */
+    width: 400px;
+    text-align: justify;
+}
+
+.review-div {
+    margin-bottom: 10px;
+}
+
+.button-rev {
+    margin-top: 50px;
+    width: 60px;
+    background-color: black;
+    font-size: 22px;
+    height: 40px;
+    margin-left: 50px;
+}

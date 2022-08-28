@@ -7,12 +7,18 @@ import './Navigation.css';
 
 //import DemoUser from '../DemoUser/demoUser';
 
+const StyledNavLink = (props) => {
+  return <NavLink {...props} className={`${props.className} my-navlink-style`}/>
+}
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
+  // console.log('sessionUser', sessionUser);
+
+
   let sessionLinks;
-  if (sessionUser) {
+  if (sessionUser?.id != null) {
     sessionLinks = (
       <ProfileButton user={sessionUser} />
     );
@@ -21,18 +27,28 @@ function Navigation({ isLoaded }){
       <>
         {/* <DemoUser /> */}
         <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
+        <StyledNavLink to="/signup">Sign Up</StyledNavLink>
       </>
     );
   }
 
   return (
-    <ul className='nav-div'>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
+    // <ul className='nav-class'>
+    //   <li className='nav-li'>
+    //     <NavLink exact to="/">Home</NavLink>
+    //     {isLoaded && sessionLinks}
+    //   </li>
+    // </ul>
+
+    <ul className='nav-class'>
+      <li className='nav-li'>
+        <StyledNavLink exact to="/">HomeBnB</StyledNavLink>
+      </li>
+      <li className='nav-li'>
         {isLoaded && sessionLinks}
       </li>
-    </ul>
+  </ul>
+
   );
 }
 

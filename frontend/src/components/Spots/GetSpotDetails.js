@@ -83,7 +83,7 @@ const SpotByDetail = () => {
 
                         <div className="top-div-info">
                             <span className="span-info1">
-                                <div>⭐️ {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0} </div>
+                                <div><i class="fa-solid fa-star"></i>{spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0} </div>
                                 <div className="space-div"> - {reviewArr.length} Reviews</div>
                             </span>
                             <span className='span-info2'>

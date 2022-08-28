@@ -68,9 +68,22 @@ module.exports = {
         lng: -122.4731430,
         name: "SKLRP And LKV",
         description: `After a day of exploring Siesta Key, cook up some delicious local seafood on the BBQ, sit around the dining table with your guests. In addition, Siesta Key offers kayaking, paddleboard, and boat charters. Lets make your vacation dreams come true!`,
-        price: 199,
+        price: 498,
         previewImage: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-      }
+      },
+      {
+        ownerId: 1,
+        address: 'Ocean Mist-Walk ',
+        city: 'Seaside',
+        state: 'Oregon',
+        country: 'United States of America',
+        lat: 37.7645564,
+        lng: -122.4731430,
+        name: "Lucas",
+        description: `Ocean Mist is located 450 feet from the Seaside Prom, and close to downtown Seaside, this newly fully remodeled home is the perfect place to enjoy your next visit to the Oregon Coast.`,
+        price: 399,
+        previewImage: "https://images.unsplash.com/photo-1575517111478-7f6afd0973db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+      },
     ], {});
   },
 
