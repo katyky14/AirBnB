@@ -26,7 +26,7 @@ function CreateReviewForm() {
 
 
     const reviewObj = useSelector(state => state.review);
-    //console.log('REVIEW obj', reviewObj);
+    console.log('REVIEW obj', reviewObj);
     const userReview = useSelector(state => state.session.user)
     //console.log('the user id', userReview)
 
@@ -120,7 +120,7 @@ function CreateReviewForm() {
         )
 
     }
-    return "User already has a review for this spot"
+    return <h1>"User already has a review for this spot"</h1>
 }
 
 

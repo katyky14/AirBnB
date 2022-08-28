@@ -12,9 +12,9 @@ module.exports = (sequelize, DataTypes) => {
       //   {
       //     through: models.Booking
       // });
-      Spot.hasMany(models.Image, { foreignKey: 'spotId', onDelete: 'cascade', hooks: true});
-      Spot.hasMany(models.Review, { foreignKey: 'spotId', onDelete: 'cascade', hooks: true});
-      Spot.hasMany(models.Booking, { foreignKey: 'spotId', onDelete: 'cascade', hooks: true});
+      Spot.hasMany(models.Image, { foreignKey: 'spotId', onDelete: 'CASCADE', hooks: true});
+      Spot.hasMany(models.Review, { foreignKey: 'spotId', onDelete: 'CASCADE', hooks: true});
+      Spot.hasMany(models.Booking, { foreignKey: 'spotId', onDelete: 'CASCADE', hooks: true});
     }
   }
   Spot.init({

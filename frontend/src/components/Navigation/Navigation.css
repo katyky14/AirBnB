@@ -6,7 +6,8 @@
     padding: 4px 92px;
     height: 65px;
     border-bottom: 2px solid gray;
-    margin-bottom: 10px;
+    border-width: thick;
+    margin-bottom: 40px;
 }
 
 
@@ -22,12 +23,19 @@
 
 .logo-image{
     width: 60px;
-    height: 60px;
-    border-radius: 50%;
+    height: 55px;
+    /* border-radius: 50%; */
     overflow: hidden;
     margin-top: -6px;
 }
 
+
+.my-navlink-style {
+    /* border: 5px solid yellow; */
+    text-decoration: none;
+    color:rgb(227, 28, 95);
+    font-weight: bold;
+}
 
 
 /* .my-navlink-style {

@@ -167,7 +167,7 @@ function EditSpotForm() {
             />
           </label>
           <label>
-            lat
+   
             <input
                       className="input-style-edit"
                       placeholder="Lat"

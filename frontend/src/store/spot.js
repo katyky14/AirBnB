@@ -142,7 +142,7 @@ export const deleteSpotThunk = (id) => async dispatch => {
     //console.log('response thunk', response)
     if (response.ok) {
         const data = await response.json();
-        //console.log('the data delete', data)
+        console.log('the data delete SPOT', data)
         dispatch(deleteOneSpot(id))
     }
 }
@@ -233,10 +233,15 @@ const spotReducer = (state = initialState, action) => {
             }
 
         case DELETE_SPOT:
-            const newDeleteState = {...state};
-            //console.log('the delete spot', action.id) //ID
-            delete newDeleteState[action.id]
-            return newDeleteState;
+            // const newDeleteState = {...state};
+            // //console.log('the delete spot', action.id) //ID
+            // delete newDeleteState[action.id]
+            // return newDeleteState;
+
+            newState = {...state}
+            delete newState[action.id];
+
+            return newState;
 
         default:
             return state;

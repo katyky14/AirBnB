@@ -79,7 +79,7 @@ function CreateSpotForm() {
 
   return (
     <form onSubmit={handleSubmit} className="main-spot-div">
-      <h2 className="h2-info">Enter your information</h2>
+      <h1 className="h2-info">Enter your information</h1>
       <div className="div-container-spot">
 
         {hasSubmitted && validationErrors.length > 0 && (

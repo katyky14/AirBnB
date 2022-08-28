@@ -18,14 +18,14 @@
 }
 
 .info-rev-div {
-   border-bottom: 1px solid rgb(120, 118, 118);
+   border-bottom: 2px solid rgb(120, 118, 118);
    border-width: medium;
     width: 800px;
     height: 100px;
     display: flex;
     flex-direction: row;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 60px;
+    margin-bottom: 20px;
     /* border: 2px solid red; */
     font-size: 18px;
 }
@@ -38,13 +38,22 @@
 
 .review-div {
     margin-bottom: 10px;
+    font-size: 20px;
+}
+.rate-div {
+    margin-bottom: 50px;
+    font-size: 20px;
+
 }
 
-.button-rev {
+.button-rev-user {
     margin-top: 50px;
-    width: 60px;
+    width: 200px;
     background-color: black;
     font-size: 22px;
     height: 40px;
     margin-left: 50px;
+    color: white;
+    border-radius: 8px;
+    /* margin-bottom: 20px; */
 }

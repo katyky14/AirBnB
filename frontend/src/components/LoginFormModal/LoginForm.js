@@ -62,13 +62,13 @@ function LoginForm() {
     <>
     <form onSubmit={handleSubmit} className="background modal-div" >
       <div className='main-container open-div'>
-      <div>Welcome to HomeBnB</div>
+      <h1 className="welcome-div">Welcome to Homebnb</h1>
 
 
       {hasSubmitted && errors.length > 0 && (
         <ul >
           {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
+            <li className="error-li" key={idx}>{error}</li>
             ))}
         </ul>
       )}

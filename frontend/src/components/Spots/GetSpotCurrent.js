@@ -78,7 +78,9 @@ const GetSpotByCurrentUser = () => {
                         <div className="price-div">${spot.price} night</div>
 
                         <div >
-                            <button className="one-button"><NavLink activeClassName='active' to={`/spots/${spot.id}/edit`}
+                            <button className="one-button"><NavLink activeClassName='active'
+                            style={{textDecoration:'none', color: 'black'}}
+                            to={`/spots/${spot.id}/edit`}
 
 
                             > edit spot</NavLink></button>

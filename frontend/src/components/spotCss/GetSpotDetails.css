@@ -88,7 +88,7 @@
     border-radius: 10px;
     align-items: center;
     display: flex;
-    font-size: 20px;
+    /* font-size: 20px; */
     justify-content: center;
     max-width: 30%;
     background: transparent;
@@ -101,6 +101,18 @@
 
 }
 
+
+.my-navlink-style3 {
+    text-decoration: none;
+    color:rgb(227, 28, 95);
+    width: 100px;
+    font-size: 22px;
+}
+
+.my-navlink-style3:hover, .button-div:hover {
+    background-color: rgb(211, 205, 205);
+    /* color: white; */
+}
 
 /* review length */
 

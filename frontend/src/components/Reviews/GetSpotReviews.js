@@ -34,7 +34,7 @@ const GetReviews = () => {
                 {reviewArr.map(rev => (
                     <div key={rev.id}>
                         <div>
-                        {/* <div> <i class="fa-solid fa-star"></i> {rev.stars} </div> */}
+                        <div> <i class="fa-solid fa-star"></i> {rev.stars} </div>
                         <div className='spot-rev-info'>{rev.review} </div>
                         </div>
                     </div>

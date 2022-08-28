@@ -15,6 +15,12 @@ import { getSpotReviewThunk } from '../../store/review';
 
 // import CreateReviewForm from '../Reviews/CreateReviews';
 
+const StyledNavLink3 = (props) => {
+    return <NavLink {...props} className={`${props.className} my-navlink-style3`}/>
+  }
+
+
+
 const SpotByDetail = () => {
     //const [showModal, setShowModal] = useState(false);
 
@@ -103,12 +109,12 @@ const SpotByDetail = () => {
 
                         <div className="stars-div">
                             {/* <i class='fa-solid fa-star'></i> */}
-                            <span className="span-info3">
-                                <div>⭐️ {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0} </div>
+                            <div className="span-info3">
+                                <div><i class="fa-solid fa-star"></i> {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0} </div>
                                 <div className="space-div2"> - {reviewArr.length} Reviews</div>
-                            </span>
+                            </div>
                             {userObj?.id != null &&
-                            <button className="button-div"><NavLink to={`/spots/${spot.id}/reviews`} >Add a Review</NavLink></button>
+                            <button className="button-div"><StyledNavLink3 to={`/spots/${spot.id}/reviews`} >Add a Review</StyledNavLink3></button>
                             }
 
                         </div>

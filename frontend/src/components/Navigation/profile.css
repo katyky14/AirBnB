@@ -4,7 +4,7 @@ li {
 
 
 .li-host {
-    margin-right: 200px;
+    margin-right: 100px;
 }
 
 
@@ -40,12 +40,16 @@ li {
     border-bottom: 0.5px solid grey;
     box-sizing: border-box;
     padding: 20px 30px;
-    right: 15%;
+    right: 10%;
     top: 10%;
-    width: 250px;
+    width: 350px;
     z-index: 10;
     background-color: rgb(196, 177, 177, 0.5px);
+    text-align: center;
+}
 
+.profile-content {
+    font-size: 22px;
 }
 
 .profile-dropdown:hover .profile-dropdown:focus {
@@ -69,4 +73,5 @@ li {
 .navlink-style-div {
     /* border: 5px solid yellow; */
     text-decoration: none;
+    color:black;
 }

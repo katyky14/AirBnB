@@ -93,10 +93,12 @@ export const createReviewThunk = (reviewData) => async dispatch => {
 
 export const deleteReviewThunk = (id) => async dispatch => {
     const response = await csrfFetch(`/api/reviews/${id}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
     });
     //console.log('delete response', response)
     if (response.ok) {
+        const data = response.json();
         dispatch(deleteOneReview(id))
     }
 }
@@ -158,7 +160,8 @@ const reviewReducer = (state = initialState, action) => {
                 newState[ele.id] = ele
             })
             //console.log('the new state REVIEW', newState)
-            return {...state, ...newState};
+            // return {...state, ...newState};
+            return newState;
 
         case ADD_REVIEW:
             // newState = {...state};
@@ -183,11 +186,14 @@ const reviewReducer = (state = initialState, action) => {
             // }
 
             case DELETE_REVIEW:
-                const newDeleteState = { ...state };
+                // const newDeleteState = {...state};
 
-                delete newDeleteState[action.review]
-                return newDeleteState;
+                // delete newDeleteState[action.review]
+                // return newDeleteState;
+                newState = { ...state};
+                delete newState[action.review]
 
+                return newState;
 
         default:
             return state;

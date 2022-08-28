@@ -50,7 +50,7 @@ const GetAllSpots = () => {
                         <div className='info-div'>
                         <div className='div-info3'>{spot.city}, {spot.state}</div>
                         {/* <div>{spot.state}</div> */}
-                        <div>⭐️ {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0}</div>
+                        <div><i class="fa-solid fa-star"></i> {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0}</div>
                         </div>
                         <div className='price-div'>${spot.price} night</div>
 

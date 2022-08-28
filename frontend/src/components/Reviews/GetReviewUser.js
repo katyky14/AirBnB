@@ -51,14 +51,14 @@ const ReviewCurrentUser = () => {
                             <div className='details-div'>
                             <div className='review-div'> {review.review}</div>
                             {/* {review.Images?.[0]?.url && <img src={review.Images?.[0]?.url} />} */}
-                            <div> Rating <i class="fa-solid fa-star"></i>{review.stars} </div>
+                            <div className='rate-div'> Rating <i class="fa-solid fa-star"></i>{review.stars} </div>
                             </div>
                             <div>
                                 <button onClick={async () => {
                                     await dispatch(deleteReviewThunk(review.id))
                                     // history.push('/reviews')
                                 }}
-                                className='button-rev'>
+                                className='button-rev-user'>
                                     delete review
                                 </button>
                             </div>
