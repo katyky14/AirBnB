@@ -149,7 +149,8 @@ const reviewReducer = (state = initialState, action) => {
             newState[reviewEle.id] = reviewEle
         })
         //console.log('the new state', newState)
-        return {...state, ...newState};
+        //return {...state, ...newState};
+        return newState
 
         case GET_USER_REVIEWS:
             newState = {};

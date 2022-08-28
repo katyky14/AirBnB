@@ -48,7 +48,7 @@ const GetAllSpots = () => {
                         </div>
 
                         <div className='info-div'>
-                        <div>{spot.city}, {spot.state}</div>
+                        <div className='div-info3'>{spot.city}, {spot.state}</div>
                         {/* <div>{spot.state}</div> */}
                         <div>⭐️ {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0}</div>
                         </div>

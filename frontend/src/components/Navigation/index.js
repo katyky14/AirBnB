@@ -5,6 +5,8 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 
+import logo from './logo2.png'
+
 //import DemoUser from '../DemoUser/demoUser';
 
 const StyledNavLink = (props) => {
@@ -42,6 +44,10 @@ function Navigation({ isLoaded }){
 
     <ul className='nav-class'>
       <li className='nav-li'>
+        <div className='logo-image'>
+          {/* <img src="./logo2.png" alt='logo'/> */}
+          <img src={logo} className="logo-image"/>
+        </div>
         <StyledNavLink exact to="/">HomeBnB</StyledNavLink>
       </li>
       <li className='nav-li'>
