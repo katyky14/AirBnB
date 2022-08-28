@@ -46,10 +46,10 @@ const GetSpotByCurrentUser = () => {
     // }
 
 
-    if (!filter.length) {
-        alert("please log in")
-        history.push('/signup')
-    }
+    // if (!filter.length) {
+    //     alert("please log in")
+    //     history.push('/signup')
+    // }
 
     return isLoaded && (
         <div>

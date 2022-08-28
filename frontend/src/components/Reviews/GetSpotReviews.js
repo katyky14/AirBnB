@@ -30,11 +30,13 @@ const GetReviews = () => {
     return reviewArr.length && (
         <div>
             {/* <h1>GET REVIEWS SPOT ID</h1> */}
-            <div>
+            <div className='spot-rev'>
                 {reviewArr.map(rev => (
                     <div key={rev.id}>
-                        <div> ⭐️  {rev.stars} </div>
-                        <div>{rev.review} </div>
+                        <div>
+                        {/* <div> <i class="fa-solid fa-star"></i> {rev.stars} </div> */}
+                        <div className='spot-rev-info'>{rev.review} </div>
+                        </div>
                     </div>
 
                 ))}

@@ -29,6 +29,8 @@ const SpotByDetail = () => {
     // console.log('the filter', filter)
     // console.log('the arr', arr)
 
+    const userObj = useSelector(state => state.session.user)
+    //console.log('the user state', userObj)
 
 
     const dispatch = useDispatch();
@@ -94,7 +96,7 @@ const SpotByDetail = () => {
 
                         <div><img src={spot.previewImage} alt="home" className="image-div" /></div>
 
-                        <h2 >Entire home hosted by Demo</h2>
+                        <h2 className='h2-spot'>Entire home hosted by Demo</h2>
 
                         <p className="border-div">{spot.description}</p>
 
@@ -105,8 +107,9 @@ const SpotByDetail = () => {
                                 <div>⭐️ {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0} </div>
                                 <div className="space-div2"> - {reviewArr.length} Reviews</div>
                             </span>
-
+                            {userObj?.id != null &&
                             <button className="button-div"><NavLink to={`/spots/${spot.id}/reviews`} >Add a Review</NavLink></button>
+                            }
 
                         </div>
 

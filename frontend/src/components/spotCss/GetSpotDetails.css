@@ -3,6 +3,8 @@
 .main-div {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
+    /* border: 1px solid red; */
+    margin-bottom: 50px;
 }
 
 /* name */
@@ -10,7 +12,7 @@
     font-family: Arial, Helvetica, sans-serif;
     color: black;
     text-align: left;
-    font-size: 25px;
+    font-size: 35px;
     font-weight: lighter;
     margin-top: 15px;
     padding-top: 10px;
@@ -29,6 +31,7 @@
     margin-top: 4px;
     align-items: center;
     display: inline-flex;
+    font-size: 20px;
 }
 
 .space-div {
@@ -41,14 +44,17 @@
     align-items: center;
     display: inline-flex;
     padding-left: 10px;
+    font-size: 20px;
 }
 
-
+.h2-spot {
+    font-size: 35px;
+}
 
 
 /* image style */
 .image-div {
-    width: 1800px;
+    width: 1200px;
     height: 900px;
     border-radius: 10px;
 }
@@ -60,6 +66,7 @@
     border-top: 1px solid #d8d8d8;
     border-top-width: medium;
     padding: 30px 10px 30px 0;
+    font-size: 25px;
 }
 
 /* button + avgRating */
