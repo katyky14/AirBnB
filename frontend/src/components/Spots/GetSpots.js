@@ -19,7 +19,7 @@ const GetAllSpots = () => {
     const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
-        dispatch(getSpotsThunk()).then(setIsLoaded(true))
+        dispatch(getSpotsThunk()).then(() => setIsLoaded(true))
     }, [dispatch]);
 
 
