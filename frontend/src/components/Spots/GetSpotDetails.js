@@ -51,7 +51,7 @@ const SpotByDetail = () => {
 
 
     useEffect(() => {
-        dispatch(getOneSpotDetails(spotId)).then(setIsLoaded(true))
+        dispatch(getOneSpotDetails(spotId)).then(() => setIsLoaded(true))
         //dispatch(getSpotReviewThunk(spotId))
     }, [dispatch, spotId, reviewDetails])
 
