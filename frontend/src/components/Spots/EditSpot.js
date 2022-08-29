@@ -35,7 +35,7 @@ function EditSpotForm() {
   const [description, setDescription] = useState(spotData.description);
   const [price, setPrice] = useState(spotData.price);
   const [validationErrors, setValidationErrors] = useState([]);
-  const [previewImage, setPreviewImage] = useState("")
+  const [previewImage, setPreviewImage] = useState(spotData.previewImage)
 
 
   const updateAddress = e => setAddress(e.target.value);
@@ -66,7 +66,8 @@ function EditSpotForm() {
       lat,
       lng,
       name,
-      description, price
+      description, price,
+      previewImage
     }
 
     let updatedSpot = await dispatch(editSpotThunk(spotId, spotFormInformation))
@@ -147,8 +148,8 @@ function EditSpotForm() {
           <label>
 
             <input
-                      className="input-style-edit"
-                      placeholder="State"
+              className="input-style-edit"
+              placeholder="State"
               type="text"
               value={state}
               onChange={updateState}
@@ -158,8 +159,8 @@ function EditSpotForm() {
           <label>
 
             <input
-                      className="input-style-edit"
-                      placeholder="Country"
+              className="input-style-edit"
+              placeholder="Country"
               type="text"
               value={country}
               onChange={updateCountry}
@@ -167,10 +168,10 @@ function EditSpotForm() {
             />
           </label>
           <label>
-   
+
             <input
-                      className="input-style-edit"
-                      placeholder="Lat"
+              className="input-style-edit"
+              placeholder="Lat"
               type="number"
               value={lat}
               onChange={updateLat}
@@ -180,8 +181,8 @@ function EditSpotForm() {
           <label>
 
             <input
-                      className="input-style-edit"
-                      placeholder="Lng"
+              className="input-style-edit"
+              placeholder="Lng"
               type="number"
               value={lng}
               onChange={updateLng}
@@ -191,8 +192,8 @@ function EditSpotForm() {
           <label>
 
             <input
-                      className="input-style-edit"
-                      placeholder="Name"
+              className="input-style-edit"
+              placeholder="Name"
               type="text"
               value={name}
               onChange={updateName}
@@ -202,8 +203,8 @@ function EditSpotForm() {
           <label>
 
             <input
-                      className="input-style-edit"
-                      placeholder="Description"
+              className="input-style-edit"
+              placeholder="Description"
               type="text"
               value={description}
               onChange={updateDescription}
@@ -213,8 +214,8 @@ function EditSpotForm() {
           <label>
 
             <input
-                      className="input-style-edit"
-                      placeholder="Price"
+              className="input-style-edit"
+              placeholder="Price"
               type="number"
               value={price}
               onChange={updatePrice}
@@ -224,8 +225,8 @@ function EditSpotForm() {
           <label>
 
             <input
-                      className="input-style-edit"
-                      placeholder="Preview Image"
+              className="input-style-edit"
+              placeholder="Preview Image"
               type="string"
               value={previewImage}
               onChange={updatePreviewImage}
