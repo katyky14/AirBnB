@@ -33,7 +33,7 @@
     height: 60px;
     width: 90%;
     margin-bottom: 25px;
-    margin-left: 50px;
+    margin-left: 30px;
     font-size: 22px;
     font-family: 'Courier New', Courier, monospace;
     border-radius: 10px;
@@ -48,7 +48,7 @@
 
 .button-spot {
     display: block;
-    width: 800px;
+    /* width: 800px; */
     min-width: 200px;
     height: 40px;
     background-color: black;

@@ -1,10 +1,11 @@
 /* main container */
 
-.main-div {
+.main-div2 {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
-    /* border: 1px solid red; */
+    border: 1px solid red;
     margin-bottom: 50px;
+    max-width: 1000px;
 }
 
 /* name */
@@ -27,7 +28,7 @@
 }
 
 .span-info1 {
-    min-width: 0px;
+    /* min-width: 0px; */
     margin-top: 4px;
     align-items: center;
     display: inline-flex;

@@ -73,7 +73,7 @@
 
 .button-rev {
     display: block;
-    width: 800px;
+    /* width: 800px; */
     min-width: 200px;
     height: 40px;
     background-color: rgb(227, 28, 95);
@@ -83,4 +83,5 @@
     border-radius: 10px;
     color: #fff;
     font-size: 25px;
+    /* max-width: 1000px; */
 }

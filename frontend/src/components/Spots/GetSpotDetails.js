@@ -82,7 +82,7 @@ const SpotByDetail = () => {
                     ))}
                 </div> */}
 
-            <div className="main-div">
+            <div className="main-div-2">
                 {spotsArr.map(spot => (
                     <div key={spot.id}>
                         {/* <div> Spot ID -- {spot.id}</div> */}
