@@ -20,13 +20,13 @@ h1 {
     color: rgb(148, 133, 133);
     /* border-top: 1px solid rgb(124, 118, 118);
     border-top-width: medium; */
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
 }
 
 
 /* div for details address, city,state */
 .info-div {
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
     padding-bottom: 5px;
 }
 

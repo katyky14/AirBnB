@@ -61,7 +61,7 @@
     width: 80%;
     margin-left: 10px;
     font-size: 20px;
-    font-family: 'Courier New', Courier, monospace;
+    /* font-family: 'Courier New', Courier, monospace; */
 }
 
 .input-style-star{

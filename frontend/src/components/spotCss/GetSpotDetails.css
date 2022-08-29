@@ -10,7 +10,7 @@
 
 /* name */
 .name-div {
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
     color: black;
     text-align: left;
     font-size: 35px;
@@ -41,7 +41,7 @@
 
 .span-info2 {
     line-height: 20px;
-    text-decoration: underline;
+    /* text-decoration: underline; */
     align-items: center;
     display: inline-flex;
     padding-left: 10px;
@@ -85,7 +85,7 @@
 /* button style */
 
 .button-div {
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
     border-radius: 10px;
     align-items: center;
     display: flex;

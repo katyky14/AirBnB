@@ -16,7 +16,7 @@
 .label-style {
     display: flex;
     font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
     min-width: 56px;
     width: 100%;
     padding: 26px 36px 10px 12px;
@@ -29,7 +29,7 @@
     width: 800px;
     height: 30px;
     font-size: 14px;
-    font-family: Arial, Helvetica, sans-serif;
+    /* font-family: Arial, Helvetica, sans-serif; */
     line-height:  1.43;
     border-radius: 8px;
 }
