@@ -11,6 +11,7 @@
     font-weight: lighter;
     font-size: 20px;
     /* margin-right: 25px; */
+    width: 100%;
 }
 
 
@@ -26,7 +27,7 @@
 
 
 /* image solo */
-.img-div {
+.img-div-1 {
     /* width: 450px;
     height: 450px; */
     border-radius: 8px;

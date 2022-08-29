@@ -43,7 +43,7 @@ const GetAllSpots = () => {
 
                         <div >
                         <NavLink to={`/spots/${spot.id}`} >
-                            <img src={`${spot.previewImage}`}className='img-div'></img>
+                            <img src={`${spot.previewImage}`}className='img-div-1'></img>
                         </NavLink>
                         </div>
 
