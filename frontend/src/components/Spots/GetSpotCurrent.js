@@ -61,7 +61,7 @@ const GetSpotByCurrentUser = () => {
 
             <h1 > Manage My Spots</h1>
 
-            <div className="main-div">
+            <div className="main-div-3">
 
 
                 {filter.map(spot => (

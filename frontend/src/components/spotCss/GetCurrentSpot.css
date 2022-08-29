@@ -2,14 +2,17 @@
 
 /* main div container for whole page */
 
-.main-div {
+.main-div-3 {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+
 }
 
 /* class for image */
 .img-div {
-    width: 500px;
+    width: 800px;
     height: 400px;
 }
 
