@@ -1,8 +1,7 @@
 # About Hombnb
 
 Homebnb is a web pplication inspired by Airbnb, that provides an online marketplace for lodging, primarly homestay for vacation rentals, and tourism activities.
-Here to view the Homebnb Live Site: https://airbnb-kk.herokuapp.com/
-
+[Click here to view Homebnb Live Site](https://airbnb-kk.herokuapp.com/)
 
 
 
