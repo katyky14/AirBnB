@@ -2,7 +2,7 @@
 /*main div whole page */
 .main-div-spots {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     padding: 0px;
     flex-wrap: wrap;
@@ -10,7 +10,7 @@
     /* font-family: Arial, Helvetica, sans-serif; */
     font-weight: lighter;
     font-size: 20px;
-    margin-right: 25px;
+    /* margin-right: 25px; */
 }
 
 
@@ -27,8 +27,8 @@
 
 /* image solo */
 .img-div {
-    width: 450px;
-    height: 450px;
+    /* width: 450px;
+    height: 450px; */
     border-radius: 8px;
 }
 
