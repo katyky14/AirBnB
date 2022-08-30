@@ -68,7 +68,7 @@ const GetSpotByCurrentUser = () => {
                     <div key={spot.id}>
                         {/* <div>Spot ID --- {spot.id}</div> */}
 
-                        <div><img src={spot.previewImage} alt="home" className="img-div" /></div>
+                        <div><img src={spot.previewImage} alt="home" className="img-div-3" /></div>
 
                         <div className="info-div">
                             <div className="address-div">{spot.address}</div>
