@@ -52,17 +52,17 @@ const GetSpotByCurrentUser = () => {
     // }
 
     return isLoaded && (
-        <div>
+        <div className='div-current-spot'>
             {/* <div>Testing Get Spots By current user </div> */}
             {/* <div>{obj.name}</div>
             <div>{obj.city}</div>
             <div>{obj.state}</div>
-            <div>{obj.price}</div> */}
+        <div>{obj.price}</div> */}
 
             <h1 > Manage My Spots</h1>
 
-            <div className="main-div-3">
 
+        <div className="main-div-3">
 
                 {filter.map(spot => (
                     <div key={spot.id}>
@@ -70,16 +70,16 @@ const GetSpotByCurrentUser = () => {
 
                         <div><img src={spot.previewImage} alt="home" className="img-div-3" /></div>
 
-                        <div className="info-div">
+                        <div className="info-div-3">
                             <div className="address-div">{spot.address}</div>
                             <div>{spot.city}, {spot.state}</div>
                         </div>
 
-                        <div className="price-div">${spot.price} night</div>
+                        <div className="price-div-3">${spot.price} night</div>
 
                         <div >
                             <button className="one-button"><NavLink activeClassName='active'
-                            style={{textDecoration:'none', color: 'black'}}
+                            style={{textDecoration:'none', color: 'white'}}
                             to={`/spots/${spot.id}/edit`}
 
 

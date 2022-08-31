@@ -26,7 +26,7 @@ const GetAllSpots = () => {
 
     return isLoaded && (
 
-        <section >
+        <section className='section-div'>
             {/* <h1>TESTING IN GET All SPOTS</h1> */}
             <div className='main-div-spots'>
                 {spotsArr.map(spot => (
@@ -52,7 +52,7 @@ const GetAllSpots = () => {
                         {/* <div>{spot.state}</div> */}
                         <div><i class="fa-solid fa-star"></i> {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0}</div>
                         </div>
-                        <div className='price-div'>${spot.price} night</div>
+                        <div className='price-div1'>${spot.price} night</div>
 
 
                     </div>

@@ -83,16 +83,6 @@ function EditSpotForm() {
   useEffect(() => {
     const valErrors = [];
 
-    // if (!address.length) valErrors.push("Street address is required");
-    // if (!city.length) valErrors.push("City is required");
-    // if (!state.length) valErrors.push("State is required");
-
-    // if (!lat.length) valErrors.push("Latitude is not valid");
-    // if (!lng.length) valErrors.push("Longitude is not valid");
-
-    // if (name.length > 50) valErrors.push("Name must be less than 50 characters");
-    // if (!price) valErrors.push("Price per day is required")
-
     if (!address.length) valErrors.push("Street address is required");
     if (!city.length) valErrors.push("City is required");
     if (!state.length) valErrors.push("State is required");

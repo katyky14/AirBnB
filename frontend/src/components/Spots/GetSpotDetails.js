@@ -57,7 +57,7 @@ const SpotByDetail = () => {
 
     // if (spotsArr != null && spotsObj.Images != null && isLoaded) {
     return spotsArr.length && isLoaded && (
-        <main>
+        <main className='center'>
             {/* <h1>TESTING SPOT BY DETAIL</h1> */}
             {/* <div>
                     <div><img src={spotsObj.previewImage} /></div>
@@ -82,7 +82,7 @@ const SpotByDetail = () => {
                     ))}
                 </div> */}
 
-            <div className="main-div-2">
+            <div className="main-div2">
                 {spotsArr.map(spot => (
                     <div key={spot.id}>
                         {/* <div> Spot ID -- {spot.id}</div> */}
@@ -92,15 +92,15 @@ const SpotByDetail = () => {
                         <div className="top-div-info">
                             <span className="span-info1">
                                 <div><i class="fa-solid fa-star"></i>{spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0} </div>
-                                <div className="space-div"> - {reviewArr.length} Reviews</div>
+                                <div className="space-div2"> - {reviewArr.length} Reviews</div>
                             </span>
-                            <span className='span-info2'>
-                                <div> {spot.city} , {spot.state}, {spot.country}</div>
-                            </span>
+                            {/* <span > */}
+                                <div className='span-info2'> {spot.city} , {spot.state}, {spot.country}</div>
+                            {/* </span> */}
                         </div>
 
 
-                        <div><img src={spot.previewImage} alt="home" className="image-div" /></div>
+                        <div className='img-div-spot1'><img src={spot.previewImage} alt="home" className="image-div2" /></div>
 
                         <h2 className='h2-spot'>Entire home hosted by Demo</h2>
 
@@ -114,7 +114,7 @@ const SpotByDetail = () => {
                                 <div className="space-div2"> - {reviewArr.length} Reviews</div>
                             </div>
                             {userObj?.id != null &&
-                            <button className="button-div"><StyledNavLink3 to={`/spots/${spot.id}/reviews`} >Add a Review</StyledNavLink3></button>
+                            <button className="button-div2"><StyledNavLink3 to={`/spots/${spot.id}/reviews`} >Add a Review</StyledNavLink3></button>
                             }
 
                         </div>

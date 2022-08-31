@@ -62,14 +62,15 @@ function CreateSpotForm() {
     if (!city.length) valErrors.push("City is required");
     if (!state.length) valErrors.push("State is required");
     if(!country.length) valErrors.push("Country is required");
+    if (lat > 90 || lat < -90) valErrors.push("Latitude must be between -90 and 90"); //-90 to 90
     if (!lat) valErrors.push("Lat is required");
+    if (lng > 180 || lng < -180) valErrors.push("Longitude must be between -180 and 180"); //-180 to 180
     if (!lng) valErrors.push("Lng is required");
     if (!description.length) valErrors.push("Description is required");
 
-    if (lat > 90 || lat < -90) valErrors.push("Latitude must be between -90 and 90"); //-90 to 90
-    if (!lng > 180 || lng < -180) valErrors.push("Longitude must be between -180 and 180"); //-180 to 180
-
     if (name.length > 50) valErrors.push("Name must be less than 50 characters");
+    // if(!name.length) valErrors.push("Name is required")
+
     if (!price) valErrors.push("Price per day is required")
 
     if (!previewImage.length) valErrors.push("Image is required");
@@ -134,7 +135,7 @@ function CreateSpotForm() {
 
           <input
           className="input-style-spot"
-          placeholder="Lat"
+          placeholder="Lat must be an interger between -90 and 90"
             type="number"
             value={lat}
             onChange={(e) => setLat(e.target.value)}
@@ -145,7 +146,7 @@ function CreateSpotForm() {
 
           <input
           className="input-style-spot"
-          placeholder="Lng"
+          placeholder="Lng must be an interger between -180 and 180"
             type="number"
             value={lng}
             onChange={(e) => setLng(e.target.value)}

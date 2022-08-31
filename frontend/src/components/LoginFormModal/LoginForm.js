@@ -93,11 +93,11 @@ function LoginForm() {
           required
           />
       </label>
-      <button type="submit" className="button">Log In</button>
+      <button type="submit" className="button1">Log In</button>
       <button type="submit" onClick={() => {
         setCredential("luffy@user.io");
         setPassword('password')}}
-        className="button"
+        className="button1"
         > Demo User
       </button>
       </div>

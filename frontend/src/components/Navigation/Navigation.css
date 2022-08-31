@@ -18,10 +18,11 @@
     align-items: center;
     align-content: center;
     font-size: 25px;
+    font-weight: bold;
 }
 
 
-.logo-image{
+.logo-image {
     width: 60px;
     height: 55px;
     /* border-radius: 50%; */
@@ -34,7 +35,7 @@
     /* border: 5px solid yellow; */
     text-decoration: none;
     color:rgb(227, 28, 95);
-    font-weight: bold;
+    /* font-weight: 900; */
 }
 
 

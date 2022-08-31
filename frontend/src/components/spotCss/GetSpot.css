@@ -1,4 +1,10 @@
 
+.section-div {
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+
 /*main div whole page */
 .main-div-spots {
     display: flex;
@@ -7,16 +13,17 @@
     padding: 0px;
     flex-wrap: wrap;
     align-content: center;
-    /* font-family: Arial, Helvetica, sans-serif; */
-    font-weight: lighter;
+
+    /* font-weight: lighter; */
     font-size: 20px;
-    /* margin-right: 25px; */
-    width: 100%;
+
+    /* width: 100%; */
 }
 
 
 .div-info3 {
     font-weight: bolder;
+    font-size: 25px;
 }
 
 /* image + info div  card div*/
@@ -28,9 +35,11 @@
 
 /* image solo */
 .img-div-1 {
-    width: 450px;
-    height: 450px;
-    border-radius: 8px;
+    /* width: 450px;
+    height: 450px; */
+    border-radius: 15px;
+    max-width: 100%;
+    height: 400px;
 }
 
 
@@ -44,6 +53,7 @@
 
 
 /* details 2 price alone */
-.price-div {
+.price-div1 {
     padding-bottom: 20px;
+    font-size: 25px;
 }
