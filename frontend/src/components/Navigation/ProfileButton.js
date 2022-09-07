@@ -41,11 +41,11 @@ function ProfileButton({ user }) {
   return (
     <>
       <li className="li-host">
-        <StyledNavLink2 to='/spots/new'>Become a host</StyledNavLink2>
+        <StyledNavLink2 to='/spots/new'>Become a Host</StyledNavLink2>
       </li>
       <li>
         <button onClick={openMenu} className="button-user">
-          <i className="fas fa-user-circle" />
+        <i className="fas fa-user-circle" />
         </button>
       </li>
       {showMenu && (

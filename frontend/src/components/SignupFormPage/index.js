@@ -8,7 +8,7 @@ import './SignupForm.css';
 function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  
+
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -33,54 +33,54 @@ function SignupFormPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="main-container">
-      <div className="div-container">
-      <ul>
+    <form onSubmit={handleSubmit} className="main-container-signup">
+      <div className="div-container-signup">
+      <ul className="ul-error-signup">
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
 
 
-      <label className="label-style">
+      <label className="label-style-signup">
         Email
         <input
-         className="input"
+         className="input-signup"
          type="text"
          value={email}
          onChange={(e) => setEmail(e.target.value)}
          required
          />
       </label>
-      <label className="label-style">
+      <label className="label-style-signup">
         Username
         <input
-        className="input"
+        className="input-signup"
         type="text"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         required
         />
       </label>
-      <label className="label-style">
+      <label className="label-style-signup">
         Password
         <input
-          className="input"
+          className="input-signup"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
           />
       </label>
-      <label className="label-style">
+      <label className="label-style-signup">
         Confirm Password
         <input
-        className="input"
+        className="input-signup"
         type="password"
         value={confirmPassword}
         onChange={(e) => setConfirmPassword(e.target.value)}
         required
         />
       </label>
-      <button type="submit" className="input button">Sign Up</button>
+      <button type="submit" className="button-signup">Sign Up</button>
         </div>
     </form>
   );

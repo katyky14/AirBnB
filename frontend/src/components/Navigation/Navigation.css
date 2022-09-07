@@ -1,5 +1,6 @@
 
  .nav-class {
+    font-family: 'Montserrat';
     display: flex;
     justify-content: space-between;
     margin: 0;
@@ -8,6 +9,7 @@
     border-bottom: 2px solid gray;
     border-width: thick;
     margin-bottom: 40px;
+
 }
 
 
@@ -18,7 +20,7 @@
     align-items: center;
     align-content: center;
     font-size: 25px;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 
@@ -35,35 +37,4 @@
     /* border: 5px solid yellow; */
     text-decoration: none;
     color:rgb(227, 28, 95);
-    /* font-weight: 900; */
 }
-
-
-/* .my-navlink-style {
-    display: flex;
-    border: 1px solid red;
-    width: 100px;
-
-
-} */
-
-/* .nav-right {
-  border: 1px solid black;
-  padding: 0px 0px 15px 0px;
-} */
-
-
-
-/* for logged in */
-
-/*
-.navStyle {
-    display: flex;
-    justify-content: flex-end;
-    margin: -10px;
-    padding-right: 50px;
-}
-
-.notNavStyle {
-    display: inline-block;
-} */

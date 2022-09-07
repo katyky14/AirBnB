@@ -23,14 +23,11 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser?.id != null) {
     sessionLinks = (
-
         <ProfileButton user={sessionUser} />
-
     );
   } else {
     sessionLinks = (
       <>
-        {/* <DemoUser /> */}
         <LoginFormModal />
         <StyledNavLink to="/signup">Sign Up</StyledNavLink>
       </>
