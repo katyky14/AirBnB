@@ -38,7 +38,7 @@ function App() {
           <Route path='/spots/:spotId/edit'>
             <EditSpotForm />
           </Route>
-            <Route exact path='/spots/current'>
+            <Route exact path='/spots/user'>
               <GetSpotByCurrentUser />
             </Route>
           <Route exact path='/spots/new'>

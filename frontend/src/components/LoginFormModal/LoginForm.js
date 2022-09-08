@@ -24,9 +24,6 @@ function LoginForm() {
     history.push('/')
     // const valErrors= [];
 
-    // if (!credential.length)  valErrors.push('Invalid Credential')
-    // if (!password.length) valErrors.push('Invalid Credentials')
-    // setErrors(valErrors);
 
     setErrors([]);
     return dispatch(sessionActions.login({ credential, password })).catch(
@@ -51,7 +48,7 @@ function LoginForm() {
   //console.log('the errors', errors)
   return (
 
-      <div className='main-container '>
+      <div className='main-container-login'>
         <form onSubmit={handleSubmit} className="background modal-div" >
           <h1 className="welcome-div">Welcome to Homebnb</h1>
 

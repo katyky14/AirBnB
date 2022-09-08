@@ -63,7 +63,7 @@ function ProfileButton({ user }) {
           <li className="profile-content">
 
             <button className="button-style">
-              <StyledNavLink2 to={`/spots/current`}>
+              <StyledNavLink2 to={`/spots/user`}>
                 My Spots
               </StyledNavLink2>
             </button>

@@ -86,7 +86,7 @@ function CreateSpotForm() {
         {hasSubmitted && validationErrors.length > 0 && (
 
           <ul>
-            {validationErrors.map((error) => <li className="li-spot" key={error}>{error}</li>)}
+            {validationErrors.map((error) => <li className="li-spot-error" key={error}>{error}</li>)}
           </ul>
         )}
         <label >

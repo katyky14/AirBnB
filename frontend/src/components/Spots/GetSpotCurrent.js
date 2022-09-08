@@ -53,16 +53,8 @@ const GetSpotByCurrentUser = () => {
 
     return isLoaded && (
         <div className='div-current-spot'>
-            {/* <div>Testing Get Spots By current user </div> */}
-            {/* <div>{obj.name}</div>
-            <div>{obj.city}</div>
-            <div>{obj.state}</div>
-        <div>{obj.price}</div> */}
-
-            <h1 > Manage My Spots</h1>
-
-
-        <div className="main-div-3">
+            <h1 className='h1-current-spot'> Manage My Spots</h1>
+            <div className="main-div-3">
 
                 {filter.map(spot => (
                     <div key={spot.id}>
@@ -79,23 +71,15 @@ const GetSpotByCurrentUser = () => {
 
                         <div >
                             <button className="one-button"><NavLink activeClassName='active'
-                            style={{textDecoration:'none', color: 'white'}}
-                            to={`/spots/${spot.id}/edit`}
-
-
-                            > edit spot</NavLink></button>
+                                style={{ textDecoration: 'none', color: 'white' }}
+                                to={`/spots/${spot.id}/edit`}> Edit Spot</NavLink></button>
 
                             <button onClick={() => {
                                 dispatch(deleteSpotThunk(spot.id))
-                            }} className="one-button" > delete spot</button>
+                            }} className="one-button" > Delete Spot</button>
 
                         </div>
 
-                        {/* <div>
-                    {reviewArr.map(ele => (
-                        <div key={ele.id}></div>
-                        ))}history.push('/spots/current')
-                    </div> */}
                     </div>
                 ))}
             </div>

@@ -1,6 +1,6 @@
 
  .nav-class {
-    font-family: 'Montserrat';
+    /* font-family: 'Montserrat'; */
     display: flex;
     justify-content: space-between;
     margin: 0;
@@ -37,4 +37,5 @@
     /* border: 5px solid yellow; */
     text-decoration: none;
     color:rgb(227, 28, 95);
+    font-weight: 700;
 }

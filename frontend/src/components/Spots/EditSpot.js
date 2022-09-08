@@ -107,7 +107,7 @@ function EditSpotForm() {
     return (
 
       <form onSubmit={handleSubmit} className="main-edit-div">
-        <h2 className="h2-info2">Edit your information</h2>
+        <h2 className="h2-info2">Edit Your Information</h2>
         <div className="div-container-edit">
 
           <ul>

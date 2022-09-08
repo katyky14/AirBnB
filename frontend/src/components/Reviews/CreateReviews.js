@@ -77,21 +77,21 @@ function CreateReviewForm() {
 
         return (
             <div className="main-container-div">
-                <h1>Thank You For Your Review </h1>
+                <h1 className="h1-review-form">Write your Review </h1>
                 <div className="div-container-rev">
 
                     <form onSubmit={handleSubmit}>
                         {hasSubmitted && errors.length > 0 && (
 
-                            <ul>
+                            <ul className="ul-rev-form-error">
                                 {errors.map((error) =>
                                     <li key={error}>{error}</li>
                                 )}
                             </ul>
                         )}
-                        <div>
+                        <div className="rev-form-style">
 
-                            <label className="label-style">
+                            <label className="label-style-rev">
                                 Review
                                 <input
                                     className="input-style-rev"
@@ -101,26 +101,24 @@ function CreateReviewForm() {
                                 // required
                                 />
                             </label>
-                        </div>
-                        <div>
-                            <label  className="label-style">
+                            <label  className="label-style-rev">
                                 Stars
                                 <input
-                                    className="input-style-star"
+                                    className="input-style-rev"
                                     type="number"
                                     value={stars}
                                     onChange={(e) => setStars(e.target.value)}
                                 />
                             </label>
+                            <button className="button-rev">Submit</button>
                         </div>
-                        <button className="button-rev">Submit</button>
                     </form>
                 </div>
             </div>
         )
 
     }
-    return <h1>"User already has a review for this spot"</h1>
+    return <h1 className="h1-review-form">"User already has a review for this spot"</h1>
 }
 
 

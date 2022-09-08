@@ -1,11 +1,18 @@
 /* TODO Add site wide styles */
 
-img {
+/* img {
     width: 600px;
     height: 600px;
 
-}
+} */
 
 body {
-    font-family: 'Montserrat'
+    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+    sans-serif;
+}
+
+
+* {
+    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+    sans-serif;
 }

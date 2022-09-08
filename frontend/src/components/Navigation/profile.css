@@ -49,7 +49,7 @@ li {
     text-align: center;
     box-shadow: 2px 2px 5px 5px rgb(0 0 0 / 15%);
 
-    font-family: 'Montserrat';
+    /* font-family: 'Montserrat'; */
 }
 
 .profile-content {
@@ -68,7 +68,7 @@ li {
     border-style: none;
     text-decoration: none;
     cursor: pointer;
-    font-family: 'Montserrat';
+    /* font-family: 'Montserrat'; */
 }
 
 .button-style:hover {
@@ -81,5 +81,5 @@ li {
     /* border: 5px solid yellow; */
     text-decoration: none;
     color:black;
-    font-family: 'Montserrat';
+    /* font-family: 'Montserrat'; */
 }

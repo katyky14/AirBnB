@@ -40,7 +40,7 @@ const ReviewCurrentUser = () => {
 
     return (
         <div className='rev-page-div'>
-            <h1>My Reviews</h1>
+            <h1 className='h1-my-reviews'>My Reviews</h1>
             <div className='rev-main-div'>
 
                 {filter.map(review => (
@@ -49,21 +49,21 @@ const ReviewCurrentUser = () => {
 
                         <div className='info-rev-div'>
                             <div className='details-div'>
-                            <div className='review-div'> {review.review}</div>
-                            {/* {review.Images?.[0]?.url && <img src={review.Images?.[0]?.url} />} */}
-                            <div className='rate-div'> Rating <i class="fa-solid fa-star"></i>{review.stars} </div>
-                            </div>
-                            <div>
-                                <button onClick={async () => {
-                                    await dispatch(deleteReviewThunk(review.id))
-                                    // history.push('/reviews')
-                                }}
-                                className='button-rev-user'>
-                                    delete review
-                                </button>
+                                <div className='review-div'> {review.review}</div>
+                                {/* {review.Images?.[0]?.url && <img src={review.Images?.[0]?.url} />} */}
+                                <div className='rate-div'> Rating <i class="fa-solid fa-star"></i>{review.stars} </div>
                             </div>
 
+                            <button onClick={async () => {
+                                await dispatch(deleteReviewThunk(review.id))
+                                // history.push('/reviews')
+                            }}
+                                className='button-rev-user'>
+                                Delete Review
+                            </button>
                         </div>
+
+
                     </div>
                 ))}
             </div>
@@ -72,7 +72,6 @@ const ReviewCurrentUser = () => {
 
     // alert("please log in")
     // history.push('/')
-
 
 
 }

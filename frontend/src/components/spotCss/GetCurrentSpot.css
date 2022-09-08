@@ -10,22 +10,22 @@
     align-items: center;
     flex-direction: column;
     /* border: 2px solid red;*/
+    margin-top: 40px;
 }
 
 /* class for image */
 .img-div-3 {
-    width: 800px;
+    width: 600px;
     height: 500px;
+    border-radius: 10px;
 }
 
-h1 {
+.h1-current-spot {
     margin: 10px;
     text-align: center;
     font-size: 50px;
     color: rgb(148, 133, 133);
-    /* border-top: 1px solid rgb(124, 118, 118);
-    border-top-width: medium; */
-    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    /* font-family: Arial, Helvetica, sans-serif; */
 }
 
 
@@ -41,13 +41,13 @@ h1 {
 .address-div {
     font-weight: bold;
     font-style: italic;
-    font-size: 30px;
+    font-size: 26px;
 }
 
 /* class for price */
 .price-div-3 {
     padding-bottom: 10px;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 
@@ -61,13 +61,15 @@ h1 {
     padding: 10px;
     border-radius: 8px;
     text-decoration: none;
-    background: rgb(231, 109, 134);
+    background-color: rgb(227, 28, 95);
     padding: 5px;
     margin: 0px 0px 15px 3px;
     width: 200px;
     font-size: 25px;
     color: white;
     font-weight: 500;
+/*
+    font-family: Arial, Helvetica, sans-serif; */
 }
 
 /* .active {

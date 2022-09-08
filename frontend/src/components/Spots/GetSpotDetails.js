@@ -57,30 +57,8 @@ const SpotByDetail = () => {
 
     // if (spotsArr != null && spotsObj.Images != null && isLoaded) {
     return spotsArr.length && isLoaded && (
-        <main className='center'>
+        <main className='center-spot-detail'>
             {/* <h1>TESTING SPOT BY DETAIL</h1> */}
-            {/* <div>
-                    <div><img src={spotsObj.previewImage} /></div>
-                    <div>{spotsObj.id}</div>
-                    <div>avgRating {spotsObj.avgRating ? Number.parseFloat(spotsObj.avgRating).toFixed(2) : 0}</div>
-                    <div>{spotsObj.address}</div>
-                    <div>{spotsObj.city}</div>
-                    <div>{spotsObj.state}</div>
-                    <h2>TreeHouse hosted by {spotsObj.name}</h2>
-                    <p>{spotsObj.description}</p>
-                </div>
-                <div>
-                    <button><NavLink to={`/spots/${spotsObj.id}/reviews`}>Add a Review</NavLink></button>
-
-                    {reviewArr.map(ele => (
-                        <div key={ele.id}>
-
-                            <ul >
-                                <li>{ele.review}</li>
-                            </ul>
-                        </div>
-                    ))}
-                </div> */}
 
             <div className="main-div2">
                 {spotsArr.map(spot => (
@@ -91,7 +69,7 @@ const SpotByDetail = () => {
 
                         <div className="top-div-info">
                             <span className="span-info1">
-                                <div><i class="fa-solid fa-star"></i>{spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0} </div>
+                                <div><i class="fa-solid fa-star"></i> &nbsp; {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0} </div>
                                 <div className="space-div2"> - {reviewArr.length} Reviews</div>
                             </span>
                             {/* <span > */}
