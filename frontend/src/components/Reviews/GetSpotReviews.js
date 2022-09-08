@@ -38,7 +38,6 @@ const GetReviews = () => {
                         <div className='spot-rev-info'>{rev.review} </div>
                         </div>
                     </div>
-
                 ))}
             </div>
 
