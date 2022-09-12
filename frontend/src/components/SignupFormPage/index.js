@@ -15,7 +15,7 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  // if (sessionUser) return <Redirect to="/" />; // for sign up to not refresh?
 
   const handleSubmit = (e) => {
     e.preventDefault();
