@@ -51,7 +51,7 @@ function ProfileButton({ user }) {
       {showMenu && (
         <ul className="profile-dropdown">
           <li className="profile-content">{user.username}</li>
-          <li className="profile-content">{user.email}</li>
+          <li className="profile-content profile-line-sep">{user.email}</li>
           <li className="profile-content">
 
             <button className="button-style">

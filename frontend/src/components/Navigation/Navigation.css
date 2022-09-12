@@ -6,8 +6,8 @@
     margin: 0;
     padding: 4px 92px;
     height: 65px;
-    border-bottom: 2px solid gray;
-    border-width: thick;
+    border-bottom: 1px solid gray;
+    /* border-width: thick; */
     margin-bottom: 40px;
 
 }
