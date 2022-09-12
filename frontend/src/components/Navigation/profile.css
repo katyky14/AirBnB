@@ -52,12 +52,18 @@ li {
     /* font-family: 'Montserrat'; */
 }
 
+.profile-line-sep {
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
+}
+
+
 .profile-content {
     font-size: 22px;
 }
 
 .profile-dropdown:hover .profile-dropdown:focus {
-    background-color: gray;
+    background-color: #DDDDDD;
 }
 
 .button-style {
@@ -68,18 +74,17 @@ li {
     border-style: none;
     text-decoration: none;
     cursor: pointer;
-    /* font-family: 'Montserrat'; */
 }
 
 .button-style:hover {
-    background: #d2d2d2;
+    background-color: rgb(211,211,211,0.5);
     border-radius: 8px;
     height: 40px;
+    width: 300px;
 }
 
 .navlink-style-div {
     /* border: 5px solid yellow; */
     text-decoration: none;
     color:black;
-    /* font-family: 'Montserrat'; */
 }
