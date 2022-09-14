@@ -26,7 +26,7 @@ const GetAllSpots = () => {
 
     return isLoaded && (
 
-        <section className='section-div'>
+        <div className='section-div'>
             {/* <h1>TESTING IN GET All SPOTS</h1> */}
             <div className='main-div-spots'>
                 {spotsArr.map(spot => (
@@ -51,7 +51,7 @@ const GetAllSpots = () => {
                     </div>
                 ))}
             </div>
-        </section>
+        </div>
     );
 }
 

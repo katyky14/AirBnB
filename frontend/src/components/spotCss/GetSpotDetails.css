@@ -3,6 +3,8 @@
 .center-spot-detail {
     padding-left: 80px;
     padding-right: 80px;
+
+    /* border: 1px solid red; */
 }
 
 @media screen and (min-width: 1800px) {
@@ -134,11 +136,16 @@
 
 @media screen and (max-width: 1900px) {
     .image-div2 {
-        width: 650px;
+        width: 750px;
     }
 
     .button-div2 {
         margin-left: 400px;
+    }
+
+    .center-spot-detail {
+        margin-left: 50px;
+        margin-right: 50px;
     }
 }
 
