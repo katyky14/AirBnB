@@ -1,0 +1,25 @@
+
+
+.spot-rev {
+    /* border: 2px solid red; */
+    /* height: 30px; */
+    margin-bottom: 20px;
+    width: 800px;
+    text-align: justify;
+    /* display: flex;
+    justify-content: flex-start; */
+
+}
+
+.spot-rev-info {
+    padding-bottom: 20px;
+    margin-bottom: 60px;
+    font-size: 25px;
+    width: 800px;
+    text-align: justify;
+    /* border: 2px solid green; */
+}
+
+.star-rev1 {
+    font-size: 25px;
+}

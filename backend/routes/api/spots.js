@@ -57,14 +57,14 @@ router.get('/', async (req, res) => {
             raw: true,
         })
 
-        let previewImageUrl = await Image.findOne({
-            where: {
-                spotId: spotEle.id
-            },
-            attributes: [
-                'url'
-            ]
-        })
+        // let previewImageUrl = await Image.findOne({
+        //     where: {
+        //         spotId: spotEle.id
+        //     },
+        //     attributes: [
+        //         'url'
+        //     ]
+        // })
 
         // if (!previewImageUrl) {
         //     resultData = {
@@ -309,14 +309,18 @@ router.put('/:spotId', requireAuth, async (req, res) => {
 router.post('/:spotId/reviews', requireAuth, async (req, res) => {
 
     const { spotId } = req.params;
+
+    const { review, stars } = req.body;
+
     const spotItem = await Spot.findByPk(spotId);
+
     if (!spotItem) {
         return res.json({
             "message": "Spot couldn't be found",
             "statusCode": 404
         })
     };
-
+    // const { user} = req
     const reviewSpot = await Review.findAll({
         where: {
             spotId: spotId,
@@ -330,16 +334,17 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
             "message": "User already has a review for this spot",
             "statusCode": 403
         })
-    } else {
-        const { review, stars } = req.body;
+    }
+    // else {
         const newReview = await Review.create({
             userId: req.user.id,
             spotId: spotId,
             review: review,
             stars: stars,
         });
+        console.log('in the backend', newReview)
         res.json(newReview);
-    }
+    // }
 });
 
 
@@ -391,6 +396,7 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
     const { user } = req;
     const deletedItem = await Spot.findByPk(spotId);
 
+    console.log('in the backend', deletedItem)
     if (!deletedItem) {
         res.status(404)
         res.json({

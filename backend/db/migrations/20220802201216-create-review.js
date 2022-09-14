@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       review: {
-        type: Sequelize.TEXT,
+        type: Sequelize.STRING,
         allowNull: false
       },
       stars: {
@@ -24,7 +24,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: true,
         references: {model: 'Spots'},
-        onDelete: 'CASCADE'
+        // onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,

@@ -2,65 +2,119 @@ import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '../../context/Modal';
+import '../spotCss/GetSpotDetails.css';
 
 
 import { NavLink } from 'react-router-dom';
 import { getOneSpotDetails } from '../../store/spot';
+import GetReviews from '../Reviews/GetSpotReviews';
 
-import { deleteSpotThunk } from '../../store/spot';
+//import { deleteSpotThunk } from '../../store/spot';
+
+import { getSpotReviewThunk } from '../../store/review';
+
+// import CreateReviewForm from '../Reviews/CreateReviews';
+
+const StyledNavLink3 = (props) => {
+    return <NavLink {...props} className={`${props.className} my-navlink-style3`}/>
+  }
+
+
 
 const SpotByDetail = () => {
-    const [showModal, setShowModal] = useState(false);
+    //const [showModal, setShowModal] = useState(false);
 
-    const history = useHistory();
+    //const history = useHistory();
     const { spotId } = useParams();
-    const spotsObj = useSelector(state => state.spot['oneSpot']);
-    //const spotsArr = Object.values(spotsObj)
+    const spotsObj = useSelector(state => state.spot);
+    //console.log('the spot obj', spotsObj)
+    const spotsArr = Object.values(spotsObj)
+    //console.log('the spot arr', spotsArr)
+    // const arr = spotsArr.map(spot => spot.id)
+    // const filter = spotsArr.filter(spot => console.log(spot))
+    // console.log('the filter', filter)
+    // console.log('the arr', arr)
+
+    const userObj = useSelector(state => state.session.user)
+    //console.log('the user state', userObj)
+
+
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     //console.log('the spotsObj in Spot Details--', spotsObj)
+    //console.log('images detail ---', spotsObj.Images[0].url)
+
+    const reviewDetails = useSelector(state => state.review)
+    //console.log('the review in SPOT DETAIL', reviewDetails)
+    const reviewArr = Object.values(reviewDetails);
+    //console.log('the ARRay in SPOT', reviewArr.length)
+
 
     useEffect(() => {
-        dispatch(getOneSpotDetails(spotId)).then(setIsLoaded(true))
-    }, [dispatch, spotId])
+        dispatch(getOneSpotDetails(spotId)).then(() => setIsLoaded(true))
+        //dispatch(getSpotReviewThunk(spotId))
+    }, [dispatch, spotId, reviewDetails])
 
-    if (spotsObj != null && spotsObj.Images != null && isLoaded ) {
-        return (
-            <main>
-            {/* <NavLink to={`/spots/${spot.id}`}></NavLink> */}
-            <h1>TESTING SPOT BY DETAIL</h1>
-            {/* {spotsArr.map(spot => (
-                <div key={spot.id}>
+    // if (spotsArr != null && spotsObj.Images != null && isLoaded) {
+    return spotsArr.length && isLoaded && (
+        <main className='center-spot-detail'>
+            {/* <h1>TESTING SPOT BY DETAIL</h1> */}
 
-                <ul >
-                <li>{spot.address}</li>
-                </ul>
-                </div>
-            ))} */}
-            {/* <div><img alt='image' src={spotsObj.Images[0].url}></img></div> */}
-            <div>images here</div>
-            <div>{spotsObj.avgRating}</div>
-            <div>{spotsObj.address}</div>
-            <div>{spotsObj.city}</div>
-            <div>{spotsObj.state}</div>
-            <h2>TreeHouse hosted by {spotsObj.name}</h2>
+            <div className="main-div2">
+                {spotsArr.map(spot => (
+                    <div key={spot.id}>
+                        {/* <div> Spot ID -- {spot.id}</div> */}
 
-            {/* <div>
-                <button ><NavLink to={`/spots/${spotId}/edit`}>edit spot</NavLink></button>
-            </div> */}
-            {/* <div>
-                <button onClick={async () => {
-                    await dispatch(deleteSpotThunk(spotId))
-                    history.push('/spots')
-                }} > delete spot</button>
-            </div> */}
+                        <h1 className="name-div"> {spot.address}</h1>
+
+                        <div className="top-div-info">
+                            <span className="span-info1">
+                                <div><i class="fa-solid fa-star"></i> &nbsp; {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0} </div>
+                                <div className="space-div2"> - {reviewArr.length} Reviews</div>
+                            </span>
+                            {/* <span > */}
+                                <div className='span-info2'> {spot.city} , {spot.state}, {spot.country}</div>
+                            {/* </span> */}
+                        </div>
+
+
+                        <div className='img-div-spot1'><img src={spot.previewImage} alt="home" className="image-div2" /></div>
+
+                        <h2 className='h2-spot'>Entire home hosted by Demo</h2>
+
+                        <p className="border-div">{spot.description}</p>
+
+
+                        <div className="stars-div">
+                            {/* <i class='fa-solid fa-star'></i> */}
+                            <div className="span-info3">
+                                <div><i class="fa-solid fa-star"></i> {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0} </div>
+                                <div className="space-div2"> - {reviewArr.length} Reviews</div>
+                            </div>
+                            {userObj?.id != null &&
+                            <button className="button-div2"><StyledNavLink3 to={`/spots/${spot.id}/reviews`} >Add a Review</StyledNavLink3></button>
+                            }
+
+                        </div>
+
+                        <div > <GetReviews /> </div>
+                    </div>
+                ))}
+            </div>
+
+
+
+
+
+
+
 
         </main>
-        )
-    }
-
-    return "Loading... 😵‍💫";
+    )
 }
+
+//     return "Loading... 😵‍💫";
+// }
 
 
 export default SpotByDetail;
@@ -72,7 +126,7 @@ export default SpotByDetail;
     //console.log('the spot object is ----', spotsObj)
     //console.log('the spots array is ---', spotsArr)
 
-    /** Code using optionals, does the same thing as code above */
+/** Code using optionals, does the same thing as code above */
     // const imgUrl = spotsObj?.Images?.[0].url;
     // // console.log('the image url variable----', imgUrl)
 

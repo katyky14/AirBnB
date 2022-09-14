@@ -4,40 +4,47 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Images', [
       {
-       url: 'https://a0.muscache.com/im/pictures/c84a44cb-8aa6-4f07-937f-6a96edf262f2.jpg?im_w=1200',
+       url: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
        previewImage: true,
        spotId: 1,
        reviewId: 2,
        userId: 1
       },
       {
-        url: 'https://a0.muscache.com/im/pictures/3588dca6-4408-4663-9ed9-166b394c5b58.jpg?im_w=1440',
+        url: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
         previewImage: true,
         spotId: 2,
         reviewId: 3,
         userId: 2
       },
       {
-        url: 'https://a0.muscache.com/im/pictures/monet/Luxury-53719772/original/17b49e69-a3b4-4f80-8068-868a3892d6cc?im_w=1200',
+        url: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1475&q=80',
         previewImage: true,
         spotId: 3,
         reviewId: 1,
         userId: 3
       },
       {
-        url: 'https://a0.muscache.com/im/pictures/e1599128-cdb4-4324-ba8e-d1893475c0bb.jpg?im_w=1200',
+        url: 'https://images.unsplash.com/photo-1593604340846-4fbe9763a8f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
         previewImage: true,
         spotId: 4,
         reviewId: 4,
         userId: 4
       },
       {
-        url: 'https://a0.muscache.com/im/pictures/miso/Hosting-34446612/original/298e2f93-d382-44d9-a5a7-b69658b234c2.jpeg?im_w=720',
+        url: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
         previewImage: true,
         spotId: 5,
         reviewId: 5,
         userId: 5
-      }
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1575517111478-7f6afd0973db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+        previewImage: true,
+        spotId: 6,
+        reviewId: 6,
+        userId: 2
+      },
     ], {});
   },
 

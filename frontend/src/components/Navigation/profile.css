@@ -1,0 +1,90 @@
+li {
+    list-style: none;
+
+}
+
+
+.li-host {
+    margin-right: 100px;
+}
+
+
+.button-user {
+    font-size: 40px;
+    margin-right: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid white;
+    height: 50px;
+    width: 80px;
+}
+
+
+.profile-dropdown {
+    /* background-color:white;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border: 2px solid red;
+    position: absolute; */
+
+    border: 2px solid rgb(203, 194, 194);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background: #fff;
+    height: 300px;
+    position: fixed;
+    border-radius: 10px;
+    border-bottom: 0.5px solid grey;
+    box-sizing: border-box;
+    padding: 20px 30px;
+    right: 10%;
+    top: 8%;
+    width: 350px;
+    z-index: 10;
+    background-color: rgb(196, 177, 177, 0.5px);
+    text-align: center;
+    box-shadow: 2px 2px 5px 5px rgb(0 0 0 / 15%);
+
+    /* font-family: 'Montserrat'; */
+}
+
+.profile-line-sep {
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
+}
+
+
+.profile-content {
+    font-size: 22px;
+}
+
+.profile-dropdown:hover .profile-dropdown:focus {
+    background-color: #DDDDDD;
+}
+
+.button-style {
+    /* border: 1px solid red; */
+    height: 25px;
+    background: white;
+    font-size: 22px;
+    border-style: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button-style:hover {
+    background-color: rgb(211,211,211,0.5);
+    border-radius: 8px;
+    height: 40px;
+    width: 300px;
+}
+
+.navlink-style-div {
+    /* border: 5px solid yellow; */
+    text-decoration: none;
+    color:black;
+}

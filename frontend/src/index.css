@@ -1,1 +1,18 @@
 /* TODO Add site wide styles */
+
+/* img {
+    width: 600px;
+    height: 600px;
+
+} */
+
+body {
+    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+    sans-serif;
+}
+
+
+* {
+    font-family: Circular, -apple-system, "system-ui", Roboto, Helvetica Neue,
+    sans-serif;
+}

@@ -11,6 +11,10 @@ import GetSpotByCurrentUser from "./components/Spots/GetSpotCurrent";
 import SpotByDetail from "./components/Spots/GetSpotDetails";
 import CreateSpotForm from "./components/Spots/CreateSpotForm";
 import EditSpotForm from "./components/Spots/EditSpot";
+import CreateReviewForm from "./components/Reviews/CreateReviews";
+import ReviewCurrentUser from "./components/Reviews/GetReviewUser";
+import GetUserBooking from "./components/Booking/GetUserBooking";
+
 
 
 function App() {
@@ -25,23 +29,32 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path='/reviews'>
+            <ReviewCurrentUser />
+          </Route>
+          <Route path='/spots/:spotId/reviews'>
+            <CreateReviewForm />
+          </Route>
           <Route path='/spots/:spotId/edit'>
             <EditSpotForm />
           </Route>
-            <Route exact path='/spots/current'>
+            <Route exact path='/spots/user'>
               <GetSpotByCurrentUser />
             </Route>
+          <Route exact path='/spots/new'>
+            <CreateSpotForm />
+          </Route>
           <Route exact path='/spots/:spotId'>
               <SpotByDetail />
           </Route>
-          <Route exact path='/spots'>
-            <CreateSpotForm />
+          <Route path="/signup">
+            <SignupFormPage />
           </Route>
           <Route exact path='/' >
             <GetAllSpots />
           </Route>
-          <Route path="/signup">
-            <SignupFormPage />
+          <Route path='/user/bookings'>
+            <GetUserBooking />
           </Route>
         </Switch>
       )}

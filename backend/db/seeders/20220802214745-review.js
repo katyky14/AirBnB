@@ -11,14 +11,14 @@ module.exports = {
         spotId: 1
       },
       {
-        review: 'The location of this place was excellent for our needs. A few minutes to walk to the beach across a beautiful park and 10 to 30 minutes to walk to many shops and restaurants',
+        review: 'The location of this place was excellent for our needs. A few minutes to walk to the beach across a beautiful park ',
         stars: 4,
         userId: 1,
         spotId: 3
       },
       {
-        review: 'The floors are disgusting, there are bugs everywhere, no kitchen space, the bathroom is not clean, and there is a flimsy lock on the door. ',
-        stars: 1,
+        review: 'Beautiful well-kept home and fabulous pool! Walking distance to the beach, tons of shops, restaurants and grocery store. Highly recommend!',
+        stars: 5,
         userId: 3,
         spotId: 4
       },
@@ -29,10 +29,16 @@ module.exports = {
         spotId: 2
       },
       {
-        review: 'Perfect place for that weekend we had planned.',
+        review: 'Perfect place for that weekend we had planned.This home is beautiful! We loved everything from the location to the decor. Would highly recommend!!',
         stars: 5,
         userId: 5,
         spotId: 5
+      },
+      {
+        review: 'Really nice house in perfect location - close to beach and town. Thanks so much!',
+        stars: 5,
+        userId: 5,
+        spotId: 6
       }
     ], {});
   },

@@ -35,15 +35,30 @@ const getSpotOfCurrentUser = payloadSpot => {
     }
 }
 
-const addOneSpot = payload => ({
-    type: ADD_ONE_SPOT,
-    payload
-});
+// const addOneSpot = payload => ({
+//     type: ADD_ONE_SPOT,
+//     payload
+// });
+const addOneSpot = payload => {
+    return {
+        type: ADD_ONE_SPOT,
+        payload
+    }
+}
 
-const deleteOneSpot = payload => ({
-    type: DELETE_SPOT,
-    payload
-})
+// const deleteOneSpot = id => ({
+//     type: DELETE_SPOT,
+//     id
+// })
+
+const deleteOneSpot = id => {
+    return {
+        type: DELETE_SPOT,
+        id
+    }
+}
+
+
 
 /*********************************************************** */
 //thunk actions creator
@@ -79,20 +94,21 @@ export const getOneSpotDetails = (spotId) => async dispatch => {
 
 export const getCurrentSpotThunk = () => async (dispatch) => {
     const response = await csrfFetch(`/api/spots/current`);
-
+    //console.log('the response in current', response)
     if (response.ok) {
         const data = await response.json();
-        console.log('the data in spot  current ', data.Spots)
+        //console.log('the data in spot  current ', data.Spots)
         dispatch(getSpotOfCurrentUser(data.Spots))
     }
 }
 
-export const spotFormThunk = (payload) => async (dispatch) => {
+export const spotFormThunk = (spotData) => async (dispatch) => {
     const response = await csrfFetch('/api/spots', {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(spotData)
     });
+    //console.log('the response for form spot', response)
     if (response.ok) {
         const data = await response.json();
         //console.log('the response in spot form---', data)
@@ -111,18 +127,22 @@ export const editSpotThunk = (id, payload) => async dispatch => {
     });
     if (response.ok) {
         const data = await response.json();
-        console.log('the data in edit--', data)
+        //console.log('the data in edit--', data)
         dispatch(addOneSpot(data));
         return data
     }
 }
 
 export const deleteSpotThunk = (id) => async dispatch => {
-    const response = await csrfFetch(`/api/spots/${id}`, {
-        method: 'DELETE'
-    });
 
+    const response = await csrfFetch(`/api/spots/${id}`, {
+        method: 'DELETE',
+        headers: { "Content-Type": "application/json" }
+    });
+    //console.log('response thunk', response)
     if (response.ok) {
+        const data = await response.json();
+        console.log('the data delete SPOT', data)
         dispatch(deleteOneSpot(id))
     }
 }
@@ -155,15 +175,21 @@ const spotReducer = (state = initialState, action) => {
             newState = { ...state, allSpots }
             //console.log('the new state', newState.allSpots)
             //console.log('the new state', newState.allSpots) // empty obj
-            return newState.allSpots
+            return allSpots //or return newState.allSpots
 
         case GET_SPOTS_DETAIL:
-            const oneSpot = { ...action.payload };
+            // const oneSpot = { ...action.payload };
 
-            return {
-                ...state,//put spreaded state first or else overwrite
-                oneSpot
-            }
+            // return {
+            //     ...state,//put spreaded state first or else overwrite
+            //     ...oneSpot
+            // }
+
+           newState = {};
+           //console.log('new state', action.payload)
+           newState[action.payload.id] = action.payload
+           return newState;
+
 
         // state.oneSpot = action.payload;
         // return state;
@@ -178,13 +204,13 @@ const spotReducer = (state = initialState, action) => {
             // }
             //payload is array of obj
             newState = {...state}; // we don't lose prev info
-            console.log('the action in reducer---', action.payloadSpot)
+            //console.log('the action in reducer---', action.payloadSpot)
             //const arr = Array(action.payloadSpot);
             // console.log('action payload', action.payloadSpot)
             // console.log('the arr---', arr)
             action.payloadSpot.forEach(spot => {
                 newState[spot.id] = spot
-                console.log('the spot----', spot.id)
+                //console.log('the spot----', spot.id)
             });
             //console.log('current spot reducer', newState)
 
@@ -207,10 +233,15 @@ const spotReducer = (state = initialState, action) => {
             }
 
         case DELETE_SPOT:
-            const newDeleteState = { ...state };
+            // const newDeleteState = {...state};
+            // //console.log('the delete spot', action.id) //ID
+            // delete newDeleteState[action.id]
+            // return newDeleteState;
 
-            delete newDeleteState[action.payload]
-            return newDeleteState;
+            newState = {...state}
+            delete newState[action.id];
+
+            return newState;
 
         default:
             return state;

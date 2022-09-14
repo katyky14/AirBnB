@@ -1,0 +1,81 @@
+.main-container-div {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+
+
+.h1-review-form {
+    text-align: center;
+    font-size: 45px;
+}
+
+
+.div-container-rev {
+    /* display: block; */
+    border: 2px solid black;
+    border-radius: 8px;
+    width: 60%;
+    height: 500px;
+    margin-top: 15px;
+}
+
+
+.rev-form-style {
+    display: flex;
+    flex-direction: column;
+    margin-top: 35px;
+    padding-left: 25px;
+}
+
+
+.label-style-rev {
+    padding-bottom: 10px;
+    font-size: 25px;
+    padding-left: 10px;
+}
+
+
+.input-style-rev {
+    height: 80px;
+    width: 95%;
+    margin-left: 0px;
+    font-size: 25px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    flex: 1 1;
+}
+
+
+
+/* .input-style-star-rev {
+    height: 30px;
+    width: 100%;
+    font-size: 20px;
+} */
+
+
+.button-rev {
+    display: block;
+    width: 95%;
+    height: 80px;
+    background-color: rgb(227, 28, 95);
+    margin-left: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 25px;
+}
+
+
+.ul-rev-form-error {
+    font-size: 25px;
+}
