@@ -59,9 +59,7 @@ const GetSpotByCurrentUser = () => {
                 {filter.map(spot => (
                     <div key={spot.id}>
                         {/* <div>Spot ID --- {spot.id}</div> */}
-
                         <div><img src={spot.previewImage} alt="home" className="img-div-3" /></div>
-
                         <div className="info-div-3">
                             <div className="address-div">{spot.address}</div>
                             <div>{spot.city}, {spot.state}</div>
@@ -73,13 +71,10 @@ const GetSpotByCurrentUser = () => {
                             <button className="one-button"><NavLink activeClassName='active'
                                 style={{ textDecoration: 'none', color: 'white' }}
                                 to={`/spots/${spot.id}/edit`}> Edit Spot</NavLink></button>
-
                             <button onClick={() => {
                                 dispatch(deleteSpotThunk(spot.id))
                             }} className="one-button" > Delete Spot</button>
-
                         </div>
-
                     </div>
                 ))}
             </div>
