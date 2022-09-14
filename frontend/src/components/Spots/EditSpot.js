@@ -74,7 +74,7 @@ function EditSpotForm() {
 
     //console.log('the createspotform handle submit', updatedSpot)
     if (updatedSpot) {
-      history.push(`/spots/${updatedSpot.id}`)
+      history.push(`/spots/user`)
     }
     //console.log('the info', spotFormInformation)
   };
