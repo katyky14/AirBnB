@@ -35,30 +35,45 @@ You will also see any lint errors in the console.
 
 
 
-
 # Features Directions:
 
 ## Home Page Demo User:
 
 You will be able to test the features without sign up by click on the "Demo User" button
 
-<img width="1783" alt="Screen Shot 2022-08-28 at 10 04 02 AM" src="https://user-images.githubusercontent.com/73508540/187098805-18ba7aae-580d-4b07-bda3-72f0a5898902.png">
+![Screen Shot 2022-09-14 at 2 34 37 PM 2](https://user-images.githubusercontent.com/73508540/190266928-af7ac58c-d5c5-4a8f-ac3d-147878fd2d7d.png)
+
+## Sign Up
+
+![Screen Shot 2022-09-14 at 2 43 35 PM](https://user-images.githubusercontent.com/73508540/190268172-20285979-9049-4f66-be07-9bb1b494675d.png)
 
 
-## Log in page
+## Home Page
 
-<img width="1760" alt="Screen Shot 2022-08-29 at 1 20 04 AM" src="https://user-images.githubusercontent.com/73508540/187157367-1c1276df-82e0-4707-b9bb-12390c5ad882.png">
+![Screen Shot 2022-09-14 at 2 37 14 PM](https://user-images.githubusercontent.com/73508540/190267250-65ad6acd-1605-4003-a9d4-b4734c828fe3.png)
+
+## Spot Details
+
+![Screen Shot 2022-09-14 at 2 40 03 PM](https://user-images.githubusercontent.com/73508540/190267622-e1d3a9a2-6e44-44ea-bc8b-1f39f09f67e6.png)
 
 
-## Spot Detail Page
+## Manage Your Spots
 
-![Screen Shot 2022-08-28 at 9 25 16 PM](https://user-images.githubusercontent.com/73508540/187157888-f5a2e298-14a7-4265-8e61-36c68efec6fd.png)
+![Screen Shot 2022-09-14 at 2 38 27 PM](https://user-images.githubusercontent.com/73508540/190267441-beb60cd9-5da1-4966-9994-58b8308fc16f.png)
+
+## Create A Spot
+
+![Screen Shot 2022-09-14 at 2 40 52 PM](https://user-images.githubusercontent.com/73508540/190267742-86b760c9-29a6-4cc4-a38f-a0a961b9589b.png)
+
+## Write A Review
 
 
-## Review Page
+![Screen Shot 2022-09-14 at 2 41 35 PM](https://user-images.githubusercontent.com/73508540/190267883-d599daee-3f10-4029-8cc5-1c10e6a642c8.png)
 
-![Screen Shot 2022-08-28 at 9 26 16 PM](https://user-images.githubusercontent.com/73508540/187158148-1cd7c475-da88-4941-93d7-85297c42d1f6.png)
 
+## Manage Your Review
+
+![Screen Shot 2022-09-14 at 2 42 13 PM](https://user-images.githubusercontent.com/73508540/190267959-54cbf5d4-a63a-4f3c-a727-2c8cb885b8bf.png)
 
 
 

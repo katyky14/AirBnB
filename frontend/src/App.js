@@ -13,7 +13,7 @@ import CreateSpotForm from "./components/Spots/CreateSpotForm";
 import EditSpotForm from "./components/Spots/EditSpot";
 import CreateReviewForm from "./components/Reviews/CreateReviews";
 import ReviewCurrentUser from "./components/Reviews/GetReviewUser";
-
+import GetUserBooking from "./components/Booking/GetUserBooking";
 
 
 
@@ -52,6 +52,9 @@ function App() {
           </Route>
           <Route exact path='/' >
             <GetAllSpots />
+          </Route>
+          <Route path='/user/bookings'>
+            <GetUserBooking />
           </Route>
         </Switch>
       )}

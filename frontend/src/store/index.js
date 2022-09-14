@@ -5,11 +5,14 @@ import spotReducer from './spot';
 import reviewReducer from './review'
 import { update } from 'lodash';
 import { useSelector } from 'react-redux';
+import bookingReducer from './booking';
+
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     spot: spotReducer,
     review: reviewReducer,
+    booking: bookingReducer
   });
 
 

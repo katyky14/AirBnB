@@ -94,7 +94,7 @@ export const getOneSpotDetails = (spotId) => async dispatch => {
 
 export const getCurrentSpotThunk = () => async (dispatch) => {
     const response = await csrfFetch(`/api/spots/current`);
-    console.log('the response in current', response)
+    //console.log('the response in current', response)
     if (response.ok) {
         const data = await response.json();
         //console.log('the data in spot  current ', data.Spots)
