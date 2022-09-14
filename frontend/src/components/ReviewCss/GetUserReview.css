@@ -3,7 +3,7 @@
     margin: auto;
     width: 50%;
     padding: 10px;
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
 
 /* .rev-main-div {
@@ -78,21 +78,21 @@
         height: 100px;
     } */
     .h1-my-reviews {
-        margin-bottom: 200px;
+        margin-bottom: 20px;
     }
 
-    .rev-page-div {
+    /* .rev-page-div {
         height: 120px;
         margin-top: 50px;
-    }
+    } */
 
     .details-div {
-        margin-top: 80px;
+        margin-top: 10px;
     }
 
     .button-rev-user {
-        margin-top: 90px;
-        margin-left: 0px;
+        margin-top: 30px;
+        margin-left: 25px;
     }
 
 }
