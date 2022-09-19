@@ -73,6 +73,9 @@ function CreateSpotForm() {
 
     if (!price) valErrors.push("Price per day is required")
 
+    // for checking the correct image validation errors
+    if(!previewImage.match(/\.(jpg|jpeg|png|gif)$/)) valErrors.push('Please provide a valid image extension [png/jpg/jpeg]')
+
     if (!previewImage.length) valErrors.push("Image is required");
 
     setValidationErrors(valErrors)

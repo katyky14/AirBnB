@@ -24,9 +24,8 @@ function CreateReviewForm() {
     //console.log('the arr in Review', spotArr)
 
 
-
     const reviewObj = useSelector(state => state.review);
-    console.log('REVIEW obj', reviewObj);
+    //console.log('REVIEW obj', reviewObj);
     const userReview = useSelector(state => state.session.user)
     //console.log('the user id', userReview)
 
@@ -77,7 +76,7 @@ function CreateReviewForm() {
 
         return (
             <div className="main-container-div">
-                <h1 className="h1-review-form">Write your Review </h1>
+                <h1 className="h1-review-form">Write Your Review </h1>
                 <div className="div-container-rev">
 
                     <form onSubmit={handleSubmit}>
