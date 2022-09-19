@@ -34,11 +34,10 @@ const GetAllSpots = () => {
 
                         {/* <div>Spot ID --{spot.id}</div> */}
 
-                        <div >
+                        <div className='img-card-spots'>
                         <NavLink to={`/spots/${spot.id}`} >
                             <img src={`${spot.previewImage}`} className='img-div-1'></img>
                         </NavLink>
-                        </div>
 
                         <div className='info-div-spots'>
                         <div className='div-info3'>{spot.city}, &nbsp; {spot.state}</div>
@@ -46,6 +45,7 @@ const GetAllSpots = () => {
                         <div><i class="fa-solid fa-star"></i> {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0}</div>
                         </div>
                         <div className='price-div1'>$<span style={{fontWeight: '600'}}>{spot.price} </span>night</div>
+                        </div>
 
 
                     </div>
