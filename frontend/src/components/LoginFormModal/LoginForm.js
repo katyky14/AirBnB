@@ -49,7 +49,8 @@ function LoginForm() {
   return (
 
       <div className='main-container-login'>
-        <form onSubmit={handleSubmit} className="background modal-div" >
+        <form onSubmit={handleSubmit} className="form-login-div-modal" >
+          {/* <div className="login-title-modal">Log In</div> */}
           <h1 className="welcome-div">Welcome to Homebnb</h1>
 
 

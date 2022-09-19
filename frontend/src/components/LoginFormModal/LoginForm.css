@@ -6,19 +6,59 @@
     padding: 20px 30px;
     /* display: block; */
     /* position: absolute; */
-    width: 600px;
-    height: 450px;
+    width: 700px;
+    height: 470px;
+    border-top: 1px solid rgb(235, 235, 235);
+
+
+
+    /* border: 1px solid red; */
+}
+
+.form-login-div-modal {
+    /* border: 2px solid black; */
+
+
+}
+
+.login-modal-div-x {
+    position: absolute;
+    top: 22px;
+    left: 24px;
+    z-index: 1;
+}
+
+.login-modal-button-x {
+    display: inline-block;
+    position: relative;
+    border: medium none;
+    cursor: pointer;
+    margin: 0px;
+    padding: 0px;
+    z-index: 1;
+    background: transparent;
+    border-radius: 50%;
+}
+
+.login-title-modal {
+    font-size: 25px;
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 25px;
+    font-weight: 700;
 
 }
 
 .form-element {
     margin: 5px 0;
     font-size: 22px;
+
+    /* border: 1px solid red; */
 }
 
 .input-login {
     width: 100%;
-    height: 40px;
+    height: 50px;
     margin-bottom: 15px;
     border-radius: 10px;
     font-size: 22px;
@@ -29,7 +69,7 @@
     display: block;
     width: 101%;
     /* min-width: 200px; */
-    height: 50px;
+    height: 60px;
     background-color: rgb(227, 28, 95);
     margin: auto;
     margin-bottom: 15px;
@@ -37,7 +77,7 @@
     font-size: 22px;
     border-radius: 10px;
     color: white;
-    font-weight: bold;
+    font-weight: 300;
     cursor: pointer;
 }
 
@@ -62,9 +102,11 @@
 } */
 
 .welcome-div {
-    color:rgb(227, 28, 95);
-    text-align: center;
+    color: black;
+    text-align: left;
     font-size: 30px;
+    padding-bottom: 10px;
+    font-weight: 500;
 }
 
 

@@ -47,9 +47,9 @@ function App() {
           <Route exact path='/spots/:spotId'>
               <SpotByDetail />
           </Route>
-          <Route path="/signup">
+          {/* <Route path="/signup">
             <SignupFormPage />
-          </Route>
+          </Route> */}
           <Route exact path='/' >
             <GetAllSpots />
           </Route>

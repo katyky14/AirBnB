@@ -6,6 +6,7 @@ import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 
 import logo from './logo2.png'
+import SignupModal from '../SignupFormModal/index';
 
 //import DemoUser from '../DemoUser/demoUser';
 
@@ -29,7 +30,8 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
         <LoginFormModal />
-        <StyledNavLink to="/signup">Sign Up</StyledNavLink>
+        {/* <StyledNavLink to="/signup">Sign Up</StyledNavLink> */}
+        <SignupModal />
       </>
     );
   }
