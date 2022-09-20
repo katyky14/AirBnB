@@ -19,23 +19,10 @@ function CreateReviewForm() {
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
     const spot = useSelector(state => state.spot)
-    //console.log('the spot in review', spot)
     const spotArr = Object.values(spot)
-    //console.log('the arr in Review', spotArr)
-
-
     const reviewObj = useSelector(state => state.review);
-    //console.log('REVIEW obj', reviewObj);
     const userReview = useSelector(state => state.session.user)
-    //console.log('the user id', userReview)
-
-
     const reviewArr = Object.values(reviewObj);
-    //console.log('the review array', reviewArr)
-    //console.log('the map function', reviewArr.map(ele => ele.spotId)) [3]
-    // let spotId = reviewArr.map(ele => ele.spotId)[0]
-    // console.log('the spotId', spotId)
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -50,10 +37,7 @@ function CreateReviewForm() {
             stars
         }
 
-
-        //console.log('the spot id', spotId)
         let createReview = await dispatch(createReviewThunk(reviewInformation))
-        //console.log('the review info', createReview)
 
         if (createReview) {
             history.push(`/spots/${spotId}`)

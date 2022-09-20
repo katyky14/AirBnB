@@ -69,17 +69,12 @@ function EditSpotForm() {
       description, price,
       previewImage
     }
-
     let updatedSpot = await dispatch(editSpotThunk(spotId, spotFormInformation))
-
-    //console.log('the createspotform handle submit', updatedSpot)
     if (updatedSpot) {
       history.push(`/spots/user`)
     }
-    //console.log('the info', spotFormInformation)
   };
 
-  //console.log('the information in create spot')
   useEffect(() => {
     const valErrors = [];
 

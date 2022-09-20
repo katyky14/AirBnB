@@ -10,11 +10,8 @@ import '../ReviewCss/GetUserReview.css'
 
 const ReviewCurrentUser = () => {
     const dispatch = useDispatch();
-    const history = useHistory()
-
 
     const reviewObj = useSelector(state => state.review)
-    //console.log('the reviewObj', reviewObj)
     const reviewArr = Object.values(reviewObj);
 
     useEffect(() => {
@@ -22,12 +19,11 @@ const ReviewCurrentUser = () => {
     }, [dispatch])
 
     const userReview = useSelector(state => state.session.user);
-    //console.log('the user review', userReview)
+
 
 
     const filter = reviewArr.filter(review => review?.userId === userReview?.id); // reconsider how we want determine user log out state
-    //console.log('reviewArr', reviewArr);
-    //console.log('the filter', filter)
+
     // if (!filter.length) {
     //     return alert('Must be the user or be logged in to delete spot')
     // }
@@ -45,12 +41,9 @@ const ReviewCurrentUser = () => {
 
                 {filter.map(review => (
                     <div key={review.id}>
-                        {/* <div> Review ID --{review.id}</div> */}
-
                         <div className='info-rev-div'>
                             <div className='details-div'>
                                 <div className='review-div'> {review.review}</div>
-                                {/* {review.Images?.[0]?.url && <img src={review.Images?.[0]?.url} />} */}
                                 <div className='rate-div'> Rating <i class="fa-solid fa-star"></i>{review.stars} </div>
                             </div>
 

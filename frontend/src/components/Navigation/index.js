@@ -18,9 +18,6 @@ const StyledNavLink = (props) => {
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
-  // console.log('sessionUser', sessionUser);
-
-
   let sessionLinks;
   if (sessionUser?.id != null) {
     sessionLinks = (
@@ -41,7 +38,6 @@ function Navigation({ isLoaded }){
     <ul className='nav-class'>
       <li className='nav-li'>
         <div className='logo-image'>
-          {/* <img src="./logo2.png" alt='logo'/> */}
           <img src={logo} className="logo-image"/>
         </div>
         <StyledNavLink exact to="/">Homebnb</StyledNavLink>
@@ -52,12 +48,6 @@ function Navigation({ isLoaded }){
   </ul>
 
 );
-// <ul className='nav-class'>
-//   <li className='nav-li'>
-//     <NavLink exact to="/">Home</NavLink>
-//     {isLoaded && sessionLinks}
-//   </li>
-// </ul>
 }
 
 export default Navigation;

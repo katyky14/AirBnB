@@ -14,27 +14,13 @@ const GetSpotByCurrentUser = () => {
 
     const history = useHistory();
     const dispatch = useDispatch();
-    //const history = useHistory()
+
     const spotsObj = useSelector(state => state.spot) // access store
-    //console.log('the spot OBJ in component', spotsObj)
-    //const { spotId } = useParams();
-    //console.log('THE SPOT---', spotsObj)
-    //console.log('the spot object in CURRENT---', spotsObj['currentSpot'].Spots)
     const spotsArr = Object.values(spotsObj);
-    //console.log('the ARRAY spot is---', spotsArr[0].name)
     const [isLoaded, setIsLoaded] = useState(false);
-
-
-    // const reviewObj = useSelector(state => state.review);
-    // console.log('the USER review', reviewObj);
-    // const reviewArr = Object.values(reviewObj);
-    // console.log('USER ARR review', reviewArr);
-
-
 
     useEffect(() => {
         dispatch(getCurrentSpotThunk()).then(setIsLoaded(true)) // populate store
-        //dispatch(getUserReviewThunk())
     }, [dispatch])
 
     const userSpot = useSelector(state => state.session.user)
@@ -58,15 +44,12 @@ const GetSpotByCurrentUser = () => {
 
                 {filter.map(spot => (
                     <div key={spot.id}>
-                        {/* <div>Spot ID --- {spot.id}</div> */}
                         <div><img src={spot.previewImage} alt="home" className="img-div-3" /></div>
                         <div className="info-div-3">
                             <div className="address-div">{spot.address}</div>
                             <div>{spot.city}, {spot.state}</div>
                         </div>
-
                         <div className="price-div-3">${spot.price} night</div>
-
                         <div >
                             <button className="one-button"><NavLink activeClassName='active'
                                 style={{ textDecoration: 'none', color: 'white' }}

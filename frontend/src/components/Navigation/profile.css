@@ -48,8 +48,6 @@ li {
     background-color: rgb(196, 177, 177, 0.5px);
     text-align: center;
     box-shadow: 2px 2px 5px 5px rgb(0 0 0 / 15%);
-
-    /* font-family: 'Montserrat'; */
 }
 
 .profile-line-sep {
@@ -67,7 +65,6 @@ li {
 }
 
 .button-style {
-    /* border: 1px solid red; */
     height: 25px;
     background: white;
     font-size: 22px;
@@ -84,7 +81,6 @@ li {
 }
 
 .navlink-style-div {
-    /* border: 5px solid yellow; */
     text-decoration: none;
     color:black;
 }

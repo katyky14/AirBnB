@@ -11,8 +11,7 @@ import '../spotCss/SpotForm.css'
 function CreateSpotForm() {
   const history = useHistory()
   const dispatch = useDispatch();
-  //const spotsObj = useSelector(state => state.spot)
-  //console.log('the spot obj in FORM---', spotsObj)
+
 
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -47,11 +46,11 @@ function CreateSpotForm() {
     }
 
     let createSpot = await dispatch(spotFormThunk(spotFormInformation))
-    //console.log('the create spot form handle submit', createSpot.length)
+
     if (createSpot) {
       history.push(`/spots/${createSpot.id}`)
     }
-    //console.log('the info', spotFormInformation)
+
   };
 
 
@@ -63,14 +62,15 @@ function CreateSpotForm() {
     if (!state.length) valErrors.push("State is required");
     if(!country.length) valErrors.push("Country is required");
     if (lat > 90 || lat < -90) valErrors.push("Latitude must be between -90 and 90"); //-90 to 90
-    if (!lat) valErrors.push("Lat is required");
+    //if (!lat) valErrors.push("Lat is required");
     if (lng > 180 || lng < -180) valErrors.push("Longitude must be between -180 and 180"); //-180 to 180
-    if (!lng) valErrors.push("Lng is required");
+    //if (!lng) valErrors.push("Lng is required");
     if (!description.length) valErrors.push("Description is required");
 
     if (name.length > 50) valErrors.push("Name must be less than 50 characters");
-    // if(!name.length) valErrors.push("Name is required")
+    if(!name.length) valErrors.push("Name is required")
 
+    if(price < 0) valErrors.push("Price must positive integer")
     if (!price) valErrors.push("Price per day is required")
 
     // for checking the correct image validation errors
@@ -99,7 +99,7 @@ function CreateSpotForm() {
             type="text"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
-          //   required
+            required
           />
         </label>
         <label >
@@ -109,7 +109,7 @@ function CreateSpotForm() {
             type="text"
             value={city}
             onChange={(e) => setCity(e.target.value)}
-          //   required
+            required
           />
         </label>
         <label >
@@ -120,7 +120,7 @@ function CreateSpotForm() {
             type="text"
             value={state}
             onChange={(e) => setState(e.target.value)}
-          //   required
+            required
           />
         </label>
         <label >
@@ -131,7 +131,7 @@ function CreateSpotForm() {
             type="text"
             value={country}
             onChange={(e) => setCountry(e.target.value)}
-          //   required
+            required
           />
         </label>
         <label >
@@ -142,7 +142,7 @@ function CreateSpotForm() {
             type="number"
             value={lat}
             onChange={(e) => setLat(e.target.value)}
-          //   required
+            required
           />
         </label>
         <label >
@@ -153,7 +153,7 @@ function CreateSpotForm() {
             type="number"
             value={lng}
             onChange={(e) => setLng(e.target.value)}
-          //   required
+            required
           />
         </label>
         <label >
@@ -175,7 +175,7 @@ function CreateSpotForm() {
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-          // required
+          required
           />
         </label>
         <label>
@@ -185,7 +185,7 @@ function CreateSpotForm() {
             type="number"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
-          // required
+          required
           />
         </label>
         <label>
@@ -196,7 +196,7 @@ function CreateSpotForm() {
             type="string"
             value={previewImage}
             onChange={(e) => setPreviewImage(e.target.value)}
-          // required
+          required
           />
         </label>
         <button className="button-spot">Create New Spot</button>

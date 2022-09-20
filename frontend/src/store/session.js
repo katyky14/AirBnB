@@ -26,7 +26,6 @@ export const login = (user) => async (dispatch) => {
     }),
   });
   const data = await response.json();
-  //console.log('the data', data)
   dispatch(setUser(data)); // this is what i changed
   return response;
 };

@@ -12,14 +12,8 @@ const GetReviews = () => {
 
     const dispatch = useDispatch();
     const { spotId } = useParams();
-
     const reviewObj = useSelector(state => state.review)
-    //console.log('the review in Review', reviewObj)
-
-
     const reviewArr = Object.values(reviewObj);
-    //console.log('the review arr', reviewArr)
-
 
     useEffect(() => {
         dispatch(getSpotReviewThunk(spotId))
@@ -29,7 +23,6 @@ const GetReviews = () => {
 
     return reviewArr.length && (
         <div>
-            {/* <h1>GET REVIEWS SPOT ID</h1> */}
             <div className='spot-rev'>
                 {reviewArr.map(rev => (
                     <div key={rev.id}>
@@ -40,13 +33,8 @@ const GetReviews = () => {
                     </div>
                 ))}
             </div>
-
-
-
         </div>
     )
-
-
 }
 
 
