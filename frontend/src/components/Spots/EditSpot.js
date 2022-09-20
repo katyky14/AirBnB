@@ -92,7 +92,7 @@ function EditSpotForm() {
     if (name.length > 50) valErrors.push("Name must be less than 50 characters");
     if (!price) valErrors.push("Price per day is required")
 
-    if(!previewImage.match(/\.(jpg|jpeg|png|gif)$/)) valErrors.push('Please provide a valid image extension [png/jpg/jpeg]')
+    // if(!previewImage.match(/\.(jpg|jpeg|png|gif)$/)) valErrors.push('Please provide a valid image extension [png/jpg/jpeg]')
     if (!previewImage.length) valErrors.push("Image is required");
 
 

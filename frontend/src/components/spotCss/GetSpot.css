@@ -1,11 +1,7 @@
 .section-div {
-
     display: flex;
     justify-content: center;
-
     margin-top: 50px;
-
-    /* border: 2px solid green; */
 
 }
 
@@ -32,6 +28,9 @@
 
 }
 
+/* @media  screen and (max-width: 1440px) {
+
+} */
 
 
 
@@ -47,7 +46,6 @@
 .div-info3 {
     font-weight: 600;
     font-size: 20px;
-
 }
 
 
