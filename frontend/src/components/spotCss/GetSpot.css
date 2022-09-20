@@ -21,6 +21,13 @@
 
     flex-wrap: wrap;
 
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 77px;
+    /* grid-column-gap: 1.26vw; */
+    /* grid-row-gap: 4.13vh; */
+
 }
 
 
@@ -45,10 +52,12 @@
         /* padding: 10px; */
         /* flex-basis: 83.33%; */
 
-        display: grid;
-        grid-template-columns: 20% 20% 20% 20% 20%;
+        /* display: grid; */
+        /* grid-template-columns: 20% 20% 20% 20% 20%; */
+
+        /* grid-template-columns: repeat(5, 400px);
         row-gap: 5px;
-        column-gap: 15px;
+        column-gap: 15px; */
     }
 
 }
@@ -67,8 +76,6 @@
 .div-info3 {
     font-weight: 600;
     font-size: 20px;
-
-
 
 }
 

@@ -47,9 +47,9 @@ const SpotByDetail = () => {
     const reviewDetails = useSelector(state => state.review)
     //console.log('the review in SPOT DETAIL', reviewDetails)
     const reviewArr = Object.values(reviewDetails);
-    //console.log('the ARRay in SPOT', reviewArr.length)
+    //console.log('the ARRay in SPOT', reviewArr)
 
-    const userRev = useSelector(state => state.session.user.id)
+    const userRev = useSelector(state => state.session.user?.id)
     //console.log('the user rev', userRev)
 
     const spotOwner = useSelector(state => state.spot[spotId]?.ownerId)

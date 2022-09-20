@@ -117,7 +117,13 @@ function CreateReviewForm() {
         )
 
     }
-    return <h1 className="h1-review-form">"User already has a review for this spot"</h1>
+    return (
+        <div>
+
+            <h1 className="h1-review-form">"User already has a review for this spot"</h1>
+            {/* <button>Back</button> */}
+        </div>
+        )
 }
 
 
