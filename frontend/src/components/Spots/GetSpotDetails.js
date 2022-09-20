@@ -1,59 +1,32 @@
 import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Modal } from '../../context/Modal';
 import '../spotCss/GetSpotDetails.css';
-
-
 import { NavLink } from 'react-router-dom';
 import { getOneSpotDetails } from '../../store/spot';
 import GetReviews from '../Reviews/GetSpotReviews';
 
-//import { deleteSpotThunk } from '../../store/spot';
+// import { getSpotReviewThunk } from '../../store/review';
 
-import { getSpotReviewThunk } from '../../store/review';
-
-// import CreateReviewForm from '../Reviews/CreateReviews';
 
 const StyledNavLink3 = (props) => {
     return <NavLink {...props} className={`${props.className} my-navlink-style3`} />
 }
 
-
-
 const SpotByDetail = () => {
-    //const [showModal, setShowModal] = useState(false);
 
-    //const history = useHistory();
     const { spotId } = useParams();
     const spotsObj = useSelector(state => state.spot);
-    //console.log('the spot obj', spotsObj)
     const spotsArr = Object.values(spotsObj)
-    //console.log('the spot arr', spotsArr)
-    // const arr = spotsArr.map(spot => spot.id)
-    // const filter = spotsArr.filter(spot => console.log(spot))
-    // console.log('the filter', filter)
-    // console.log('the arr', arr)
-
     const userObj = useSelector(state => state.session.user)
-    //console.log('the user state', userObj)
-
-
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
-    //console.log('the spotsObj in Spot Details--', spotsObj)
-    //console.log('images detail ---', spotsObj.Images[0].url)
-
     const reviewDetails = useSelector(state => state.review)
-    //console.log('the review in SPOT DETAIL', reviewDetails)
     const reviewArr = Object.values(reviewDetails);
-    //console.log('the ARRay in SPOT', reviewArr)
-
     const userRev = useSelector(state => state.session.user?.id)
-    //console.log('the user rev', userRev)
-
     const spotOwner = useSelector(state => state.spot[spotId]?.ownerId)
-    //console.log('the spot owner', spotOwner)
+
+    //console.log('the spot arr', spotsObj[spotId].name)
 
 
     useEffect(() => {
@@ -64,13 +37,11 @@ const SpotByDetail = () => {
     // if (spotsArr != null && spotsObj.Images != null && isLoaded) {
     return spotsArr.length && isLoaded && (
         <main className='center-spot-detail'>
-            {/* <h1>TESTING SPOT BY DETAIL</h1> */}
+
 
             <div className="main-div2">
                 {spotsArr.map(spot => (
                     <div key={spot.id}>
-                        {/* <div> Spot ID -- {spot.id}</div> */}
-
                         <h1 className="name-div"> {spot.address}</h1>
 
                         <div className="top-div-info">
@@ -78,13 +49,9 @@ const SpotByDetail = () => {
                                 <div><i class="fa-solid fa-star"></i> &nbsp; {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0} </div>
                                 <div className="space-div2"> - {reviewArr.length} Reviews</div>
                             </span>
-                            {/* <span > */}
                             <div className='span-info2'> {spot.city} , {spot.state}, {spot.country}</div>
-                            {/* </span> */}
                         </div>
 
-
-                        {/* <div className='img-div-spot1-container'> */}
 
                         {/* first image */}
                         <div className='spot-img-container'>
@@ -121,10 +88,8 @@ const SpotByDetail = () => {
                                 </div>
                             </div>
                         </div>
-                        {/* </div> */}
 
-
-                        <h2 className='h2-spot'>Entire home hosted by Demo </h2>
+                        <h2 className='h2-spot'>Entire home hosted by {spotsObj[spotId] && spotsObj[spotId]?.name} </h2>
 
                         <p className="border-div">{spot.description}</p>
 
@@ -145,14 +110,6 @@ const SpotByDetail = () => {
                     </div>
                 ))}
             </div>
-
-
-
-
-
-
-
-
         </main>
     )
 }
