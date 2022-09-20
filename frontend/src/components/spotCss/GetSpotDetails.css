@@ -1,34 +1,24 @@
 /* main container */
 
 .center-spot-detail {
-    padding-left: 80px;
-    padding-right: 80px;
+    padding-left: 70px;
+    padding-right: 70px;
 
-    /* border: 1px solid red; */
-    /* display: flex;
-    flex-direction: column;
-    align-items: stretch !important;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 25px; */
 }
 
 @media screen and (min-width: 1800px) {
     .center-spot-detail {
-        padding-left: 480px;
-        padding-right: 480px;
+        padding-left: 400px;
+        padding-right: 400px;
     }
 }
 
 
 .main-div2 {
 
-    /* display: block;
-    border: 1px solid red;
-    margin-bottom: 50px; */
+
+    /* border: 1px solid red;
+    margin-bottom: 50px;  */
 
 
     display: flex;
@@ -117,12 +107,12 @@
 } */
 
 /* image style */
-.image-div1 {
+/* .image-div1 {
     border-radius: 10px;
-    /* width: 1000px; */
+    width: 1000px;
     width: 700px;
     height: 700px;
-}
+} */
 
 
 
@@ -217,36 +207,52 @@
 }
 
 
-/* multiple images trying */
+/* multiple images css */
 
 .spot-img-container {
     width: 100%;
     object-fit: cover;
+
+    /* justify-content: center; */
+    /* display: flex; */
+    /* align-content: center; */
+
     align-items: center;
   }
 
   .spot-image {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
     width: 100%;
     max-width: 100%;
+
+    /* object-fit: contain */
+
+
     object-fit: cover;
+    border-radius: 10px;
   }
   .preview-images {
     object-fit: cover;
     width: 100%;
     overflow: hidden;
     border: none;
+    border-radius: 10px;
   }
 
-  .spot-img-grid {
+  .spot-img-flex {
     display: flex;
-    gap: 0.5%;
+
+    /*row-gap: 1%  */
+
+    /* gap: 0.5%; */
+    gap: 8px;
     width: 100%;
     flex-basis: 100%;
+
+
     max-height: 550px;
     min-height: 550px;
   }
+
   .spot-first-image {
     display: flex;
     background-color: #efefef;
@@ -257,15 +263,18 @@
   }
   .spot-preview-images {
     display: flex;
-    gap: 1.5%;
+    /* gap: 1.5%; */
+    gap: 10px;
     width: 100%;
     overflow: hidden;
   }
   .preview-containers {
     display: flex;
     flex-direction: column;
+    /* flex: 1 2*/
     flex-grow: 1;
-    gap: 1.5%;
+    /* gap: 1.5%; */
+    gap: 10px;
     flex-shrink: 1;
     width: 50%;
   }
@@ -273,15 +282,6 @@
     display: flex;
     max-height: 49.25%;
     min-height: 49.25%;
-    background-color: #efefef;
+    /* background-color: #efefef; */
     flex-grow: 1;
-  }
-
-
-  .round-top-right {
-    border-top-right-radius: 10px;
-  }
-
-  .round-bottom-right {
-    border-bottom-right-radius: 10px;
   }

@@ -88,9 +88,9 @@ const SpotByDetail = () => {
 
                         {/* first image */}
                         <div className='spot-img-container'>
-                            <div className='spot-img-grid'>
+                            <div className='spot-img-flex'>
                                 <div className='spot-first-image' >
-                                    <img className="sppot-image" src={spot.previewImage.length ? spot.previewImage : 'https://images.unsplash.com/photo-1592818868295-f527dbac420d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'} alt="" />
+                                    <img className="spot-image" src={spot.previewImage.length ? spot.previewImage : 'https://images.unsplash.com/photo-1592818868295-f527dbac420d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'} alt="" />
                                 </div>
 
 
@@ -108,12 +108,12 @@ const SpotByDetail = () => {
 
                                     {/* two right images  4 & 5*/}
                                     <div className='preview-containers'>
-                                        <div className='spot-preview-image round-top-right'>
-                                            <img className="preview-images  round-top-right" src={spot.previewImage.length ? spot.previewImage : 'https://images.unsplash.com/photo-1592818868295-f527dbac420d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'} alt="" />
+                                        <div className='spot-preview-image'>
+                                            <img className="preview-images " src={spot.previewImage.length ? spot.previewImage : 'https://images.unsplash.com/photo-1592818868295-f527dbac420d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'} alt="" />
                                         </div>
 
-                                        <div className='spot-preview-image round-bottom-right'>
-                                            <img className="preview-images round-bottom-right" src={spot.previewImage.length ? spot.previewImage : 'https://images.unsplash.com/photo-1592818868295-f527dbac420d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'} alt="" />
+                                        <div className='spot-preview-image '>
+                                            <img className="preview-images " src={spot.previewImage.length ? spot.previewImage : 'https://images.unsplash.com/photo-1592818868295-f527dbac420d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'} alt="" />
                                         </div>
 
                                     </div>
