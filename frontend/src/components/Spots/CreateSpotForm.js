@@ -73,8 +73,8 @@ function CreateSpotForm() {
     if(price < 0) valErrors.push("Price must positive integer")
     if (!price) valErrors.push("Price per day is required")
 
-    // for checking the correct image validation errors
-    if(!previewImage.match(/\.(jpg|jpeg|png|gif)$/)) valErrors.push('Please provide a valid image extension [png/jpg/jpeg]')
+    // for checking the correct image validation errors - took off the gif
+    if(!previewImage.match(/\.(jpg|jpeg|png)$/)) valErrors.push('Please provide a valid image extension [png/jpg/jpeg]')
 
     if (!previewImage.length) valErrors.push("Image is required");
 
@@ -192,7 +192,7 @@ function CreateSpotForm() {
 
           <input
           className="input-style-spot"
-          placeholder="Preview Image"
+          placeholder="Preview Image only as .jpg, .jpeg, .png"
             type="string"
             value={previewImage}
             onChange={(e) => setPreviewImage(e.target.value)}
