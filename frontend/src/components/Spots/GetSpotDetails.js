@@ -26,6 +26,10 @@ const SpotByDetail = () => {
     const userRev = useSelector(state => state.session.user?.id)
     const spotOwner = useSelector(state => state.spot[spotId]?.ownerId)
 
+    const userFilter = reviewArr.filter(rev => userRev === rev.userId)
+    console.log('the review', userFilter)
+
+
 
     useEffect(() => {
         dispatch(getOneSpotDetails(spotId)).then(() => setIsLoaded(true))
@@ -69,11 +73,11 @@ const SpotByDetail = () => {
                                     {/* two right images  4 & 5*/}
                                     <div className='preview-containers'>
                                         <div className='spot-preview-image'>
-                                            <img className="preview-images " src={spot.previewImage.length ? spot.previewImage : 'https://images.unsplash.com/photo-1592818868295-f527dbac420d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'} alt="" />
+                                            <img className="preview-images right-top-img" src={spot.previewImage.length ? spot.previewImage : 'https://images.unsplash.com/photo-1592818868295-f527dbac420d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'} alt="" />
                                         </div>
 
                                         <div className='spot-preview-image '>
-                                            <img className="preview-images " src={spot.previewImage.length ? spot.previewImage : 'https://images.unsplash.com/photo-1592818868295-f527dbac420d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'} alt="" />
+                                            <img className="preview-images right-bottom-img" src={spot.previewImage.length ? spot.previewImage : 'https://images.unsplash.com/photo-1592818868295-f527dbac420d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'} alt="" />
                                         </div>
                                     </div>
                                 </div>
@@ -86,7 +90,7 @@ const SpotByDetail = () => {
                                 <div><i class="fa-solid fa-star"></i> {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0} </div>
                                 <div className="space-div2"> - {reviewArr.length} Reviews</div>
                             </div>
-                            {userObj?.id != null && spotOwner !== userRev &&
+                            {userObj?.id != null && spotOwner !== userRev && !userFilter.length &&
                                 <button className="button-div2"><StyledNavLink3 to={`/spots/${spot.id}/reviews`} >Add a Review</StyledNavLink3></button>}
                         </div>
                         <div > <GetReviews /> </div>
