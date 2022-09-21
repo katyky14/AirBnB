@@ -37,24 +37,27 @@ You will also see any lint errors in the console.
 
 # Features Directions:
 
-## Home Page Demo User:
+## Home Page Demo User and Log In:
 
-You will be able to test the features without sign up by click on the "Demo User" button
+You will be able to test the features without sign up by click on the "Demo User" button. Or the user can log in
 
-![Screen Shot 2022-09-14 at 2 34 37 PM 2](https://user-images.githubusercontent.com/73508540/190266928-af7ac58c-d5c5-4a8f-ac3d-147878fd2d7d.png)
+![Screen Shot 2022-09-21 at 10 49 43 AM](https://user-images.githubusercontent.com/73508540/191575579-d37f3252-af2b-41ce-a7b7-90d32a7cc411.png)
+
 
 ## Sign Up
 
-![Screen Shot 2022-09-14 at 2 43 35 PM](https://user-images.githubusercontent.com/73508540/190268172-20285979-9049-4f66-be07-9bb1b494675d.png)
+![Screen Shot 2022-09-21 at 10 48 37 AM](https://user-images.githubusercontent.com/73508540/191575310-1c96c7d6-3fcc-49b3-bade-fac6ad08bdd7.png)
 
 
 ## Home Page
 
-![Screen Shot 2022-09-14 at 2 37 14 PM](https://user-images.githubusercontent.com/73508540/190267250-65ad6acd-1605-4003-a9d4-b4734c828fe3.png)
+![Screen Shot 2022-09-21 at 10 56 21 AM](https://user-images.githubusercontent.com/73508540/191576670-4a0c89ee-593e-4323-ae51-7fdca50acd5e.png)
+
 
 ## Spot Details
 
-![Screen Shot 2022-09-14 at 2 40 03 PM](https://user-images.githubusercontent.com/73508540/190267622-e1d3a9a2-6e44-44ea-bc8b-1f39f09f67e6.png)
+![Screen Shot 2022-09-21 at 10 57 12 AM](https://user-images.githubusercontent.com/73508540/191577014-4785a620-f3de-4ede-9f5d-78ea2a1078a2.png)
+
 
 
 ## Manage Your Spots
