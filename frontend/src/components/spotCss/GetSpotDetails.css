@@ -66,7 +66,7 @@
 
 .h2-spot {
     font-size: 27px;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .img-div-spot1-container {
@@ -253,4 +253,20 @@
     min-height: 49.25%;
     /* background-color: #efefef; */
     flex-grow: 1;
+  }
+
+  @media screen and (min-width: 2100px) {
+
+    .spot-img-flex {
+        min-height: 800px;
+        max-height: 800px;
+    }
+
+    .name-div {
+        font-size: 45px;
+    }
+
+    .h2-spot {
+        font-size: 34px;
+    }
   }
