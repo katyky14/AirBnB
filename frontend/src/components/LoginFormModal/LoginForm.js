@@ -57,7 +57,7 @@ function LoginForm() {
           {hasSubmitted && errors.length > 0 && (
             <ul >
               {errors.map((error, idx) => (
-                <li className="error-li" key={idx}>{error}</li>
+                <li className="error-li" key={idx}>* {error}</li>
               ))}
             </ul>
           )}

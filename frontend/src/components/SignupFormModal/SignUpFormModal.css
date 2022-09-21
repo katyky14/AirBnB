@@ -65,6 +65,7 @@
 }
 
 .ul-error-signup-modal {
-    font-size: 22px;
+    font-size: 25px;
     margin-bottom: 0px;
+    color: red;
 }

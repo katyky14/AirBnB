@@ -9,7 +9,7 @@
 }
 
 .li-spot-error {
-
+    font-size: 20px;
     color: red;
 }
 
@@ -68,4 +68,10 @@
     background-color: rgb(227, 28, 95);
 
 
+}
+
+@media screen and (min-width: 2100px) {
+    .li-spot-error {
+        font-size: 28px;
+    }
 }

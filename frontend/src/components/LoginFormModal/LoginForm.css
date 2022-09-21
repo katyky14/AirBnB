@@ -113,4 +113,5 @@
 .error-li {
     font-size: 28px;
     /* list-style: circle; */
+    color: red;
 }

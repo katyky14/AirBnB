@@ -68,7 +68,7 @@ function CreateReviewForm() {
 
                             <ul className="ul-rev-form-error">
                                 {errors.map((error) =>
-                                    <li key={error}>{error}</li>
+                                    <li key={error}>* {error}</li>
                                 )}
                             </ul>
                         )}
