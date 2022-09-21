@@ -3,7 +3,27 @@
     justify-content: center;
     margin-top: 50px;
 
+    /* display: flex;
+    justify-content: center;
+    margin: 40px 48px 0; */
+
 }
+
+/* added for the screen size */
+/* .section-div .main-div-spots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+}
+.section-div .main-div-spots .img-div-1 {
+    border-radius: 18px;
+    height: 300px;
+    object-fit: cover;
+    width: 250px;
+} */
+
 
 /*main div whole page */
 .main-div-spots {
@@ -28,34 +48,60 @@
 
 }
 
-/* @media  screen and (max-width: 1440px) {
+@media screen and (max-width: 1440px) {
+    .section-div {
+        display: flex;
+        justify-content: center;
+        /* margin: 40px 48px 0; */
+    }
 
-} */
+    .section-div .main-div-spots {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .section-div .main-div-spots .img-div-1 {
+        border-radius: 18px;
+        height: 300px;
+        object-fit: cover;
+        width: 250px;
+    }
+
+
+}
 
 
 
 .img-card-spots {
     /* border: 1px solid red; */
 
-    padding-top: 25px;
-    margin-left: 25px;
+    padding-top: 5px;
+    /* margin-left: 25px; */
+
+    height: 400px;
+    width: 100%;
 
 
 }
 
 .div-info3 {
     font-weight: 600;
-    font-size: 20px;
+    font-size: 16px;
+    padding-top: 8px;
 }
 
 
 /* image solo */
 .img-div-1 {
-    border-radius: 25px;
+    border-radius: 16px;
     max-width: 100%;
     height: 350px;
-    width: 450px;
+    /* width: 450px; */
     object-fit: cover;
+    width: 100%;
+    border: 1px solid green;
 }
 
 
@@ -74,7 +120,11 @@
 /* details 2 price alone */
 .price-div1 {
     padding-bottom: 20px;
-    font-size: 20px;
+    font-size: 16px;
     padding-top: 10px;
 
+}
+
+.spot-rate-all {
+    font-size: 16px;
 }

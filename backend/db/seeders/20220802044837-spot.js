@@ -87,8 +87,8 @@ module.exports = {
       {
         ownerId: 2,
         address: 'Cubby Bear- Hot Tub, Rock Wall, Near Lake & Skiing',
-        city: 'South Lake Tahoe',
-        state: 'California',
+        city: 'Lake Tahoe',
+        state: 'CA',
         country: 'United States',
         lat: 37.7645359,
         lng: -122.4730328,
