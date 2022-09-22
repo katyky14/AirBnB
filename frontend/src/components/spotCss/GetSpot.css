@@ -46,6 +46,7 @@
     padding-left: 60px;
     padding-right: 60px;
 
+
 }
 
 @media screen and (max-width: 1440px) {
@@ -67,6 +68,7 @@
         height: 300px;
         object-fit: cover;
         width: 250px;
+
     }
 
 }
@@ -85,10 +87,45 @@
 
 }
 
+
+/* details  1 city state avgrating*/
+.info-div-spots {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* border: 1px solid blue; */
+    align-items: center;
+
+    /* border: 1px solid red; */
+
+    white-space: nowrap;
+
+
+}
+
+/* testing  also I added a div on the jsx*/
+.test {
+    max-width: 320px;
+
+}
+
+@media screen and (max-width: 1770px) {
+    .test {
+        max-width: 200px;
+    }
+}
+
+
+/* end of testing */
 .div-info3 {
     font-weight: 600;
     font-size: 16px;
     padding-top: 8px;
+
+    /* part of testing the long chars */
+    overflow: hidden;
+    text-overflow: ellipsis;
+
 }
 
 
@@ -105,15 +142,6 @@
 
 
 
-/* details  1 city state avgrating*/
-.info-div-spots {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    /* border: 1px solid blue; */
-    align-items: center;
-
-}
 
 
 /* details 2 price alone */
@@ -132,6 +160,7 @@
     .price-div1 {
         font-size: 20px;
     }
+
     .div-info3 {
         font-size: 20px;
     }
@@ -139,4 +168,5 @@
     .spot-rate-all {
         font-size: 20px;
     }
+
 }

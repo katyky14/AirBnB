@@ -46,8 +46,8 @@ const GetSpotByCurrentUser = () => {
                     <div key={spot.id}>
                         <div><img src={spot.previewImage} alt="home" className="img-div-3" /></div>
                         <div className="info-div-3">
-                            <div className="address-div">{spot.address}</div>
-                            <div>{spot.city}, {spot.state}</div>
+                            <div className="address-div test-in-my-spots">{spot.address}</div>
+                            <div className='test-in-my-spots'>{spot.city}, {spot.state}</div>
                         </div>
                         <div className="price-div-3">${spot.price} night</div>
                         <div >

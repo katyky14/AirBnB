@@ -32,6 +32,9 @@
     margin-top: 15px;
     padding-top: 10px;
     font-weight: 500;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
@@ -276,4 +279,23 @@
     .h2-spot {
         font-size: 34px;
     }
+  }
+
+
+  /* testing long chars */
+
+  .test-detail {
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    /* border: 1px solid red; */
+  }
+
+  .test-info {
+    text-overflow: ellipsis;
+  }
+
+  .test-h1 {
+    max-width: 100%;
   }

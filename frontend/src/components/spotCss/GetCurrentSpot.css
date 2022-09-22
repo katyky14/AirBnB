@@ -68,3 +68,11 @@
     font-weight: 500;
 
 }
+
+/* testing long chars */
+
+.test-in-my-spots {
+    overflow: hidden;
+    width: 600px;
+    text-overflow: ellipsis;
+}

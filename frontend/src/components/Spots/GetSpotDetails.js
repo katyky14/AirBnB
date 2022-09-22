@@ -44,14 +44,15 @@ const SpotByDetail = () => {
             <div className="main-div2">
                 {spotsArr.map(spot => (
                     <div key={spot.id}>
-                        <h1 className="name-div"> {spot.address}</h1>
 
-                        <div className="top-div-info">
+                        <h1 className="name-div test-h1">{spot.address}</h1>
+
+                        <div className="top-div-info test-detail">
                             <span className="span-info1">
                                 <div><i class="fa-solid fa-star"></i> &nbsp; {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0} </div>
                                 <div className="space-div2"> - {reviewArr.length} Reviews</div>
                             </span>
-                            <div className='span-info2'> {spot.city} , {spot.state}, {spot.country}</div>
+                            <div className='span-info2 test-info'> {spot.city} , {spot.state}, {spot.country}</div>
                         </div>
                         {/* first image */}
                         <div className='spot-img-container'>
