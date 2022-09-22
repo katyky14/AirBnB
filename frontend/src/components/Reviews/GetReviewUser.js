@@ -7,6 +7,7 @@ import { getUserReviewThunk } from '../../store/review';
 import { deleteReviewThunk } from '../../store/review';
 
 import '../ReviewCss/GetUserReview.css'
+import EditReviewModal from './EditReviewModal';
 
 const ReviewCurrentUser = () => {
     const dispatch = useDispatch();
@@ -55,7 +56,9 @@ const ReviewCurrentUser = () => {
                                 Delete Review
                             </button>
                         </div>
-
+                            <div>
+                                <EditReviewModal/>
+                                 </div>
 
                     </div>
                 ))}

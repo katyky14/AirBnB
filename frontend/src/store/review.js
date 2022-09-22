@@ -95,6 +95,22 @@ export const deleteReviewThunk = (id) => async dispatch => {
     }
 }
 
+//edit a review
+export const editReviewThunk = (id, payload) => async dispatch => {
+    const response = await csrfFetch(`/api/reviews/${id}`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    });
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(addOneReview(data));
+        return data;
+    }
+}
+
 const initialState = {}
 
 const reviewReducer = (state = initialState, action) => {
