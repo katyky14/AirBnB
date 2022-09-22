@@ -92,7 +92,10 @@ const SpotByDetail = () => {
                                 <div className="space-div2"> - {reviewArr.length} Reviews</div>
                             </div>
                             {userObj?.id != null && spotOwner !== userRev && !userFilter.length &&
-                                <button className="button-div2"><StyledNavLink3 to={`/spots/${spot.id}/reviews`} >Add a Review</StyledNavLink3></button>}
+                                // <button className="button-div2"><StyledNavLink3 to={`/spots/${spot.id}/reviews`} >Add a Review</StyledNavLink3></button>
+                                <StyledNavLink3 to={`/spots/${spot.id}/reviews`} className='button-div2'>Add a Review</StyledNavLink3>
+
+                                }
                         </div>
                         <div > <GetReviews /> </div>
                     </div>

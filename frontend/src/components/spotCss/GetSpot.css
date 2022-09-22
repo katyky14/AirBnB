@@ -1,7 +1,7 @@
-.section-div {
+.main-content-div {
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    /* margin-top: 50px; */
 
     /* display: flex;
     justify-content: center;
@@ -9,24 +9,10 @@
 
 }
 
-/* added for the screen size */
-/* .section-div .main-div-spots {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-
-}
-.section-div .main-div-spots .img-div-1 {
-    border-radius: 18px;
-    height: 300px;
-    object-fit: cover;
-    width: 250px;
-} */
-
-
 /*main div whole page */
 .main-div-spots {
+
+
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -36,36 +22,37 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-column-gap: 20px;
-    grid-row-gap: 77px;
+    grid-row-gap: 30px;
     /* grid-column-gap: 1.26vw; */
     /* grid-row-gap: 4.13vh; */
 
-    margin-left: 60px;
+    /* margin-top: 80px; */
+    /* margin-left: 60px;
     margin-right: 60px;
 
     padding-left: 60px;
-    padding-right: 60px;
+    padding-right: 60px; */
 
 
 }
 
 @media screen and (max-width: 1440px) {
-    .section-div {
+    .main-content-div {
         display: flex;
         justify-content: center;
         /* margin: 40px 48px 0; */
     }
 
-    .section-div .main-div-spots {
+    .main-content-div .main-div-spots {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
     }
 
-    .section-div .main-div-spots .img-div-1 {
+    .main-content-div .main-div-spots .img-div-1 {
         border-radius: 18px;
-        height: 300px;
+        height: 250px;
         object-fit: cover;
         width: 250px;
 
@@ -78,13 +65,16 @@
 .img-card-spots {
     /* border: 1px solid red; */
 
-    padding-top: 5px;
+    /* padding-top: 5px; */
     /* margin-left: 25px; */
 
-    height: 400px;
+    /* height: 400px; */
     width: 100%;
+}
 
-
+.spot-info-name {
+    color: gray;
+    padding-top: 5px;
 }
 
 
@@ -133,14 +123,12 @@
 .img-div-1 {
     border-radius: 16px;
     max-width: 100%;
-    height: 350px;
+    height: 250px;
     /* width: 450px; */
     object-fit: cover;
     width: 100%;
 
 }
-
-
 
 
 

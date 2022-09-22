@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 import '../Navigation/profile.css'
 
 const StyledNavLink2 = (props) => {
-  return <NavLink {...props} className={`${props.className} navlink-style-div`}/>
+  return <NavLink {...props} className={`${props.className} navlink-style-div`} />
 }
 
 function ProfileButton({ user }) {
@@ -45,7 +45,7 @@ function ProfileButton({ user }) {
       </li>
       <li>
         <button onClick={openMenu} className="button-user">
-        <i className="fas fa-user-circle" />
+          <i className="fas fa-user-circle" />
         </button>
       </li>
       {showMenu && (
@@ -53,25 +53,24 @@ function ProfileButton({ user }) {
           <li className="profile-content">{user.username}</li>
           <li className="profile-content profile-line-sep">{user.email}</li>
           <li className="profile-content">
-
-            <button className="button-style">
-              <StyledNavLink2 to={`/reviews`}>
-                My Reviews
-              </StyledNavLink2>
-            </button>
+            <div className="test-hover">
+                <StyledNavLink2 to={`/reviews`} >
+                  My Reviews
+                </StyledNavLink2>
+            </div>
           </li>
           <li className="profile-content">
-
-            <button className="button-style">
-              <StyledNavLink2 to={`/spots/user`}>
-                My Spots
-              </StyledNavLink2>
-            </button>
-
+              <button className="button-style">
+                <StyledNavLink2 to={`/spots/user`} >
+                  My Spots
+                </StyledNavLink2>
+              </button>
           </li>
+
           <li className="profile-content">
-            <button onClick={logout} className="button-style">Log Out</button>
+              <button onClick={logout} className="button-style">Log Out</button>
           </li>
+
         </ul>
       )}
     </>

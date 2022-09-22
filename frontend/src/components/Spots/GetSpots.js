@@ -23,7 +23,7 @@ const GetAllSpots = () => {
 
     return isLoaded && (
 
-        <div className='section-div'>
+        <div className='main-content-div'>
             <div className='main-div-spots'>
                 {spotsArr.map(spot => (
                     <div key={spot.id} >
@@ -37,6 +37,7 @@ const GetAllSpots = () => {
                                 </div>
                                 <div className='spot-rate-all'><i class="fa-solid fa-star"></i> {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0}</div>
                             </div>
+                                <div className='spot-info-name'>{spot.name}</div>
                             <div className='price-div1'>$<span style={{ fontWeight: '600' }}>{spot.price} </span>night</div>
                         </div>
                     </div>

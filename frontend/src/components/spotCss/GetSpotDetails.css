@@ -124,7 +124,7 @@
     max-width: 30%;
     /* background: transparent; */
     position: relative;
-    width: 450px;
+    width: 300px;
     height: 80px;
     padding-left: 20px;
     margin-left: 700px;
@@ -139,7 +139,7 @@
 @media screen and (max-width: 1900px) {
 
     .button-div2 {
-        margin-left: 400px;
+        margin-left: 500px;
     }
 
     .center-spot-detail {
@@ -153,7 +153,7 @@
     text-decoration: none;
     color: white;
     background-color: rgb(227, 28, 95);
-    width: 100px;
+    /* width: 100px; */
     font-size: 25px;
 }
 

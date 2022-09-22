@@ -134,7 +134,7 @@ function CreateSpotForm() {
             required
           />
         </label>
-        <label >
+        {/* <label >
 
           <input
           className="input-style-spot"
@@ -155,7 +155,7 @@ function CreateSpotForm() {
             onChange={(e) => setLng(e.target.value)}
             required
           />
-        </label>
+        </label> */}
         <label >
 
           <input

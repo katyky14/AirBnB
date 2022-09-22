@@ -35,17 +35,17 @@ function Navigation({ isLoaded }){
 
   return (
 
-    <ul className='nav-class'>
-      <li className='nav-li'>
+    <header className='nav-class'>
+      <li className='nav-li home'>
         <div className='logo-image'>
           <img src={logo} className="logo-image"/>
         </div>
         <StyledNavLink exact to="/">Homebnb</StyledNavLink>
       </li>
-      <li className='nav-li'>
+      <li className='nav-li profile'>
         {isLoaded && sessionLinks}
       </li>
-  </ul>
+  </header>
 
 );
 }

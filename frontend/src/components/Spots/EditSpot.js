@@ -153,7 +153,7 @@ function EditSpotForm() {
               required
             />
           </label>
-          <label>
+          {/* <label>
 
             <input
               className="input-style-edit"
@@ -174,7 +174,7 @@ function EditSpotForm() {
               onChange={updateLng}
               required
             />
-          </label>
+          </label> */}
           <label>
 
             <input

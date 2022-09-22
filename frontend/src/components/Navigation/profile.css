@@ -14,58 +14,70 @@ li {
     margin-right: 40px;
     border-radius: 8px;
     cursor: pointer;
-    border: 2px solid white;
+    border: none;
     height: 50px;
     width: 80px;
+    background-color: transparent;
 }
 
 
 .profile-dropdown {
-    /* background-color:white;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    border: 2px solid red;
-    position: absolute; */
-
-    border: 2px solid rgb(203, 194, 194);
+    border: 1px solid rgb(203, 194, 194);
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
     background: #fff;
-    height: 300px;
-    position: fixed;
+    /* height: 300px; */
+    position: absolute;
     border-radius: 10px;
-    border-bottom: 0.5px solid grey;
+    border-bottom: 1px solid grey;
     box-sizing: border-box;
-    padding: 20px 30px;
-    right: 10%;
-    top: 8%;
-    width: 350px;
+
+    padding: 0;
+    right: 130px;
+    top: 75px;
+    width: 280px;
     z-index: 10;
     background-color: rgb(196, 177, 177, 0.5px);
-    text-align: center;
+    /* text-align: center; */
     box-shadow: 2px 2px 5px 5px rgb(0 0 0 / 15%);
+
+    overflow: hidden;
+}
+
+
+.profile-dropdown button {
+    padding: 0;
+
+}
+
+.profile-dropdown .profile-content {
+    padding: 15px 20px;
+
+}
+.profile-dropdown .profile-content:hover,
+.profile-dropdown .profile-content:hover button {
+    background-color: gray;
+
 }
 
 .profile-line-sep {
     border-bottom: 1px solid gray;
-    padding-bottom: 10px;
+    /* padding-bottom: 10px; */
 }
 
 
 .profile-content {
     font-size: 22px;
+    /* border: 1px solid red; */
 }
 
-.profile-dropdown:hover .profile-dropdown:focus {
+/* .profile-dropdown:hover .profile-dropdown:focus {
     background-color: #DDDDDD;
-}
+} */
 
 .button-style {
-    height: 25px;
+    /* height: 25px; */
     background: white;
     font-size: 22px;
     border-style: none;
@@ -73,14 +85,30 @@ li {
     cursor: pointer;
 }
 
-.button-style:hover {
+/* .button-style:hover {
     background-color: rgb(211,211,211,0.5);
     border-radius: 8px;
     height: 40px;
     width: 300px;
-}
+
+} */
+
+/* .button-style:hover {
+    box-shadow: 1px solid gray;
+    background-color: gray;
+} */
 
 .navlink-style-div {
     text-decoration: none;
     color:black;
 }
+
+/*
+.navlink-style-div:hover {
+    background-color: #DDDDDD;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+} */
+
+/* .test-hover:hover {
+    background-color: aqua;
+} */

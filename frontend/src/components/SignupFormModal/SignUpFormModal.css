@@ -62,6 +62,7 @@
     color: white;
     font-weight: 300;
     height: 60px;
+    cursor: pointer;
 }
 
 .ul-error-signup-modal {
