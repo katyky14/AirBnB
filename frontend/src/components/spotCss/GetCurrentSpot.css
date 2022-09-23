@@ -68,6 +68,7 @@
     font-weight: 400;
     cursor: pointer;
 
+    border: none;
 }
 
 /* testing long chars */

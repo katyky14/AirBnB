@@ -103,8 +103,8 @@
 /* button + avgRating */
 .stars-div {
     display: flex;
-    flex-direction: column;
-    max-width: 80%;
+    /* flex-direction: column; */
+    /* max-width: 80%; */
     font-size: 20px;
     padding-bottom: 0px;
     /* border-top: 1px solid #d8d8d8;
@@ -122,16 +122,18 @@
     justify-content: center;
     max-width: 30%;
     /* background: transparent; */
-    position: relative;
+    /* position: relative; */
     width: 300px;
-    height: 80px;
+    height: 60px;
     padding-left: 20px;
-    margin-left: 700px;
-    margin-top: 20px;
+    margin-left: 500px;
+    margin-top: 10px;
     cursor: pointer;
     font-weight: 400;
 
-    background-color: rgb(227, 28, 95)
+    background-color: rgb(227, 28, 95);
+
+
 }
 
 
@@ -165,7 +167,7 @@
     padding-top: 10px;
     align-items: center;
     display: inline-flex;
-    font-size: 22px;
+    font-size: 25px;
 
 }
 

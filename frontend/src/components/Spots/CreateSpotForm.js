@@ -61,9 +61,9 @@ function CreateSpotForm() {
     if (!city.length) valErrors.push("City is required");
     if (!state.length) valErrors.push("State is required");
     if(!country.length) valErrors.push("Country is required");
-    if (lat > 90 || lat < -90) valErrors.push("Latitude must be between -90 and 90"); //-90 to 90
+    //if (lat > 90 || lat < -90) valErrors.push("Latitude must be between -90 and 90"); //-90 to 90
     //if (!lat) valErrors.push("Lat is required");
-    if (lng > 180 || lng < -180) valErrors.push("Longitude must be between -180 and 180"); //-180 to 180
+    //if (lng > 180 || lng < -180) valErrors.push("Longitude must be between -180 and 180"); //-180 to 180
     //if (!lng) valErrors.push("Lng is required");
     if (!description.length) valErrors.push("Description is required");
 

@@ -65,7 +65,7 @@
     display: block;
     width: 101%;
     /* min-width: 200px; */
-    height: 60px;
+    height: 50px;
     background-color: rgb(227, 28, 95);
     margin: auto;
     margin-bottom: 15px;
@@ -99,14 +99,15 @@
     color: black;
     text-align: left;
     font-size: 30px;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
     font-weight: 500;
 }
 
 
 .error-li {
-    font-size: 28px;
+    font-size: 22px;
     /* list-style: circle; */
     color: red;
+    padding-top: 0;
     margin-top: 0px;
 }

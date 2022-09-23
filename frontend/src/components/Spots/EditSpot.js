@@ -82,12 +82,12 @@ function EditSpotForm() {
     if (!city.length) valErrors.push("City is required");
     if (!state.length) valErrors.push("State is required");
     if (!country.length) valErrors.push("Country is required");
-    if (!lat) valErrors.push("Lat is required");
-    if (!lng) valErrors.push("Lng is required");
+    // if (!lat) valErrors.push("Lat is required");
+    // if (!lng) valErrors.push("Lng is required");
     if (!description.length) valErrors.push("Description is required");
 
-    if (lat > 90 || lat < -90) valErrors.push("Latitude must be between -90 and 90"); //-90 to 90
-    if (!lng > 180 || lng < -180) valErrors.push("Longitude must be between -180 and 180"); //-180 to 180
+    //if (lat > 90 || lat < -90) valErrors.push("Latitude must be between -90 and 90"); //-90 to 90
+   // if (!lng > 180 || lng < -180) valErrors.push("Longitude must be between -180 and 180"); //-180 to 180
 
     if (name.length > 50) valErrors.push("Name must be less than 50 characters");
     if (price > 10000000000) valErrors.push("You might not be able to rent your spot at this price!")
