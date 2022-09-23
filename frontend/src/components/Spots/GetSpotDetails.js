@@ -25,10 +25,9 @@ const SpotByDetail = () => {
     const reviewArr = Object.values(reviewDetails);
     const userRev = useSelector(state => state.session.user?.id)
     const spotOwner = useSelector(state => state.spot[spotId]?.ownerId)
-
     const userFilter = reviewArr.filter(rev => userRev === rev.userId)
-    console.log('the review', userFilter)
 
+    console.log('the user',spotsObj)
 
 
     useEffect(() => {
@@ -49,8 +48,8 @@ const SpotByDetail = () => {
 
                         <div className="top-div-info test-detail">
                             <span className="span-info1">
-                                <div><i class="fa-solid fa-star"></i> &nbsp; {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0} </div>
-                                <div className="space-div2"> - {reviewArr.length} Reviews</div>
+                                <div><i class="fa-solid fa-star"></i> {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0} </div>
+                                <div className="space-div2"> - {spot.numReviews} Reviews</div>
                             </span>
                             <div className='span-info2 test-info'> {spot.city} , {spot.state}, {spot.country}</div>
                         </div>
@@ -84,12 +83,12 @@ const SpotByDetail = () => {
                                 </div>
                             </div>
                         </div>
-                        <h2 className='h2-spot'>Entire home hosted by {spotsObj[spotId] && spotsObj[spotId]?.name} </h2>
+                        <h2 className='h2-spot'>Entire home hosted by {spotsObj[spotId] && spotsObj[spotId]?.Owner.firstName} </h2>
                         <p className="border-div">{spot.description}</p>
                         <div className="stars-div">
                             <div className="span-info3">
                                 <div><i class="fa-solid fa-star"></i> {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0} </div>
-                                <div className="space-div2"> - {reviewArr.length} Reviews</div>
+                                <div className="space-div2"> - {spot.numReviews} Reviews</div>
                             </div>
                             {userObj?.id != null && spotOwner !== userRev && !userFilter.length &&
                                 // <button className="button-div2"><StyledNavLink3 to={`/spots/${spot.id}/reviews`} >Add a Review</StyledNavLink3></button>
@@ -97,7 +96,12 @@ const SpotByDetail = () => {
 
                                 }
                         </div>
-                        <div > <GetReviews /> </div>
+
+                        {
+                            spot.numReviews !== 0 &&
+                        <div className='spot-reviews' > <GetReviews /> </div>
+                        }
+                     
                     </div>
                 ))}
             </div>

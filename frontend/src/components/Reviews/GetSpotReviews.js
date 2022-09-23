@@ -10,6 +10,7 @@ import '../ReviewCss/GetSpotReview.css'
 
 const GetReviews = () => {
 
+
     const dispatch = useDispatch();
     const { spotId } = useParams();
     const reviewObj = useSelector(state => state.review)
@@ -19,7 +20,7 @@ const GetReviews = () => {
         dispatch(getSpotReviewThunk(spotId))
     }, [dispatch])
 
-
+    console.log('the review here appearing')
 
     return reviewArr.length && (
         <div>
@@ -27,7 +28,7 @@ const GetReviews = () => {
                 {reviewArr.map(rev => (
                     <div key={rev.id}>
                         <div>
-                        <div className='star-rev1'> <i class="fa-solid fa-star"></i> {rev.stars} </div>
+                        <div className='star-rev1'> <i class="fa-solid fa-star"></i>{rev.stars}</div>
                         <div className='spot-rev-info'>{rev.review} </div>
                         </div>
                     </div>
