@@ -59,7 +59,7 @@ function ProfileButton({ user }) {
                 </StyledNavLink2>
             {/* </div> */}
           </li>
-          <li className="profile-content" oncClick={() => history.push("/spots/user")}>
+          <li className="profile-content button-style" oncClick={() => history.push("/spots/user")}>
                 <StyledNavLink2 to={`/spots/user`} >
               <button className="button-style">
                   My Spots
@@ -67,7 +67,7 @@ function ProfileButton({ user }) {
                 </StyledNavLink2>
           </li>
 
-          <li className="profile-content logout-separation">
+          <li className="profile-content logout-separation ">
               <button onClick={logout} className="button-style ">Log Out</button>
           </li>
 

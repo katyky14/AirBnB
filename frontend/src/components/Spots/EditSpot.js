@@ -90,6 +90,7 @@ function EditSpotForm() {
     if (!lng > 180 || lng < -180) valErrors.push("Longitude must be between -180 and 180"); //-180 to 180
 
     if (name.length > 50) valErrors.push("Name must be less than 50 characters");
+    if (price > 10000000000) valErrors.push("You might not be able to rent your spot at this price!")
     if (!price) valErrors.push("Price per day is required")
 
     // if(!previewImage.match(/\.(jpg|jpeg|png|gif)$/)) valErrors.push('Please provide a valid image extension [png/jpg/jpeg]')

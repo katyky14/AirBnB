@@ -69,7 +69,7 @@ function CreateSpotForm() {
 
     if (name.length > 50) valErrors.push("Name must be less than 50 characters");
     if(!name.length) valErrors.push("Name is required")
-
+    if (price > 10000000000) valErrors.push("You might not be able to rent your spot at this price!")
     if(price < 0) valErrors.push("Price must positive integer")
     if (!price) valErrors.push("Price per day is required")
 

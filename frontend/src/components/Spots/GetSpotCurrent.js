@@ -51,7 +51,7 @@ const GetSpotByCurrentUser = () => {
                         </div>
                         <div className="price-div-3">${spot.price} night</div>
                         <div >
-                            <button className="one-button"><NavLink activeClassName='active'
+                            <button className="one-button" onClick={() => history.push(`/spots/${spot.id}/edit`)}><NavLink activeClassName='active'
                                 style={{ textDecoration: 'none', color: 'white' }}
                                 to={`/spots/${spot.id}/edit`}> Edit Spot</NavLink></button>
                             <button onClick={() => {
