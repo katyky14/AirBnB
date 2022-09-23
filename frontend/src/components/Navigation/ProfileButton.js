@@ -52,23 +52,23 @@ function ProfileButton({ user }) {
         <ul className="profile-dropdown">
           <li className="profile-content">{user.username}</li>
           <li className="profile-content profile-line-sep">{user.email}</li>
-          <li className="profile-content">
-            <div className="test-hover">
+          <li className="profile-content button-style" onClick={() => history.push("/reviews")}>
+            {/* <div className="test-hover"> */}
                 <StyledNavLink2 to={`/reviews`} >
                   My Reviews
                 </StyledNavLink2>
-            </div>
+            {/* </div> */}
           </li>
-          <li className="profile-content">
-              <button className="button-style">
+          <li className="profile-content" oncClick={() => history.push("/spots/user")}>
                 <StyledNavLink2 to={`/spots/user`} >
+              <button className="button-style">
                   My Spots
-                </StyledNavLink2>
               </button>
+                </StyledNavLink2>
           </li>
 
-          <li className="profile-content">
-              <button onClick={logout} className="button-style">Log Out</button>
+          <li className="profile-content logout-separation">
+              <button onClick={logout} className="button-style ">Log Out</button>
           </li>
 
         </ul>

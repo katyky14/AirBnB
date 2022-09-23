@@ -64,13 +64,14 @@
     text-decoration: none;
     line-height: 20px;
     padding-left: 25px;
-    font-weight: 800;
+    font-weight: 400;
 
     width: 91%;
     height: 60px;
 
     background-color: rgb(227, 28, 95);
-
+    cursor: pointer;
+    border: none;
 
 }
 

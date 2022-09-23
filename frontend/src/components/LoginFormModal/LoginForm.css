@@ -75,6 +75,8 @@
     color: white;
     font-weight: 300;
     cursor: pointer;
+
+    border: none;
 }
 
 .button-logout {
@@ -92,10 +94,6 @@
 
 }
 
-/* .button-logout:hover {
-    background-color: #fff;
-    border-radius: 8px;
-} */
 
 .welcome-div {
     color: black;
