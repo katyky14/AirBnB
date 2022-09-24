@@ -34,7 +34,7 @@ const ReviewCurrentUser = () => {
     //     history.push('/')
     // }
 
-    return (
+    return filter && (
         <div className='rev-page-div'>
             <h1 className='h1-my-reviews'>My Reviews</h1>
             <div className='rev-main-div'>
