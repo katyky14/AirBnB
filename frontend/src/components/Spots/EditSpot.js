@@ -89,7 +89,7 @@ function EditSpotForm() {
     //if (lat > 90 || lat < -90) valErrors.push("Latitude must be between -90 and 90"); //-90 to 90
    // if (!lng > 180 || lng < -180) valErrors.push("Longitude must be between -180 and 180"); //-180 to 180
 
-    if (name.length > 50) valErrors.push("Name must be less than 50 characters");
+    if (name.length > 50 || name.length < 2) valErrors.push("Name must be less than 50 characters and more than 2 characters");
     if (price > 10000000000) valErrors.push("You might not be able to rent your spot at this price!")
     if (!price) valErrors.push("Price per day is required")
 
@@ -98,7 +98,7 @@ function EditSpotForm() {
 
 
     setValidationErrors(valErrors)
-  }, [address, city, state, lat, lng, name, price, previewImage])
+  }, [address, city, state, country, name, price, description, previewImage])
 
   if (spotData != null) {
     return (

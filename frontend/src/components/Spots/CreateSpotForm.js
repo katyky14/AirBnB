@@ -67,7 +67,7 @@ function CreateSpotForm() {
     //if (!lng) valErrors.push("Lng is required");
     if (!description.length) valErrors.push("Description is required");
 
-    if (name.length > 50) valErrors.push("Name must be less than 50 characters");
+    if (name.length > 50 || name.length < 2) valErrors.push("Name must be less than 50 characters and more than 2 characters");
     if(!name.length) valErrors.push("Name is required")
     if (price > 10000000000) valErrors.push("You might not be able to rent your spot at this price!")
     if(price < 0) valErrors.push("Price must positive integer")
@@ -79,7 +79,7 @@ function CreateSpotForm() {
     if (!previewImage.length) valErrors.push("Image is required");
 
     setValidationErrors(valErrors)
-  }, [address, city, state, lat, lng, name, price, previewImage]);
+  }, [address, city, state, name, price, previewImage]);
 
   return (
     <form onSubmit={handleSubmit} className="main-spot-div">
