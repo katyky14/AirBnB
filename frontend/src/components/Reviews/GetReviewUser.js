@@ -47,8 +47,8 @@ const ReviewCurrentUser = () => {
                                 <div className='rate-div'> Rating <i class="fa-solid fa-star"></i>{review.stars} </div>
                             </div>
 
-                            <button onClick={async () => {
-                                await dispatch(deleteReviewThunk(review.id))
+                            <button onClick={() => {
+                                dispatch(deleteReviewThunk(review.id))
                                 // history.push('/reviews')
                             }}
                                 className='button-rev-user'>
