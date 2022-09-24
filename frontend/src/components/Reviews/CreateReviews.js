@@ -54,9 +54,10 @@ function CreateReviewForm() {
     }, [review, stars])
 
 
-    const filter = reviewArr.filter(review => review.userId === userReview.id);
+    const filterReview = reviewArr.filter(review => review.userId === userReview.id);
+    console.log('the filter', filterReview)
 
-    if (!filter.length) {
+    if (!filterReview.length) {
 
         return (
             <div className="main-container-div">
