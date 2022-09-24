@@ -39,11 +39,11 @@ const ReviewCurrentUser = () => {
             <h1 className='h1-my-reviews'>My Reviews</h1>
             <div className='rev-main-div'>
 
-                { reviewArr.length && filter.map(review => (
+                {filter.map(review => (
                     <div key={review.id}>
                         <div className='info-rev-div'>
                             <div className='details-div'>
-                                <div className='review-div'> {review.review}</div>
+                                <div className='review-div'> {review?.review}</div>
                                 <div className='rate-div'> Rating <i class="fa-solid fa-star"></i>{review.stars} </div>
                             </div>
 
