@@ -39,7 +39,7 @@ const ReviewCurrentUser = () => {
             <h1 className='h1-my-reviews'>My Reviews</h1>
             <div className='rev-main-div'>
 
-                { filter?.map(review => (
+                { reviewArr.length && filter.map(review => (
                     <div key={review.id}>
                         <div className='info-rev-div'>
                             <div className='details-div'>
