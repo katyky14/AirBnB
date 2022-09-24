@@ -90,8 +90,7 @@ const SpotByDetail = () => {
                                 <div><i class="fa-solid fa-star"></i> {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0} </div>
                                 <div className="space-div2"> - {spot.numReviews} Reviews</div>
                             </div>
-                            {
-                            // userObj?.id != null && spotOwner !== userRev && !userFilter.length &&
+                            {userObj?.id != null && spotOwner !== userRev && !userFilter.length &&
                                 // <button className="button-div2"><StyledNavLink3 to={`/spots/${spot.id}/reviews`} >Add a Review</StyledNavLink3></button>
                                 <StyledNavLink3 to={`/spots/${spot.id}/reviews`} className='button-div2'>Add a Review</StyledNavLink3>
 
