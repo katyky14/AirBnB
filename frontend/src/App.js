@@ -53,9 +53,9 @@ function App() {
           <Route exact path='/' >
             <GetAllSpots />
           </Route>
-          <Route path='/user/bookings'>
+          {/* <Route path='/user/bookings'>
             <GetUserBooking />
-          </Route>
+          </Route> */}
         </Switch>
       )}
     </>

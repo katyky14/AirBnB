@@ -20,7 +20,8 @@ const GetReviews = () => {
         dispatch(getSpotReviewThunk(spotId))
     }, [dispatch])
 
-   // console.log('the review here appearing')
+    // console.log('thje', reviewArr)
+   
 
     return reviewArr.length && (
         <div>

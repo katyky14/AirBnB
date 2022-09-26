@@ -22,7 +22,7 @@ const ReviewCurrentUser = () => {
 
 
 
-    const filterSpot = reviewArr.filter(review => review?.userId === userReview?.id); // reconsider how we want determine user log out state
+    const filter = reviewArr.filter(review => review?.userId === userReview?.id); // reconsider how we want determine user log out state
 
     // if (!filter.length) {
     //     return alert('Must be the user or be logged in to delete spot')
@@ -34,12 +34,12 @@ const ReviewCurrentUser = () => {
     //     history.push('/')
     // }
 
-    return filterSpot && (
+    return filter && (
         <div className='rev-page-div'>
             <h1 className='h1-my-reviews'>My Reviews</h1>
             <div className='rev-main-div'>
 
-                {filterSpot.map(review => (
+                {filter.map(review => (
                     <div key={review.id}>
                         <div className='info-rev-div'>
                             <div className='details-div'>

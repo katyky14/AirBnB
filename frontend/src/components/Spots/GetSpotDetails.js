@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import '../spotCss/GetSpotDetails.css';
 import { NavLink } from 'react-router-dom';
 import { getOneSpotDetails } from '../../store/spot';
 import GetReviews from '../Reviews/GetSpotReviews';
 
+import '../spotCss/GetSpotDetails.css';
 // import { getSpotReviewThunk } from '../../store/review';
 
 
@@ -27,13 +27,13 @@ const SpotByDetail = () => {
     const spotOwner = useSelector(state => state.spot[spotId]?.ownerId)
     const userFilter = reviewArr.filter(rev => userRev === rev.userId)
 
-    const history = useHistory()
+    //const history = useHistory()
 
 
     useEffect(() => {
         dispatch(getOneSpotDetails(spotId)).then(() => setIsLoaded(true))
 
-    }, [dispatch, spotId])
+    }, [dispatch, spotId, reviewDetails])
 
     // if (spotsArr != null && spotsObj.Images != null && isLoaded) {
     return spotsArr.length && isLoaded && (
@@ -90,21 +90,24 @@ const SpotByDetail = () => {
                                 <div><i class="fa-solid fa-star"></i> {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0} </div>
                                 <div className="space-div2"> - {spot.numReviews} Reviews</div>
                             </div>
-                            { userObj?.id != null &&
-                            // userObj?.id != null && spotOwner !== userRev && !userFilter.length &&
+                            {
+                            // userObj?.id != null &&
+                                userObj?.id != null && spotOwner !== userRev && !userFilter.length &&
                                 // <button className="button-div2" onClick={() => history.push(`/spots/${spot.id}/reviews`)}><StyledNavLink3 to={`/spots/${spot.id}/reviews`} >Add a Review</StyledNavLink3></button>
                                 <StyledNavLink3 to={`/spots/${spot.id}/reviews/new`} className='button-div2'>Add a Review</StyledNavLink3>
 
-                                }
+                            }
                         </div>
 
                         {
-                            spot.numReviews !== 0 &&
-                        <div className='spot-reviews' > <GetReviews /> </div>
+                            spot.numReviews != 0 &&
+                            <div className='spot-reviews' > <GetReviews /> </div>
                         }
+
 
                     </div>
                 ))}
+
             </div>
         </main>
     )
@@ -115,32 +118,3 @@ const SpotByDetail = () => {
 
 
 export default SpotByDetail;
-
-
-
-
-//https://cdn.pixabay.com/photo/2015/03/15/13/59/grave-674443_960_720.jpg
-    //console.log('the spot object is ----', spotsObj)
-    //console.log('the spots array is ---', spotsArr)
-
-/** Code using optionals, does the same thing as code above */
-    // const imgUrl = spotsObj?.Images?.[0].url;
-    // // console.log('the image url variable----', imgUrl)
-
-    // return isLoaded && (
-    //     <main>
-    //         {/* <NavLink to={`/spots/${spot.id}`}></NavLink> */}
-    //         <h1>TESTING  ONE SPOT BY DETAIL</h1>
-    //         {/* {spotsArr.map(spot => (
-    //             <div key={spot.id}>
-
-    //             <ul >
-    //                 <li>{spot.address}</li>
-    //             </ul>
-    //             </div>
-    //         ))} */}
-    //         <div><img alt='image' src={`${imgUrl}`}></img></div>
-    //         <div>{spotsObj?.address}</div>
-    //         <div>{spotsObj?.city}</div>
-    //     </main>
-    // )

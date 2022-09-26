@@ -1,5 +1,5 @@
 
-import { create } from "lodash";
+// import { create } from "lodash";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, useParams } from "react-router-dom";
@@ -22,7 +22,7 @@ function CreateReviewForm() {
     const spotArr = Object.values(spot)
     const reviewObj = useSelector(state => state.review);
     const userReview = useSelector(state => state.session.user)
-    const reviewArrForm = Object.values(reviewObj);
+    const reviewArr = Object.values(reviewObj);
 
     // if (!userReview) alert("Please log in before write a review!")
 
@@ -55,15 +55,15 @@ function CreateReviewForm() {
         setErrors(valErrors)
     }, [review, stars])
 
-    //console.log('ther review arr', reviewArrForm)
-    const filterReview = reviewArrForm.filter(review => review.userId === userReview.id);
+    //console.log('ther review arr', reviewArr)
+    const filter = reviewArr.filter(review => review.userId === userReview.id);
    // console.log('the filter', filterReview)
 
-    // if(reviewArrForm?.userId === userReview?.id) return <h1 className="h1-review-form">User already has a review for this spot"</h1>
 
-    if (!filterReview.length) {
 
-        return filterReview && (
+    if (!filter.length) {
+
+        return  (
             <div className="main-container-div">
                 <h1 className="h1-review-form">Write Your Review </h1>
                 <div className="div-container-rev">

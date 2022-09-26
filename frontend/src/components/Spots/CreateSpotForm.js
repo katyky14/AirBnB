@@ -1,7 +1,7 @@
 // import { add } from "lodash";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory, useParams } from "react-router-dom";
 
 import { spotFormThunk } from '../../store/spot'
 
@@ -17,8 +17,8 @@ function CreateSpotForm() {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
-  const [lat, setLat] = useState();
-  const [lng, setLng] = useState();
+  // const [lat, setLat] = useState();
+  // const [lng, setLng] = useState();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -26,6 +26,7 @@ function CreateSpotForm() {
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
+  //const {spotId} = useParams();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,8 +39,8 @@ function CreateSpotForm() {
       city,
       state,
       country,
-      lat,
-      lng,
+      // lat,
+      // lng,
       name,
       description, price,
       previewImage

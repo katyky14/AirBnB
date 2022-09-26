@@ -15,15 +15,13 @@ function EditSpotForm() {
   const history = useHistory()
   const { spotId } = useParams();
   const dispatch = useDispatch();
-  //console.log('the spot id', spotId);
+
   const spotsObj = useSelector(state => state.spot)
-  //console.log('the spot obj in EDIT---', spotsObj)
+
   const spotsArr = Object.values(spotsObj);
-  //console.log('the spots array in edit--', spotsArr)
 
   const spotData = spotsArr.find(spot => String(spot.id) === spotId)
 
-  //console.log('the spot data in EDIT comparison----', spotData.address)
 
   const [address, setAddress] = useState(spotData.address);
   const [city, setCity] = useState(spotData.city);
@@ -42,8 +40,8 @@ function EditSpotForm() {
   const updateCity = e => setCity(e.target.value);
   const updateState = e => setState(e.target.value);
   const updateCountry = e => setCountry(e.target.value);
-  const updateLat = e => setLat(e.target.value);
-  const updateLng = e => setLng(e.target.value);
+  // const updateLat = e => setLat(e.target.value);
+  // const updateLng = e => setLng(e.target.value);
   const updateName = e => setName(e.target.value);
   const updateDescription = e => setDescription(e.target.value);
   const updatePrice = e => setPrice(e.target.value);
