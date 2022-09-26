@@ -22,7 +22,9 @@ function CreateReviewForm() {
     const spotArr = Object.values(spot)
     const reviewObj = useSelector(state => state.review);
     const userReview = useSelector(state => state.session.user)
-    const reviewArr = Object.values(reviewObj);
+    const reviewArrForm = Object.values(reviewObj);
+
+    // if (!userReview) alert("Please log in before write a review!")
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -53,13 +55,15 @@ function CreateReviewForm() {
         setErrors(valErrors)
     }, [review, stars])
 
+    //console.log('ther review arr', reviewArrForm)
+    const filterReview = reviewArrForm.filter(review => review.userId === userReview.id);
+   // console.log('the filter', filterReview)
 
-    const filterReview = reviewArr.filter(review => review.userId === userReview.id);
-    console.log('the filter', filterReview)
+    // if(reviewArrForm?.userId === userReview?.id) return <h1 className="h1-review-form">User already has a review for this spot"</h1>
 
     if (!filterReview.length) {
 
-        return (
+        return filterReview && (
             <div className="main-container-div">
                 <h1 className="h1-review-form">Write Your Review </h1>
                 <div className="div-container-rev">
@@ -102,13 +106,8 @@ function CreateReviewForm() {
         )
 
     }
-    return (
-        <div>
+    return <h1 className="h1-review-form">"User already has a review for this spot"</h1>
 
-            <h1 className="h1-review-form">"User already has a review for this spot"</h1>
-            {/* <button>Back</button> */}
-        </div>
-        )
 }
 
 

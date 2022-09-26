@@ -16,7 +16,7 @@ const GetUserBooking = () => {
     const userBooking = useSelector(state => state.session.user)
 
     const filter = bookingArr.filter(booking => booking?.userId === userBooking?.id)
-    console.log('the filter booki', filter)
+    //console.log('the filter booki', filter)
 
 
     useEffect(() => {

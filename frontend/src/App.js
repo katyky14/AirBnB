@@ -32,7 +32,7 @@ function App() {
           <Route path='/reviews'>
             <ReviewCurrentUser />
           </Route>
-          <Route path='/spots/:spotId/reviews'>
+          <Route path='/spots/:spotId/reviews/new'>
             <CreateReviewForm />
           </Route>
           <Route path='/spots/:spotId/edit'>
