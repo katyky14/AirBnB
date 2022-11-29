@@ -1,31 +1,21 @@
-// frontend/src/components/Maps/Maps.js
 import React from 'react';
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, MarkerF } from '@react-google-maps/api';
 
 const containerStyle = {
     width: '400px',
     height: '400px',
 };
 
-// const center = {
-//     lat: 38.9072,
-//     lng: 77.0369,
-// };
+const center = {
+    lat: 38.9072,
+    lng: 77.0369,
+};
 
-
-
-const Maps = ({ apiKey, lat, lng }) => {
+const Maps = ({ apiKey }) => {
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: apiKey,
     });
-
-    const center = {
-        lat: lat,
-        lng: lng,
-    };
-
-
 
     return (
         <>
@@ -34,9 +24,7 @@ const Maps = ({ apiKey, lat, lng }) => {
                     mapContainerStyle={containerStyle}
                     center={center}
                     zoom={10}
-                >
-
-                </GoogleMap>
+                ><MarkerF position={center} /> </GoogleMap>
             )}
         </>
     );
