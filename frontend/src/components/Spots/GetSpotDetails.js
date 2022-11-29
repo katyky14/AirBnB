@@ -6,6 +6,7 @@ import { getOneSpotDetails } from '../../store/spot';
 import GetReviews from '../Reviews/GetSpotReviews';
 
 import '../spotCss/GetSpotDetails.css';
+import MapContainer from '../Maps';
 // import { getSpotReviewThunk } from '../../store/review';
 
 
@@ -91,7 +92,7 @@ const SpotByDetail = () => {
                                 <div className="space-div2"> - {spot.numReviews} Reviews</div>
                             </div>
                             {
-                            // userObj?.id != null &&
+                                // userObj?.id != null &&
                                 userObj?.id != null && spotOwner !== userRev && !userFilter.length &&
                                 // <button className="button-div2" onClick={() => history.push(`/spots/${spot.id}/reviews`)}><StyledNavLink3 to={`/spots/${spot.id}/reviews`} >Add a Review</StyledNavLink3></button>
                                 <StyledNavLink3 to={`/spots/${spot.id}/reviews/new`} className='button-div2'>Add a Review</StyledNavLink3>
@@ -105,8 +106,18 @@ const SpotByDetail = () => {
                         }
 
 
+                        <div>
+                            <MapContainer lat={spot.lat } lng={spot.lng}/>
+                        </div>
                     </div>
                 ))}
+
+
+
+
+
+
+
 
             </div>
         </main>

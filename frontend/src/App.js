@@ -14,6 +14,7 @@ import EditSpotForm from "./components/Spots/EditSpot";
 import CreateReviewForm from "./components/Reviews/CreateReviews";
 import ReviewCurrentUser from "./components/Reviews/GetReviewUser";
 import GetUserBooking from "./components/Booking/GetUserBooking";
+import MapContainer from "./components/Maps";
 
 
 
@@ -52,6 +53,9 @@ function App() {
           </Route> */}
           <Route exact path='/' >
             <GetAllSpots />
+          </Route>
+          <Route path='/maps'>
+            <MapContainer />
           </Route>
           {/* <Route path='/user/bookings'>
             <GetUserBooking />
