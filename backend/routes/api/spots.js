@@ -431,6 +431,9 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
     const bookingSpot = await Spot.findByPk(spotId);
     const { user } = req;
 
+    console.log('here in the backend')
+
+
     if (!bookingSpot) {
         return res.json({
             "message": "Spot couldn't be found",
@@ -482,6 +485,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
             endDate: endDate
         })
 
+        console.log('the created booking', newBooking)
         return res.json(newBooking)
     } else {
         res.json({

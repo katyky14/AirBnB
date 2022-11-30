@@ -14,17 +14,17 @@ const DELETE_BOOKING = 'booking/DELETE_BOOKING'
 /***************** actions ******************/
 //actions
 
-const getBookingsSpotId = booking => {
+const getBookingsSpotId = payload => {
     return {
         type: GET_BY_SPOT_ID,
-        booking
+        payload
     }
 }
 
-const getBookingCurrentUser = payloadBooking => {
+const getBookingCurrentUser = payload => {
     return {
         type: GET_CURRENT_BOOKING,
-        payloadBooking
+        payload
     }
 }
 
@@ -79,18 +79,22 @@ export const getBookingsSpotIdThunk = (spotId) => async (dispatch) => {
 }
 
 export const bookingFormThunk = (spotId, bookingData) => async (dispatch) => {
-    const responseData = await csrfFetch(' /api/spots/:spotId/bookings', {
+    //console.log('here in the thunk')
+    //console.log('the id in thunk', typeof spotId)
+    const responseData = await csrfFetch(`/api/spots/${spotId}/bookings`, {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(bookingData)
     });
 
+    //console.log('the response data', responseData)
     const response = await csrfFetch(`/api/spots/${spotId}/bookings`, responseData)
-
+    //console.log('the response after data', response)
     if(response.ok) {
         const data = await response.json();
-
+        //console.log('the data if res is ok', data)
         dispatch(addOneBooking(data));
+        //console.log('the data after dispatch', data)
         return data;
     }
 }
@@ -105,10 +109,26 @@ export const editBookingThunk = (bookingData, reviewId) => async (dispatch) => {
     if (response.ok) {
         const data = await response.ok();
         dispatch(editBooking(data))
-        return response
+        return response // or return data??
     }
 }
 
+
+export const deleteBookingThunk = (bookingId) => async (dispatch) => {
+    const responseData = {
+        method: 'DELETE'
+    }
+
+    const response = await csrfFetch(`/api/bookings/${bookingId}`, responseData);
+
+    if (response.ok) {
+        dispatch(deleteBooking(bookingId))
+    }
+
+    return response;
+
+
+}
 
 const initialState = {};
 
@@ -118,8 +138,11 @@ const bookingReducer = (state = initialState, action) => {
     let newState = {};
 
     switch (action.type) {
+        case GET_BY_SPOT_ID:
+            newState = { ...action.payload};
+            return newState;
         case GET_CURRENT_BOOKING:
-            newState = {...state};
+            newState = {};
             action.payloadBooking.forEach(spot => {
                 newState[spot.id] = spot
             })
@@ -140,7 +163,10 @@ const bookingReducer = (state = initialState, action) => {
                     ...action.payload
                 }
             }
-
+        case DELETE_BOOKING:
+            newState = { ...state };
+            delete newState[action.payload];
+            return newState;
 
         default:
             return state;

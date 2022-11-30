@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom";
-import { bookingFormThunk } from "../../store/booking";
+import { bookingFormThunk, getBookingsSpotIdThunk } from "../../store/booking";
 
 
 
@@ -17,7 +17,7 @@ const BookingForm = () => {
 
     const dispatch = useDispatch();
     const history = useHistory();
-    const {spotId} = useParams();
+    const { spotId } = useParams();
     // console.log('the id', spotId)
 
     const spots = useSelector(state => state.spot)
@@ -32,7 +32,7 @@ const BookingForm = () => {
     //handle the date differences
     let differenceDate;
 
-    if (isNaN((new Date(endDate) - new Date(startDate)) / 86400000) || ((new Date(startDate) - new Date(endDate)) / 86400000 ) < 0) {
+    if (isNaN((new Date(endDate) - new Date(startDate)) / 86400000) || ((new Date(startDate) - new Date(endDate)) / 86400000) < 0) {
         differenceDate = 0;
     } else {
         differenceDate = (new Date(endDate) - new Date(startDate)) / 86400000
@@ -50,10 +50,20 @@ const BookingForm = () => {
             endDate
         }
 
-        let createBooking = await dispatch(bookingFormThunk(bookingInformation))
+        if (spots.ownerId === user.id) {
+            let error = [];
+            error.push('User cannot book their own spot')
+            setValidationErrors(error)
+        }
 
-        if(createBooking) {
-            history.push(`/spots/${spotId}`)
+        if (validationErrors.length === 0 && spots.ownerId !== user.id) {
+
+            let createBooking = await dispatch(bookingFormThunk(spotId, bookingInformation))
+
+            if (createBooking) {
+                // history.push(`/spots/${+spotId}`)
+                alert('successfully booked')
+            }
         }
     }
 
@@ -90,15 +100,66 @@ const BookingForm = () => {
 
         })
 
-    })
+    }, [startDateNum, endDateNum])
 
     useEffect(() => {
-        dispatch()
-    })
+        dispatch(getBookingsSpotIdThunk(+spotId))
+    }, [spotId])
 
     return (
         <div>
             <h1>Book This place</h1>
+
+        <div>
+            <form onSubmit={onSubmit}>
+                {validationErrors.length > 0 && (
+                    <ul>
+                        {validationErrors.map(error =>
+                        <li key={error}>{error}</li>)}
+                    </ul>
+                )}
+
+                <div>
+                    <div>
+                        checkin
+                    </div>
+                    <input
+                    type='date'
+                    onChange={e => setStartDate(e.target.value)}
+                    required
+                    min={todayDate}
+                    max={"9999-12-31"}
+                    />
+
+                </div>
+
+                <div>
+                    <div>
+                        Checkout
+                    </div>
+                    <input
+                    type='date'
+                    onChange={e => setEndDate(e.target.value)}
+                    required
+                    min={todayDate}
+                    max="9999-12-31"
+                    />
+                </div>
+
+                <div>
+                    <input type='Submit' defaultValue='Reserve'/>
+                </div>
+
+
+            </form>
+
+
+
+        </div>
+
+
+
+
         </div>
     )
 }
