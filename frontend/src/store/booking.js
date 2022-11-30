@@ -2,15 +2,24 @@ import { csrfFetch } from "./csrf";
 
 
 //types
+const GET_BY_SPOT_ID = 'booking/GET_SPOT_BY_ID'
 const GET_CURRENT_BOOKING = 'booking/GET_BOOKING';
 
 const ADD_ONE_BOOKING = 'booking/ADD_ONE_BOOKING';
 
-
+const EDIT_BOOKING = 'booking/EDIT_BOOKING'
+const DELETE_BOOKING = 'booking/DELETE_BOOKING'
 
 
 /***************** actions ******************/
-//actions get user booking
+//actions
+
+const getBookingsSpotId = booking => {
+    return {
+        type: GET_BY_SPOT_ID,
+        booking
+    }
+}
 
 const getBookingCurrentUser = payloadBooking => {
     return {
@@ -20,7 +29,6 @@ const getBookingCurrentUser = payloadBooking => {
 }
 
 
-//action create booking
 
 const addOneBooking = payload => {
     return {
@@ -30,8 +38,19 @@ const addOneBooking = payload => {
 }
 
 
+const editBooking = payload => {
+    return {
+        type: EDIT_BOOKING,
+        payload
+    }
+}
 
-
+const deleteBooking = payload => {
+    return {
+        type: DELETE_BOOKING,
+        payload
+    }
+}
 
 
 
@@ -50,13 +69,23 @@ export const getCurrentBookingThunk = () => async (dispatch) => {
     }
 }
 
+export const getBookingsSpotIdThunk = (spotId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/spots/${spotId}/bookings`);
 
-export const bookingFormThunk = (bookingData) => async (dispatch) => {
-    const response = await csrfFetch(' /api/spots/:spotId/bookings', {
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(getBookingsSpotId(data.Bookings))
+    }
+}
+
+export const bookingFormThunk = (spotId, bookingData) => async (dispatch) => {
+    const responseData = await csrfFetch(' /api/spots/:spotId/bookings', {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(bookingData)
     });
+
+    const response = await csrfFetch(`/api/spots/${spotId}/bookings`, responseData)
 
     if(response.ok) {
         const data = await response.json();
@@ -66,7 +95,19 @@ export const bookingFormThunk = (bookingData) => async (dispatch) => {
     }
 }
 
+export const editBookingThunk = (bookingData, reviewId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/reviews/${reviewId}`, {
+        method: 'PUT',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(bookingData)
+    })
 
+    if (response.ok) {
+        const data = await response.ok();
+        dispatch(editBooking(data))
+        return response
+    }
+}
 
 
 const initialState = {};

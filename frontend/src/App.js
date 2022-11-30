@@ -57,9 +57,9 @@ function App() {
           <Route path='/maps'>
             <MapContainer />
           </Route>
-          {/* <Route path='/user/bookings'>
+          <Route path='/user/bookings'>
             <GetUserBooking />
-          </Route> */}
+          </Route>
         </Switch>
       )}
     </>

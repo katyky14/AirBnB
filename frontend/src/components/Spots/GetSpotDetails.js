@@ -7,6 +7,7 @@ import GetReviews from '../Reviews/GetSpotReviews';
 
 import '../spotCss/GetSpotDetails.css';
 import MapContainer from '../Maps';
+import BookingForm from '../Booking/BookingForm';
 // import { getSpotReviewThunk } from '../../store/review';
 
 
@@ -104,11 +105,16 @@ const SpotByDetail = () => {
                             spot.numReviews != 0 &&
                             <div className='spot-reviews' > <GetReviews /> </div>
                         }
-
+                        <div>
+                            <p>Where you'll be</p>
+                            <MapContainer lat={spot.lat} lng={spot.lng} />
+                        </div>
 
                         <div>
-                            <MapContainer lat={spot.lat } lng={spot.lng}/>
+                            <BookingForm />
                         </div>
+
+
                     </div>
                 ))}
 

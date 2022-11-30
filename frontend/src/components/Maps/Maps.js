@@ -6,16 +6,21 @@ const containerStyle = {
     height: '400px',
 };
 
-const center = {
-    lat: 38.9072,
-    lng: 77.0369,
-};
+// const center = {
+//     lat: 38.9072,
+//     lng: 77.0369,
+// };
 
-const Maps = ({ apiKey }) => {
+const Maps = ({ apiKey, lat, lng }) => {
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: apiKey,
     });
+
+    const center = {
+        lat: lat,
+        lng: lng,
+    };
 
     return (
         <>
