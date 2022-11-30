@@ -85,13 +85,35 @@ const SpotByDetail = () => {
                                 </div>
                             </div>
                         </div>
-                        <h2 className='h2-spot'>Entire home hosted by {spotsObj[spotId] && spotsObj[spotId]?.Owner.firstName} </h2>
-                        <p className="border-div">{spot.description}</p>
+
+
+
+                        <div className='spot-details-top-info-booking'>
+
+                            <div className='left-info-spot-details'>
+
+                                <h2 className='h2-spot'>Entire home hosted by {spotsObj[spotId] && spotsObj[spotId]?.Owner.firstName} </h2>
+                                <p className="border-div">{spot.description}</p>
+                            </div>
+
+                            <div className='right-card-booking-spot-details'>
+                                <p>$ {spot.price}</p>
+                                <BookingForm />
+                            </div>
+
+
+                        </div>
+
+
+
+
+                        {/* reviews after bookings low part */}
                         <div className="stars-div">
                             <div className="span-info3">
                                 <div><i class="fa-solid fa-star"></i> {spot.avgRating ? Number.parseFloat(spot.avgRating).toFixed(2) : 0} </div>
                                 <div className="space-div2"> - {spot.numReviews} Reviews</div>
                             </div>
+
                             {
                                 // userObj?.id != null &&
                                 userObj?.id != null && spotOwner !== userRev && !userFilter.length &&
@@ -110,9 +132,6 @@ const SpotByDetail = () => {
                             <MapContainer lat={spot.lat} lng={spot.lng} />
                         </div>
 
-                        <div>
-                            <BookingForm />
-                        </div>
 
 
                     </div>

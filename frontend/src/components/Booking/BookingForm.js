@@ -108,8 +108,7 @@ const BookingForm = () => {
 
     return (
         <div>
-            <h1>Book This place</h1>
-
+       
         <div>
             <form onSubmit={onSubmit}>
                 {validationErrors.length > 0 && (
