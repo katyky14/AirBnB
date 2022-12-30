@@ -96,11 +96,22 @@ const SpotByDetail = () => {
                                 <p className="border-div">{spot.description}</p>
                             </div>
 
-                            <div className='right-card-booking-spot-details'>
-                                <p>$ {spot.price}</p>
-                                <BookingForm />
-                            </div>
 
+
+
+                            <div className='right-card-booking-spot-details'>
+
+                                <div className='spot-booking-inner-div'>
+
+
+                                <div className='spot-booking-price-div'>
+
+                                <p className='spot-booking-price-text'>$ {spot.price}</p>
+                                </div>
+
+                                <BookingForm />
+                                </div>
+                            </div>
 
                         </div>
 

@@ -308,5 +308,43 @@
   /* adding the booking part */
 .spot-details-top-info-booking {
   display: flex;
-  
+  width: 100%;
+  padding-top: 48px;
+  padding-bottom: 48px;
+  justify-content: space-between;
+}
+
+.right-card-booking-spot-details {
+  display: flex;
+  justify-content: space-between;
+  width: 41.666964%;
+  flex-direction: column;
+}
+
+.spot-booking-inner-div {
+  display: flex;
+  box-sizing: border-box;
+  margin-left: auto;
+  /* height: 496px; */
+  max-width: 371.33;
+  padding: 24px;
+  /* justify-content: space-between; */
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  position: relative;
+  margin-right: 2px;
+  flex-direction: column;
+}
+
+
+.spot-booking-price-div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.spot-booking-price-text {
+  font-size: 20px;
+  font-weight: 500;
 }
