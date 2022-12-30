@@ -1,10 +1,9 @@
-
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom";
 import { bookingFormThunk, getBookingsSpotIdThunk } from "../../store/booking";
 
-
+import './bookingForm.css'
 
 const BookingForm = () => {
     // const [startDate, setStartDate] = useState('mm/dd/yyyy');
@@ -107,58 +106,68 @@ const BookingForm = () => {
     }, [spotId])
 
     return (
-        <div>
-       
-        <div>
-            <form onSubmit={onSubmit}>
-                {validationErrors.length > 0 && (
-                    <ul>
-                        {validationErrors.map(error =>
-                        <li key={error}>{error}</li>)}
-                    </ul>
-                )}
+        <div className="booking-main-container">
 
-                <div>
-                    <div>
-                        checkin
+            <div className="booking-inner-container">
+                <form onSubmit={onSubmit} className='booking-form'>
+                    {validationErrors.length > 0 && (
+                        <ul className="booking-ul-errors">
+                            {validationErrors.map(error =>
+                                <li key={error} className='booking-li-errors'>{error}</li>)}
+                        </ul>
+                    )}
+
+                    <div className="booking-main-div">
+
+                        <div className="booking-checkin-inner-div">
+
+                            <div className="booking-checkin-text">
+                                check-in
+                            </div>
+                            <input
+                                className="checkin-input"
+                                type="date"
+                                onChange={(e) => setStartDate(e.target.value)}
+                                required
+                                min={todayDate}
+                                max={"9999-12-31"}
+                            />
+                        </div>
+
+
+                        <div className="booking-checkin-inner-div">
+
+
+                            <div className="booking-checkout-text">
+                                checkout
+                            </div>
+                            <input
+                                className="checkout-input"
+                                type="date"
+                                onChange={(e) => setEndDate(e.target.value)}
+                                required
+                                min={todayDate}
+                                max={"9999-12-31"}
+                            />
+
+                        </div>
                     </div>
-                    <input
-                    type='date'
-                    onChange={e => setStartDate(e.target.value)}
-                    required
-                    min={todayDate}
-                    max={"9999-12-31"}
-                    />
 
-                </div>
-
-                <div>
                     <div>
-                        Checkout
+                        
                     </div>
-                    <input
-                    type='date'
-                    onChange={e => setEndDate(e.target.value)}
-                    required
-                    min={todayDate}
-                    max="9999-12-31"
-                    />
-                </div>
-
-                <div>
-                    <input type='Submit' defaultValue='Reserve'/>
-                </div>
 
 
-            </form>
+                    <div className="booking-submit-main-div">
+                        <input className="submit-booking-inner-div" type='Submit' defaultValue='Reserve' />
+                    </div>
+
+
+                </form>
 
 
 
-        </div>
-
-
-
-
+            </div>
         </div>
     )
 }

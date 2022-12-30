@@ -1,0 +1,153 @@
+.booking-main-container {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+
+.booking-inner-container {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.booking-form {
+    max-width: 322.33px;
+}
+
+.booking-ul-errors {
+    font-family: sans-serif;
+}
+
+.booking-li-errors {
+    list-style: none;
+    color: red;
+}
+
+
+.booking-main-div {
+    display: flex;
+    width: 322.33px;
+    height: 56px;
+}
+
+.booking-checkin-inner-div {
+    width: 50%;
+    position: relative;
+}
+
+.booking-checkin-text {
+    position: absolute;
+    padding-left: 13.5px;
+    padding-top: 13px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.checkin-input {
+    box-sizing: border-box;
+    padding: 12px;
+    padding-top: 25px;
+    border-top: 1px solid #bbbbbb;
+    border-bottom: 1px solid #bbbbbb;
+    border-right: 0.5px solid #bbbbbb;
+    border-left: 1px solid #bbbbbb;
+    border-radius: 8px 0 0 0;
+    background-color: transparent !important;
+    font-family: sans-serif;
+
+    width: 100%;
+    height: 100%;
+}
+
+input.checkin-input[type="date"] {
+    position: relative;
+}
+
+input.checkin-input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    color: transparent;
+    background: transparent;
+}
+
+
+.booking-checkout-text {
+    position: absolute;
+    padding-left: 14px;
+    padding-top: 13px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.checkout-input {
+    box-sizing: border-box;
+    padding: 12px;
+    padding-top: 25px;
+
+    border-top: 1px solid #bbbbbb;
+    border-right: 1px solid #bbbbbb;
+    border-bottom: 1px solid #bbbbbb;
+    border-left: 0.5px solid #bbbbbb;
+    border-radius: 0 8px 0 0;
+    background-color: transparent !important;
+    font-family: sans-serif;
+    cursor: pointer;
+
+    width: 100%;
+    height: 100%;
+}
+
+input.checkout-input[type="date"] {
+    position: relative;
+}
+
+input.checkout-input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    color: transparent;
+    background: transparent;
+
+
+}
+
+
+
+
+.submit-booking-inner-div {
+    display: block;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+    color: #ffffff;
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    background: rgba(0, 0, 0, 0) linear-gradient(to right,
+            rgb(230, 30, 77) 0%,
+            rgb(227, 28, 95) 50%,
+            rgb(215, 4, 102) 100%) repeat scroll 0% 0%;
+
+
+    box-sizing: border-box;
+
+    border-radius: 8px;
+    background-color: transparent !important;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    height: 48px;
+
+
+
+}
