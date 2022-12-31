@@ -55,14 +55,13 @@ const GetUserBooking = () => {
             {Object.values(filteredBookings).map((booking, idx) => (
                 <div key={idx}>
                     <div>
-                    <div>
-                        <img src={booking.Spot.previewImage} />
-                    </div>
-                    <div> {booking.Spot.city}</div>
-                    <div>
-                        <div>{booking?.startDate} - {booking?.endDate}</div>
-
-                         </div>
+                        <div>
+                            <img src={booking.Spot.previewImage} />
+                        </div>
+                        <div> {booking.Spot.city}</div>
+                        <div>
+                            <div>{booking?.startDate} - {booking?.endDate}</div>
+                        </div>
                     </div>
                 </div>
             ))}

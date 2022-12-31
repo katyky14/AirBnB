@@ -67,6 +67,14 @@ function ProfileButton({ user }) {
                 </StyledNavLink2>
           </li>
 
+          <li className="profile-content button-style" oncClick={() => history.push("/user/bookings")}>
+                <StyledNavLink2 to={`/user/bookings`} >
+              <button className="button-style">
+                  My Bookings
+              </button>
+                </StyledNavLink2>
+          </li>
+
           <li className="profile-content logout-separation ">
               <button onClick={logout} className="button-style ">Log Out</button>
           </li>

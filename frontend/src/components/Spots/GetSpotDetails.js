@@ -30,8 +30,8 @@ const SpotByDetail = () => {
     const userFilter = reviewArr.filter(rev => userRev === rev.userId)
 
     //const history = useHistory()
-    console.log(spotsObj[spotId]?.Owner.id !== spotOwner)
-    console.log('the spot', spotOwner)
+    // console.log(spotsObj[spotId]?.Owner.id !== spotOwner)
+    // console.log('the spot', spotOwner)
 
     useEffect(() => {
         dispatch(getOneSpotDetails(spotId)).then(() => setIsLoaded(true))
@@ -94,7 +94,7 @@ const SpotByDetail = () => {
                             <div className='left-info-spot-details'>
 
                                 <h2 className='h2-spot'>Entire home hosted by {spotsObj[spotId] && spotsObj[spotId]?.Owner.firstName} </h2>
-                                
+
                                 <p className="border-div">{spot.description}</p>
                             </div>
 
