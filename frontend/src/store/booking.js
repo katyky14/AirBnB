@@ -64,7 +64,7 @@ export const getCurrentBookingThunk = () => async (dispatch) => {
 
     if(response.ok) {
         const data = await response.json();
-        console.log('the data', data)
+        console.log('the data', data.Bookings)
         dispatch(getBookingCurrentUser(data.Bookings))
     }
 }
@@ -143,7 +143,7 @@ const bookingReducer = (state = initialState, action) => {
             return newState;
         case GET_CURRENT_BOOKING:
             newState = {};
-            action.payloadBooking.forEach(spot => {
+            action.payload.forEach(spot => {
                 newState[spot.id] = spot
             })
             return newState;

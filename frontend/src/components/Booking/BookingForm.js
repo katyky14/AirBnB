@@ -11,6 +11,7 @@ const BookingForm = () => {
     const [startDate, setStartDate] = useState(false);
     const [endDate, setEndDate] = useState(false);
     const [validationErrors, setValidationErrors] = useState([]);
+    const [hasSubmitted, setHasSubmitted] = useState(false);
 
     const todayDate = (new Date()).toISOString().slice(0, 10)
 
@@ -25,9 +26,9 @@ const BookingForm = () => {
     const user = useSelector(state => state.session.user);
     // console.log('the user', user)
     const bookingsObj = useSelector(state => state.booking);
-    console.log('the booking obj', bookingsObj)
+    //console.log('the booking obj', bookingsObj)
     const bookingArr = Object.values(bookingsObj);
-    console.log('the booking arr', bookingArr)
+    //console.log('the booking arr', bookingArr)
     //handle the date differences
     let differenceDate;
 
@@ -43,6 +44,7 @@ const BookingForm = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
+        setHasSubmitted(true);
 
         const bookingInformation = {
             startDate,
@@ -57,12 +59,13 @@ const BookingForm = () => {
 
         if (validationErrors.length === 0 && spots.ownerId !== user.id) {
 
-            let createBooking = await dispatch(bookingFormThunk(spotId, bookingInformation))
+            dispatch(bookingFormThunk(spotId, bookingInformation)).then((res) => history.push('/user/bookings'))
 
-            if (createBooking) {
-                // history.push(`/spots/${+spotId}`)
-                alert('successfully booked')
-            }
+            // if (createBooking) {
+            //     // history.push(`/spots/${+spotId}`)
+            //     console.log('success')
+            //     alert('successfully booked')
+            // }
         }
     }
 
@@ -110,7 +113,7 @@ const BookingForm = () => {
 
             <div className="booking-inner-container">
                 <form onSubmit={onSubmit} className='booking-form'>
-                    {validationErrors.length > 0 && (
+                    {hasSubmitted && validationErrors.length > 0 && (
                         <ul className="booking-ul-errors">
                             {validationErrors.map(error =>
                                 <li key={error} className='booking-li-errors'>{error}</li>)}
