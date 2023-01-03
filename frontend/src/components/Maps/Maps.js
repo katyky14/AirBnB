@@ -18,8 +18,8 @@ const Maps = ({ apiKey, lat, lng }) => {
     });
 
     const center = {
-        lat: lat,
-        lng: lng,
+        lat: parseFloat(lat),
+        lng: parseFloat(lng),
     };
 
     return (
