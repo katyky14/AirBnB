@@ -79,8 +79,7 @@ export const getBookingsSpotIdThunk = (spotId) => async (dispatch) => {
 }
 
 export const bookingFormThunk = (spotId, bookingData) => async (dispatch) => {
-    //console.log('here in the thunk')
-    //console.log('the id in thunk', typeof spotId)
+   console.log('the spot id in thunk', spotId)
     const responseData = await csrfFetch(`/api/spots/${spotId}/bookings`, {
         method: 'POST',
         headers: { "Content-Type": "application/json" },

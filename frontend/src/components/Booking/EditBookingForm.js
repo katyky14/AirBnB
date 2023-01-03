@@ -20,8 +20,8 @@ const EditBookingForm = () => {
     const { spotId } = useParams();
     // console.log('the id', spotId)
 
-    const spots = useSelector(state => state.spot)
-    // console.log('the spots', spots)
+    const spots = useSelector(state => state.spot[spotId])
+    console.log('the spots', spots)
 
     const user = useSelector(state => state.session.user);
     // console.log('the user', user)
@@ -41,6 +41,12 @@ const EditBookingForm = () => {
     const startDateNum = new Date(startDate) - 0;
     const endDateNum = new Date(endDate) - 0;
 
+    const updateStartDate = e => setStartDate(e.target.value)
+    const updateEndDate = e => setEndDate(e.target.value)
+
+    useEffect(() => {
+
+    })
 
     const onSubmit = async (e) => {
         e.preventDefault();
