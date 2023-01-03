@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentBookingThunk } from "../../store/booking";
 
+import '../Booking/userBooking.css'
 
 
 
@@ -21,11 +22,12 @@ const GetUserBooking = () => {
 
     const todayDate = (new Date()).toISOString().slice(0, 10);
 
+    // to return only current bookings
     const filteredBookings = bookingArr.filter(function (booking) {
         return booking.endDate >= todayDate
     })
 
-    console.log('the filtered ', filteredBookings)
+    //console.log('the filtered ', filteredBookings)
 
     useEffect(() => {
         dispatch(getCurrentBookingThunk()).then(() => setIsLoaded(true))
@@ -37,8 +39,10 @@ const GetUserBooking = () => {
 
 
     return (
-        <div>
-            <h1>User's booking'</h1>
+        <div className="user-bookings">
+            <div className="user-booking-main-text">
+                <h1>My Bookings</h1>
+            </div>
             {/* {filter.map (booking => (
                 <div key={booking.id}>
                     <div>{booking.Spot.address} </div>
@@ -52,21 +56,27 @@ const GetUserBooking = () => {
 
             ))} */}
 
+
+
             {Object.values(filteredBookings).map((booking, idx) => (
-                <div key={idx}>
+                <div key={idx} className="user-bookings-card">
                     <div>
                         <div>
-                            <img src={booking.Spot.previewImage} />
+                            <img src={booking.Spot.previewImage} className="user-booking-image" />
                         </div>
-                        <div> {booking.Spot.city}</div>
                         <div>
-                            <div>{booking?.startDate} - {booking?.endDate}</div>
+                            <div> {booking.Spot.city}, {booking.Spot.state}</div>
+                            <div>
+                                <div>From {booking?.startDate} to {booking?.endDate}</div>
+                            </div>
+                            <button onClick={() => dispatch()}> Edit </button>
+                            <div> Delete Booking </div>
                         </div>
                     </div>
                 </div>
             ))}
-
         </div>
+
     )
 
 

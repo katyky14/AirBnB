@@ -15,6 +15,7 @@ import CreateReviewForm from "./components/Reviews/CreateReviews";
 import ReviewCurrentUser from "./components/Reviews/GetReviewUser";
 import GetUserBooking from "./components/Booking/GetUserBooking";
 import MapContainer from "./components/Maps";
+import EditBookingForm from "./components/Booking/EditBookingForm";
 
 
 
@@ -59,6 +60,9 @@ function App() {
           </Route>
           <Route path='/user/bookings'>
             <GetUserBooking />
+          </Route>
+          <Route path='/bookings/edit'>
+            <EditBookingForm />
           </Route>
         </Switch>
       )}

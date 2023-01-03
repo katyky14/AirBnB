@@ -1,0 +1,21 @@
+
+
+.user-bookings {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+
+
+.user-bookings-card {
+    border: 1px solid green;
+    
+}
+
+.user-booking-image {
+    width: 500px;
+    height: 350px;
+}

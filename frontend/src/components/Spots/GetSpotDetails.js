@@ -29,9 +29,7 @@ const SpotByDetail = () => {
     const spotOwner = useSelector(state => state.spot[spotId]?.ownerId)
     const userFilter = reviewArr.filter(rev => userRev === rev.userId)
 
-    //const history = useHistory()
-    // console.log(spotsObj[spotId]?.Owner.id !== spotOwner)
-    // console.log('the spot', spotOwner)
+
 
     useEffect(() => {
         dispatch(getOneSpotDetails(spotId)).then(() => setIsLoaded(true))
