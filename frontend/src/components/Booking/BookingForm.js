@@ -18,7 +18,7 @@ const BookingForm = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { spotId } = useParams();
-    // console.log('the id', spotId)
+    console.log('the spot id', spotId)
 
     const spots = useSelector(state => state.spot)
     // console.log('the spots', spots)
@@ -46,32 +46,6 @@ const BookingForm = () => {
     const endDateNum = new Date(endDate) - 0;
 
 
-    const onSubmit = async (e) => {
-        e.preventDefault();
-        setHasSubmitted(true);
-
-        const bookingInformation = {
-            startDate,
-            endDate
-        };
-
-        if (spots.ownerId === user.id) {
-            let error = [];
-            error.push('User cannot book their own spot')
-            setValidationErrors(error)
-        }
-
-        if (validationErrors.length === 0 && spots.ownerId !== user.id) {
-
-            dispatch(bookingFormThunk(spotId, bookingInformation)).then((res) => history.push('/user/bookings'))
-
-            // if (createBooking) {
-            //     // history.push(`/spots/${+spotId}`)
-            //     console.log('success')
-            //     alert('successfully booked')
-            // }
-        }
-    }
 
 
     useEffect(() => {
@@ -112,6 +86,37 @@ const BookingForm = () => {
         dispatch(getBookingsSpotIdThunk(+spotId))
     }, [spotId, startDateNum, endDateNum])
 
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        setHasSubmitted(true);
+
+        const bookingInformation = {
+            startDate,
+            endDate
+        };
+
+        if (spots.ownerId === user.id) {
+            let error = [];
+            error.push('User cannot book their own spot')
+            setValidationErrors(error)
+        }
+
+        if (validationErrors.length === 0 && spots.ownerId !== user.id) {
+            console.log('the dates as data sent to be', bookingInformation)
+            dispatch(bookingFormThunk(spotId, bookingInformation)).then((res) =>
+                // history.push(`/trips/${spotId}/booking/${res.id}`, console.log('inside', res))
+                history.push(`/user/bookings`)
+
+
+            )
+
+            // if (createBooking) {
+            //     // history.push(`/spots/${+spotId}`)
+            //     console.log('success')
+            //     alert('successfully booked')
+            // }
+        }
+    }
     return (
         <div className="booking-main-container">
 
@@ -129,7 +134,7 @@ const BookingForm = () => {
                         <div className="booking-checkin-inner-div">
 
                             <div className="booking-checkin-text">
-                               CHECK IN
+                                CHECK IN
                             </div>
                             <input
                                 className="checkin-input"

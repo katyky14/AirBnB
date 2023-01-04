@@ -16,6 +16,7 @@ import ReviewCurrentUser from "./components/Reviews/GetReviewUser";
 import GetUserBooking from "./components/Booking/GetUserBooking";
 import MapContainer from "./components/Maps";
 import EditBookingForm from "./components/Booking/EditBookingForm";
+import BookingTrip from "./components/Booking/TripReservation";
 
 
 
@@ -63,6 +64,9 @@ function App() {
           </Route>
           <Route path='/bookings/edit'>
             <EditBookingForm />
+          </Route>
+          <Route path='/trips/:spotId/booking/:bookingId'>
+            <BookingTrip />
           </Route>
         </Switch>
       )}

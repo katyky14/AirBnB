@@ -79,21 +79,20 @@ export const getBookingsSpotIdThunk = (spotId) => async (dispatch) => {
 }
 
 export const bookingFormThunk = (spotId, bookingData) => async (dispatch) => {
-   //console.log('the spot id in thunk', spotId)
+   console.log('the spot id in thunk', spotId)
     const responseData = await csrfFetch(`/api/spots/${spotId}/bookings`, {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(bookingData)
     });
 
-    //console.log('the response data', responseData)
-    const response = await csrfFetch(`/api/spots/${spotId}/bookings`, responseData)
-    //console.log('the response after data', response)
-    if(response.ok) {
-        const data = await response.json();
-        //console.log('the data if res is ok', data)
+    console.log('the response data', responseData)
+
+    if(responseData.ok) {
+        const data = await responseData.json();
+        console.log('the data if res is ok', data)
         dispatch(addOneBooking(data));
-        //console.log('the data after dispatch', data)
+        console.log('the data after dispatch', data)
         return data;
     }
 }
@@ -151,7 +150,7 @@ const bookingReducer = (state = initialState, action) => {
             if (!state[action.payload.id]) {
                 const newStateForm = { ...state };
                 newStateForm[action.payload.id] = action.payload
-                //console.log('add one spot form reducer ---', newStateForm)
+                console.log('add one spot form reducer ---', newStateForm)
                 return newStateForm
             }
             //console.log('the in reducer', action.payload)
