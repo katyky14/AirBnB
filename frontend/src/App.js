@@ -15,7 +15,7 @@ import CreateReviewForm from "./components/Reviews/CreateReviews";
 import ReviewCurrentUser from "./components/Reviews/GetReviewUser";
 import GetUserBooking from "./components/Booking/GetUserBooking";
 import MapContainer from "./components/Maps";
-import EditBookingForm from "./components/Booking/EditBookingForm";
+import EditBookingForm from "./components/Booking/EditFormModal/EditBookingForm";
 import BookingTrip from "./components/Booking/TripReservation";
 
 

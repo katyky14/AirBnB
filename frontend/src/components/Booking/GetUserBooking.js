@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentBookingThunk } from "../../store/booking";
 import { deleteBookingThunk } from "../../store/booking";
+import EditBookingFormModal from "./EditFormModal";
 
 import '../Booking/userBooking.css'
 
@@ -70,6 +71,7 @@ const GetUserBooking = () => {
                             <div>
                                 <div>From {booking?.startDate} to {booking?.endDate}</div>
                             </div>
+                            <EditBookingFormModal />
                             {/* <button onClick={() => dispatch()}> Edit </button> */}
                             <button onClick={() => dispatch(deleteBookingThunk(booking.id))}> Cancel Booking</button>
                         </div>
