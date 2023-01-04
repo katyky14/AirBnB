@@ -23,6 +23,10 @@ const BookingForm = () => {
     const spots = useSelector(state => state.spot)
     // console.log('the spots', spots)
 
+    const spot = spots[spotId];
+    console.log('the spot in spotId', spot)
+
+
     const user = useSelector(state => state.session.user);
     // console.log('the user', user)
     const bookingsObj = useSelector(state => state.booking);
@@ -49,7 +53,7 @@ const BookingForm = () => {
         const bookingInformation = {
             startDate,
             endDate
-        }
+        };
 
         if (spots.ownerId === user.id) {
             let error = [];
@@ -106,7 +110,7 @@ const BookingForm = () => {
 
     useEffect(() => {
         dispatch(getBookingsSpotIdThunk(+spotId))
-    }, [spotId])
+    }, [spotId, startDateNum, endDateNum])
 
     return (
         <div className="booking-main-container">
@@ -125,7 +129,7 @@ const BookingForm = () => {
                         <div className="booking-checkin-inner-div">
 
                             <div className="booking-checkin-text">
-                                check-in
+                               CHECK IN
                             </div>
                             <input
                                 className="checkin-input"
@@ -142,7 +146,7 @@ const BookingForm = () => {
 
 
                             <div className="booking-checkout-text">
-                                checkout
+                                CHECKOUT
                             </div>
                             <input
                                 className="checkout-input"

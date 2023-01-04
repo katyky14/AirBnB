@@ -69,8 +69,8 @@ const GetUserBooking = () => {
                             <div>
                                 <div>From {booking?.startDate} to {booking?.endDate}</div>
                             </div>
-                            <button onClick={() => dispatch()}> Edit </button>
-                            <div> Delete Booking </div>
+                            {/* <button onClick={() => dispatch()}> Edit </button> */}
+                            <button onClick={() => dispatch()}> Cancel Booking</button>
                         </div>
                     </div>
                 </div>

@@ -60,11 +60,11 @@ const deleteBooking = payload => {
 export const getCurrentBookingThunk = () => async (dispatch) => {
 
     const response = await csrfFetch(`/api/bookings/current`);
-    console.log('the response in BOOK Thunk', response)
+    //console.log('the response in BOOK Thunk', response)
 
     if(response.ok) {
         const data = await response.json();
-        console.log('the data', data.Bookings)
+        //console.log('the data', data.Bookings)
         dispatch(getBookingCurrentUser(data.Bookings))
     }
 }
@@ -79,7 +79,7 @@ export const getBookingsSpotIdThunk = (spotId) => async (dispatch) => {
 }
 
 export const bookingFormThunk = (spotId, bookingData) => async (dispatch) => {
-   console.log('the spot id in thunk', spotId)
+   //console.log('the spot id in thunk', spotId)
     const responseData = await csrfFetch(`/api/spots/${spotId}/bookings`, {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
