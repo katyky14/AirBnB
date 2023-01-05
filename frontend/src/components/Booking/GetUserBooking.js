@@ -13,13 +13,13 @@ const GetUserBooking = () => {
     const [isLoaded, setIsLoaded] = useState(false)
 
     const bookingObj = useSelector(state => state.booking)
-    console.log('the bookobj', bookingObj)
+    //console.log('the bookobj', bookingObj)
     const bookingArr = Object.values(bookingObj);
 
     const userBooking = useSelector(state => state.session.user)
 
 
-    const filter = bookingArr.filter(booking => booking?.userId === userBooking?.id)
+    // const filter = bookingArr.filter(booking => booking?.userId === userBooking?.id)
 
 
     const todayDate = (new Date()).toISOString().slice(0, 10);
@@ -66,12 +66,13 @@ const GetUserBooking = () => {
                         <div>
                             <img src={booking.Spot.previewImage} className="user-booking-image" />
                         </div>
+                        {console.log('the booking inside', booking)}
                         <div>
                             <div> {booking.Spot.city}, {booking.Spot.state}</div>
                             <div>
                                 <div>From {booking?.startDate} to {booking?.endDate}</div>
                             </div>
-                            <EditBookingFormModal />
+                            <EditBookingFormModal bookingId={booking.id} spotId={booking.spotId}/>
                             {/* <button onClick={() => dispatch()}> Edit </button> */}
                             <button onClick={() => dispatch(deleteBookingThunk(booking.id))}> Cancel Booking</button>
                         </div>

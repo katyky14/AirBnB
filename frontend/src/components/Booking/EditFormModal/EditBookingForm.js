@@ -5,9 +5,8 @@ import { bookingFormThunk, getBookingsSpotIdThunk } from "../../../store/booking
 
 import '../bookingForm.css'
 
-const EditBookingForm = () => {
-    // const [startDate, setStartDate] = useState('mm/dd/yyyy');
-    // const [endDate, setEndDate] = useState('mm/dd/yyyy');
+const EditBookingForm = ({ bookingId, spotId }) => {
+
     const [startDate, setStartDate] = useState(false);
     const [endDate, setEndDate] = useState(false);
     const [validationErrors, setValidationErrors] = useState([]);
@@ -17,10 +16,11 @@ const EditBookingForm = () => {
 
     const dispatch = useDispatch();
     const history = useHistory();
-    const { spotId } = useParams();
-    // console.log('the id', spotId)
+    // const { spotId } = useParams();
+    console.log('the id', spotId)
+    console.log('the booking id', bookingId)
 
-    const spots = useSelector(state => state.spot[spotId])
+    const spots = useSelector(state => state.spot)
     console.log('the spots', spots)
 
     const user = useSelector(state => state.session.user);
@@ -41,12 +41,12 @@ const EditBookingForm = () => {
     const startDateNum = new Date(startDate) - 0;
     const endDateNum = new Date(endDate) - 0;
 
-    const updateStartDate = e => setStartDate(e.target.value)
-    const updateEndDate = e => setEndDate(e.target.value)
+    // const updateStartDate = e => setStartDate(e.target.value)
+    // const updateEndDate = e => setEndDate(e.target.value)
 
-    useEffect(() => {
+    // useEffect(() => {
 
-    })
+    // })
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -67,11 +67,6 @@ const EditBookingForm = () => {
 
             dispatch(bookingFormThunk(spotId, bookingInformation)).then((res) => history.push('/user/bookings'))
 
-            // if (createBooking) {
-            //     // history.push(`/spots/${+spotId}`)
-            //     console.log('success')
-            //     alert('successfully booked')
-            // }
         }
     }
 
@@ -110,9 +105,9 @@ const EditBookingForm = () => {
 
     }, [startDateNum, endDateNum])
 
-    useEffect(() => {
-        dispatch(getBookingsSpotIdThunk(+spotId))
-    }, [spotId])
+    // useEffect(() => {
+    //     dispatch(getBookingsSpotIdThunk(+spotId))
+    // }, [spotId])
 
     return (
         <div className="booking-main-container">

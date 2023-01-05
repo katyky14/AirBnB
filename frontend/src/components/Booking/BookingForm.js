@@ -18,13 +18,13 @@ const BookingForm = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { spotId } = useParams();
-    console.log('the spot id', spotId)
+    //console.log('the spot id', spotId)
 
     const spots = useSelector(state => state.spot)
     // console.log('the spots', spots)
 
     const spot = spots[spotId];
-    console.log('the spot in spotId', spot)
+    //console.log('the spot in spotId', spot)
 
 
     const user = useSelector(state => state.session.user);
@@ -102,7 +102,7 @@ const BookingForm = () => {
         }
 
         if (validationErrors.length === 0 && spots.ownerId !== user.id) {
-            console.log('the dates as data sent to be', bookingInformation)
+            //console.log('the dates as data sent to be', bookingInformation)
             dispatch(bookingFormThunk(spotId, bookingInformation)).then((res) =>
                 // history.push(`/trips/${spotId}/booking/${res.id}`, console.log('inside', res))
                 history.push(`/user/bookings`)
@@ -124,8 +124,8 @@ const BookingForm = () => {
                 <form onSubmit={onSubmit} className='booking-form'>
                     {hasSubmitted && validationErrors.length > 0 && (
                         <ul className="booking-ul-errors">
-                            {validationErrors.map(error =>
-                                <li key={error} className='booking-li-errors'>{error}</li>)}
+                            {validationErrors.map((error, i) =>
+                                <li key={i} className='booking-li-errors'>{error}</li>)}
                         </ul>
                     )}
 

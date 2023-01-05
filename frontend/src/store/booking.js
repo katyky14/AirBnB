@@ -79,26 +79,26 @@ export const getBookingsSpotIdThunk = (spotId) => async (dispatch) => {
 }
 
 export const bookingFormThunk = (spotId, bookingData) => async (dispatch) => {
-   console.log('the spot id in thunk', spotId)
+   //console.log('the spot id in thunk', spotId)
     const responseData = await csrfFetch(`/api/spots/${spotId}/bookings`, {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(bookingData)
     });
 
-    console.log('the response data', responseData)
+    //console.log('the response data', responseData)
 
     if(responseData.ok) {
         const data = await responseData.json();
-        console.log('the data if res is ok', data)
+        //console.log('the data if res is ok', data)
         dispatch(addOneBooking(data));
-        console.log('the data after dispatch', data)
+        //console.log('the data after dispatch', data)
         return data;
     }
 }
 
-export const editBookingThunk = (bookingData, reviewId) => async (dispatch) => {
-    const response = await csrfFetch(`/api/reviews/${reviewId}`, {
+export const editBookingThunk = (bookingId, bookingData) => async (dispatch) => {
+    const response = await csrfFetch(`/api/bookings/${bookingId}`, {
         method: 'PUT',
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify(bookingData)
