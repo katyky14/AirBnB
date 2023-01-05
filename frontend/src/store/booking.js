@@ -70,10 +70,12 @@ export const getCurrentBookingThunk = () => async (dispatch) => {
 }
 
 export const getBookingsSpotIdThunk = (spotId) => async (dispatch) => {
+    console.log('in the thunk booking by spotId')
     const response = await csrfFetch(`/api/spots/${spotId}/bookings`);
-
+    console.log('in thunk response booking spotId', response)
     if (response.ok) {
         const data = await response.json()
+        console.log('the data in thunk ', data)
         dispatch(getBookingsSpotId(data.Bookings))
     }
 }
@@ -105,9 +107,9 @@ export const editBookingThunk = (bookingId, bookingData) => async (dispatch) => 
     })
 
     if (response.ok) {
-        const data = await response.ok();
+        const data = await response.json();
         dispatch(editBooking(data))
-        return response // or return data??
+        return data // or return data??
     }
 }
 

@@ -16,7 +16,7 @@ const GetUserBooking = () => {
     //console.log('the bookobj', bookingObj)
     const bookingArr = Object.values(bookingObj);
 
-    const userBooking = useSelector(state => state.session.user)
+    // const userBooking = useSelector(state => state.session.user)
 
 
     // const filter = bookingArr.filter(booking => booking?.userId === userBooking?.id)
@@ -64,11 +64,11 @@ const GetUserBooking = () => {
                 <div key={idx} className="user-bookings-card">
                     <div>
                         <div>
-                            <img src={booking.Spot.previewImage} className="user-booking-image" />
+                            <img src={booking.Spot?.previewImage} className="user-booking-image" />
                         </div>
-                        {console.log('the booking inside', booking)}
+                        {console.log('the booking inside getuser booking', booking)}
                         <div>
-                            <div> {booking.Spot.city}, {booking.Spot.state}</div>
+                            <div> {booking.Spot?.city}, {booking.Spot?.state}</div>
                             <div>
                                 <div>From {booking?.startDate} to {booking?.endDate}</div>
                             </div>

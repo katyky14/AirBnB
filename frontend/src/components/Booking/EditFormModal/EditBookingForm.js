@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom";
-import { bookingFormThunk, getBookingsSpotIdThunk } from "../../../store/booking";
+import { bookingFormThunk, editBookingThunk, getBookingsSpotIdThunk, getCurrentBookingThunk } from "../../../store/booking";
 
 import '../bookingForm.css'
 
-const EditBookingForm = ({ bookingId, spotId }) => {
+const EditBookingForm = ({ bookingId, spotId, setShowModal }) => {
 
-    const [startDate, setStartDate] = useState(false);
-    const [endDate, setEndDate] = useState(false);
+    const [startDate, setStartDate] = useState();
+    const [endDate, setEndDate] = useState();
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -16,19 +16,29 @@ const EditBookingForm = ({ bookingId, spotId }) => {
 
     const dispatch = useDispatch();
     const history = useHistory();
-    // const { spotId } = useParams();
-    console.log('the id', spotId)
-    console.log('the booking id', bookingId)
+
+    const [isLoaded, setIsLoaded] = useState(false)
+
+    // console.log('the spotid in component', spotId)
+    // console.log('the booking id', bookingId)
 
     const spots = useSelector(state => state.spot)
-    console.log('the spots', spots)
+
+    // console.log('the spots', spots)
+
 
     const user = useSelector(state => state.session.user);
     // console.log('the user', user)
     const bookingsObj = useSelector(state => state.booking);
     //console.log('the booking obj', bookingsObj)
+
+    const bookingObjId = useSelector(state => state.booking[0]?.id)
+    //console.log('booking obj id', bookingObjId)
+
     const bookingArr = Object.values(bookingsObj);
     //console.log('the booking arr', bookingArr)
+
+
     //handle the date differences
     let differenceDate;
 
@@ -41,18 +51,17 @@ const EditBookingForm = ({ bookingId, spotId }) => {
     const startDateNum = new Date(startDate) - 0;
     const endDateNum = new Date(endDate) - 0;
 
-    // const updateStartDate = e => setStartDate(e.target.value)
-    // const updateEndDate = e => setEndDate(e.target.value)
+    const updateStartDate = e => setStartDate(e.target.value)
+    const updateEndDate = e => setEndDate(e.target.value)
 
-    // useEffect(() => {
 
-    // })
 
     const onSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true);
 
         const bookingInformation = {
+            id: +bookingId,
             startDate,
             endDate
         }
@@ -63,13 +72,34 @@ const EditBookingForm = ({ bookingId, spotId }) => {
             setValidationErrors(error)
         }
 
-        if (validationErrors.length === 0 && spots.ownerId !== user.id) {
-
-            dispatch(bookingFormThunk(spotId, bookingInformation)).then((res) => history.push('/user/bookings'))
-
+        if (!!startDate && !!endDate) {
+            await dispatch(editBookingThunk(bookingId, bookingInformation))
+            setShowModal(false)
         }
+
+
+        // await dispatch(editBookingThunk(bookingId, bookingInformation))
+
+        // if (validationErrors.length === 0 && spots.ownerId !== user.id) {
+
+        //     //dispatch(bookingFormThunk(spotId, bookingInformation)).then((res) => history.push('/user/bookings'))
+        //     let editedBooking = await dispatch(editBookingThunk(bookingId, bookingInformation))
+
+        //     if (editedBooking) {
+        //         history.push(`/user/bookings`)
+        //     }
+
+        // }
+
+
     }
 
+    useEffect(() => {
+        if (bookingObjId) {
+            setStartDate(bookingObjId.startDate);
+            setEndDate(bookingObjId.endDate)
+        }
+    }, [bookingObjId])
 
     useEffect(() => {
         const errors = [];
@@ -106,8 +136,12 @@ const EditBookingForm = ({ bookingId, spotId }) => {
     }, [startDateNum, endDateNum])
 
     // useEffect(() => {
-    //     dispatch(getBookingsSpotIdThunk(+spotId))
-    // }, [spotId])
+    //     dispatch(getBookingsSpotIdThunk(spotId))
+    // }, [dispatch])
+
+    useEffect(() => {
+        dispatch(getCurrentBookingThunk()).then(() => setIsLoaded(true))
+    }, [dispatch])
 
     return (
         <div className="booking-main-container">
@@ -121,17 +155,19 @@ const EditBookingForm = ({ bookingId, spotId }) => {
                         </ul>
                     )}
 
+
+
                     <div className="booking-main-div">
 
                         <div className="booking-checkin-inner-div">
 
                             <div className="booking-checkin-text">
-                                check-in
+                                CHECK-IN
                             </div>
                             <input
                                 className="checkin-input"
                                 type="date"
-                                onChange={(e) => setStartDate(e.target.value)}
+                                onChange={updateStartDate}
                                 required
                                 min={todayDate}
                                 max={"9999-12-31"}
@@ -143,12 +179,12 @@ const EditBookingForm = ({ bookingId, spotId }) => {
 
 
                             <div className="booking-checkout-text">
-                                checkout
+                                CHECKOUT
                             </div>
                             <input
                                 className="checkout-input"
                                 type="date"
-                                onChange={(e) => setEndDate(e.target.value)}
+                                onChange={updateEndDate}
                                 required
                                 min={todayDate}
                                 max={"9999-12-31"}

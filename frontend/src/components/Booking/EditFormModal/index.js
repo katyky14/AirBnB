@@ -3,10 +3,10 @@ import { Modal } from "../../../context/Modal";
 import EditBookingForm from "./EditBookingForm";
 
 
-function EditBookingFormModal() {
+function EditBookingFormModal({ bookingId, spotId }) {
     const [showModal, setShowModal] = useState(false);
 
-    return (
+    return  (
         <>
             <button onClick={() => setShowModal(true)}
                 className="" >
@@ -22,8 +22,8 @@ function EditBookingFormModal() {
                         <i className='fa-solid fa-x'></i>
                     </button>
                 </div>
-                <div>Edit Reservation</div>
-                <EditBookingForm />
+                <div>Change Reservation</div>
+                <EditBookingForm bookingId={bookingId} spotId={spotId} setShowModal={setShowModal}/>
             </Modal>
         )}
 
