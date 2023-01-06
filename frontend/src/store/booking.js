@@ -40,7 +40,7 @@ const addOneBooking = payload => {
 
 const editBooking = payload => {
     return {
-        type: EDIT_BOOKING,
+        type: ADD_ONE_BOOKING,
         payload
     }
 }

@@ -135,9 +135,6 @@ const EditBookingForm = ({ bookingId, spotId, setShowModal }) => {
 
     }, [startDateNum, endDateNum])
 
-    // useEffect(() => {
-    //     dispatch(getBookingsSpotIdThunk(spotId))
-    // }, [dispatch])
 
     useEffect(() => {
         dispatch(getCurrentBookingThunk()).then(() => setIsLoaded(true))
@@ -150,7 +147,7 @@ const EditBookingForm = ({ bookingId, spotId, setShowModal }) => {
                 <form onSubmit={onSubmit} className='booking-form'>
                     {hasSubmitted && validationErrors.length > 0 && (
                         <ul className="booking-ul-errors">
-                            {validationErrors.map(error =>
+                            {validationErrors.length > 0 && validationErrors.map(error =>
                                 <li key={error} className='booking-li-errors'>{error}</li>)}
                         </ul>
                     )}
