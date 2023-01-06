@@ -28,7 +28,7 @@
 .name-div {
     color: black;
     text-align: left;
-    font-size: 30px;
+    font-size: 28px;
     font-weight: lighter;
     margin-top: 15px;
     padding-top: 10px;
@@ -92,7 +92,7 @@
 
 /* border top separation */
 .left-info-spot-details {
-  border-bottom: 1px solid #d8d8d8;
+  /* border-bottom: 1px solid #d8d8d8; */
   width: 68.333036%;
 }
 
@@ -284,11 +284,11 @@
     }
 
     .name-div {
-        font-size: 45px;
+        font-size: 30px;
     }
 
     .h2-spot {
-        font-size: 34px;
+        font-size: 32px;
     }
   }
 
