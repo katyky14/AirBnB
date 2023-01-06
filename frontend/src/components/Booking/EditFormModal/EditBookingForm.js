@@ -144,7 +144,7 @@ const EditBookingForm = ({ bookingId, spotId, setShowModal }) => {
     }, [dispatch])
 
     return (
-        <div className="booking-main-container">
+        <div className="booking-main-container edit-booking-form-container">
 
             <div className="booking-inner-container">
                 <form onSubmit={onSubmit} className='booking-form'>
@@ -197,10 +197,10 @@ const EditBookingForm = ({ bookingId, spotId, setShowModal }) => {
 
                     </div>
 
-                    {/* <div className="booking-guest-main-div">
+                    <div className="booking-guest-main-div">
                         <div className="booking-guest-text">GUESTS</div>
                         <div className="booking-guests-inner-div">1 guests</div>
-                    </div> */}
+                    </div>
 
 
                     <div className="booking-submit-main-div">

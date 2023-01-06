@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal } from "../../../context/Modal";
 import EditBookingForm from "./EditBookingForm";
 
+import '../bookingForm.css'
 
 function EditBookingFormModal({ bookingId, spotId }) {
     const [showModal, setShowModal] = useState(false);
@@ -9,20 +10,20 @@ function EditBookingFormModal({ bookingId, spotId }) {
     return  (
         <>
             <button onClick={() => setShowModal(true)}
-                className="" >
-                Edit Reservation
+                className="edit-booking-button" >
+                Change Reservation
             </button>
 
         {showModal && (
             <Modal onClose={() => setShowModal(false)}>
                 <div>
                     <button onClick={() => setShowModal(false)}
-                    className=""
+                    className="edit-booking-modal-button-x "
                     >
                         <i className='fa-solid fa-x'></i>
                     </button>
                 </div>
-                <div>Change Reservation</div>
+                <div className="edit-booking-modal-text">Change Reservation</div>
                 <EditBookingForm bookingId={bookingId} spotId={spotId} setShowModal={setShowModal}/>
             </Modal>
         )}

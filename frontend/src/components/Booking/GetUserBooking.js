@@ -72,9 +72,11 @@ const GetUserBooking = () => {
                             <div>
                                 <div>From {booking?.startDate} to {booking?.endDate}</div>
                             </div>
-                            <EditBookingFormModal bookingId={booking.id} spotId={booking.spotId}/>
-                            {/* <button onClick={() => dispatch()}> Edit </button> */}
-                            <button onClick={() => dispatch(deleteBookingThunk(booking.id))}> Cancel Booking</button>
+                            <div className="edit-booking-button-container">
+                                <EditBookingFormModal bookingId={booking.id} spotId={booking.spotId} />
+                                {/* <button onClick={() => dispatch()}> Edit </button> */}
+                                <button onClick={() => dispatch(deleteBookingThunk(booking.id))} className="edit-booking-button"> Cancel Booking</button>
+                            </div>
                         </div>
                     </div>
                 </div>
