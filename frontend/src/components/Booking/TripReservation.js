@@ -11,12 +11,12 @@ function BookingTrip() {
     const { spotId } = useParams();
     const { bookingId } = useParams();
 
-    console.log('the spot id', spotId)
-    console.log('the booking id', bookingId)
+    // console.log('the spot id', spotId)
+    // console.log('the booking id', bookingId)
 
     const spots = useSelector((state) => state.spots);
 
-    console.log('the spots', spots)
+    // console.log('the spots', spots)
 
     //const spot = spots[spotId];
 

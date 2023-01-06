@@ -342,7 +342,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
             review: review,
             stars: stars,
         });
-        console.log('in the backend', newReview)
+        // console.log('in the backend', newReview)
         res.json(newReview);
     // }
 });
@@ -396,7 +396,7 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
     const { user } = req;
     const deletedItem = await Spot.findByPk(spotId);
 
-    console.log('in the backend', deletedItem)
+    //console.log('in the backend', deletedItem)
     if (!deletedItem) {
         res.status(404)
         res.json({
@@ -430,9 +430,6 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
     const { startDate, endDate } = req.body;
     const bookingSpot = await Spot.findByPk(spotId);
     const { user } = req;
-
-    console.log('here in the backend')
-
 
     if (!bookingSpot) {
         return res.json({
@@ -485,7 +482,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
             endDate: endDate
         })
 
-        console.log('the created booking', newBooking)
+        // console.log('the created booking', newBooking)
         return res.json(newBooking)
     } else {
         res.json({

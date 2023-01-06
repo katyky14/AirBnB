@@ -66,7 +66,7 @@ const GetUserBooking = () => {
                         <div>
                             <img src={booking.Spot?.previewImage} className="user-booking-image" />
                         </div>
-                        {console.log('the booking inside getuser booking', booking)}
+                    
                         <div>
                             <div> {booking.Spot?.city}, {booking.Spot?.state}</div>
                             <div>

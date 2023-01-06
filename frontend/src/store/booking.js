@@ -70,12 +70,12 @@ export const getCurrentBookingThunk = () => async (dispatch) => {
 }
 
 export const getBookingsSpotIdThunk = (spotId) => async (dispatch) => {
-    console.log('in the thunk booking by spotId')
+
     const response = await csrfFetch(`/api/spots/${spotId}/bookings`);
-    console.log('in thunk response booking spotId', response)
+    // console.log('in thunk response booking spotId', response)
     if (response.ok) {
         const data = await response.json()
-        console.log('the data in thunk ', data)
+        // console.log('the data in thunk ', data)
         dispatch(getBookingsSpotId(data.Bookings))
     }
 }
@@ -152,7 +152,7 @@ const bookingReducer = (state = initialState, action) => {
             if (!state[action.payload.id]) {
                 const newStateForm = { ...state };
                 newStateForm[action.payload.id] = action.payload
-                console.log('add one spot form reducer ---', newStateForm)
+                // console.log('add one spot form reducer ---', newStateForm)
                 return newStateForm
             }
             //console.log('the in reducer', action.payload)
