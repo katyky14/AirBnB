@@ -28,7 +28,7 @@
 .name-div {
     color: black;
     text-align: left;
-    font-size: 38px;
+    font-size: 30px;
     font-weight: lighter;
     margin-top: 15px;
     padding-top: 10px;
@@ -354,4 +354,15 @@
 .spot-booking-price-text {
   font-size: 20px;
   font-weight: 500;
+}
+
+
+.spot-detail-map-text {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.spot-detail-map-info {
+  padding-bottom: 10px;
+  font-size: 18px;
 }

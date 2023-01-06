@@ -141,7 +141,8 @@ const SpotByDetail = () => {
                             <div className='spot-reviews' > <GetReviews /> </div>
                         }
                         <div>
-                            <p>Where you'll be</p>
+                            <p className='spot-detail-map-text'>Where you'll be</p>
+                            <div className='spot-detail-map-info'> {spot.city}, {spot.state}, {spot.country}</div>
                             <MapContainer lat={spot.lat} lng={spot.lng} />
                         </div>
 
