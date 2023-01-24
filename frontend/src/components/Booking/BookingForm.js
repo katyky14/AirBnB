@@ -101,6 +101,12 @@ const BookingForm = () => {
             setValidationErrors(error)
         }
 
+        if (!user.id) {
+            let error2 = [];
+            error2.push('Please log in to book this spot')
+            setValidationErrors(error2)
+        }
+
         if (validationErrors.length === 0 && spots.ownerId !== user.id) {
             //console.log('the dates as data sent to be', bookingInformation)
             dispatch(bookingFormThunk(spotId, bookingInformation)).then((res) =>
