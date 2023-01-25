@@ -21,3 +21,7 @@
     width: 500px;
     height: 350px;
 }
+
+.user-bookings-img-container {
+    cursor: pointer;
+}

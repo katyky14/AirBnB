@@ -5,6 +5,7 @@ import { deleteBookingThunk } from "../../store/booking";
 import EditBookingFormModal from "./EditFormModal";
 
 import '../Booking/userBooking.css'
+import { useHistory } from "react-router-dom";
 
 
 
@@ -12,8 +13,10 @@ const GetUserBooking = () => {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false)
 
+    const history = useHistory();
+
     const bookingObj = useSelector(state => state.booking)
-    //console.log('the bookobj', bookingObj)
+    console.log('the bookobj', bookingObj)
     const bookingArr = Object.values(bookingObj);
 
     // const userBooking = useSelector(state => state.session.user)
@@ -63,7 +66,7 @@ const GetUserBooking = () => {
             {Object.values(filteredBookings).map((booking, idx) => (
                 <div key={idx} className="user-bookings-card">
                     <div>
-                        <div>
+                        <div onClick={() => history.push(`/spots/${booking.spotId}`)} className='user-bookings-img-container'>
                             <img src={booking.Spot?.previewImage} className="user-booking-image" />
                         </div>
 

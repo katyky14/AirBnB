@@ -62,3 +62,41 @@
     margin-bottom: 4px;
     margin-top: 8px;
 }
+
+.trip-reservation-checkin-time {
+
+}
+
+/* .trip-reservation-checkout-container {
+    width: 50%;
+    padding-left: 24px;
+    height: 72px;
+}
+
+
+.trip-reservation-checkout {
+    font-weight: 700;
+}
+
+.trip-reservation-checkout-date {
+    margin-top: 8px;
+    margin-bottom: 4px;
+} */
+
+.trip-reservation-details-container {
+    font-weight: 700;
+    font-size: 22px;
+    padding-bottom: 32px;
+
+}
+
+.trip-reservation-reserved-details-container {
+    padding: 24px 0;
+
+}
+
+.trip-reservation-reserved-details {
+    font-weight: 700;
+    font-size: 22px;
+    padding-bottom: 32px;
+}

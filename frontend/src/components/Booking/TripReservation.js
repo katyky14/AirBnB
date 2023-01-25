@@ -185,10 +185,31 @@ function BookingTrip() {
 
                                     <div className="trip-reservation-checkin">CHECK-IN</div>
                                     <div className="trip-reservation-checkin-date">{`${weekday(startInt)}, ${booked?.startDate}`}</div>
+                                    <div className="trip-reservation-checkin-time">3:00PM</div>
+
+                                </div>
+
+                                <div className="trip-reservation-checkin-container">
+
+                                    <div className="trip-reservation-checkin">CHECKOUT</div>
+                                    <div className="trip-reservation-checkin-date">{`${weekday(endInt)}, ${booked?.startDate}`}</div>
+                                    <div className="trip-reservation-checkin-time">11:00AM</div>
 
                                 </div>
 
                             </div>
+                        </div>
+
+                        <div className="trip-reservation-details-container">
+                            <div className="trip-reservation-reserved-details-container">
+                            <div className="trip-reservation-reserved-details"></div>
+
+
+
+
+
+                            </div>
+
 
 
                         </div>
