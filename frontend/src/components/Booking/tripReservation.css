@@ -100,3 +100,29 @@
     font-size: 22px;
     padding-bottom: 32px;
 }
+
+.trip-reservation-guest-coming {
+    font-weight: 700;
+}
+
+.trip-reservation-guests {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.trip-reservation-cancel {
+    display: flex;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-top: 1px solid rgb(221, 221, 221);
+    border-bottom: 1px solid rgb(221, 221, 221);
+    font-weight: 500;
+    cursor: pointer;
+    align-items: center;
+}
+
+
+.trip-reservation-cancel-reservation {
+    margin-left: 16px;
+}
+

@@ -175,10 +175,10 @@ const BookingForm = () => {
 
                     </div>
 
-                    <div className="booking-guest-main-div">
+                    {/* <div className="booking-guest-main-div">
                         <div className="booking-guest-text">GUESTS</div>
                         <div className="booking-guests-inner-div">1 guests</div>
-                    </div>
+                    </div> */}
 
 
                     <div className="booking-submit-main-div">

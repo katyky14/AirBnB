@@ -111,6 +111,7 @@ import { editBookingThunk } from "../../store/booking";
 import { deleteBookingThunk } from "../../store/booking";
 import MapContainer from "../Maps";
 
+import './tripReservation.css'
 
 function BookingTrip() {
 
@@ -162,19 +163,19 @@ function BookingTrip() {
         if (day === 5) return 'Sat';
     }
 
-    const deleteBooked = (bookingId, spotId) => {
+    const deletedBooked = (bookingId, spotId) => {
         dispatch(deleteBookingThunk(bookingId, spotId)).then(dispatch(getCurrentBookingThunk())).then(history.push('/'))
     }
 
 
-    return  (
+    return (
         <div className="trip-reservation-outer-container">
             <div className="trip-reservation-container">
                 <div className="trip-reservation-inner-container">
 
 
                     <div className="trip-reservation-img-container">
-                        <img className="trip-reservation-img" src={spot?.previewImage} alt='trip-reservation-img'/>
+                        <img className="trip-reservation-img" src={spot?.previewImage} alt='trip-reservation-img' />
                     </div>
 
                     <div className="trip-reservation-info-container">
@@ -202,12 +203,13 @@ function BookingTrip() {
 
                         <div className="trip-reservation-details-container">
                             <div className="trip-reservation-reserved-details-container">
-                            <div className="trip-reservation-reserved-details"></div>
-
-
-
-
-
+                                <div className="trip-reservation-reserved-details">Reservation Details</div>
+                                <div className="trip-reservation-guest-coming">Who's coming'</div>
+                                <div className="trip-reservation-guests">2 guests</div>
+                                <div className="trip-reservation-cancel" onClick={() => deletedBooked(bookingId)}>
+                                    <i class="fa-solid fa-ban"></i>
+                                    <div className="trip-reservation-cancel-reservation">Cancel Reservation</div>
+                                </div>
                             </div>
 
 
