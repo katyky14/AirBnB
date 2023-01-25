@@ -7,6 +7,8 @@ import './Navigation.css';
 
 import logo from './logo2.png'
 import SignupModal from '../SignupFormModal/index';
+import githubLogo from './github.png';
+import linkedin from './LinkedIn_logo.png';
 
 //import DemoUser from '../DemoUser/demoUser';
 
@@ -42,6 +44,18 @@ function Navigation({ isLoaded }){
         </div>
         <StyledNavLink exact to="/">Homebnb</StyledNavLink>
       </li>
+
+      <li className='nav-li home'>
+       <a href='https://github.com/katyky14/capstone_project' target='_blank'>
+        <img className='homepage-github' src={githubLogo}/>
+       </a>
+
+       <a href='https://www.linkedin.com/in/katy-kam-a88051202/' target='_blank'>
+        <img className='homepage-linkedin' src={linkedin}/>
+       </a>
+
+      </li>
+
       <li className='nav-li profile'>
         {isLoaded && sessionLinks}
       </li>

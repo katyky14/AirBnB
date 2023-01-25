@@ -48,3 +48,15 @@
     font-weight: 700;
     /* border: none; */
 }
+
+
+.homepage-github {
+    width: 55px;
+    height: 55px;
+}
+
+.homepage-linkedin {
+    width: 45px;
+    height: 45px;
+    margin-left: 10px;
+}
