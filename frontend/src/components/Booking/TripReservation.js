@@ -166,8 +166,21 @@ function BookingTrip() {
 
 
     return  (
-        <div className="">
-            
+        <div className="trip-reservation-outer-container">
+            <div className="trip-reservation-container">
+                <div className="trip-reservation-inner-container">
+
+
+                    <div className="trip-reservation-img-container">
+                        <img className="trip-reservation-img" src={spot?.previewImage} alt='trip-reservation-img'/>
+                    </div>
+
+                    
+
+                </div>
+
+            </div>
+
         </div>
     )
 

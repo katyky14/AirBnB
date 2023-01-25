@@ -1,0 +1,25 @@
+.trip-reservation-outer-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.trip-reservation-container {
+    min-width: 620px;
+    max-width: 620px;
+    width: 100%;
+    border: 1px solid rgb(221, 221, 221);
+    box-sizing: border-box;
+    display: flex;
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.trip-reservation-inner-container {
+    margin: 12px 12px 0;
+}
+
+.trip-reservation-img-container {
+    margin-bottom: 8px;
+    width: 100%;
+}
