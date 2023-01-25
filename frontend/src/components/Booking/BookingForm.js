@@ -21,14 +21,14 @@ const BookingForm = () => {
     //console.log('the spot id', spotId)
 
     const spots = useSelector(state => state.spot)
-    // console.log('the spots', spots)
+    //console.log('the spots', spots)
 
     const spot = spots[spotId];
     //console.log('the spot in spotId', spot)
 
 
     const user = useSelector(state => state.session.user);
-    // console.log('the user', user)
+    //console.log('the user', user)
     const bookingsObj = useSelector(state => state.booking);
     //console.log('the booking obj', bookingsObj)
     const bookingArr = Object.values(bookingsObj);
@@ -95,9 +95,9 @@ const BookingForm = () => {
             endDate
         };
 
-        if (spots.ownerId === user.id) {
+        if (spot.ownerId === user.id) {
             let error = [];
-            error.push('User cannot book their own spot')
+            error.push('Owner cannot book their own spot')
             setValidationErrors(error)
         }
 
@@ -107,11 +107,11 @@ const BookingForm = () => {
             setValidationErrors(error2)
         }
 
-        if (validationErrors.length === 0 && spots.ownerId !== user.id) {
+        if (validationErrors.length === 0 && spot.ownerId !== user.id) {
             //console.log('the dates as data sent to be', bookingInformation)
             dispatch(bookingFormThunk(spotId, bookingInformation)).then((res) =>
-                // history.push(`/trips/${spotId}/booking/${res.id}`, console.log('inside', res))
-                history.push(`/user/bookings`)
+                history.push(`/trips/${spotId}/booking/${res.id}`, console.log('inside', res))
+                // history.push(`/user/bookings`)
 
 
             )

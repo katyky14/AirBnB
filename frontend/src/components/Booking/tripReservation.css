@@ -23,3 +23,42 @@
     margin-bottom: 8px;
     width: 100%;
 }
+
+.trip-reservation-img {
+    object-fit: cover;
+    width: 579px;
+    height: 416px;
+    border-radius: 6px;
+}
+
+.trip-reservation-info-container {
+    padding-right: 24px;
+    padding-left: 24px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.trip-reservation-check-container {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    display: flex;
+}
+
+.trip-reservation-checkin-checkout-container {
+
+}
+
+.trip-reservation-checkin-container {
+    width: 50%;
+    padding-right: 24px;
+    height: 72px;
+}
+
+.trip-reservation-checkin {
+    font-weight: 700;
+}
+
+
+.trip-reservation-checkin-date {
+    margin-bottom: 4px;
+    margin-top: 8px;
+}

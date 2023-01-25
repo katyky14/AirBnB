@@ -121,8 +121,10 @@ function BookingTrip() {
     const { bookingId } = useParams();
 
     const spots = useSelector(state => state.spot);
-
+    //console.log('the spots', spots)
+    //console.log('the spot id', spotId)
     const spot = spots[spotId];
+    console.log('the spot', spot)
     const bookings = useSelector(state => state.booking);
 
     const users = useSelector(state => state.session);
@@ -175,7 +177,23 @@ function BookingTrip() {
                         <img className="trip-reservation-img" src={spot?.previewImage} alt='trip-reservation-img'/>
                     </div>
 
-                    
+                    <div className="trip-reservation-info-container">
+                        <div className="trip-reservation-checkin-checkout-container">
+                            <div className="trip-reservation-check-container">
+
+                                <div className="trip-reservation-checkin-container">
+
+                                    <div className="trip-reservation-checkin">CHECK-IN</div>
+                                    <div className="trip-reservation-checkin-date">{`${weekday(startInt)}, ${booked?.startDate}`}</div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
 
                 </div>
 
