@@ -21,6 +21,7 @@ function BookingTrip() {
     //const spot = spots[spotId];
 
     const users = useSelector(state => state.users);
+    console.log('the users in trip', users)
 
     //const spotOwner = users[spot?.ownerId];
 
