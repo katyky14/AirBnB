@@ -67,6 +67,7 @@ const GetUserBooking = () => {
                 <div key={idx} className="user-bookings-card">
                     <div>
                         <div onClick={() => history.push(`/spots/${booking.spotId}`)} className='user-bookings-img-container'>
+                        {/* <div onClick={() => history.push(`/trips/${booking.spotId}/booking/${booking.id}}`)} className='user-bookings-img-container'> */}
                             <img src={booking.Spot?.previewImage} className="user-booking-image" />
                         </div>
 

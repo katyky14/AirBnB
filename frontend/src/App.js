@@ -17,6 +17,7 @@ import GetUserBooking from "./components/Booking/GetUserBooking";
 import MapContainer from "./components/Maps";
 import EditBookingForm from "./components/Booking/EditFormModal/EditBookingForm";
 import BookingTrip from "./components/Booking/TripReservation";
+import NotFound from "./components/404Page/NotFound";
 
 
 
@@ -67,6 +68,9 @@ function App() {
           </Route>
           <Route path='/trips/:spotId/booking/:bookingId'>
             <BookingTrip />
+          </Route>
+          <Route>
+            <NotFound />
           </Route>
         </Switch>
       )}

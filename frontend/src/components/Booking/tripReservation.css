@@ -67,7 +67,7 @@
 
 }
 
-/* .trip-reservation-checkout-container {
+.trip-reservation-checkout-container {
     width: 50%;
     padding-left: 24px;
     height: 72px;
@@ -81,7 +81,7 @@
 .trip-reservation-checkout-date {
     margin-top: 8px;
     margin-bottom: 4px;
-} */
+}
 
 .trip-reservation-details-container {
     font-weight: 700;
@@ -126,3 +126,99 @@
     margin-left: 16px;
 }
 
+
+.trip-reservation-direction-container {
+    padding: 24px 0;
+}
+
+.trip-reservation-direction {
+    font-weight: 700;
+    font-size: 22px;
+    padding-bottom: 32px;
+}
+
+.trip-reservation-address {
+    font-weight: 700;
+}
+
+.trip-reservation-address-info-top {
+    margin-top: 8px;
+}
+
+.trip-reservation-address-info-bottom {
+    margin-bottom: 8px;
+}
+
+.trip-reservation-staying-container {
+    padding: 24px 0;
+}
+
+.trip-reservation-where-staying {
+    font-weight: 700;
+    font-size: 22px;
+    padding-bottom: 32px;
+}
+
+.trip-reservation-house-rules {
+    font-weight: 700;
+}
+
+.trip-reservation-house-info {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.trip-reservation-hosted-by-container {
+    padding: 24px 0;
+}
+
+.trip-reservation-hosted-by {
+    font-weight: 700;
+    font-size:  22px;
+    padding-bottom: 32px;
+}
+
+.trip-reservation-host-about {
+    font-weight: 700;
+}
+
+.trip-reservation-host-about-info {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.trip-reservation-host-profile {
+    font-weight: 600;
+}
+
+.trip-confirmed-payment-container {
+    padding: 24px 0;
+}
+
+.trip-confirmed-payment {
+    font-weight: 700;
+    font-size: 22px;
+    padding-bottom: 32px;
+}
+
+.trip-confirmed-payment-details {
+    font-weight: 700;
+}
+
+.trip-confirmed-payment-cost {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.trip-reservation-map-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.trip-reservation-divider {
+    margin-left: -24px;
+    margin-right: -24px;
+    height: 8px;
+    background-color: rgb(235, 235, 235);
+}

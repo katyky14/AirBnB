@@ -1,0 +1,31 @@
+
+.page-not-found-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-image: url('https://as2.ftcdn.net/v2/jpg/03/13/17/67/1000_F_313176790_H5WOqnRb61Kd7YKeS4Jd8Ko4CZU6JtUR.jpg'); */
+    position: relative;
+
+    height: calc(100vh - 95px);
+    background-color: rgb(187, 212, 231);
+}
+
+.page-not-found {
+    cursor: pointer;
+}
+.h1-not-found:hover {
+    color: aquamarine;
+}
+
+.h1-not-found {
+    color: white;
+    font-size: 48px;
+}
+
+
+.img-404-gif {
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+}

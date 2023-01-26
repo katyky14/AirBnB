@@ -1,106 +1,3 @@
-// import { useParams, useHistory } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
-// import { useEffect } from "react";
-
-// import { getCurrentBookingThunk } from "../../store/booking";
-// import { editBookingThunk } from "../../store/booking";
-// import { deleteBookingThunk } from "../../store/booking";
-// import MapContainer from "../Maps";
-
-// function BookingTrip() {
-//     const { spotId } = useParams();
-//     const { bookingId } = useParams();
-
-//     // console.log('the spot id', spotId)
-//     // console.log('the booking id', bookingId)
-
-//     const spots = useSelector((state) => state.spots);
-
-//     // console.log('the spots', spots)
-
-//     //const spot = spots[spotId];
-
-//     const users = useSelector(state => state.users);
-//     console.log('the users in trip', users)
-
-//     //const spotOwner = users[spot?.ownerId];
-
-//     const dispatch = useDispatch();
-//     const history = useHistory();
-
-//     const bookingObj = useSelector(state => state.bookings)
-
-//     //const currentBooked = bookingObj[bookingId]
-
-
-//     useEffect(() => {
-//         dispatch(getCurrentBookingThunk())
-//     }, [dispatch])
-
-
-//     // const startInt = new Date(currentBooked?.startDate).getDay()
-
-
-//     // const endInt = new Date(currentBooked?.endDate).getDay()
-
-//     let dateDiffInt;
-
-//     // if (isNaN((new Date(currentBooked?.endDate) - new Date(currentBooked?.startDate)) / 86400000) || ((new Date(currentBooked?.endDate) - new Date(currentBooked?.startDate)) / 86400000) < 0) {
-//     //   dateDiffInt = 0;
-//     // } else {
-//     //   dateDiffInt = (new Date(currentBooked?.endDate) - new Date(currentBooked?.startDate)) / 86400000
-//     // }
-
-//     const weekday = (day) => {
-//       if (day === 6) return 'Sun'
-//       if (day === 0) return 'Mon'
-//       if (day === 1) return 'Tue'
-//       if (day === 2) return 'Wed'
-//       if (day === 3) return 'Thu'
-//       if (day === 4) return 'Fri'
-//       if (day === 5) return 'Sat'
-//     }
-
-//     const deleteBooked = (bookingId, spotId) => {
-//         dispatch(deleteBookingThunk(bookingId, spotId)).then(() => dispatch(getCurrentBookingThunk())).then(() => history.push(`/user/bookings`))
-//     }
-
-//     return (
-//         <div>
-//             <div>
-//                 <h1>My trips</h1>
-//                 <div>
-//                     <div>
-//                         {/* <img src={spot?.previewImage} alt='' /> */}
-//                     </div>
-
-
-//                     <div>
-//                         <div>
-//                             Check-in
-//                         </div>
-//                         <div>
-//                             {/* {`${weekday(startInt)}, ${currentBooked?.startDate}`} */}
-//                         </div>
-//                         <div>11:00 AM</div>
-//                     </div>
-
-//                 </div>
-//             </div>
-
-
-
-
-
-
-//         </div>
-//     )
-
-
-// }
-
-// export default BookingTrip
-
 
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -122,8 +19,9 @@ function BookingTrip() {
     const { bookingId } = useParams();
 
     const spots = useSelector(state => state.spot);
-    //console.log('the spots', spots)
-    //console.log('the spot id', spotId)
+    console.log('the spots', spots)
+    console.log('the spot id', spotId)
+    console.log('the booking id', bookingId)
     const spot = spots[spotId];
     console.log('the spot', spot)
     const bookings = useSelector(state => state.booking);
@@ -175,7 +73,7 @@ function BookingTrip() {
 
 
                     <div className="trip-reservation-img-container">
-                        <img className="trip-reservation-img" src={spot?.previewImage} alt='trip-reservation-img' />
+                        <img className="trip-reservation-img" src={spot?.previewImage} alt='' />
                     </div>
 
                     <div className="trip-reservation-info-container">
@@ -190,11 +88,11 @@ function BookingTrip() {
 
                                 </div>
 
-                                <div className="trip-reservation-checkin-container">
+                                <div className="trip-reservation-checkout-container">
 
-                                    <div className="trip-reservation-checkin">CHECKOUT</div>
-                                    <div className="trip-reservation-checkin-date">{`${weekday(endInt)}, ${booked?.startDate}`}</div>
-                                    <div className="trip-reservation-checkin-time">11:00AM</div>
+                                    <div className="trip-reservation-checkout">CHECKOUT</div>
+                                    <div className="trip-reservation-checkout-date">{`${weekday(endInt)}, ${booked?.startDate}`}</div>
+                                    <div className="trip-reservation-checkout-time">11:00AM</div>
 
                                 </div>
 
@@ -212,23 +110,58 @@ function BookingTrip() {
                                 </div>
                             </div>
 
+                            <div className="trip-reservation-divider"></div>
 
 
+                            <div className="trip-reservation-direction-container">
+                                <div className="trip-reservation-direction">Getting There</div>
+                                <div className="trip-reservation-address">Address</div>
+                                <div className="trip-reservation-address-info-top">{spot?.address} </div>
+                                <div className="trip-reservation-address-info-bottom">{spot?.city}, {spot?.state}</div>
+                            </div>
+
+                            <div className="trip-reservation-divider"></div>
+
+                            <div className="trip-reservation-staying-container">
+                                <div className="trip-reservation-where-staying">Where you're staying'</div>
+                                <div className="trip-reservation-house-rules">House Rules</div>
+                                <div className="trip-reservation-house-info">No smoking, no parties allowed. Do not disturb your neighbors. Do not break anything. If there are any issues, please reach out to me directly.</div>
+
+
+                            </div>
+
+
+                            <div className="trip-reservation-divider"></div>
+
+                            <div className="trip-reservation-hosted-by-container">
+                                <div className="trip-reservation-hosted-by">Hosted by {spotOwner?.firstName}</div>
+                                <div className="trip-reservation-host-about">About your host</div>
+                                <div className="trip-reservation-host-about-info">I love people who travels. And providing a place for those to feel like they are home</div>
+                                <div className="trip-reservation-host-profile">Show Profile</div>
+
+                            </div>
+
+
+                            <div className="trip-reservation-divider"></div>
+
+
+                            <div className="trip-confirmed-payment-container">
+                                <div className="trip-confirmed-payment">Payment Information</div>
+                                <div className="trip-confirmed-payment-details">Payment Details</div>
+                                <div className="trip-confirmed-payment-cost">{`Total Cost: $${dateDiffInt * spot?.price} USD`}</div>
+
+                            </div>
                         </div>
-
                     </div>
-
                 </div>
+            </div>
 
+            <div className="trip-reservation-map-container">
+                <MapContainer lat={spot?.lat} lng={spot?.lng}/>
             </div>
 
         </div>
     )
-
-
-
-
-
 }
 
 export default BookingTrip
